@@ -6,7 +6,6 @@ Advisor(s): Frank Cichos & Mathias Groth
 
 
 # TODO:
-- Fill out doc section 
 - GP, LinReg, RF & ERT Scripts + codebase
 
 
