@@ -6,9 +6,21 @@ Advisor(s): Frank Cichos & Mathias Groth
 
 
 # TODO:
-- GP, LinReg, RF & ERT Scripts + codebase
-
-
+- Experiment Scripts
+    - GP
+        - UQ
+    - LinReg
+        - LASSO 
+        - Bayesian 
+    - RF & ERT
+        - OOB Error
+        - UQ 
+    - ANN Ensemble UQ 
+- Plotting 
+    - Everything
+- Misc
+    - argparse is my friend
+    
 ### Outline of Repository 
 
 ```
@@ -21,6 +33,6 @@ src/
         General code to be used in scripts and produce data in out
     out/ 
         General data and plotting
-    a_script.py
-    b_script.py 
+    experiment_a_script.py
+    exp_b_script.py 
 ```
