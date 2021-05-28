@@ -2,7 +2,8 @@
 This runs the experiment for comparing size & depth vs performance of ANNs.
 
 The architectures tested are found in main(), whereas the arguments are found in the if __name__ == '__main__':
-Be careful for two things if you run this:
+If you run this, below are two files that will be created (this will also overwrite the existing experiment)
+
 - a pickle file will be saved in the src/out/ANN directory, with args, and RMSE + MAE for each size of model tested
     - stored in dicts of format {'[10]': (RMSE_val, RMSE_std), '[10, 10]': (RMSE_val, RMSE_std)}}
         - [10] -> one hidden layer of 10 neuron width, [10, 10] -> 2 hidden layers, 10 neurons each
@@ -160,11 +161,11 @@ def main(control_tensor, target_tensor, **kwargs):
     RMSE_dict = {}
     MAE_dict = {}
     for exp in exp_list_smoke_test:
-        print(exp)
-        RMSE_info, MAE_info = cross_validate_torch(control_tensor, target_tensor, **kwargs, hidden_layer_sizes=exp)
+        print('Hidden Sizes: ', exp)
+        RMSE_info, MAE_info = cross_validate_torch(control_tensor, target_tensor, torch_model=PedFFNN, **kwargs, hidden_layer_sizes=exp)
         RMSE_dict[str(exp)] = RMSE_info
         MAE_dict[str(exp)] = MAE_info
-        print(RMSE_info)
+        print('RMSE {:.4}, +- {:.4}'.format(RMSE_info[0], RMSE_info[1]))
         print('\n')
     return RMSE_dict, MAE_dict
 
@@ -181,7 +182,6 @@ if __name__ == '__main__':
 
     RMSE_dict, MAE_dict = main(control_tensors, target_tensors, batch_size=396, lr=0.004, n_splits=5, n_repeats=2)
     args = {'batch_size': 396, 'lr':0.004, 'n_splits':5, 'n_repeats':2}
-    print(RMSE_dict)
 
     with open('./out/ANN/performance_vs_size_exp.pickle', 'wb') as file:
         pickle.dump(args, file)

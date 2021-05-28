@@ -14,9 +14,11 @@ class ANNtorchdataset(torch.utils.data.Dataset):
     def __getitem__(self, item):
         return self.inputs[item], self.outputs[item]
 
-def process_data(target_col=None, numerical_cols=None, flags=None, return_necessary=True, file_loc='/home/adam/EDGE/2021/thesis/filtered_dataset.csv'):
-    """
 
+def process_data(target_col=None, numerical_cols=None, flags=None, return_necessary=True, return_numpy=False, file_loc='/home/adam/EDGE/2021/thesis/filtered_dataset.csv'):
+    """
+    returns dataframes!
+    - return_necessary: (feature_df, target_df, feature_err_df, target_err_df)
     """
 
     if target_col is None:
@@ -40,6 +42,8 @@ def process_data(target_col=None, numerical_cols=None, flags=None, return_necess
     feature_error_df = df[['error_' + col for col in numerical_cols]]
 
     if return_necessary:
+        if return_numpy:
+            return feature_space.to_numpy(), target_space.to_numpy(), feature_error_df.to_numpy(), target_error_df.to_numpy()
         return feature_space, target_space, feature_error_df, target_error_df
     return feature_space, target_space, df, joint_df, target_error_df, feature_error_df
 
