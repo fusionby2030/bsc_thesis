@@ -2,7 +2,7 @@
 %! Date = 16.04.21
 
 % Preamble
-\documentclass[a4paper, twoside, BCOR1.4cm, headsepline, DIV12, appendixprefix, final, 12pt]{article}
+\documentclass[a4paper, twoside, final, 12pt]{article}
 
 % Packages
 \usepackage{titlesec}
@@ -185,7 +185,7 @@ A truly predictive model cannot take plasma parameters as inputs. Today, EPED ta
 Models like EPED rely on the principle that reactor operators would 'know' these density and beta points are within reachable operational space, and that furthermore they know the recipe to get there.
 A model of interest would be that which uses the main engineering parameters to calculate profile parameters like height, width, or position for the pedestal quantities temperature, density, or pressure.
 The pedestal profile parameters stored in the database are determined using the mtanh fit, and the uncertainties are the fit uncertainties from the use of the mtanh function [\textcolor{blue}{SOURCE}].
-The fit uncertainties are expected to be significantly smaller than the natuMTANHral scatter of the data due to the fluctuation of the plasma.
+The fit uncertainties are expected to be significantly smaller than the natural scatter of the data due to the fluctuation of the plasma.
 
 Additionally, there exist so called FLAGS, which correspond to the specifics of an experiment setup.
 For example, what element the fuel is, if resonant magnetic pulses (RMPs) [\textcolor{blue}{source}], pellets [\textcolor{blue}{source}] or impurity seeding [\textcolor{blue}{source}] were used are all FLAGS contained in the database.
@@ -194,7 +194,7 @@ Only entries that have been validated are used in this thesis.
 Shots with impurity seeding are used, as they make up about 600 entries.
 RMPs, pellets, and kicks are used to manipulate the pedestal for ELM control, mitigation, or suppression [\textcolor{blue}{Viezzer NF 2018}].
 To keep the dataset simple in this thesis, these entries are excluded.
-After filtering out the RMPs, Kicks, Pellets, non-validated HRTS, and shots that do not use deuterium, the dataset is reduced to 1888 entries, and the control parameter range and pedestal parameter range are given in the tables below.
+After filtering out the RMPs, Kicks, Pellets, non-validated HRTS, and shots that do not use deuterium, the dataset is reduced to 1888 entries. The final filtered control and pedestal parameter domains are given in the tables below.
 \begin{center}
 \begin{tabular}{| c | c | }
 	\hline
@@ -234,28 +234,29 @@ Empirical analysis of the JET pedestal database has been done [\textcolor{blue}{
 	n_e^{ped} = (9.9 \pm 0.3) I_p^{1.24 \pm 0.19} P_{TOT}^{-0.34 \pm 0.11} \delta^{0.62 \pm 0.14} \Gamma^{ 0.08 \pm 0.04} M_{eff}^{0.2 \pm 0.2}
 \end{equation}
 In this thesis, we will take the pedestal prediction with ML approaches relative to the performance of the empirical scaling law as the well defined focus for the project.
-The choice of parameters from the log-linear regression by Lorenzo et. al., was backed by physical intuition about what drives the pedestal density height, as well as an avoidance of using cross-correlated variables.
-In order to improve prediction quality, it may prove useful to include additional inputs from the list of main engineering quantities.
+The choice of parameters from the log-linear regression by Lorenzo et. al., was backed by physical intuition about what drives the pedestal density height. Since log-linear regression was used, it is also assumed that the scaling law above avoided using cross-correlated variables, which can verified in Figure \ref{subfig:corr_shit}. 
+
+In order to improve prediction quality, it may prove useful to include additional inputs from the list of main engineering quantities that were not used in the log-linear scaling.
 However, by plotting joint histograms between the control parameters and $n_e^{ped}$, some serious questions can be raised regarding which parameters can and should be given to a machine learning model.
-For example, looking at the dependence of the major radius $R$ in Figure\ref{subfig:rvsneped}, one could jump to early conclusions and say that with higher values of $R$, a higher pedestal height is achieved!
-However, this is a case of ice-cream correlation\footnote{ice cream correlation refers to the correlation of increasing ice cream sales and increasing drowning rate in Finland during the summer. Although the variables are indeed correlated, ice cream is not in fact the causation of drowning, nor vice-versa.}, and the real culprit of the causation is \textcolor{green}{expand Shafranov shift[SOURCE]}.
+For example, looking at the dependence of the major radius $R$ in Figure  \ref{subfig:rvsneped}, one could jump to early conclusions and say that with higher values of $R$, a higher pedestal height is achieved!
+However, this is a case of ice-cream correlation\footnote{ice cream correlation refers to the correlation of increasing ice cream sales and increasing drowning rate in Finland during the summer. Although the variables are indeed correlated, higher ice cream sales are not in fact the causation of higher drowning rates, nor vice-versa.}, and the real culprit of the causation is the Shafranov shift; the outward radial displacement of the magnetic axis from the geometric axis that is prominently found in MCF devices\textcolor{blue}{[Shafranov SOURCE]}. The shift is understood to be induced by plasma pressure, and thus is normally linear in $\beta$. Since $\beta$ and pressure are heavily dependent on the aspects of the machine, the Shafranov shift is also machine dependent. 
 For this reason, I choose to exclude $R$ from the list of inputs to a ML model until multi-machine databases are available.
 The divertor configuration on the other hand, does have a real correlation, as the divertor configuration can also have a large impact on the pedestal, however this will be investigated in future studies.
 \begin{figure}
         \centering
-        \begin{subfigure}{0.33\linewidth}
+        \begin{subfigure}{0.5\linewidth}
                 \centering
-                \includegraphics[scale=0.4]{./src/R_vs_NEPED_DC}
+                \includegraphics[scale=0.2]{./src/R_vs_NEPED_matplotlib}
                 \caption{}
                 \label{subfig:rvsneped}
         \end{subfigure} \hfill
-        \begin{subfigure}{0.66\linewidth}
+        \begin{subfigure}{0.45\linewidth}
                 \centering
-                \includegraphics[scale=0.3]{./src/correlation_shit}
+                \includegraphics[scale=0.2]{./src/input_correlations}
                 \caption{}
                 \label{subfig:corr_shit}
         \end{subfigure}
-	\caption{(a) the 'ice cream corerlation' between the major radius $R$, divertor configuration, and $n_e^{ped}$,  (b) RHS: the correlation matrix of the engineering parameters,  LHS: the Spearman rank-coefficient (SRC)[SOURCE] tree of main engineering parameters. Both correlation visuals are particularly useful in determining viable input parameters for the ML models that do work well with highly correlated features, as well as determining viable input par  }
+	\caption{(a) the 'ice cream corerlation' between the major radius $R$, divertor configuration, and $n_e^{ped}$,  (b) the correlation matrix of the main engineering parameters to be used as inputs. A grey coloring represents no correlation, whereas blue and yellow are negative and positive correlation respectively.  }
 	\label{fig:emperical}
 \end{figure}
 Another engineering parameter that is ignored in the analysis is the sub-divertor pressure $\Gamma_{SD}$.

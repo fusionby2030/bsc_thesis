@@ -1,0 +1,17 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Why Pedestal Physics?}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{JET Pedestal Database}{section.1}% 3
+\BOOKMARK [3][-]{subsubsection.1.2.1}{Empirical Analysis}{subsection.1.2}% 4
+\BOOKMARK [1][-]{section.2}{General Machine Learning Analysis}{}% 5
+\BOOKMARK [2][-]{subsection.2.1}{Model Fitting and Validation}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.2}{Linear Regression}{section.2}% 7
+\BOOKMARK [2][-]{subsection.2.3}{Gaussian Processes}{section.2}% 8
+\BOOKMARK [2][-]{subsection.2.4}{Random Forests}{section.2}% 9
+\BOOKMARK [2][-]{subsection.2.5}{Artificial Neural Networks}{section.2}% 10
+\BOOKMARK [2][-]{subsection.2.6}{Meta-Modeling}{section.2}% 11
+\BOOKMARK [1][-]{section.3}{Results}{}% 12
+\BOOKMARK [2][-]{subsection.3.1}{Linear Regression}{section.3}% 13
+\BOOKMARK [2][-]{subsection.3.2}{Gaussian Process}{section.3}% 14
+\BOOKMARK [2][-]{subsection.3.3}{Random Forests and Ensemble Methods}{section.3}% 15
+\BOOKMARK [2][-]{subsection.3.4}{Artificial Neural Networks}{section.3}% 16
+\BOOKMARK [1][-]{section.4}{Conclusion and Outlook}{}% 17
