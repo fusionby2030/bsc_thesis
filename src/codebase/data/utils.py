@@ -3,6 +3,17 @@ import sklearn as sk
 import torch
 
 
+class ANNtorchdataset(torch.utils.data.Dataset):
+    def __init__(self, controls, targets):
+        self.inputs = controls
+        self.outputs = targets
+
+    def __len__(self):
+        return len(self.outputs)
+
+    def __getitem__(self, item):
+        return self.inputs[item], self.outputs[item]
+
 def process_data(target_col=None, numerical_cols=None, flags=None, return_necessary=True, file_loc='/home/adam/EDGE/2021/thesis/filtered_dataset.csv'):
     """
 

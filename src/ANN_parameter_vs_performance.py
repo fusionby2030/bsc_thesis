@@ -29,14 +29,14 @@ from codebase.ANN.peanuts.models.utils import set_module_torch
 
 import numpy as np
 import torch.nn as nn 
-
+import torch
 
 class PedFFNN(nn.Module):
     def __init__(self, **kwargs):
-        super(PedFFNN_params, self).__init__()
+        super(PedFFNN, self).__init__()
 
-        target_size = 12
-        input_size = 1
+        target_size = 1
+        input_size = 12
         act_func = torch.nn.ELU()
 
         last_size = input_size
@@ -86,26 +86,26 @@ class PedFFNN(nn.Module):
 from sklearn.model_selection import RepeatedKFold
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 
-def cross_validate_torch(control_tensor, target_tensor, n_splits=5, n_repeats=5, **kwargs):
+
+def cross_validate_torch(control_tensor, target_tensor, **kwargs):
     RMSE_list = []
     MAE_list = []
-    cv = RepeatedKFold(n_splits=5, n_repeats=5)
+    cv = RepeatedKFold(n_splits=kwargs['n_splits'], n_repeats=kwargs['n_repeats'])
     
-    for cv_id, train, test in enumerate(cv.split(control_tensor)):
+    for cv_id, (train, test) in enumerate(cv.split(control_tensor)):
         train_dataset = utils.ANNtorchdataset(control_tensor[train], target_tensor[train])
         test_dataset = utils.ANNtorchdataset(control_tensor[test], target_tensor[test])
         
         train_loader = torch.utils.data.DataLoader(train_dataset, kwargs['batch_size'], shuffle=True)
         test_loader = torch.utils.data.DataLoader(test_dataset, kwargs['batch_size'], shuffle=True)
 
-        model = PedFFNN(hidden_layer_sizes = kwargs['hidden_layer_sizes'])
+        model = PedFFNN(hidden_layer_sizes=kwargs['hidden_layer_sizes'])
         
         optimizer = set_module_torch.set_optimizer(model, 'Adam', lr=kwargs['lr'])
         criterion = nn.MSELoss()
         
         best_MSE =  np.inf
         for _ in range(200):
-
             model.train()
             for batch_idx, (control, target) in enumerate(train_loader):
                 optimizer.zero_grad()
@@ -127,42 +127,48 @@ def cross_validate_torch(control_tensor, target_tensor, n_splits=5, n_repeats=5,
             if mse < best_MSE:
                 best_MSE = mse 
                 # save a general state dict of the model 
-                torch.save(model.save_dict(), 'temporary_model.pth')
+                torch.save(model.state_dict(), 'temporary_model.pth')
         # Make predictions from best point of model (early stopped)
-        best_model = PedFFNN(hidden_layer_sizes = kwargs['hidden_layer_sizes'])
+        best_model = PedFFNN(hidden_layer_sizes=kwargs['hidden_layer_sizes'])
         best_model.load_state_dict(torch.load('temporary_model.pth'))
         best_model.eval()
-        
-        predictions = best_model.predict(control_tensor[test])
-        RMSE_list.append(mean_squared_error(target_tensor[test], predictions, squared=False))
-        MAE_list.append(mean_absolute_error(target_tensor[test], predictions))
-    
+        with torch.no_grad():
+            predictions = best_model.predict(control_tensor[test])
+            RMSE_list.append(mean_squared_error(target_tensor[test], predictions, squared=False))
+            MAE_list.append(mean_absolute_error(target_tensor[test], predictions))
+
     avg_RMSE, avg_MAE = np.mean(RMSE_list), np.mean(MAE_list)
     std_RMSE, std_MAE = np.std(RMSE_list), np.std(MAE_list)
     
     return (avg_RMSE, std_RMSE), (avg_MAE, std_MAE)
 
-        
-
-    
 
 def main(control_tensor, target_tensor, **kwargs):
 
     # make a list hidden layer sizes lists to be tested 
     # run them through CV 
+    exp_list_smoke_test = [[25],
+                           [25, 25],
+                           [25, 25, 25],
+                           [25, 25, 25, 25]]
 
-    exp_list_smoke_test = [[25], [100], [25, 25], [50, 25], [100, 25], [100, 100], [100, 100, 100]]
+    exp_long = [[25], [100], [200], [300], [400],
+                           [25, 25], [100, 100], [200, 200], [300, 300], [400, 400],
+                           [25, 25, 25], [100, 100, 100], [200, 200, 200], [300, 300, 300], [400, 400, 400],
+                           [25, 25, 25, 25], [100, 100, 100, 100], [200, 200, 200, 200], [300, 300, 300, 300], [400, 400, 400, 400]]
     RMSE_dict = {}
     MAE_dict = {}
     for exp in exp_list_smoke_test:
-        RMSE_info, MAE_info = cross_validate_torch(control_tensor, target_tensor, kwargs, hidden_layer_sizes = exp)
+        print(exp)
+        RMSE_info, MAE_info = cross_validate_torch(control_tensor, target_tensor, **kwargs, hidden_layer_sizes=exp)
         RMSE_dict[str(exp)] = RMSE_info
         MAE_dict[str(exp)] = MAE_info
-    
+        print(RMSE_info)
+        print('\n')
     return RMSE_dict, MAE_dict
 
 
-
+import pickle
 if __name__ == '__main__':
     # make data and tensors
     control_space, target_space, _, _ = utils.process_data()
@@ -170,7 +176,20 @@ if __name__ == '__main__':
 
     # pass to main
     # relevant ANN kwargs get passed as kwargs
+    # TODO: argparse - need for batch size, learning rate,
 
-    main(control_tensors, target_tensors, batch_size=396, lr=0.0013)
+    RMSE_dict, MAE_dict = main(control_tensors, target_tensors, batch_size=396, lr=0.004, n_splits=5, n_repeats=2)
+    args = {'batch_size': 396, 'lr':0.004, 'n_splits':5, 'n_repeats':2}
+    print(RMSE_dict)
 
-    # TODO: argparse - need for batch size, learning rate, 
+    with open('./out/ANN/performance_vs_size_exp.pickle', 'wb') as file:
+        pickle.dump(args, file)
+        pickle.dump(RMSE_dict, file)
+        pickle.dump(MAE_dict, file)
+    """
+    To read the pickle back: 
+    with open(filename, 'rb') as file:
+        args = pickle.load(file)
+        RMSE_dict = pickle.load(file)
+        MAE_dict = pickle.load(file)
+    """
