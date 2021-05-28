@@ -1,24 +1,24 @@
 """
+This runs the experiment for comparing size & depth vs performance of ANNs.
 
-PEDFFNN shit
+The architectures tested are found in main(), whereas the arguments are found in the if __name__ == '__main__':
+Be careful for two things if you run this:
+- a pickle file will be saved in the src/out/ANN directory, with args, and RMSE + MAE for each size of model tested
+    - stored in dicts of format {'[10]': (RMSE_val, RMSE_std), '[10, 10]': (RMSE_val, RMSE_std)}}
+        - [10] -> one hidden layer of 10 neuron width, [10, 10] -> 2 hidden layers, 10 neurons each
+- a temporary model state dict will be saved wherever you run this program from!
+
+I recommend running it from the src/ directory, i.e., cd into src/ and run the program from there
+To read the pickle file back and use it in some plotting see below:
+    with open(filename, 'rb') as file:
+        args = pickle.load(file)
+        RMSE_dict = pickle.load(file)
+        MAE_dict = pickle.load(file)
 
 
-
-    Setup Experiment
-        - set BS, LR (static)
-        - Variable hidden layer sizes, e.g., [100, 50] is two hidden layers with first layer width 100, second layer width 50
-        - list of lists ([10], [50, 10], [150, 50, 10]], first experiment is 1 hidden layer
-    CV Evaluation
-        - takes in model, and tensors
-        - 5 splits, 5 repeats
-            - Calls fitting procedure from codebase
-                - Fits over epochs, saving best performing time step
-            - Loads best model -> make predictions across left out set
-            - Save predictions in some ordered dict (see RF experiment)
-        - Average all predictions (and uncerts?)
-        Save predictions & Uncerts for each model in ordered dict with name of the hidden layer sizes
-
-INTO SCRIPT
+TODO:
+argparse integration
+some bash stuff to offload to triton
 
 Testing
     - Same model should return same RMSE
@@ -30,6 +30,7 @@ from codebase.ANN.peanuts.models.utils import set_module_torch
 import numpy as np
 import torch.nn as nn 
 import torch
+
 
 class PedFFNN(nn.Module):
     def __init__(self, **kwargs):
@@ -57,7 +58,8 @@ class PedFFNN(nn.Module):
         x = self.out(x)
         return x
 
-    def _fc_block(self, in_c, out_c, act_func):
+    @staticmethod
+    def _fc_block(in_c, out_c, act_func):
         block = torch.nn.Sequential(
             torch.nn.Linear(in_c, out_c),
             act_func
@@ -76,9 +78,8 @@ class PedFFNN(nn.Module):
             pred = self.forward(X)
 
         else:
-            msg = ('The type of input to ensemble should be a torch.tensor or np.ndarray')
+            msg = 'The type of input to ensemble should be a torch.tensor or np.ndarray'
             raise ValueError(msg)
-
 
         return pred
 
