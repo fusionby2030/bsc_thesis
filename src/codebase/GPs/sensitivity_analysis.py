@@ -4,6 +4,7 @@ import sys
 import scipy as scp
 from tqdm import tqdm
 
+
 def KLrel(X, model, delta, latent=False, likelihood='gaussian', pointwise=False):
     """Computes relevance estimates for each covariate using the KL method based on the data matrix X and a GPy model.
     The parameter delta defines the amount of perturbation used."""
@@ -46,8 +47,8 @@ def KLrel(X, model, delta, latent=False, likelihood='gaussian', pointwise=False)
                     var_orig = np.asmatrix(np.repeat(preddeltavar[1], 3)).T
                     # compute the relevance estimate at x_n
                     KLsqrt = np.sqrt(0.5 * (
-                                var_orig / preddeltavar + np.multiply((preddeltamean.reshape(3, 1) - mean_orig), (
-                                    preddeltamean.reshape(3, 1) - mean_orig)) / preddeltavar - 1) + np.log(
+                            var_orig / preddeltavar + np.multiply((preddeltamean.reshape(3, 1) - mean_orig), (
+                            preddeltamean.reshape(3, 1) - mean_orig)) / preddeltavar - 1) + np.log(
                         np.sqrt(preddeltavar / var_orig)) + jitter)
                     relevances[j, dim] = 0.5 * (KLsqrt[0] + KLsqrt[2]) / delta
                 elif (likelihood == 'binomial'):
