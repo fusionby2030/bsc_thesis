@@ -47,10 +47,10 @@
 \newlabel{fig:linreg}{{2}{13}{Predictions using the coefficients in the table on the RHS compared to the scaling law\relax }{figure.caption.3}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces The coefficient distribution parameters determined from Bayesian Linear Regression. Each coefficent is a normal distribution with mean $\sigma $ and spread $\sigma ^2$\relax }}{13}{figure.caption.3}\protected@file@percent }
 \newlabel{tab:new_coef}{{2}{13}{The coefficient distribution parameters determined from Bayesian Linear Regression. Each coefficent is a normal distribution with mean $\sigma $ and spread $\sigma ^2$\relax }{figure.caption.3}{}}
-\newlabel{subfig:ARD_KL_VAR}{{3a}{14}{The result of the the three forms of sensitivity analysis.\relax }{figure.caption.4}{}}
-\newlabel{sub@subfig:ARD_KL_VAR}{{a}{14}{The result of the the three forms of sensitivity analysis.\relax }{figure.caption.4}{}}
-\newlabel{subfig:GP_vs_dimensionality}{{3b}{14}{\relax }{figure.caption.4}{}}
-\newlabel{sub@subfig:GP_vs_dimensionality}{{b}{14}{\relax }{figure.caption.4}{}}
+\newlabel{subfig:ARD_KL_VAR}{{3a}{14}{The result of sensitivity analysis as well as the average of the three types used plotted in the dashed black line. \relax }{figure.caption.4}{}}
+\newlabel{sub@subfig:ARD_KL_VAR}{{a}{14}{The result of sensitivity analysis as well as the average of the three types used plotted in the dashed black line. \relax }{figure.caption.4}{}}
+\newlabel{subfig:GP_vs_dimensionality}{{3b}{14}{The dimensionality order of input variables comes from their ranking via the average of the three sensitivity analyses (dashed black line in diagram to the left). For each kernel, a GP model is fit using cros-validation (5 folds, 5 repeats) for each additional dimension of data, starting with 1d input of $\delta $, followed by 2d input of $\delta , a$ and so on. Then the RMSE for each repeated fold is calculated and averaged. \relax }{figure.caption.4}{}}
+\newlabel{sub@subfig:GP_vs_dimensionality}{{b}{14}{The dimensionality order of input variables comes from their ranking via the average of the three sensitivity analyses (dashed black line in diagram to the left). For each kernel, a GP model is fit using cros-validation (5 folds, 5 repeats) for each additional dimension of data, starting with 1d input of $\delta $, followed by 2d input of $\delta , a$ and so on. Then the RMSE for each repeated fold is calculated and averaged. \relax }{figure.caption.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Gaussian Process}{14}{subsection.3.2}\protected@file@percent }
 \newlabel{subfig:hetero_gp_input}{{4a}{15}{\relax }{figure.caption.5}{}}
 \newlabel{sub@subfig:hetero_gp_input}{{a}{15}{\relax }{figure.caption.5}{}}
@@ -60,34 +60,35 @@
 \newlabel{sub@subfig:homo_gp}{{c}{15}{\relax }{figure.caption.5}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces The predictions (y-axis) vs real values (x-axis) of GPs with a for (a) MLP kernel with hetero with pedestal density uncert. propogation, (b) Rational Quadratic kernel Hetero with main engineering, (c) Rational Quadratic kernel Homo with No uncert prop\relax }}{15}{figure.caption.5}\protected@file@percent }
 \newlabel{fig:gp_prediction}{{4}{15}{The predictions (y-axis) vs real values (x-axis) of GPs with a for (a) MLP kernel with hetero with pedestal density uncert. propogation, (b) Rational Quadratic kernel Hetero with main engineering, (c) Rational Quadratic kernel Homo with No uncert prop\relax }{figure.caption.5}{}}
-\newlabel{subfig:hetero_gp_input}{{5a}{15}{\relax }{figure.caption.6}{}}
-\newlabel{sub@subfig:hetero_gp_input}{{a}{15}{\relax }{figure.caption.6}{}}
-\newlabel{subfig:hetero_gp_neped}{{5b}{15}{\relax }{figure.caption.6}{}}
-\newlabel{sub@subfig:hetero_gp_neped}{{b}{15}{\relax }{figure.caption.6}{}}
-\newlabel{subfig:homo_gp}{{5c}{15}{\relax }{figure.caption.6}{}}
-\newlabel{sub@subfig:homo_gp}{{c}{15}{\relax }{figure.caption.6}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces The uncertainties (y-axis) vs real $n_e^{ped}$ values of the predictions from \ref  {fig:gp_prediction}: (a) MLP kernel Hetero GP with pedestal density propogation uncertanties, (b) Hetero GP with main enginerring uncert. propogation uncertainties, (c) Homo GP with No uncert prop uncertainties\relax }}{15}{figure.caption.6}\protected@file@percent }
-\newlabel{fig:gp_uncerts}{{5}{15}{The uncertainties (y-axis) vs real $n_e^{ped}$ values of the predictions from \ref {fig:gp_prediction}: (a) MLP kernel Hetero GP with pedestal density propogation uncertanties, (b) Hetero GP with main enginerring uncert. propogation uncertainties, (c) Homo GP with No uncert prop uncertainties\relax }{figure.caption.6}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Random Forests and Ensemble Methods}{15}{subsection.3.3}\protected@file@percent }
+\newlabel{subfig:hetero_gp_input}{{5a}{16}{\relax }{figure.caption.6}{}}
+\newlabel{sub@subfig:hetero_gp_input}{{a}{16}{\relax }{figure.caption.6}{}}
+\newlabel{subfig:hetero_gp_neped}{{5b}{16}{\relax }{figure.caption.6}{}}
+\newlabel{sub@subfig:hetero_gp_neped}{{b}{16}{\relax }{figure.caption.6}{}}
+\newlabel{subfig:homo_gp}{{5c}{16}{\relax }{figure.caption.6}{}}
+\newlabel{sub@subfig:homo_gp}{{c}{16}{\relax }{figure.caption.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces The uncertainties (y-axis) vs real $n_e^{ped}$ values of the predictions from \ref  {fig:gp_prediction}: (a) MLP kernel Hetero GP with pedestal density propogation uncertanties, (b) Hetero GP with main enginerring uncert. propogation uncertainties, (c) Homo GP with No uncert prop uncertainties\relax }}{16}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:gp_uncerts}{{5}{16}{The uncertainties (y-axis) vs real $n_e^{ped}$ values of the predictions from \ref {fig:gp_prediction}: (a) MLP kernel Hetero GP with pedestal density propogation uncertanties, (b) Hetero GP with main enginerring uncert. propogation uncertainties, (c) Homo GP with No uncert prop uncertainties\relax }{figure.caption.6}{}}
 \newlabel{subfig:rfoob}{{6a}{16}{\relax }{figure.caption.7}{}}
 \newlabel{sub@subfig:rfoob}{{a}{16}{\relax }{figure.caption.7}{}}
 \newlabel{subfig:rf_rmse}{{6b}{16}{\relax }{figure.caption.7}{}}
 \newlabel{sub@subfig:rf_rmse}{{b}{16}{\relax }{figure.caption.7}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces OOB error (a) and prediction quality (b) for Random Forests \leavevmode {\color  {blue}\spacefactor \@m {} Aaro - these plots will be edited such that the best line is bigger, and the fontsize is also bigger}\relax }}{16}{figure.caption.7}\protected@file@percent }
 \newlabel{fig:RF_exp}{{6}{16}{OOB error (a) and prediction quality (b) for Random Forests \textcolor {blue}{\@ Aaro - these plots will be edited such that the best line is bigger, and the fontsize is also bigger}\relax }{figure.caption.7}{}}
-\newlabel{subfig:RF_UQ}{{7a}{16}{\relax }{figure.caption.8}{}}
-\newlabel{sub@subfig:RF_UQ}{{a}{16}{\relax }{figure.caption.8}{}}
-\newlabel{subfig:RF_UQ2}{{7b}{16}{\relax }{figure.caption.8}{}}
-\newlabel{sub@subfig:RF_UQ2}{{b}{16}{\relax }{figure.caption.8}{}}
-\newlabel{subfig:RF_meta_model}{{7c}{16}{\relax }{figure.caption.8}{}}
-\newlabel{sub@subfig:RF_meta_model}{{c}{16}{\relax }{figure.caption.8}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces \relax }}{16}{figure.caption.8}\protected@file@percent }
-\newlabel{fig:RF_Preds}{{7}{16}{\relax }{figure.caption.8}{}}
-\newlabel{subfig:ann_1}{{8a}{17}{\relax }{figure.caption.9}{}}
-\newlabel{sub@subfig:ann_1}{{a}{17}{\relax }{figure.caption.9}{}}
-\newlabel{subfig:ensemble}{{8b}{17}{\relax }{figure.caption.9}{}}
-\newlabel{sub@subfig:ensemble}{{b}{17}{\relax }{figure.caption.9}{}}
+\newlabel{subfig:RF_UQ}{{7a}{17}{\relax }{figure.caption.8}{}}
+\newlabel{sub@subfig:RF_UQ}{{a}{17}{\relax }{figure.caption.8}{}}
+\newlabel{subfig:RF_UQ2}{{7b}{17}{\relax }{figure.caption.8}{}}
+\newlabel{sub@subfig:RF_UQ2}{{b}{17}{\relax }{figure.caption.8}{}}
+\newlabel{subfig:RF_meta_model}{{7c}{17}{\relax }{figure.caption.8}{}}
+\newlabel{sub@subfig:RF_meta_model}{{c}{17}{\relax }{figure.caption.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces \relax }}{17}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:RF_Preds}{{7}{17}{\relax }{figure.caption.8}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Artificial Neural Networks}{17}{subsection.3.4}\protected@file@percent }
 \bibstyle{unsrt}
 \bibdata{biblioski}
+\newlabel{subfig:ann_1}{{8a}{18}{\relax }{figure.caption.9}{}}
+\newlabel{sub@subfig:ann_1}{{a}{18}{\relax }{figure.caption.9}{}}
+\newlabel{subfig:ensemble}{{8b}{18}{\relax }{figure.caption.9}{}}
+\newlabel{sub@subfig:ensemble}{{b}{18}{\relax }{figure.caption.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}What didn't work}{18}{subsection.3.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {4}Conclusion and Outlook}{18}{section.4}\protected@file@percent }

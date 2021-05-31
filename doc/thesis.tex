@@ -42,9 +42,9 @@
 \section{Introduction}\label{sec:introduction}
 Harnessing of controlled thermonuclear fusion on Earth is a complex multi-faceted problem; a potential solution is that of controlled magnetic confinement fusion (MCF), such as stellarators or tokamaks [\textcolor{blue}{reference EUROfusion road map}].
 The field of MCF research is entering the era of superconducting, reactor-scale, long pulse devices, such as ITER and DEMO [\textcolor{blue}{Progress in ITER physics basis NF 2007, Wenninger NF 2017}].
-These reactor-scale devices encompass a significant risk of very costly component damanges in off-normal events, and, hence, the emphasis on reactor and plasma scenario design is shifting form experimental approaches to theory based predict-first and plasma flight simulator methods [\textcolor{blue}{FIND REFERENCE}].
+These reactor-scale devices encompass a significant risk of very costly component damages in off-normal events, and, hence, the emphasis on reactor and plasma scenario design is shifting form experimental approaches to theory based predict-first and plasma flight simulator methods [\textcolor{blue}{FIND REFERENCE}].
 In order to bridge the gap between computational and experimental efforts and to be able to rapidly design reactors, there exists a need for data driven approaches to produce simplified models through the use of machine learning (ML).
-The topic of this thesis is to explore the use cases of state of the art ML tools in predicting specific plasma parameters, specifically the plasma in the edge region of tokamaks.
+The topic of this thesis is to analyse and compare predictive ML tools in estimating plasma parameters, specifically the density of plasma in the edge region of tokamaks.
 
 \textcolor{red}{Potentially delete structure outline \# mathias}
 
@@ -316,11 +316,14 @@ The details pertinent to the analysis in this thesis are as follows:
 	\item Choice of kernel (covariance function) is normally based on the 'wigglieness' of the functions one is trying to parameterize[SOURCE], but with higher dimensional space, this means nothing. Therefore the kernels sought after are those that when optimized give best predictions of the pedestal density.
 	\item To utilize the measurement uncertainties given in the database, a fixed noise kernel is added on to the base kernel[SOURCE]. In the fixed noise kernel the engineering parameter uncertainties and or the uncertainty in $n_e^{ped}$ can be used. This transforms the GP model from having homscedastic noise (constant Gaussian noise), to having heteroscedastic noise, where the noise varies depending on the point being fit[SOURCE].
 	\item Prediction uncertainty is built into GPs as the joint-gaussian group of functions determined through optimization of the kernel will give predictions of the pedestal density that are averaged for the point prediction, and the standard deviation is the uncertainty. 
-	\item Sensitivity analysis is used to determine the relevant engineering parameters for GPs, from which the dimensionality of the input space can be reduced if parameters are deemed irrelevant. Three different forms of sensitivity analysis used: KLD, ARD, VAR[SOURCE], which all make use of thte length-scale parameters of the kernel in a GP model.
+	\item Sensitivity analysis is used to determine the relevant engineering parameters for GPs, from which the dimensionality of the input space can be reduced if parameters are deemed irrelevant. Three different forms of sensitivity analysis used: KLD, ARD, VAR[SOURCE], which all make use of thte length-scale parameters of the kernel in a GP model. The KLD, ARD, and VAR are outlined below. 
 \end{itemize}
 
 GPs scale horribly with increasing input space size, therefore the hope of using sensitivity analysis is to remove any engineering inputs if they do not improve the prediction capability of them GP model.
-The three types of sensitivity analysis are briefly outlined below:
+
+Additionally, since the each variable used in the fitting procedure is numerical, there exists no urgent need to try out different combinations of kernels, i.e., multiplying or adding kernels together is not analysed in this work, but something to try in the future. 
+
+The three types of sensitivity analysis used:
 	\begin{itemize}
 		\item Automatic Relevance Determination (ARD): The predictive relevance of each input variable is infered from the inverse of the length-scale parameter associated with that variable within the kernel. A large length scale (infinite for example) means that no correlation between the latent space and the variable in question, and thus the relevance would be zero \textcolor{blue}{SOURCE paananen}. 
 		\item Kullback-Leibler Divergence (KLD): The KLD is a well known measure of dissimilarity between two probability distributions, and is a function of both the latent mean and uncertainty of each distribution \textcolor{blue}{SOURCE Kullback Leibler 1951}. In this case, the input space is 'shifted' via the pertubation of a single variable's values, and the KLD of the resulting new latent space is measured against the unperterbed case. A large change in the KLD indicates that the single variable that was perturbed has high prediction relevance.  [\textcolor{blue}{SOURCE paananen}]
@@ -356,7 +359,7 @@ As seen in the next section, many models can predict well for $n_e^{ped} \leq 10
 Since the models above are very dependent on the data used to fit them, and considering that in the dataset there are less than 10 shots that have $n_e^{ped} \geq 10$, by including synthesized values in the fitting procedure the hope is that models would be able to predict better for the higher $n_e^{ped}$ values.
 
 \section{Results}{\label{sec:results_1}
-Each model analysed is fit using the following list of control parameters as inputs: 
+Each model analysed is fit using the following list of main engineering parameters as inputs:
 \begin{itemize}
         \item $I_p, B_T, a, \delta, M_{eff}, P_{NBI}, P_{ICHR}, P_{TOT}, q_{95}, \Gamma, H, V_P$.
 \end{itemize}
@@ -437,28 +440,25 @@ To determine the results of sensitivity analysis, a GP model with a RBF kernel w
 	\item \textbf{VAR}: $\delta, a, I_p, \Gamma, V_P, P_{NBI}, q_{95}, P_{ICRH}, P_{TOT}, B_T, H, M_{eff}$
 \end{itemize}
 \begin{figure}
-	\begin{subfigure}{0.33\linewidth}
+	\begin{subfigure}{0.48\linewidth}
 		\centering
-		\includegraphics[scale=0.35]{ ./src/GP_ARD_vs_KL_VAR_feature_relevance}
-		\caption{The result of the the three forms of sensitivity analysis.}
+		\includegraphics[scale=0.2]{ ./src/GP_sensitivity_analysis_final_v1}
+		\caption{The result of sensitivity analysis as well as the average of the three types used plotted in the dashed black line. }
 		\label{subfig:ARD_KL_VAR}
-	\end{subfigure}
-	\begin{subfigure}{0.33\linewidth}
+	\end{subfigure}\hfill
+	\begin{subfigure}{0.48\linewidth}
 		\centering
-		\includegraphics[scale=0.2]{ ./src/GP_kernels_num_features}
-		\caption{}
+		\includegraphics[scale=0.2]{ ./src/final_GP_dim_v2}
+		\caption{The dimensionality order of input variables comes from their ranking via the average of the three sensitivity analyses (dashed black line in diagram to the left). For each kernel, a GP model is fit using cros-validation (5 folds, 5 repeats) for each additional dimension of data, starting with 1d input of $\delta$, followed by 2d input of $\delta, a$ and so on. Then the RMSE for each repeated fold is calculated and averaged.  }
 		\label{subfig:GP_vs_dimensionality}
 	\end{subfigure}
 \end{figure}
 The sensitivity analysis for GPs suggests that H and $M_{eff}$ do not aid in predicting the pedestal density, which may be due to the filtered dataset used for fitting being exclusive in its values for $H$ and $M_{eff}$ (only deuterium experiments were considered), 
-I would expect this to change if a wider range of fuelling elements were included in the dataset, and for future work do not expect $M_{eff}$ to rank as low as it does. Each sensitivty analysis also ranks $B_T$ very low, which is most likely due to the inherent correlation between $B_T, q_{95}, \text{and} I_P$. 
+I would expect this to change if a wider range of fuelling elements were included in the dataset, and for future work do not expect $M_{eff}$ to rank as low as it does. Each sensitivty analysis also ranks $B_T$ low, which is most likely due to the inherent correlation between $B_T, q_{95}, \text{and} I_P$, as most of the information of $B_T$ is contained within $q_{95}$. 
 
-Using the results from the sensitivity analysis, the performance vs dimensionality was measured for four homoscedastic GPs with varying kernels and plotted in \ref{subfig:GP_vs_dimensionality}.
-Starting with a dimensionality of 1 means that only $\delta$ was supplied for fitting, and a dimensionality of 2 was with $\delta,a$, and so on following the ranking of the KLD (averaging all three analysis follows the KLD relevance rankings). 
-The fitting procedure for each dimensionality made use of the repeated fold CV process, with 7 folds and 4 repeats, then averaging the performance across the 28 different test sets.
-We can see from Figure \ref{subfig:GP_vs_dimensionality} that the performance of each kernel generally reaches a relative minimum when it reaches dimension 8, i.e., not much more information is gained after including $B_T$. However, for the top two performing kernels, Rational Quadratic and MLP, the ultimate minimum in RMSE occurs when all inputs are included, albeit the decrease in RMSE is very small, so much so that it could be argued to be statistical. If computational cost is to be limited or speed is of the essence, then removing $P_{ICRH}, H, M_{eff}$ will certainly help, without too much degredation to prediction quality. 
+Using the results from the sensitivity analysis, the performance vs dimensionality was measured for four homoscedastic GPs with varying kernels and plotted in \ref{subfig:GP_vs_dimensionality}. It can be seen that the top performing kernels were the MLP and Rational Quadratic (RQ). \textcolor{red}{check if MLL gets smaller as more data is added!, also define?}. We observe also that the MLP and RQ do not improve after $B_T$ is added to its, i.e., confirming the results of the sensitivity analysis. This means that in regards to the current dataset, it is unnessecary to supply $H \& M_{eff}$ to a GP, which can greatly reduce the computation time. However, this can be subject to change, as stated before, the dataset used was exclusive in its choice of $H$ and $M_{eff}$, thus for multi machine or multi element datasets, the importance of the two variable may be more than what was found here. 
 
-To determine the effect of uncertainty propagation, a fixed (is not optimized) noise kernel was added on to a MLP kernel (the top performing kernel determined from the sensitivity analysis), transforming the noise term in the GP model from homoscedastic to heteroscedastic.
+To determine the effect of uncertainty propagation, a fixed (not optimized) noise kernel was added on to a MLP kernel (the top performing kernel determined from the sensitivity analysis), transforming the noise term in the GP model from homoscedastic to heteroscedastic.
 For each training set, the fixed kernel was filled with the uncertainty for each entry of either the $n_e^{ped}$ or the inputs given in the database.
 For the case of using the input uncertainties, these could then be added on as well in the inference set, since one would typically know these values, however this could not be done for the $n_e^{ped}$, since one typically does not know the uncertainty in the values they are trying to predict.
 We see that the GP model which has the pedestal density uncertainties propogated through it has very stable predictions in comparison to the others in the comparison from Figure \ref{fig:gp_prediction}. Additionally, this model achieves the lowest RMSE and MAE. The model with homoscedastic noise achieves a decent RMSE and MAE, however has very erratic predictions. \textcolor{red}{Not sure what the fuck happened with the middle one but god damn something went wrong.} 
@@ -577,6 +577,7 @@ Although only up to 500 meta model samples are added, the periodic bouncing betw
 Therefore, in order to minimize the MSE of the overall dataset, RFs and ERTs ignore the additional entries.
 This allows for the conclusion that meta-modeling has little to no effect on ERTs and RFs.
 
+
 \subsection{Artificial Neural Networks}
 To find the optimal architecture and hyperparameters, a combination of grid search and random search was used.
 The ANN analysis in this paper is constrained to the use of shallow networks, i.e., $\leq 5$ hidden layers.
@@ -609,9 +610,10 @@ This was unique for the ANNs, as all other usages of meta-modeling for other ML 
 	\end{subfigure}
 \end{figure}
 
-
+\subsection{What didn't work}
 \section{Conclusion and Outlook}
-Through analysing various machine learning models, it is clear that there can be improvements to predicting the pedestal density height while only using main engineering parameters.
+It is clear that through the use of non-linear machine learning models, there can be major improvements towards accurately predicting the pedestal density height while only using main engineering parameters.
+
 The models analysed could be ranked via their respective performance on unseen data through the use of cross validation.
 The ultimate winner of the models was the Gaussian Process with a MLP/Rational Quadratic kernel with the $n_e^{ped}$ uncertainties propagated through it during the fitting cycles.
 Although the primary analysis was on model generalization and not to make production ready tools, one could readily adapt these models to be used in production like scenarios, for example making predictions to connect core with SOL in EPED like was done by Andreas et. all.
