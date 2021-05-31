@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.5.29)  31 MAY 2021 08:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.5.29)  31 MAY 2021 09:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -609,17 +609,16 @@ File: ./src/GP_RatQuad_HomoDesiastic_uncerts.png Graphic file (type png)
 Package pdftex.def Info: ./src/GP_RatQuad_HomoDesiastic_uncerts.png  used on in
 put line 505.
 (pdftex.def)             Requested size: 130.087pt x 130.087pt.
-<./src/RF_oob_error.png, id=211, 1084.05pt x 722.7pt>
+<./src/RF_oob_error.png, id=211, 1027.84pt x 947.54pt>
 File: ./src/RF_oob_error.png Graphic file (type png)
 <use ./src/RF_oob_error.png>
 Package pdftex.def Info: ./src/RF_oob_error.png  used on input line 532.
-(pdftex.def)             Requested size: 220.56308pt x 147.04068pt.
-<./src/RF_RMSE_features_vs_num_estimators.png, id=212, 1084.05pt x 722.7pt>
-File: ./src/RF_RMSE_features_vs_num_estimators.png Graphic file (type png)
-<use ./src/RF_RMSE_features_vs_num_estimators.png>
-Package pdftex.def Info: ./src/RF_RMSE_features_vs_num_estimators.png  used on 
-input line 538.
-(pdftex.def)             Requested size: 229.75525pt x 153.16093pt.
+(pdftex.def)             Requested size: 205.56436pt x 189.50464pt.
+<./src/ERT_oob_error.png, id=212, 1027.84pt x 947.54pt>
+File: ./src/ERT_oob_error.png Graphic file (type png)
+<use ./src/ERT_oob_error.png>
+Package pdftex.def Info: ./src/ERT_oob_error.png  used on input line 538.
+(pdftex.def)             Requested size: 205.56436pt x 189.50464pt.
  [15 <./src/GP_MLP_hetero_neped_preds.png> <./src/GP_RatQuad_w_neped_uncert_pro
 p.png> <./src/GP_RatQuad_HomoDesiastic_preds.png>]
 <./src/RF_predictions_and_uncert.png, id=225, 722.7pt x 722.7pt>
@@ -646,7 +645,7 @@ Overfull \hbox (3.8482pt too wide) in paragraph at lines 564--565
 
 [16 <./src/GP_MLP_hetero_neped_uncerts.png> <./src/GP_RatQuad_w_neped_uncert_th
 e_uncert.png> <./src/GP_RatQuad_HomoDesiastic_uncerts.png> <./src/RF_oob_error.
-png> <./src/RF_RMSE_features_vs_num_estimators.png>]
+png> <./src/ERT_oob_error.png>]
 <./src/ANN_1.png, id=240, 722.7pt x 578.16pt>
 File: ./src/ANN_1.png Graphic file (type png)
 <use ./src/ANN_1.png>
@@ -658,7 +657,7 @@ File: ./src/ENSEMBLE_5.png Graphic file (type png)
 Package pdftex.def Info: ./src/ENSEMBLE_5.png  used on input line 607.
 (pdftex.def)             Requested size: 216.81166pt x 173.44933pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 3396) has occurred while \output is active []
 
  [17 <./src/RF_predictions_and_uncert.png> <./src/RF_UQ.png> <./src/ERT_vs_RF_m
 eta_modeling.png>] Excluding 'comment' comment. Excluding 'comment' comment.
@@ -679,7 +678,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 821.
  ) 
 Here is how much of TeX's memory you used:
  9459 strings out of 483140
- 143652 string characters out of 5965151
+ 143484 string characters out of 5965151
  422387 words of memory out of 5000000
  24269 multiletter control sequences out of 15000+600000
  543978 words of font info for 69 fonts, out of 8000000 for 9000
@@ -699,7 +698,7 @@ s/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
 8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesis.pdf (18 pages, 1472473 bytes).
+Output written on thesis.pdf (18 pages, 1441795 bytes).
 PDF statistics:
  319 PDF objects out of 1000 (max. 8388607)
  242 compressed objects within 3 object streams
