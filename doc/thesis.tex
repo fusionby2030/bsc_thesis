@@ -16,6 +16,7 @@
 \usepackage{xcolor}
 \usepackage{comment}
 \usepackage{floatrow}
+\usepackage{wrapfig}
 \graphicspath{{./src/ }}
 
 \newcommand{\SubItem}[1]{
@@ -93,7 +94,7 @@ EPED has been successful in predicting pedestals in may tokamaks, but experiment
 Additionally, EPED takes certain plasma parameters, such as $\beta$, pedestal density $n_e^{ped}$, and the effective charge of the plasma $Z_{eff}$ as inputs, and thus can not be considered as fully predictive model.
 Addressing this issue is EUROPED, another simulation package that is based on EPED but uses other transport models for the core and pedestal density [\textcolor{blue}{SOURCE SAARELMA}].
 In this thesis, machine learning tools for pedestal analysis and predicting pedestal quantities based on an experimental database for the JET-ILW plasma will be studied.
-To limit the extent of the thesis, the focus is on the pedestal density, and ML tools analysed are compared to an experimental log-linear fit published in [\textcolor{blue}{Lorenzo DB paper fuck}]
+To limit the extent of the thesis, the focus is on the pedestal density, and ML tools analysed are compared to an experimental log-linear fit published in [\textcolor{blue}{Lorenzo DB paper}]
 \begin{comment}
 
 \begin{figure}
@@ -122,80 +123,33 @@ To limit the extent of the thesis, the focus is on the pedestal density, and ML 
 \end{comment}
 
 \subsection{JET Pedestal Database}
-\begin{comment}
 \begin{figure}
 	\centering
-	\begin{subfigure}{0.3\linewidth}
+	\begin{subfigure}{0.495\linewidth}
 		\centering
-		\includegraphics[scale=0.4]{./src/plasma_shaping}
+		\includegraphics[scale=0.4]{example-image-a}
 		\caption{}
 		\label{subfig:plasmashaping}
-	\end{subfigure}\hfill
-	\begin{subfigure}{0.22\linewidth}
+	\end{subfigure}
+	\begin{subfigure}{0.495\linewidth}
 		\centering
-		\includegraphics[scale=0.4]{./src/mtanh_94962temperature_error}
-		\caption{}
-		\label{subfig:ILW_mtanh}
-	\end{subfigure} \hfill
-	\begin{subfigure}{0.45\linewidth}
-		\centering
-		\includegraphics[scale=0.15]{./src/diverter_config}
+		\includegraphics[scale=0.4]{example-image-b}
 		\caption{}
 		\label{subfig:divertor_config}
 	\end{subfigure}\hfill
-	\caption{}
+	\caption{(a) shaping figure showing r,a, triangularity and such (b) Pedestal Values before mtanh fit}
 	\label{fig:pedestal_db_figs}
 \end{figure}
-\end{comment}
 
-The JET pedestal database is the most comprehensive of all pedestal databases today, containing over 3000 entries \textcolor{blue}{Frassinetti 2021}.
+The JET pedestal database is the most comprehensive of all pedestal databases today, containing over 3000 entries [\textcolor{blue}{Frassinetti 2021}].
 Each entry corresponds to time averaged measurements of various plasma parameters over the course of 70-95\% of an ELM cycle [\textcolor{green}{cross check}].
 The measurements are done using high resolution thomson scattering (HRTS)[\textcolor{blue}{Frassinetti}].
 Since the measurements are taken near the end of the ELM cycle, the pedestal parameters should be saturated near their maximum, right before the ELM.
 
-The key engineering quantities in the database and their units are listed below, where a dimensionless unit is written as [-]:
-\begin{itemize}
-	\item $I_P$ [MA], plasma current, current driven through the plasma that generates the poloidal magnetic field
-	\item $B_T$ [T], toroidal magnetic field
-	\item $R$ [m], major radius of the plasma
-	\item $a$ [m], minor radius of plasma
-	\item $q_{95}$ [-], safety factor at the flux surface edge, where safety factor is the 'windiness' of the magnetic fields in a reactor, i.e., the  number of toroidal circles the helical field line completes within one poloidal revolution, trouble arises well before $q_{95}$ reaches 1, so devices typically operate within a range of $q_{95} \in [3, 4]$ in order to maintain stable plasmas.
-	\item $\delta$ [-], triangularity, normalized horizontal displacement of the top/bottom of the plasma from the main axis
-	\item $V_P$ [m$^3$], the plasma volume
-	\item $P_{NBI}$ [MW], neutral beam injection heating power
-	\item $P_{ICRH}$ [MW], ion cyclotron radio frequency heating 
-	\item $P_{TOT}$ [MW], total power ($P_{TOT} = P_{NBI}+ P_{ICRH} + P_{OHM} - P_{SH}$, where $P_{OHM}$ is the ohmic heating due to the plasma current, and $P_{SH}$ is the power lost due to the shine through of NBI heating)
-	\item $\Gamma$ [ $10^{22}$ electrons per second], gas fuelling rate of the main determined fueld for the shot, this changes depending on what type of fueling is used 
-	\item $H$, isotope ratio of fuel
-	\item $DC$, the divertor configuration, can take on values of C/C, V/H, V/C, V/V, C/V, C/H, (see \textcolor{blue}{frasineeti} for more information)
-	\item $TW$, the type of wall, as JET was upgraded in the mid 2010s, and moved from having a Carbon wall to an 'ITER like wall' (ILW) [SOURCE]
-	\item $\Gamma_{SD}$ [$10^6$ nbar], the subdivertor pressure [SOURCE]
-\end{itemize}
-For the main engineering parameters, the uncertainties are calculated by taking the standard deviation of the values over the time period in which the measurements were taken. 
-
-The global parameters stored in the database are listed below: 
-\begin{itemize}
-	\item $\beta_\theta^{ped}$ [-], $\beta$ is the ratio of plasma pressure $p$ to the pressure exerted by the magnetic field $B$, $\beta = p / B^2 / 2\mu_0$, thus $\beta_\theta^{ped}$ is the pressure due to the poloidal magnetic field $B_\theta$ and plasma pressure at the pedestal $p_e^{ped}$
-	\item $\beta_N$, normalized $\beta$ for comparison between reactors, as $\beta$ has an inherent limit based on MHD stability, and is a function of the plasma current, minor radius and magnetic field such that $\beta_N = \beta / I / aB$, is commonly known as the Troyon factor
-	\item $Z_{eff}$, the effective charge state of the plasma
-\end{itemize}
-
-The global parameters are certainly interesting, but within the context of this thesis are not considered to be viable inputs to a predictor, as they rely on information that is unavailable as a control knob on a reactor.
-A truly predictive model cannot take plasma parameters as inputs. Today, EPED takes $\beta$, $n_e^{core}$ and $Z_{eff}$ as inputs assuming the feedback can be used to choose the density and $\beta$.
-Models like EPED rely on the principle that reactor operators would 'know' these density and beta points are within reachable operational space, and that furthermore they know the recipe to get there.
-A model of interest would be that which uses the main engineering parameters to calculate profile parameters like height, width, or position for the pedestal quantities temperature, density, or pressure.
-The pedestal profile parameters stored in the database are determined using the mtanh fit, and the uncertainties are the fit uncertainties from the use of the mtanh function [\textcolor{blue}{SOURCE}].
-The fit uncertainties are expected to be significantly smaller than the natural scatter of the data due to the fluctuation of the plasma.
-
-Additionally, there exist so called FLAGS, which correspond to the specifics of an experiment setup.
-For example, what element the fuel is, if resonant magnetic pulses (RMPs) [\textcolor{blue}{source}], pellets [\textcolor{blue}{source}] or impurity seeding [\textcolor{blue}{source}] were used are all FLAGS contained in the database.
-Additionally, there is a flag corresponding to the quality of the HRTS measurement, as each entry is validated either by hand or computationally.
-Only entries that have been validated are used in this thesis.
-Shots with impurity seeding are used, as they make up about 600 entries.
-RMPs, pellets, and kicks are used to manipulate the pedestal for ELM control, mitigation, or suppression [\textcolor{blue}{Viezzer NF 2018}].
-To keep the dataset simple in this thesis, these entries are excluded.
-After filtering out the RMPs, Kicks, Pellets, non-validated HRTS, and shots that do not use deuterium, the dataset is reduced to 1888 entries. The final filtered control and pedestal parameter domains are given in the tables below.
-\begin{center}
+The key engineering quantities in the database and their units are listed below, where a dimensionless unit is written as [-]. The domain of each parameter is listed in Table \ref{tab:main_domain}. \par
+\begin{wraptable}{r}{0.25\textwidth}
+\caption{Main engineering parameter domains of the filtered dataset.}
+\label{tab:main_domain}
 \begin{tabular}{| c | c | }
 	\hline
 	Eng. Param & Domain \\
@@ -215,33 +169,65 @@ After filtering out the RMPs, Kicks, Pellets, non-validated HRTS, and shots that
 	$\Gamma_{SD}$ [$10^6$nbar] & $[0,1000]$ \\
 	\hline
 \end{tabular}
-	\quad\quad
-\begin{tabular}{ | c | c | c | c | }
+\end{wraptable}
+\begin{itemize}
+	\item $I_P$ [MA], plasma current, current driven through the plasma that generates the poloidal magnetic field
+	\item $B_T$ [T], toroidal magnetic field
+	\item $R$ [m], major radius of the plasma
+	\item $a$ [m], minor radius of plasma
+	\item $\delta$ [-], triangularity, normalized horizontal displacement of the top/bottom of the plasma from the main axis
+	\item $V_P$ [m$^3$], the plasma volume
+	\item $H$, isotope ratio of fuel
+	\item $q_{95}$ [-], safety factor at the flux surface edge, where safety factor is the 'windiness' of the magnetic fields in a reactor, i.e., the  number of toroidal circles the helical field line completes within one poloidal revolution, trouble arises well before $q_{95}$ reaches 1, so devices typically operate within a range of $q_{95} \in [3, 4]$ in order to maintain stable plasmas.
+	\item $P_{NBI}$ [MW], neutral beam injection heating power
+	\item $P_{ICRH}$ [MW], ion cyclotron radio frequency heating 
+	\item $P_{TOT}$ [MW], total power ($P_{TOT} = P_{NBI}+ P_{ICRH} + P_{OHM} - P_{SH}$, where $P_{OHM}$ is the ohmic heating due to the plasma current, and $P_{SH}$ is the power lost due to the shine through of NBI heating)
+	\item $\Gamma$ [ $10^{22}$ electrons per second], gas fuelling rate of the main determined fueld for the shot, this changes depending on what type of fueling is used 
+	\item $DC$, the divertor configuration, can take on values of C/C, V/H, V/C, V/V, C/V, C/H, (see \textcolor{blue}{frasineeti} for more information)
+	\item $TW$, the type of wall, as JET was upgraded in the mid 2010s, and moved from having a Carbon wall to an 'ITER like wall' (ILW) [SOURCE]
+	\item $\Gamma_{SD}$ [$10^6$ nbar], the subdivertor pressure [SOURCE]
+\end{itemize}
+
+For the main engineering parameters, the uncertainties are calculated by taking the standard deviation of the values over the time period in which the measurements were taken. 
+
+The global parameters stored in the database are listed below: 
+\begin{itemize}
+	\item $\beta_\theta^{ped}$ [-], $\beta$ is the ratio of plasma pressure $p$ to the pressure exerted by the magnetic field $B$, $\beta = p / B^2 / 2\mu_0$, thus $\beta_\theta^{ped}$ is the pressure due to the poloidal magnetic field $B_\theta$ and plasma pressure at the pedestal $p_e^{ped}$
+	\item $\beta_N$, normalized $\beta$ for comparison between reactors, as $\beta$ has an inherent limit based on MHD stability, and is a function of the plasma current, minor radius and magnetic field such that $\beta_N = \beta / I / aB$, is commonly known as the Troyon factor
+	\item $Z_{eff}$, the effective charge state of the plasma
+\end{itemize}
+
+The global parameters are certainly interesting, but within the context of this thesis are not considered to be viable inputs to a predictor, as they rely on information that is unavailable as a control knob on a reactor.
+A truly predictive model cannot take plasma parameters as inputs. Today, EPED takes $\beta$, $n_e^{core}$ and $Z_{eff}$ as inputs assuming the feedback can be used to choose the density and $\beta$.
+Models like EPED rely on the principle that reactor operators would 'know' these density and beta points are within reachable operational space, and that furthermore they know the recipe to get there.
+A model of interest would be that which uses the main engineering parameters to calculate profile parameters like height, width, or position for the pedestal quantities temperature, density, or pressure.
+The pedestal profile parameters stored in the database are determined using the mtanh fit (equation \ref{eq:mtanh}), and the uncertainties are the fit uncertainties from the use of the mtanh function [\textcolor{blue}{SOURCE}].
+The fit uncertainties are expected to be significantly smaller than the natural scatter of the data due to the fluctuation of the plasma.
+
+Additionally, there exist so called FLAGS, which correspond to the specifics of an experiment setup.
+For example, what element the fuel is, if resonant magnetic pulses (RMPs) [\textcolor{blue}{source}], pellets [\textcolor{blue}{source}] or impurity seeding [\textcolor{blue}{source}] were used are all FLAGS contained in the database.
+Additionally, there is a flag corresponding to the quality of the HRTS measurement, as each entry is validated either by hand or computationally.
+Only entries that have been validated are used in this thesis.
+Shots with impurity seeding are used, as they make up about 600 entries.
+RMPs, pellets, and kicks are used to manipulate the pedestal for ELM control, mitigation, or suppression [\textcolor{blue}{Viezzer NF 2018}].
+To keep the dataset simple in this thesis, these entries are excluded.
+After filtering out the RMPs, Kicks, Pellets, non-validated HRTS, and shots that do not use deuterium, the dataset is reduced to 1888 entries. The final pedestal parameter domains are given in the table below.
+\begin{center}
+\begin{tabular}{ | c | c | c | c | c | }
+	\hline 
+	& Height & Width ($\Psi_N$) & Position ($\Psi_N$) & Slope (-) \\ 
 	\hline
-	& $n_e^{ped}$ & $T_e^{ped}$ & $p_e^{ped}$ \\
-	\hline
-	Height & & & \\
-	Position & & & \\
-	Width & & & \\
-	Slope & & & \\
+	$n_e^{ped}$ &[1.849, 11.737] ($10^{19}$ m$^3$) & [0.015, 0.173]& [0.953, 1.029] & [$10^{-6}$, 0.188] \\
+	$T_e^{ped}$ & [0.149, 1.894] (keV)& [0.013, 0.105] & [0.926, 1.002] & [0.026, 0.502] \\
+	$p_e^{ped}$ & [0.808, 17.804] (kPa)& [0.014, 0.099] & [0.931, 1.002]& [0.041, 0.789] \\
 	\hline
 \end{tabular}
 \end{center}
-\subsubsection{Empirical Analysis}
 
-Empirical analysis of the JET pedestal database has been done [\textcolor{blue}{SOURCE LORENZO DB SHIT}], and has yielded the following log-linear scaling law for the pedestal density height $n_e^{ped}$.
-\begin{equation} \label{eq:scaling}
-	n_e^{ped} = (9.9 \pm 0.3) I_p^{1.24 \pm 0.19} P_{TOT}^{-0.34 \pm 0.11} \delta^{0.62 \pm 0.14} \Gamma^{ 0.08 \pm 0.04} M_{eff}^{0.2 \pm 0.2}
+\begin{equation} \label{eq:mtanh}
+happy mtanh here
 \end{equation}
-In this thesis, we will take the pedestal prediction with ML approaches relative to the performance of the empirical scaling law as the well defined focus for the project.
-The choice of parameters from the log-linear regression by Lorenzo et. al., was backed by physical intuition about what drives the pedestal density height. Since log-linear regression was used, it is also assumed that the scaling law above avoided using cross-correlated variables, which can verified in Figure \ref{subfig:corr_shit}. 
-
-In order to improve prediction quality, it may prove useful to include additional inputs from the list of main engineering quantities that were not used in the log-linear scaling.
-However, by plotting joint histograms between the control parameters and $n_e^{ped}$, some serious questions can be raised regarding which parameters can and should be given to a machine learning model.
-For example, looking at the dependence of the major radius $R$ in Figure  \ref{subfig:rvsneped}, one could jump to early conclusions and say that with higher values of $R$, a higher pedestal height is achieved!
-However, this is a case of ice-cream correlation\footnote{ice cream correlation refers to the correlation of increasing ice cream sales and increasing drowning rate in Finland during the summer. Although the variables are indeed correlated, higher ice cream sales are not in fact the causation of higher drowning rates, nor vice-versa.}, and the real culprit of the causation is the Shafranov shift; the outward radial displacement of the magnetic axis from the geometric axis that is prominently found in MCF devices\textcolor{blue}{[Shafranov SOURCE]}. The shift is understood to be induced by plasma pressure, and thus is normally linear in $\beta$. Since $\beta$ and pressure are heavily dependent on the aspects of the machine, the Shafranov shift is also machine dependent. 
-For this reason, I choose to exclude $R$ from the list of inputs to a ML model until multi-machine databases are available.
-The divertor configuration on the other hand, does have a real correlation, as the divertor configuration can also have a large impact on the pedestal, however this will be investigated in future studies.
+\subsubsection{Empirical Analysis}
 \begin{figure}
         \centering
         \begin{subfigure}{0.5\linewidth}
@@ -259,6 +245,20 @@ The divertor configuration on the other hand, does have a real correlation, as t
 	\caption{(a) the 'ice cream corerlation' between the major radius $R$, divertor configuration, and $n_e^{ped}$,  (b) the correlation matrix of the main engineering parameters to be used as inputs. A grey coloring represents no correlation, whereas blue and yellow are negative and positive correlation respectively.  }
 	\label{fig:emperical}
 \end{figure}
+Empirical analysis of the JET pedestal database has been done [\textcolor{blue}{SOURCE LORENZO DB SHIT}], and has yielded the following log-linear scaling law for the pedestal density height $n_e^{ped}$.
+\begin{equation} \label{eq:scaling}
+	n_e^{ped} = (9.9 \pm 0.3) I_p^{1.24 \pm 0.19} P_{TOT}^{-0.34 \pm 0.11} \delta^{0.62 \pm 0.14} \Gamma^{ 0.08 \pm 0.04} M_{eff}^{0.2 \pm 0.2}
+\end{equation}
+In this thesis, we will take the pedestal prediction with ML approaches relative to the performance of the empirical scaling law as the well defined focus for the project.
+The choice of parameters from the log-linear regression by Lorenzo et. al., was backed by physical intuition about what drives the pedestal density height. Since log-linear regression was used, it is also assumed that the scaling law above avoided using cross-correlated variables, which can verified in Figure \ref{subfig:corr_shit}. 
+
+In order to improve prediction quality, it may prove useful to include additional inputs from the list of main engineering quantities that were not used in the log-linear scaling.
+However, by plotting joint histograms between the control parameters and $n_e^{ped}$, some serious questions can be raised regarding which parameters can and should be given to a machine learning model.
+For example, looking at the dependence of the major radius $R$ in Figure  \ref{subfig:rvsneped}, one could jump to early conclusions and say that with higher values of $R$, a higher pedestal height is achieved!
+However, this is a case of ice-cream correlation\footnote{ice cream correlation refers to the correlation of increasing ice cream sales and increasing drowning rate in Finland during the summer. Although the variables are indeed correlated, higher ice cream sales are not in fact the causation of higher drowning rates, nor vice-versa.}, and the real culprit of the causation is the Shafranov shift; the outward radial displacement of the magnetic axis from the geometric axis that is prominently found in MCF devices\textcolor{blue}{[Shafranov SOURCE]}. The shift is understood to be induced by plasma pressure, and thus is normally linear in $\beta$. Since $\beta$ and pressure are heavily dependent on the aspects of the machine, the Shafranov shift is also machine dependent. 
+For this reason, I choose to exclude $R$ from the list of inputs to a ML model until multi-machine databases are available.
+The divertor configuration on the other hand, does have a real correlation, and can have a large impact on the pedestal. However, the analysis in this thesis makes use of only the numerical parameters available, and thus DC will not be used as an input parameter, as it is categorical.  
+
 Another engineering parameter that is ignored in the analysis is the sub-divertor pressure $\Gamma_{SD}$.
 From the filtered dataset, the values of the sub-divertor vary widly, with 130 entries having an error and value of 1000 [$10^6$ nbar], while having close to 500 entries that vary between [0, 0.5].
 Because of this volatility, $\Gamma_{SD}$ is ignored, however future research may choose to filter the dataset such that inclusion of $\Gamma_{SD}$ is possible.
@@ -391,6 +391,28 @@ Table with performance metrics for optimal hyperparameters for each model can be
 A linear regression model without an intercept was fit using the 'as is' control parameters as inputs.
 We can see that by including more parameters than the original 5 used in the scaling law that the RMSE and MAE improve, and the predictions are plotted in Figure \ref{fig:linreg}.
 
+\begin{wraptable}{r}{0.3\linewidth}
+\centering
+\caption{Coefficient distributions determined by Bayesian Linear Regression. Each coefficent is a normal distribution with mean $\mu$ and spread $\sigma^2$}\label{tab:new_coef}
+\begin{tabular}{ | c | c | c |}
+			\hline
+			Feature & $\mu$ & $\sigma^2$ \\
+			\hline
+			$I_p$ & 0.15 & 0.06 \\
+			$B_T$ & 0.956 & 0.072 \\
+			$a$ & 2.966 & 0.479 \\
+			$\delta$ & 12.95 & 0.154 \\
+			$V_P$ & -0.05 & 0.007 \\
+			$q_{95}$ & -1.064 & 0.0542 \\
+			$P_{NBI}$ & $-1.911$ & 0.0546 \\
+			$P_{ICRH}$ & -1.976 & 0.0561 \\
+			$P_{TOT}$ & 1.926 & 0.0557 \\
+			$\Gamma$ & 0.125 & 0.007 \\
+			$H$ & -4.016 & 0.374  \\
+			$M_{eff}$ & 1.369 & 0.053 \\
+			\hline
+\end{tabular}
+\end{wraptable}
 
 Through the use of regularization via the LASSO method, the following features were deemed 'unimportant' (their coefficients dropped to 0 or near 0): $H, M_{eff}, B_T, V_P$.
 A new model with reduced dimensionality was fit by removing the unimportant features from the input space.
@@ -512,9 +534,6 @@ We see from Figure \ref{fig:gp_uncerts} that the hetero GP with propogation of t
 
 
 \subsection{Random Forests and Ensemble Methods}
-\begin{itemize}
-	\item \textcolor{blue}{TBD: }ERTs
-\end{itemize}
 
 The optimal hypereparameters for the RFs and ERTs was determined through a combination of grid and random search. 
 To determine the size of the forest (number of decision trees), the OOB error for forests that sample a maximum of $n$ features in the bootstrap sampling process is calculated for increasing number of decision trees.
@@ -539,7 +558,7 @@ If it is important that models be as small as possible without damaging the pred
 		\caption{}
 		\label{subfig:rf_rmse}
 	\end{subfigure}
-	\caption{OOB error for (a) Random Forests (b) Extremely Random Trees}
+	\caption{OOB error vs number of decision trees of (a) Random Forests (b) Extreme Random Trees}
 	\label{fig:RF_exp}
 \end{figure}
 
