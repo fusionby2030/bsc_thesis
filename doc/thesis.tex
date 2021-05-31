@@ -16,17 +16,21 @@
 \usepackage{xcolor}
 \usepackage{comment}
 \usepackage{floatrow}
+\usepackage{adjustbox}
 \usepackage{wrapfig}
 \graphicspath{{./src/ }}
 
 \newcommand{\SubItem}[1]{
     {\setlength\itemindent{15pt} \item[-] #1}
 } % to be able to do sub items in lists
+\newlength{\strutheight}
+\settoheight{\strutheight}{\strut}
 
 \newfloatcommand{capbtabbox}{table}[][\FBwidth]
 % Page Setups
 \newcommand{\sectionbreak}{\clearpage}
 % Document
+
 
 \title{
 	{Principle Machine Learning Analysis on the JET-Pedestal Database, aka Nutshell} \\ 
@@ -135,7 +139,7 @@ To limit the extent of the thesis, the focus is on the pedestal density, and ML 
 		\centering
 		\includegraphics[scale=0.4]{example-image-b}
 		\caption{}
-		\label{subfig:divertor_config}
+		\label{subfig:ped_fit}
 	\end{subfigure}\hfill
 	\caption{(a) shaping figure showing r,a, triangularity and such (b) Pedestal Values before mtanh fit}
 	\label{fig:pedestal_db_figs}
@@ -143,11 +147,13 @@ To limit the extent of the thesis, the focus is on the pedestal density, and ML 
 
 The JET pedestal database is the most comprehensive of all pedestal databases today, containing over 3000 entries [\textcolor{blue}{Frassinetti 2021}].
 Each entry corresponds to time averaged measurements of various plasma parameters over the course of 70-95\% of an ELM cycle [\textcolor{green}{cross check}].
-The measurements are done using high resolution thomson scattering (HRTS)[\textcolor{blue}{Frassinetti}].
+The measurements are done using high resolution thomson scattering (HRTS)[\textcolor{blue}{Frassinetti}], and are then fitted using the mtanh function (eq \ref{eq:mtanh}). This process is visualized in Figure \ref{subfig:ped_fit}. 
 Since the measurements are taken near the end of the ELM cycle, the pedestal parameters should be saturated near their maximum, right before the ELM.
 
-The key engineering quantities in the database and their units are listed below, where a dimensionless unit is written as [-]. The domain of each parameter is listed in Table \ref{tab:main_domain}. \par
-\begin{wraptable}{r}{0.25\textwidth}
+The key engineering quantities in the database and their units are listed below, where a dimensionless unit is written as [-]. The domain of each parameter is listed in Table \ref{tab:main_domain}. 
+
+\begin{wraptable}{r}{0.4\textwidth}
+\centering
 \caption{Main engineering parameter domains of the filtered dataset.}
 \label{tab:main_domain}
 \begin{tabular}{| c | c | }
@@ -172,12 +178,13 @@ The key engineering quantities in the database and their units are listed below,
 \end{wraptable}
 \begin{itemize}
 	\item $I_P$ [MA], plasma current, current driven through the plasma that generates the poloidal magnetic field
-	\item $B_T$ [T], toroidal magnetic field
+	\item $B_T$ [T], toroidal magnetic field 
 	\item $R$ [m], major radius of the plasma
 	\item $a$ [m], minor radius of plasma
 	\item $\delta$ [-], triangularity, normalized horizontal displacement of the top/bottom of the plasma from the main axis
 	\item $V_P$ [m$^3$], the plasma volume
 	\item $H$, isotope ratio of fuel
+
 	\item $q_{95}$ [-], safety factor at the flux surface edge, where safety factor is the 'windiness' of the magnetic fields in a reactor, i.e., the  number of toroidal circles the helical field line completes within one poloidal revolution, trouble arises well before $q_{95}$ reaches 1, so devices typically operate within a range of $q_{95} \in [3, 4]$ in order to maintain stable plasmas.
 	\item $P_{NBI}$ [MW], neutral beam injection heating power
 	\item $P_{ICRH}$ [MW], ion cyclotron radio frequency heating 
@@ -255,9 +262,9 @@ The choice of parameters from the log-linear regression by Lorenzo et. al., was 
 In order to improve prediction quality, it may prove useful to include additional inputs from the list of main engineering quantities that were not used in the log-linear scaling.
 However, by plotting joint histograms between the control parameters and $n_e^{ped}$, some serious questions can be raised regarding which parameters can and should be given to a machine learning model.
 For example, looking at the dependence of the major radius $R$ in Figure  \ref{subfig:rvsneped}, one could jump to early conclusions and say that with higher values of $R$, a higher pedestal height is achieved!
-However, this is a case of ice-cream correlation\footnote{ice cream correlation refers to the correlation of increasing ice cream sales and increasing drowning rate in Finland during the summer. Although the variables are indeed correlated, higher ice cream sales are not in fact the causation of higher drowning rates, nor vice-versa.}, and the real culprit of the causation is the Shafranov shift; the outward radial displacement of the magnetic axis from the geometric axis that is prominently found in MCF devices\textcolor{blue}{[Shafranov SOURCE]}. The shift is understood to be induced by plasma pressure, and thus is normally linear in $\beta$. Since $\beta$ and pressure are heavily dependent on the aspects of the machine, the Shafranov shift is also machine dependent. 
-For this reason, I choose to exclude $R$ from the list of inputs to a ML model until multi-machine databases are available.
-The divertor configuration on the other hand, does have a real correlation, and can have a large impact on the pedestal. However, the analysis in this thesis makes use of only the numerical parameters available, and thus DC will not be used as an input parameter, as it is categorical.  
+However, this is a case of ice-cream correlation\footnote{ice cream correlation refers to the correlation of increasing ice cream sales and increasing number of drownings in Finland during the summer. Although the variables are indeed correlated, higher ice cream sales are not in fact the causation of higher drowning rates, nor vice-versa.}, and the real culprit of the causation is the Shafranov shift; the outward radial displacement of the magnetic axis from the geometric axis that is prominently found in MCF devices\textcolor{blue}{[Shafranov SOURCE]}. The shift is understood to be induced by plasma pressure, and thus is normally linear in $\beta$. Since $\beta$ and pressure are heavily dependent on the aspects of the machine, the Shafranov shift is also machine dependent. 
+For this reason, $R$ is excluded from the list of inputs to the ML models in this thesis, and only when multi-machine databases are available should it be included.
+The divertor configuration on the other hand, does have a real correlation, and can have a large impact on the pedestal. However, the analysis in this thesis makes use of the numerical parameters available only, and thus DC will not be used as an input parameter, as it is categorical.  
 
 Another engineering parameter that is ignored in the analysis is the sub-divertor pressure $\Gamma_{SD}$.
 From the filtered dataset, the values of the sub-divertor vary widly, with 130 entries having an error and value of 1000 [$10^6$ nbar], while having close to 500 entries that vary between [0, 0.5].
