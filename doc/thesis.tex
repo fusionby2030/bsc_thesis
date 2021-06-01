@@ -276,12 +276,12 @@ Because of this volatility, $\Gamma_{SD}$ is ignored, however future research ma
 Within the context of this thesis, a model refers to a prediction function $f$ that takes any combination of the main engineering parameters as inputs, $\vec{x} = (x_1, x_2, \cdots, x_p)$,  and provides an estimate of the pedestal density height, $\hat{y}$, as well as the uncertainty of the estimate (when applicable).
 The prediction quality is quantified through both RMSe and MAE, since a robust model minimizes both of these.
 The RMSE penalizes predictions that are far away from the ground truth, whereas the MAE calculates a uniform distance between the prediction and the ground truth.
-\[RMSE = \sqrt{\frac{\sum_i^N \left( y_i - \hat{y}_i \right)^2}{N}}; MAE = \frac{\sum_i^N |y_i -  \hat{y}_i |}{N}  \] 
+\[RMSE = \sqrt{\frac{\sum_i^N \left( y_i - \hat{y}_i \right)^2}{N}} \quad\quad MAE = \frac{\sum_i^N |y_i -  \hat{y}_i |}{N}  \] 
 where $N$ is the number of points predicted upon, and $y_i$ is the ground truth value of $n_e^{ped}$ for the $i$'th entry in the dataset. 
 \subsection{Model Fitting and Validation}
 To make a prediction, the model must first be \textit{fitted}, which means to learn the parameters $\vec{\theta}$ of the prediction function using a model specific learning algorithm such that $f = f(\vec{x}: \vec{\theta})$.
 In the case of linear regression, the learning algorithm is the ordinary least squares method (OLS) [SOURCE] which minimizes the mean squared error in order to find the optimal linear coefficients $\theta(w_i)$.
-It is important to note here that not all supervised learning regression algorithms minimize the RMSE or MAE to fit model parameters.
+Not all supervised learning regression algorithms minimize the RMSE or MAE to fit model parameters.
 The RMSE and MAE as stated above are merely a quantization of the performance of a particular model.
 Additionally, the scoring of the performance of the model shall be made using data that the model had previously not seen.
 If this were not the case, the model would simply repeat what it had been fitted with, and would fail to predict useful information on yet unseen data.
@@ -291,7 +291,7 @@ Then, depending on the performance, adjust the \textit{hyperparameters} of the m
 However, this runs into the problem of overfitting on the test set, since the hyperparameters can be adjusted until the model preforms best on the test set.
 In this sense, knowledge about the test set leaks into the model, and evaluation metrics no longer report on general performance.
 Additionally, in randomly splitting the data into two groups, there is a new problem of \textit{selection bias}[SOURCE], in which the model's results are dependent on the random choice of training/test sets.
-To overcome these problems, \textit{cross-validation} or CV was implemented in order to validate the parameters and generalization capabilities of a model.
+To overcome these problems, \textit{cross-validation} or CV is implemented throughout the analyses in this thesis to validate the parameters and generalization capabilities of a model.
 The general approach for \textit{k-fold} CV is to split the dataset into $k$ subsets, and apply the following procedure to each of the k folds:
 \begin{itemize}
 	\item Use $k-1$ of the folds to fit a model 
@@ -321,9 +321,9 @@ Much more can be read about GPs in the following sources [SOURCES].
 The details pertinent to the analysis in this thesis are as follows:
 \begin{itemize}
 	\item Choice of kernel (covariance function) is normally based on the 'wigglieness' of the functions one is trying to parameterize[SOURCE], but with higher dimensional space, this means nothing. Therefore the kernels sought after are those that when optimized give best predictions of the pedestal density.
-	\item To utilize the measurement uncertainties given in the database, a fixed noise kernel is added on to the base kernel[SOURCE]. In the fixed noise kernel the engineering parameter uncertainties and or the uncertainty in $n_e^{ped}$ can be used. This transforms the GP model from having homscedastic noise (constant Gaussian noise), to having heteroscedastic noise, where the noise varies depending on the point being fit[SOURCE].
 	\item Prediction uncertainty is built into GPs as the joint-gaussian group of functions determined through optimization of the kernel will give predictions of the pedestal density that are averaged for the point prediction, and the standard deviation is the uncertainty. 
 	\item Sensitivity analysis is used to determine the relevant engineering parameters for GPs, from which the dimensionality of the input space can be reduced if parameters are deemed irrelevant. Three different forms of sensitivity analysis used: KLD, ARD, VAR[SOURCE], which all make use of thte length-scale parameters of the kernel in a GP model. The KLD, ARD, and VAR are outlined below. 
+	\item To utilize the measurement uncertainties given in the database, there are two approaches: (a) a fixed noise kernel is added on to the base kernel[SOURCE] such that the measurement uncertainties are additive to the input space. (b) Transforming the GP model from homoscedastic to heteroscedastic, where the homoscedastic model assumes constant guassian noise and the heteroscedastic takes noise values that vary for each input entry. Furthermore, the heteroscedastic model attepmts to learn the uncertainty space given the uncertainty inputs, i.e., not only is the laten space of $n_e^{ped}$ mapped, but also the uncertainty latent space of $n_e^{ped}$.   
 \end{itemize}
 
 GPs scale horribly with increasing input space size, therefore the hope of using sensitivity analysis is to remove any engineering inputs if they do not improve the prediction capability of them GP model.
@@ -331,18 +331,18 @@ GPs scale horribly with increasing input space size, therefore the hope of using
 Additionally, since the each variable used in the fitting procedure is numerical, there exists no urgent need to try out different combinations of kernels, i.e., multiplying or adding kernels together is not analysed in this work, but something to try in the future. 
 
 The three types of sensitivity analysis used:
-	\begin{itemize}
-		\item Automatic Relevance Determination (ARD): The predictive relevance of each input variable is infered from the inverse of the length-scale parameter associated with that variable within the kernel. A large length scale (infinite for example) means that no correlation between the latent space and the variable in question, and thus the relevance would be zero \textcolor{blue}{SOURCE paananen}. 
-		\item Kullback-Leibler Divergence (KLD): The KLD is a well known measure of dissimilarity between two probability distributions, and is a function of both the latent mean and uncertainty of each distribution \textcolor{blue}{SOURCE Kullback Leibler 1951}. In this case, the input space is 'shifted' via the pertubation of a single variable's values, and the KLD of the resulting new latent space is measured against the unperterbed case. A large change in the KLD indicates that the single variable that was perturbed has high prediction relevance.  [\textcolor{blue}{SOURCE paananen}]
-		\item Variance of the Posterior (VAR): The same method of perturbation applies, but instead of calculating the KLD, variability in  only the latent mean of the fitted GP is calculated. [\textcolor{blue}{SOURCE paananen}]
-	\end{itemize}
+\begin{itemize}
+	\item Automatic Relevance Determination (ARD): The predictive relevance of each input variable is infered from the inverse of the length-scale parameter associated with that variable within the kernel. A large length scale (infinite for example) means that no correlation between the latent space and the variable in question, and thus the relevance would be zero \textcolor{blue}{SOURCE paananen}. 
+	\item Kullback-Leibler Divergence (KLD): The KLD is a well known measure of dissimilarity between two probability distributions, and is a function of both the latent mean and uncertainty of each distribution \textcolor{blue}{SOURCE Kullback Leibler 1951}. In this case, the input space is 'shifted' via the pertubation of a single variable's values, and the KLD of the resulting new latent space is measured against the unperterbed case. A large change in the KLD indicates that the single variable that was perturbed has high prediction relevance.  [\textcolor{blue}{SOURCE paananen}]
+	\item Variance of the Posterior (VAR): The same method of perturbation applies, but instead of calculating the KLD, variability in  only the latent mean of the fitted GP is calculated. [\textcolor{blue}{SOURCE paananen}]
+\end{itemize}
 
 \subsection{Random Forests}
 Another popular non-linear model is the ensemble of decision trees [SOURCE] that is the Random Forest(RF). More can be read about here [SOURCE], but the details pertinent to the thesis are stated below.
 \begin{itemize}
 	\item RFs are fitted using boostrap aggregation (bagging). Each decision tree within the forest is fit from a 'bag' of random samples drawn from available training entries, meaning not every tree will see every available training sample, allowing for the calculation of the average error for each sample using the predictions of trees that do not contain the sample in their bag. This allows us to approximate how many decision trees to use in the forest, as the OOB error will eventually stabalize. The bag consists of a pre-determined number of features which are also randomly sampled, which allows for the determination of the optimal number of inputs to sample, as well as which inputs are optimal.  [\textcolor{blue}{Elements of Statistical Learning p592}]
-	\item UQ in prediction can be determined via taking the standard deviation of predictions from all of the decision trees that make up the forest. 
-	\item A variant of RFs called Extremly Randomized Trees (ERTs) will also be compared. The two main differences between RFs and ERTs are (a) decision trees in ERTs sample entries for their bags without replacing such that no decision tree contains any the same entries and (b) nodes in decision trees are split based on different critera; RFs convert parent nodes as best they can into two homogeneuos nodes, whereas ERTs convert the parent node into two child nodes via a random split. [\textcolor{blue}{ERTs Pierre Geurts 2006}]
+	\item UQ in prediction can be determined by taking the standard deviation of predictions from all of the decision trees that make up the forest. 
+	\item A variant of RFs called Extremly Randomized Trees (ERTs) will also be compared. The two main differences between RFs and ERTs are (a) decision trees in ERTs sample entries for their bags without replacing such that no decision tree contains any the same entries and (b) nodes in decision trees are split based on different critera; RFs convert parent nodes into two homogeneuos nodes by choosing the split that minimizes the MSE, whereas ERTs convert the parent node into two child nodes via a random split. [\textcolor{blue}{ERTs Pierre Geurts 2006}]
 \end{itemize}
 
 Random Forests and Extremely Randomized Trees offer little interprability in comparison to parametric models, but by quantifying how much the impurity of a node decreases (a pure node has no child nodes) with the probability of reaching that node, the relative importance of the feature housed in the node is determined. Using this, we can get insight into which features are driving the predictions of $n_e^{ped}$ for RFs and ERTs. 
@@ -396,11 +396,11 @@ Table with performance metrics for optimal hyperparameters for each model can be
 
 \subsection{Linear Regression}
 A linear regression model without an intercept was fit using the 'as is' control parameters as inputs.
-We can see that by including more parameters than the original 5 used in the scaling law that the RMSE and MAE improve, and the predictions are plotted in Figure \ref{fig:linreg}.
+We can see that by including more parameters than the original 5 used in the scaling law that the RMSE and MAE improve, and the predictions are plotted in Figure \ref{subfig:baysian_results}.
 
 \begin{wraptable}{r}{0.3\linewidth}
 \centering
-\caption{Coefficient distributions determined by Bayesian Linear Regression. Each coefficent is a normal distribution with mean $\mu$ and spread $\sigma^2$}\label{tab:new_coef}
+\caption{Coefficients determined by Bayesian Linear Regression. Each coefficent is a normal distribution with mean $\mu$ and spread $\sigma^2$}\label{tab:new_coef}
 \begin{tabular}{ | c | c | c |}
 			\hline
 			Feature & $\mu$ & $\sigma^2$ \\
@@ -427,10 +427,28 @@ It was seen that the prediction quality decreases dramatically with any reductio
 The results of LASSO can be slightly misleading, as linear regressors and their regularized extensions are prone to problems when working with many correlated variables. Many of the variables in the input space are correlated (e.g., $P_{TOT}, P_{NBI}, P_{ICRH}$), which may be why the best RMSE and MAE are achieved when all variables are included.
 
 Fitting a Bayesian linear regressor using all of the available engineering parameters yielded new coefficients (as well as the uncertainties therewith), which can be seen in Table \ref{tab:new_coef}. 
-From the coefficients and their uncertainties, the general uncertainty in the point prediction of $n_e^{ped}$ can be ascertained, and is plotted below the point predictions in Figure \ref{fig:linreg}.
+From the coefficients and their uncertainties, the general uncertainty in the point prediction of $n_e^{ped}$ can be ascertained, and is plotted below the point predictions in Figure \ref{subfig:bayesian_uq}.
 We can see that the uncertainties are normally distributed and range from 1.64 to 1.8 ($10^{19}\text{m}^{-3}$). Having high uncertaity is good when the prediction is far from the ground truth, but this is not the case for the predictions for high $n_e^{ped}$. 
 Just like the scaling law, the predictions from the Bayesian linear model taper off at around $n_e^{ped} \geq 8.5$, which suggests that parametric models like linear regressors are generally unable to capture the hidden secrets of higher pedestal density heights from the given set of input parameters.
+\begin{figure}
+	\centering
+	\begin{subfigure}{0.495\linewidth}
+		\centering
+		\includegraphics[scale=0.35]{./src/Baysian_regression_predictions}
+		\caption{}
+		\label{subfig:baysian_results}
+	\end{subfigure}
+	\begin{subfigure}{0.495\linewidth}
+		\centering
+		\includegraphics[scale=0.5]{./src/Baysian_regression_uncert}
+		\caption{}
+		\label{subfig:bayesian_uq}
+	\end{subfigure}\hfill
+	\caption{(a) The predictions of a Bayesian Regressor (green) vs the scaling law (orange) (b) Prediction uncertainty for the entries of the Bayesian regressor(b) Prediction uncertainty for the entries of the Bayesian regressor(b) Prediction uncertainty for the entries of the Bayesian regressor}
+	\label{fig:lin_reg}
+\end{figure}
 
+\begin{comment}
 \begin{figure}
 	\begin{floatrow}
 		\ffigbox{
@@ -458,8 +476,7 @@ Just like the scaling law, the predictions from the Bayesian linear model taper 
 		}{\caption{The coefficient distribution parameters determined from Bayesian Linear Regression. Each coefficent is a normal distribution with mean $\sigma$ and spread $\sigma^2$}\label{tab:new_coef}}
 		\end{floatrow}
 	\end{figure}
-
-
+\end{comment}
 \subsection{Gaussian Process}
 
 To determine the results of sensitivity analysis, a GP model with a RBF kernel with added constant bias term is setup and fitted using all of the available parameters. The model is optimized to the maximum of the marginal likelihood, and the relevance of each variable is calculated using ARD, KLD, and VAR. This process of optimization is repeated 5 times and the results over all 5 are averaged. We can see in Figure \ref{subfig:ARD_KL_VAR} that each method gives relatively similar results, and the order of importance is relisted below.  
@@ -472,15 +489,16 @@ To determine the results of sensitivity analysis, a GP model with a RBF kernel w
 	\begin{subfigure}{0.48\linewidth}
 		\centering
 		\includegraphics[scale=0.2]{ ./src/GP_sensitivity_analysis_final_v1}
-		\caption{The result of sensitivity analysis as well as the average of the three types used plotted in the dashed black line. }
+		\caption{}
 		\label{subfig:ARD_KL_VAR}
 	\end{subfigure}\hfill
 	\begin{subfigure}{0.48\linewidth}
 		\centering
 		\includegraphics[scale=0.2]{ ./src/final_GP_dim_v2}
-		\caption{The dimensionality order of input variables comes from their ranking via the average of the three sensitivity analyses (dashed black line in diagram to the left). For each kernel, a GP model is fit using cros-validation (5 folds, 5 repeats) for each additional dimension of data, starting with 1d input of $\delta$, followed by 2d input of $\delta, a$ and so on. Then the RMSE for each repeated fold is calculated and averaged.  }
+		\caption{}
 		\label{subfig:GP_vs_dimensionality}
 	\end{subfigure}
+	\caption{(a) The result of sensitivity analysis as well as the average of the three types used plotted in the dashed black line. (b)The dimensionality order of input variables comes from their ranking via the average of the three sensitivity analyses (dashed black line in diagram to the left). For each kernel, a GP model is fit using cros-validation (5 folds, 5 repeats) for each additional dimension of data, starting with 1d input of $\delta$, followed by 2d input of $\delta, a$ and so on. Then the RMSE for each repeated fold is calculated and averaged.  }
 \end{figure}
 The sensitivity analysis for GPs suggests that H and $M_{eff}$ do not aid in predicting the pedestal density, which may be due to the filtered dataset used for fitting being exclusive in its values for $H$ and $M_{eff}$ (only deuterium experiments were considered), 
 I would expect this to change if a wider range of fuelling elements were included in the dataset, and for future work do not expect $M_{eff}$ to rank as low as it does. Each sensitivty analysis also ranks $B_T$ low, which is most likely due to the inherent correlation between $B_T, q_{95}, \text{and} I_P$, as most of the information of $B_T$ is contained within $q_{95}$. 
@@ -492,53 +510,16 @@ For each training set, the fixed kernel was filled with the uncertainty for each
 For the case of using the input uncertainties, these could then be added on as well in the inference set, since one would typically know these values, however this could not be done for the $n_e^{ped}$, since one typically does not know the uncertainty in the values they are trying to predict.
 We see that the GP model which has the pedestal density uncertainties propogated through it has very stable predictions in comparison to the others in the comparison from Figure \ref{fig:gp_prediction}. Additionally, this model achieves the lowest RMSE and MAE. The model with homoscedastic noise achieves a decent RMSE and MAE, however has very erratic predictions. \textcolor{red}{Not sure what the fuck happened with the middle one but god damn something went wrong.} 
 We see from Figure \ref{fig:gp_uncerts} that the hetero GP with propogation of the training $n_e^{ped}$ uncertainties tends to be more uncertain compared to that of the homoscedastic noise model, even though its predictions are less eratic than the latter. It 
-\textcolor{red}{I am trying to say that when you add the uncertainties}. 
 
-\begin{figure}
-	\begin{subfigure}{0.3\linewidth}
-		\centering
-		\includegraphics[scale=0.2]{./src/GP_MLP_hetero_neped_preds}
-		\caption{}
-		\label{subfig:hetero_gp_input}
-	\end{subfigure}
-	\begin{subfigure}{0.33\linewidth}
-		\centering
-		\includegraphics[scale=0.2]{./src/GP_RatQuad_w_neped_uncert_prop}
-		\caption{}
-		\label{subfig:hetero_gp_neped}
-	\end{subfigure}
-	\begin{subfigure}{0.33\linewidth}
-		\centering
-		\includegraphics[scale=0.2]{./src/GP_RatQuad_HomoDesiastic_preds}
-		\caption{}
-		\label{subfig:homo_gp}
-	\end{subfigure}
-	\caption{The predictions (y-axis) vs real values (x-axis) of GPs with a for (a) MLP kernel with hetero with pedestal density uncert. propogation, (b) Rational Quadratic kernel Hetero with main engineering, (c) Rational Quadratic kernel Homo with No uncert prop}
-	\label{fig:gp_prediction}
+\begin{figure}\centering
+		\includegraphics[scale=0.28]{./src/MLP_uq_compare}
+		\caption{Three different methods UQ compared. The LHS, the residiual, and RHS, prediction uncertainty.}
+	\label{fig:MLP_UQ}
+\end{figure}\begin{figure}\centering
+		\includegraphics[scale=0.28]{./src/RQ_uq_compare}
+		\caption{Three different methods UQ compared. The LHS, the residiual, and RHS, prediction uncertainty.}
+	\label{fig:RQ_UQ}
 \end{figure}
-\begin{figure}
-	\begin{subfigure}{0.3\linewidth}
-		\centering
-		\includegraphics[scale=0.3]{./src/GP_MLP_hetero_neped_uncerts}
-		\caption{}
-		\label{subfig:hetero_gp_input}
-	\end{subfigure}
-	\begin{subfigure}{0.33\linewidth}
-		\centering
-		\includegraphics[scale=0.3]{./src/GP_RatQuad_w_neped_uncert_the_uncert}
-		\caption{}
-		\label{subfig:hetero_gp_neped}
-	\end{subfigure}
-	\begin{subfigure}{0.33\linewidth}
-		\centering
-		\includegraphics[scale=0.3]{./src/GP_RatQuad_HomoDesiastic_uncerts}
-		\caption{}
-		\label{subfig:homo_gp}
-	\end{subfigure}
-	\caption{The uncertainties (y-axis) vs real $n_e^{ped}$ values of the predictions from \ref{fig:gp_prediction}: (a) MLP kernel Hetero GP  with pedestal density propogation uncertanties, (b) Hetero GP with main enginerring uncert. propogation uncertainties, (c) Homo GP with No uncert prop uncertainties}
-	\label{fig:gp_uncerts}
-\end{figure}
-
 
 \subsection{Random Forests and Ensemble Methods}
 
