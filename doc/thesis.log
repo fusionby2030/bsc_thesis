@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.5.29)  2 JUN 2021 08:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.5)  2 JUN 2021 10:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -590,6 +590,10 @@ Package wrapfig Warning: Stationary wraptable forced to float on input line 186
 .
 
 
+Package wrapfig Warning: Stationary wraptable forced to float on input line 187
+.
+
+
 Package wrapfig Warning: Stationary wraptable forced to float on input line 188
 .
 
@@ -613,47 +617,39 @@ Package wrapfig Warning: Stationary wraptable forced to float on input line 192
 Package wrapfig Warning: Stationary wraptable forced to float on input line 193
 .
 
-
-Package wrapfig Warning: Stationary wraptable forced to float on input line 194
-.
-
-
-Package wrapfig Warning: Stationary wraptable forced to float on input line 195
-.
-
 [5 </usr/share/texlive/texmf-dist/tex/latex/mwe/example-image-a.pdf> </usr/shar
-e/texlive/texmf-dist/tex/latex/mwe/example-image-b.pdf>] [6]
-<./src/R_vs_NEPED_matplotlib.png, id=148, 1176.395pt x 910.40125pt>
+e/texlive/texmf-dist/tex/latex/mwe/example-image-b.pdf>]
+<./src/R_vs_NEPED_matplotlib.png, id=143, 1176.395pt x 910.40125pt>
 File: ./src/R_vs_NEPED_matplotlib.png Graphic file (type png)
 <use ./src/R_vs_NEPED_matplotlib.png>
 Package pdftex.def Info: ./src/R_vs_NEPED_matplotlib.png  used on input line 24
-2.
+0.
 (pdftex.def)             Requested size: 235.27483pt x 182.07701pt.
-<./src/input_correlations.png, id=150, 1107.13625pt x 897.3525pt>
+<./src/input_correlations.png, id=145, 1107.13625pt x 897.3525pt>
 File: ./src/input_correlations.png Graphic file (type png)
 <use ./src/input_correlations.png>
-Package pdftex.def Info: ./src/input_correlations.png  used on input line 248.
+Package pdftex.def Info: ./src/input_correlations.png  used on input line 246.
 (pdftex.def)             Requested size: 221.42332pt x 179.46732pt.
 
-Overfull \hbox (3.76123pt too wide) in paragraph at lines 248--249
+Overfull \hbox (3.76123pt too wide) in paragraph at lines 246--247
  [][] 
  []
 
-[7 <./src/R_vs_NEPED_matplotlib.png> <./src/input_correlations.png>] [8]
-[9
+[6] [7 <./src/R_vs_NEPED_matplotlib.png> <./src/input_correlations.png>]
+[8] [9
 
 ] [10] [11] [12]
 <./src/Baysian_regression_predictions.png, id=195, 646.415pt x 648.4225pt>
 File: ./src/Baysian_regression_predictions.png Graphic file (type png)
 <use ./src/Baysian_regression_predictions.png>
 Package pdftex.def Info: ./src/Baysian_regression_predictions.png  used on inpu
-t line 437.
+t line 435.
 (pdftex.def)             Requested size: 226.24864pt x 226.95126pt.
 <./src/Baysian_regression_uncert.png, id=196, 456.70625pt x 460.72125pt>
 File: ./src/Baysian_regression_uncert.png Graphic file (type png)
 <use ./src/Baysian_regression_uncert.png>
 Package pdftex.def Info: ./src/Baysian_regression_uncert.png  used on input lin
-e 443.
+e 441.
 (pdftex.def)             Requested size: 228.35255pt x 230.36006pt.
  [13
 
@@ -663,44 +659,44 @@ t>
 File: ./src/GP_sensitivity_analysis_final_v1.png Graphic file (type png)
 <use ./src/GP_sensitivity_analysis_final_v1.png>
 Package pdftex.def Info: ./src/GP_sensitivity_analysis_final_v1.png  used on in
-put line 491.
+put line 489.
 (pdftex.def)             Requested size: 221.02184pt x 221.02184pt.
 <./src/final_GP_dim_v2.png, id=207, 1105.12875pt x 1105.12875pt>
 File: ./src/final_GP_dim_v2.png Graphic file (type png)
 <use ./src/final_GP_dim_v2.png>
-Package pdftex.def Info: ./src/final_GP_dim_v2.png  used on input line 497.
+Package pdftex.def Info: ./src/final_GP_dim_v2.png  used on input line 495.
 (pdftex.def)             Requested size: 221.02184pt x 221.02184pt.
  [14 <./src/Baysian_regression_predictions.png> <./src/Baysian_regression_uncer
 t.png>]
 <./src/MLP_uq_compare.png, id=218, 1751.54375pt x 1041.8925pt>
 File: ./src/MLP_uq_compare.png Graphic file (type png)
 <use ./src/MLP_uq_compare.png>
-Package pdftex.def Info: ./src/MLP_uq_compare.png  used on input line 512.
+Package pdftex.def Info: ./src/MLP_uq_compare.png  used on input line 510.
 (pdftex.def)             Requested size: 490.42891pt x 291.7279pt.
 
-Overfull \hbox (6.73207pt too wide) in paragraph at lines 512--513
+Overfull \hbox (6.73207pt too wide) in paragraph at lines 510--511
  [][] 
  []
 
 <./src/RQ_uq_compare.png, id=219, 1751.54375pt x 1041.8925pt>
 File: ./src/RQ_uq_compare.png Graphic file (type png)
 <use ./src/RQ_uq_compare.png>
-Package pdftex.def Info: ./src/RQ_uq_compare.png  used on input line 516.
+Package pdftex.def Info: ./src/RQ_uq_compare.png  used on input line 514.
 (pdftex.def)             Requested size: 490.42891pt x 291.7279pt.
 
-Overfull \hbox (6.73207pt too wide) in paragraph at lines 516--517
+Overfull \hbox (6.73207pt too wide) in paragraph at lines 514--515
  [][] 
  []
 
 <./src/RF_oob_error.png, id=222, 1027.84pt x 947.54pt>
 File: ./src/RF_oob_error.png Graphic file (type png)
 <use ./src/RF_oob_error.png>
-Package pdftex.def Info: ./src/RF_oob_error.png  used on input line 536.
+Package pdftex.def Info: ./src/RF_oob_error.png  used on input line 534.
 (pdftex.def)             Requested size: 205.56436pt x 189.50464pt.
 <./src/ERT_oob_error.png, id=223, 1027.84pt x 947.54pt>
 File: ./src/ERT_oob_error.png Graphic file (type png)
 <use ./src/ERT_oob_error.png>
-Package pdftex.def Info: ./src/ERT_oob_error.png  used on input line 542.
+Package pdftex.def Info: ./src/ERT_oob_error.png  used on input line 540.
 (pdftex.def)             Requested size: 205.56436pt x 189.50464pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -711,21 +707,21 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 File: ./src/RF_predictions_and_uncert.png Graphic file (type png)
 <use ./src/RF_predictions_and_uncert.png>
 Package pdftex.def Info: ./src/RF_predictions_and_uncert.png  used on input lin
-e 557.
+e 555.
 (pdftex.def)             Requested size: 144.53743pt x 144.53743pt.
 <./src/RF_UQ.png, id=241, 433.62pt x 433.62pt>
 File: ./src/RF_UQ.png Graphic file (type png)
 <use ./src/RF_UQ.png>
-Package pdftex.def Info: ./src/RF_UQ.png  used on input line 563.
+Package pdftex.def Info: ./src/RF_UQ.png  used on input line 561.
 (pdftex.def)             Requested size: 130.087pt x 130.087pt.
 <./src/ERT_vs_RF_meta_modeling.png, id=242, 425.59pt x 286.06876pt>
 File: ./src/ERT_vs_RF_meta_modeling.png Graphic file (type png)
 <use ./src/ERT_vs_RF_meta_modeling.png>
 Package pdftex.def Info: ./src/ERT_vs_RF_meta_modeling.png  used on input line 
-568.
+566.
 (pdftex.def)             Requested size: 148.95872pt x 100.12556pt.
 
-Overfull \hbox (3.8482pt too wide) in paragraph at lines 568--569
+Overfull \hbox (3.8482pt too wide) in paragraph at lines 566--567
 [][] 
  []
 
@@ -733,12 +729,12 @@ Overfull \hbox (3.8482pt too wide) in paragraph at lines 568--569
 <./src/ANN_1.png, id=253, 722.7pt x 578.16pt>
 File: ./src/ANN_1.png Graphic file (type png)
 <use ./src/ANN_1.png>
-Package pdftex.def Info: ./src/ANN_1.png  used on input line 605.
+Package pdftex.def Info: ./src/ANN_1.png  used on input line 603.
 (pdftex.def)             Requested size: 216.81166pt x 173.44933pt.
 <./src/ENSEMBLE_5.png, id=254, 722.7pt x 578.16pt>
 File: ./src/ENSEMBLE_5.png Graphic file (type png)
 <use ./src/ENSEMBLE_5.png>
-Package pdftex.def Info: ./src/ENSEMBLE_5.png  used on input line 611.
+Package pdftex.def Info: ./src/ENSEMBLE_5.png  used on input line 609.
 (pdftex.def)             Requested size: 216.81166pt x 173.44933pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -746,39 +742,40 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [18 <./src/RF_predictions_and_uncert.png> <./src/RF_UQ.png> <./src/ERT_vs_RF_m
 eta_modeling.png>] Excluding 'comment' comment. Excluding 'comment' comment.
 No file thesis.bbl.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 825.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 823.
 [19 <./src/ANN_1.png> <./src/ENSEMBLE_5.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 825.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 823.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 825.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 825.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 823.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 823.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: 7A95C8F0F7CE998358475EC39F9C371A;1205.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 825.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 823.
  ) 
 Here is how much of TeX's memory you used:
- 10511 strings out of 483140
- 159930 string characters out of 5965151
- 437551 words of memory out of 5000000
- 25282 multiletter control sequences out of 15000+600000
+ 10511 strings out of 481239
+ 159930 string characters out of 5920377
+ 442361 words of memory out of 5000000
+ 25526 multiletter control sequences out of 15000+600000
  542730 words of font info for 64 fonts, out of 8000000 for 9000
- 36 hyphenation exceptions out of 8191
+ 1141 hyphenation exceptions out of 8191
  41i,10n,79p,1598b,681s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/adam/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600p
-k></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
-0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/s
-hare/texmf/fonts/type1/public/lm/lmss17.pfb>
-Output written on thesis.pdf (19 pages, 1229430 bytes).
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf/fonts/ty
+pe1/public/lm/lmss17.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200
+.pfb>
+Output written on thesis.pdf (19 pages, 1236406 bytes).
 PDF statistics:
  332 PDF objects out of 1000 (max. 8388607)
  261 compressed objects within 3 object streams

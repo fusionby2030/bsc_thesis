@@ -179,12 +179,10 @@ The key engineering quantities in the database and their units are listed below,
 \begin{itemize}
 	\item $I_P$ [MA], plasma current, current driven through the plasma that generates the poloidal magnetic field
 	\item $B_T$ [T], toroidal magnetic field 
-	\item $R$ [m], major radius of the plasma
-	\item $a$ [m], minor radius of plasma
+	\item $R$ [m] \& $a$ [m], major and minor radii of the plasma
 	\item $\delta$ [-], triangularity, normalized horizontal displacement of the top/bottom of the plasma from the main axis
 	\item $V_P$ [m$^3$], the plasma volume
 	\item $H$, isotope ratio of fuel
-
 	\item $q_{95}$ [-], safety factor at the flux surface edge, where safety factor is the 'windiness' of the magnetic fields in a reactor, i.e., the  number of toroidal circles the helical field line completes within one poloidal revolution, trouble arises well before $q_{95}$ reaches 1, so devices typically operate within a range of $q_{95} \in [3, 4]$ in order to maintain stable plasmas.
 	\item $P_{NBI}$ [MW], neutral beam injection heating power
 	\item $P_{ICRH}$ [MW], ion cyclotron radio frequency heating 
@@ -222,7 +220,7 @@ After filtering out the RMPs, Kicks, Pellets, non-validated HRTS, and shots that
 \begin{center}
 \begin{tabular}{ | c | c | c | c | c | }
 	\hline 
-	& Height & Width ($\Psi_N$) & Position ($\Psi_N$) & Slope (-) \\ 
+	& $h_1$, Height & $w$, Width ($\Psi_N$) & $p$, Position ($\Psi_N$) & $s$, Slope (-) \\ 
 	\hline
 	$n_e^{ped}$ &[1.849, 11.737] ($10^{19}$ m$^3$) & [0.015, 0.173]& [0.953, 1.029] & [$10^{-6}$, 0.188] \\
 	$T_e^{ped}$ & [0.149, 1.894] (keV)& [0.013, 0.105] & [0.926, 1.002] & [0.026, 0.502] \\
@@ -232,7 +230,7 @@ After filtering out the RMPs, Kicks, Pellets, non-validated HRTS, and shots that
 \end{center}
 
 \begin{equation} \label{eq:mtanh}
-happy mtanh here
+mtanh(r) = \frac{h_1 - h_0}{2} \left( \frac{(1+sx)e^x - e^{-x}}{e^x + e^{-x}} +1 \right) + h_0; \quad \quad x = \frac{p-r}{w/2}
 \end{equation}
 \subsubsection{Empirical Analysis}
 \begin{figure}
@@ -616,7 +614,7 @@ This was unique for the ANNs, as all other usages of meta-modeling for other ML 
 
 \subsection{What didn't work}
 \section{Conclusion and Outlook}
-It is clear that through the use of non-linear machine learning models, there can be major improvements towards accurately predicting the pedestal density height while only using main engineering parameters.
+It is clear that through the use of non-linear machine learning models, there can be major improvements towards accurately predicting the pedestal density height using only main engineering parameters. Each model analysed performed well for $n_e^{ped} \leq 9$, and most struggled with densities larger. 
 
 The models analysed could be ranked via their respective performance on unseen data through the use of cross validation.
 The ultimate winner of the models was the Gaussian Process with a MLP/Rational Quadratic kernel with the $n_e^{ped}$ uncertainties propagated through it during the fitting cycles.
