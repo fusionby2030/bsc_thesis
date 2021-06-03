@@ -48,8 +48,8 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Random Forests}{11}{subsection.2.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.5}Artificial Neural Networks}{12}{subsection.2.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.6}Meta-Modeling}{12}{subsection.2.6}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Uncertainty in performance is derived from the cross-validation method, where the final metric is the average of the performances across each fold, and the uncert. is the std of the performance acros seach fold.\relax }}{13}{table.caption.4}\protected@file@percent }
-\newlabel{tab:performance_models}{{2}{13}{Uncertainty in performance is derived from the cross-validation method, where the final metric is the average of the performances across each fold, and the uncert. is the std of the performance acros seach fold.\relax }{table.caption.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces The optimal relevant hyperparameters are chose for each model type, and the best RMSE and MAE are caulculated by averaging the results across each fold and repeat of the repeated cross-validation method. Uncertainty in the calculated RMSE and MAE is derived from the standard deviation of the RMSE across each fold.\relax }}{13}{table.caption.4}\protected@file@percent }
+\newlabel{tab:performance_models}{{2}{13}{The optimal relevant hyperparameters are chose for each model type, and the best RMSE and MAE are caulculated by averaging the results across each fold and repeat of the repeated cross-validation method. Uncertainty in the calculated RMSE and MAE is derived from the standard deviation of the RMSE across each fold.\relax }{table.caption.4}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Results}{13}{section.3}\protected@file@percent }
 \newlabel{sec:results_1}{{3}{13}{Results}{section.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Linear Regression}{13}{subsection.3.1}\protected@file@percent }
@@ -67,17 +67,17 @@
 \newlabel{subfig:GP_vs_dimensionality}{{4b}{15}{\relax }{figure.caption.7}{}}
 \newlabel{sub@subfig:GP_vs_dimensionality}{{b}{15}{\relax }{figure.caption.7}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces (a) The result of sensitivity analysis as well as the average of the three types used plotted in the dashed black line. (b)The dimensionality order of input variables comes from their ranking via the average of the three sensitivity analyses (dashed black line in diagram to the left). For each kernel, a GP model is fit using cros-validation (5 folds, 5 repeats) for each additional dimension of data, starting with 1d input of $\delta $, followed by 2d input of $\delta , a$ and so on. Then the RMSE for each repeated fold is calculated and averaged. \relax }}{15}{figure.caption.7}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Three different methods UQ compared define homo, heteroscedastic, and fixed. The LHS, the residiual, and RHS, prediction uncertainty.\relax }}{16}{figure.caption.8}\protected@file@percent }
-\newlabel{fig:MLP_UQ}{{5}{16}{Three different methods UQ compared define homo, heteroscedastic, and fixed. The LHS, the residiual, and RHS, prediction uncertainty.\relax }{figure.caption.8}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Three different methods UQ compared. The LHS, the residiual, and RHS, prediction uncertainty.\relax }}{16}{figure.caption.9}\protected@file@percent }
-\newlabel{fig:RQ_UQ}{{6}{16}{Three different methods UQ compared. The LHS, the residiual, and RHS, prediction uncertainty.\relax }{figure.caption.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Three different methods of uncertainty quantification are compared for a GP with an MLP kernel. \textbf  {Left:} The true values of $n_e^{ped}$ are grouped into 11 equaly sized bins and the distance between the predictions of those values and the true values are caluclated. The residuals are averaged across each bin and compared between the methods. \textbf  {Right:} The same binning procedure, but with averaging the prediction uncertainties of the same three methods are compared.\relax }}{16}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:MLP_UQ}{{5}{16}{Three different methods of uncertainty quantification are compared for a GP with an MLP kernel. \textbf {Left:} The true values of $n_e^{ped}$ are grouped into 11 equaly sized bins and the distance between the predictions of those values and the true values are caluclated. The residuals are averaged across each bin and compared between the methods. \textbf {Right:} The same binning procedure, but with averaging the prediction uncertainties of the same three methods are compared.\relax }{figure.caption.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Random Forests}{16}{subsection.3.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces The same procedure from Figure \ref  {fig:MLP_UQ} is applied, just with the Rational Quadratic Kernel instead of MLP.\relax }}{17}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:RQ_UQ}{{6}{17}{The same procedure from Figure \ref {fig:MLP_UQ} is applied, just with the Rational Quadratic Kernel instead of MLP.\relax }{figure.caption.9}{}}
 \newlabel{subfig:rfoob}{{7a}{17}{\relax }{figure.caption.10}{}}
 \newlabel{sub@subfig:rfoob}{{a}{17}{\relax }{figure.caption.10}{}}
 \newlabel{subfig:rf_rmse}{{7b}{17}{\relax }{figure.caption.10}{}}
 \newlabel{sub@subfig:rf_rmse}{{b}{17}{\relax }{figure.caption.10}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces OOB error vs number of decision trees of (a) Random Forests (b) Extreme Random Trees\relax }}{17}{figure.caption.10}\protected@file@percent }
-\newlabel{fig:RF_exp}{{7}{17}{OOB error vs number of decision trees of (a) Random Forests (b) Extreme Random Trees\relax }{figure.caption.10}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Random Forests and Ensemble Methods}{17}{subsection.3.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces OOB error vs number of decision trees of (a) Random Forests (b) Extreme Random Trees. No cross validation is necessary for this procedure, since the process of bagging inherently prevents all trees from seeing the same data. The colored lines correspond to different RFs and ERTs which vary by the amount of features to sample when splitting a node. \relax }}{17}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:RF_exp}{{7}{17}{OOB error vs number of decision trees of (a) Random Forests (b) Extreme Random Trees. No cross validation is necessary for this procedure, since the process of bagging inherently prevents all trees from seeing the same data. The colored lines correspond to different RFs and ERTs which vary by the amount of features to sample when splitting a node. \relax }{figure.caption.10}{}}
 \newlabel{subfig:RF_UQ}{{8a}{18}{\relax }{figure.caption.11}{}}
 \newlabel{sub@subfig:RF_UQ}{{a}{18}{\relax }{figure.caption.11}{}}
 \newlabel{subfig:RF_UQ2}{{8b}{18}{\relax }{figure.caption.11}{}}
@@ -87,11 +87,11 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces \relax }}{18}{figure.caption.11}\protected@file@percent }
 \newlabel{fig:RF_Preds}{{8}{18}{\relax }{figure.caption.11}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Artificial Neural Networks}{18}{subsection.3.4}\protected@file@percent }
-\bibstyle{unsrt}
-\bibdata{biblioski}
 \newlabel{subfig:ann_1}{{9a}{19}{\relax }{figure.caption.12}{}}
 \newlabel{sub@subfig:ann_1}{{a}{19}{\relax }{figure.caption.12}{}}
 \newlabel{subfig:ensemble}{{9b}{19}{\relax }{figure.caption.12}{}}
 \newlabel{sub@subfig:ensemble}{{b}{19}{\relax }{figure.caption.12}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.5}What didn't work}{19}{subsection.3.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}Conclusion and Outlook}{19}{section.4}\protected@file@percent }
+\bibstyle{unsrt}
+\bibdata{biblioski}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Conclusion and Outlook}{20}{section.4}\protected@file@percent }

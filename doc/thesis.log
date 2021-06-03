@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.5.29)  2 JUN 2021 13:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.5)  3 JUN 2021 14:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -676,13 +676,12 @@ t.png>]
 File: ./src/MLP_uq_compare.png Graphic file (type png)
 <use ./src/MLP_uq_compare.png>
 Package pdftex.def Info: ./src/MLP_uq_compare.png  used on input line 512.
-(pdftex.def)             Requested size: 490.42891pt x 291.7279pt.
+(pdftex.def)             Requested size: 437.88487pt x 260.47249pt.
 
-Overfull \hbox (6.73207pt too wide) in paragraph at lines 512--513
- [][] 
- []
+Underfull \vbox (badness 3930) has occurred while \output is active []
 
-<./src/RQ_uq_compare.png, id=219, 1751.54375pt x 1041.8925pt>
+ [15 <./src/GP_sensitivity_analysis_final_V1.png> <./src/final_GP_dim_v2.png>]
+<./src/RQ_uq_compare.png, id=226, 1751.54375pt x 1041.8925pt>
 File: ./src/RQ_uq_compare.png Graphic file (type png)
 <use ./src/RQ_uq_compare.png>
 Package pdftex.def Info: ./src/RQ_uq_compare.png  used on input line 516.
@@ -692,98 +691,110 @@ Overfull \hbox (6.73207pt too wide) in paragraph at lines 516--517
  [][] 
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [15 <./src/GP_sensitivity_analysis_final_V1.png> <./src/final_GP_dim_v2.png>] 
-[16 <./src/MLP_uq_compare.png> <./src/RQ_uq_compare.png>]
-<./src/RF_oob_error.png, id=236, 1027.84pt x 947.54pt>
+<./src/RF_oob_error.png, id=230, 1027.84pt x 947.54pt>
 File: ./src/RF_oob_error.png Graphic file (type png)
 <use ./src/RF_oob_error.png>
-Package pdftex.def Info: ./src/RF_oob_error.png  used on input line 544.
+Package pdftex.def Info: ./src/RF_oob_error.png  used on input line 532.
 (pdftex.def)             Requested size: 205.56436pt x 189.50464pt.
-<./src/ERT_oob_error.png, id=237, 1027.84pt x 947.54pt>
+<./src/ERT_oob_error.png, id=231, 1027.84pt x 947.54pt>
 File: ./src/ERT_oob_error.png Graphic file (type png)
 <use ./src/ERT_oob_error.png>
-Package pdftex.def Info: ./src/ERT_oob_error.png  used on input line 550.
+Package pdftex.def Info: ./src/ERT_oob_error.png  used on input line 538.
 (pdftex.def)             Requested size: 205.56436pt x 189.50464pt.
-<./src/RF_predictions_and_uncert.png, id=240, 722.7pt x 722.7pt>
+[16 <./src/MLP_uq_compare.png>] [17 <./src/RQ_uq_compare.png> <./src/RF_oob_err
+or.png> <./src/ERT_oob_error.png>]
+<./src/RF_predictions_and_uncert.png, id=249, 722.7pt x 722.7pt>
 File: ./src/RF_predictions_and_uncert.png Graphic file (type png)
 <use ./src/RF_predictions_and_uncert.png>
 Package pdftex.def Info: ./src/RF_predictions_and_uncert.png  used on input lin
-e 565.
+e 553.
 (pdftex.def)             Requested size: 144.53743pt x 144.53743pt.
-<./src/RF_UQ.png, id=241, 433.62pt x 433.62pt>
+<./src/RF_UQ.png, id=250, 433.62pt x 433.62pt>
 File: ./src/RF_UQ.png Graphic file (type png)
 <use ./src/RF_UQ.png>
-Package pdftex.def Info: ./src/RF_UQ.png  used on input line 571.
+Package pdftex.def Info: ./src/RF_UQ.png  used on input line 559.
 (pdftex.def)             Requested size: 130.087pt x 130.087pt.
-<./src/ERT_vs_RF_meta_modeling.png, id=242, 425.59pt x 286.06876pt>
+<./src/ERT_vs_RF_meta_modeling.png, id=251, 425.59pt x 286.06876pt>
 File: ./src/ERT_vs_RF_meta_modeling.png Graphic file (type png)
 <use ./src/ERT_vs_RF_meta_modeling.png>
 Package pdftex.def Info: ./src/ERT_vs_RF_meta_modeling.png  used on input line 
-576.
+564.
 (pdftex.def)             Requested size: 148.95872pt x 100.12556pt.
 
-Overfull \hbox (3.8482pt too wide) in paragraph at lines 576--577
+Overfull \hbox (3.8482pt too wide) in paragraph at lines 564--565
 [][] 
  []
 
-[17 <./src/RF_oob_error.png> <./src/ERT_oob_error.png>]
-<./src/ANN_1.png, id=253, 722.7pt x 578.16pt>
+
+LaTeX Warning: Reference `fig:ANN_dim' on page 18 undefined on input line 579.
+
+
+LaTeX Warning: Reference `fig:ANN_dim' on page 18 undefined on input line 579.
+
+<./src/ANN_1.png, id=255, 722.7pt x 578.16pt>
 File: ./src/ANN_1.png Graphic file (type png)
 <use ./src/ANN_1.png>
-Package pdftex.def Info: ./src/ANN_1.png  used on input line 613.
+Package pdftex.def Info: ./src/ANN_1.png  used on input line 588.
 (pdftex.def)             Requested size: 216.81166pt x 173.44933pt.
-<./src/ENSEMBLE_5.png, id=254, 722.7pt x 578.16pt>
+<./src/ENSEMBLE_5.png, id=256, 722.7pt x 578.16pt>
 File: ./src/ENSEMBLE_5.png Graphic file (type png)
 <use ./src/ENSEMBLE_5.png>
-Package pdftex.def Info: ./src/ENSEMBLE_5.png  used on input line 619.
+Package pdftex.def Info: ./src/ENSEMBLE_5.png  used on input line 594.
 (pdftex.def)             Requested size: 216.81166pt x 173.44933pt.
+
+Underfull \vbox (badness 7649) has occurred while \output is active []
+
  [18 <./src/RF_predictions_and_uncert.png> <./src/RF_UQ.png> <./src/ERT_vs_RF_m
-eta_modeling.png>]
+eta_modeling.png>] [19 <./src/ANN_1.png> <./src/ENSEMBLE_5.png>]
 Excluding 'comment' comment. Excluding 'comment' comment.
 No file thesis.bbl.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 833.
-[19 <./src/ANN_1.png> <./src/ENSEMBLE_5.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 833.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 806.
+[20
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 806.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 833.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 833.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 806.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 806.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 7A95C8F0F7CE998358475EC39F9C371A;1205.
+(rerunfilecheck)             Checksum: E8D16029C282BA82C4D9C9DBB298B826;1184.
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 833.
- ) 
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 806.
+ )
+(\end occurred inside a group at level 1)
+
+### simple group (level 1) entered at line 368 ({)
+### bottom level 
 Here is how much of TeX's memory you used:
- 10511 strings out of 483140
- 159930 string characters out of 5965151
- 437551 words of memory out of 5000000
- 25282 multiletter control sequences out of 15000+600000
+ 10513 strings out of 481239
+ 159950 string characters out of 5920377
+ 443086 words of memory out of 5000000
+ 25527 multiletter control sequences out of 15000+600000
  542730 words of font info for 64 fonts, out of 8000000 for 9000
- 36 hyphenation exceptions out of 8191
- 41i,10n,79p,1598b,681s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/adam/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600p
-k></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
-0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/s
-hare/texmf/fonts/type1/public/lm/lmss17.pfb>
-Output written on thesis.pdf (19 pages, 1229585 bytes).
+ 1141 hyphenation exceptions out of 8191
+ 41i,10n,79p,1598b,684s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/
+texmf/fonts/type1/public/lm/lmss17.pfb></usr/share/texmf/fonts/type1/public/cm-
+super/sfrm1200.pfb>
+Output written on thesis.pdf (20 pages, 1236606 bytes).
 PDF statistics:
- 332 PDF objects out of 1000 (max. 8388607)
- 261 compressed objects within 3 object streams
- 53 named destinations out of 1000 (max. 500000)
+ 339 PDF objects out of 1000 (max. 8388607)
+ 266 compressed objects within 3 object streams
+ 54 named destinations out of 1000 (max. 500000)
  230 words of extra memory for PDF output out of 10000 (max. 10000000)
 

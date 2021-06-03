@@ -389,7 +389,7 @@ Table with performance metrics for optimal hyperparameters for each model can be
 		ANN & $0.6126 \pm 0.0694$ & TBD \\
 		\hline
 		\end{tabular}
-		\caption{Uncertainty in performance is derived from the cross-validation method, where the final metric is the average of the performances across each fold, and the uncert. is the std of the performance acros seach fold.}
+		\caption{The optimal relevant hyperparameters are chose for each model type, and the best RMSE and MAE are caulculated by averaging the results across each fold and repeat of the repeated cross-validation method. Uncertainty in the calculated RMSE and MAE is derived from the  standard deviation of the RMSE across each fold.}
 		\label{tab:performance_models}
 	\end{center}
 \end{table}
@@ -423,8 +423,8 @@ We can see that by including more parameters than the original 5 used in the sca
 
 Through the use of regularization via the LASSO method, the following features were deemed 'unimportant' (their coefficients dropped to 0 or near 0): $H, M_{eff}, B_T, V_P$.
 A new model with reduced dimensionality was fit by removing the unimportant features from the input space.
-It was seen that the prediction quality decreases dramatically with any reduction of dimensionality; in removing H or $M_{eff}$ from the input space, the RMSE and MAE increased to much above that of the scaling law, while when removing $V_P$ or $B_T$, there was an increase of 1.5 in the RMSE and MAE. 
-The results of LASSO can be slightly misleading, as linear regressors and their regularized extensions are prone to problems when working with many correlated variables. Many of the variables in the input space are correlated (e.g., $P_{TOT}, P_{NBI}, P_{ICRH}$), which may be why the best RMSE and MAE are achieved when all variables are included.
+It was seen that the prediction quality decreased dramatically with any reduction of dimensionality; in removing H or $M_{eff}$ from the input space, the RMSE and MAE increased to much above that of the scaling law, while when removing $V_P$ or $B_T$, there was an increase of 1.5 in the RMSE and MAE. 
+The results of LASSO can be slightly misleading, as linear regressors and their regularized extensions are prone to problems when working with many correlated variables. and many of the variables in the input space are correlated (e.g., $P_{TOT}, P_{NBI}, P_{ICRH}$), which may be why the best RMSE and MAE are achieved when all variables are included.
 
 Fitting a Bayesian linear regressor using all of the available engineering parameters yielded new coefficients (as well as the uncertainties therewith), which can be seen in Table \ref{tab:new_coef}. 
 From the coefficients and their uncertainties, the general uncertainty in the point prediction of $n_e^{ped}$ can be ascertained, and is plotted below the point predictions in Figure \ref{subfig:bayesian_uq}.
@@ -503,41 +503,29 @@ To determine the results of sensitivity analysis, a GP model with a RBF kernel w
 The sensitivity analysis for GPs suggests that H and $M_{eff}$ do not aid in predicting the pedestal density, which may be due to the filtered dataset used for fitting being exclusive in its values for $H$ and $M_{eff}$ (only deuterium experiments were considered), 
 I would expect this to change if a wider range of fuelling elements were included in the dataset, and for future work do not expect $M_{eff}$ to rank as low as it does. Each sensitivty analysis also ranks $B_T$ low, which is most likely due to the inherent correlation between $B_T, q_{95}, \text{and} I_P$, as most of the information of $B_T$ is contained within $q_{95}$. 
 
-Using the results from the sensitivity analysis, the performance vs dimensionality was measured for four homoscedastic GPs with varying kernels and plotted in \ref{subfig:GP_vs_dimensionality}. It can be seen that the top performing kernels were the MLP and Rational Quadratic (RQ). \textcolor{red}{check if MLL gets smaller as more data is added!, also define?}. We observe also that the MLP and RQ do not improve after $B_T$ is added to its, i.e., confirming the results of the sensitivity analysis. This means that in regards to the current dataset, it is unnessecary to supply $H \& M_{eff}$ to a GP, which can greatly reduce the computation time. However, this can be subject to change, as stated before, the dataset used was exclusive in its choice of $H$ and $M_{eff}$, thus for multi machine or multi element datasets, the importance of the two variable may be more than what was found here. Nevertheless, the remainder of the GP models that are fitted and analysed do not make use $H$ or $M_{eff}$. 
+Using the results from the sensitivity analysis, the performance vs dimensionality was measured for four homoscedastic GPs with varying kernels and plotted in \ref{subfig:GP_vs_dimensionality}. It can be seen that the top performing kernels were the MLP and Rational Quadratic (RQ). We observe also that the MLP and RQ do not improve after $B_T$ is added to its, i.e., confirming the results of the sensitivity analysis. This means that in regards to the current dataset, it is unnessecary to supply $H \& M_{eff}$ to a GP, which can greatly reduce the computation time. However, this can be subject to change, as stated before, the dataset used was exclusive in its choice of $H$ and $M_{eff}$, thus for multi machine or multi element datasets, the importance of the two variable may be more than what was found here. Nevertheless, the remainder of the GP models that are analysed in this section do not use $H$ or $M_{eff}$ during the fitting procedure. 
 
-To determine the effect of uncertainty propagation, the two approaches described in REFERNECE SECTION are applied; (a) a fixed kernel with $n_e^{ped}$ measurement uncertainties along the diagonal is added to a base kernel, (b) a heteroscedastic model is fit fixing the built in noise variance component of the GP to the measurement uncertainty of $n_e^{ped}$ such to learn the latent space of the used uncertainty. This process is done for both the RQ and MLP kernel.
-We see from Figure \ref{fig:MLP_UQ} that the homoscedastic slightly outpreforms the heteroscedasticmodel, however their uncertainties could not be more different. As the heteroscedastic model attempts to learn the uncertainty space, we can see that although the predictions for $n_e^{ped} > 10$ are furthest, it accuratly models the actual measurement uncertainty found in the database. This is very different from the homoscedastic and fixed models, which although perform very well, suffere from being very uncertain ($ \geq \pm 1.2$ for each quantile). Thus a tradeoff is occuring, where the more accurate the model is, which can also be seen in the Rational Quadratic kernels in Figure \ref{fig:RQ_UQ}. Here a similar process occurs.   
+To determine the effect of uncertainty propagation, the two approaches described in REFERNECE SECTION are applied; (a) a fixed kernel with $n_e^{ped}$ measurement uncertainties along the diagonal is added to a base kernel, (b) a heteroscedastic model is fixes the built in noise variance component of GPs to be the measurement uncertainty of $n_e^{ped}$ such to learn the latent space of the used uncertainty. This process is done for both the RQ and MLP kernel and compared to the homoscedastic models.
+We see from Figure \ref{fig:MLP_UQ} that the homoscedastic slightly outpreforms the heteroscedastic model, yet their uncertainties could not be more different. As the heteroscedastic MLP model attempts to learn the uncertainty space, we can see that although the predictions for $n_e^{ped} > 10$ are furthest, its uncertainty is much lower. Since the uncertainties are propogated through the GP, the generated prediction functions end up being much closer to eachother, resulting in a lower variance in prediciton. This is very different from the homoscedastic and fixed models, which although perform very well, suffer from having their prediction generating functions far apart (a variance $ \geq \pm 1.2$), regardless of prediction accuracy. The tradeoff can also be seen in the Rational Quadratic kernels in Figure \ref{fig:RQ_UQ}.
 
 \begin{figure}\centering
-		\includegraphics[scale=0.28]{./src/MLP_uq_compare}
-		\caption{Three different methods UQ compared define homo, heteroscedastic, and fixed. The LHS, the residiual, and RHS, prediction uncertainty.}
+		\includegraphics[scale=0.25]{./src/MLP_uq_compare}
+		\caption{Three different methods of uncertainty quantification are compared for a GP with an MLP kernel. \textbf{Left:} The true values of $n_e^{ped}$ are grouped into 11 equaly sized bins and the distance between the predictions of those values and the true values are caluclated. The residuals are averaged across each bin and compared between the methods. \textbf{Right:} The same binning procedure, but with averaging the prediction uncertainties of the same three methods are compared.}
 	\label{fig:MLP_UQ}
 \end{figure}\begin{figure}\centering
 		\includegraphics[scale=0.28]{./src/RQ_uq_compare}
-		\caption{Three different methods UQ compared. The LHS, the residiual, and RHS, prediction uncertainty.}
+		\caption{The same procedure from Figure \ref{fig:MLP_UQ} is applied, just with the Rational Quadratic Kernel instead of MLP.}
 	\label{fig:RQ_UQ}
 \end{figure}
 
-\subsection{Random Forests and Ensemble Methods}
-
+\subsection{Random Forests}
+To deterimine the optimal size (number of decision trees) of an RF and ERT, the out-of-bag error is measured. Additionaly, the optimal number of features to sample in creating each node within each tree can be determined using the OOB, and the results are plotted in Figure \ref{fig:RF_exp}. We see that after 254 decision trees in the RF, the OOB error does not improve, i.e., the forest reaches its maximum generalization capability at 254 decision trees. Furthermore, the optimal number of features to sample is 5. This is completely different for what occurs with the ERTs, where the optimal number of features to sample is 12 (all), and the number of trees is 142. The larger number of features sampled by the ERT compared to the RF is most likely because of the random splitting of nodes that ERTs make use of in creating their trees, such that they need to make use of all the features in order to generalize better, whereas the RF aims to minimize the MSE with their splits, thus not requiring all the inputs for an optimal split. For both models, overfitting begins to occur as more trees are added past the minimum OOB, and although the RMSE may improve, the generalizibility does not.
+ 
 \begin{itemize}
-\item OOB Error (a) RF; uses 5 features (what are they?), best at 254 (b) ERT uses all, best at 142
-\item RMSE (a) RF;  (b) ERT; 
-\item UQ 
+\item RMSE \& UQ(a) RF using 5 features and 254 estimators;  (b) ERT all features and 254 estimators; 
+\item Tree impurity - Feature Selection for above 
 \end{itemize}
 
-
-
-The optimal hypereparameters for the RFs and ERTs was determined through a combination of grid and random search. 
-To determine the size of the forest (number of decision trees), the OOB error for forests that sample a maximum of $n$ features in the bootstrap sampling process is calculated for increasing number of decision trees.
-This is done using repeated fold CV, where there are 5 splits and 5 repeats.
-The results of the OOB error vs $n$ features vs number of decision trees is plotted in Figure~\ref{subfig:rfoob}.
-It is aparant that after around 250 decision trees there is no additional generalization, and that the best generalization (OOB score) comes from forests that sample a maximum of 8 features.
-\textcolor{blue}{what are those features?}.
-To compare on overall performance, the RMSE vs number of estimators is calculated for varying number of maximum feature forests as seen in Figure~\ref{subfig:rf_rmse}.
-This time, the best performing forest is that which subsamples a maximum of 9 features, and has around 250 decision trees.
-However, a close second is that same forest, but with only 105 decision trees.
-If it is important that models be as small as possible without damaging the prediction quality, then this model would be recommended.
 \begin{figure}
 	\begin{subfigure}{0.48\linewidth}
 		\centering
@@ -551,11 +539,11 @@ If it is important that models be as small as possible without damaging the pred
 		\caption{}
 		\label{subfig:rf_rmse}
 	\end{subfigure}
-	\caption{OOB error vs number of decision trees of (a) Random Forests (b) Extreme Random Trees}
+	\caption{OOB error vs number of decision trees of (a) Random Forests (b) Extreme Random Trees. No cross validation is necessary for this procedure, since the process of bagging inherently prevents all trees from seeing the same data. The colored lines correspond to different RFs and ERTs which vary by the amount of features to sample when splitting a node. }
 	\label{fig:RF_exp}
 \end{figure}
 
-The resulting predictions from the random forest which uses 9 max features and 105 decision trees is plotted in \ref{subfig:RF_UQ}, and the corresponding uncertainties calculated from the standard deviation of the prediciton in the 105 decision trees is plotted in \ref{subfig:RF_UQ2}.
+The resulting predictions from a RF which samples 5 features and has 254 decision trees is plotted in \ref{subfig:RF_UQ}, and the corresponding uncertainties calculated from the standard deviation of the prediciton in the 105 decision trees is plotted in \ref{subfig:RF_UQ2}.
 It is clear that the individual predictors in the random forest do not vary as much as that of the various functions from the Gaussian Process models. 
 This goes to suggest that RFs tend to overfit the space that they try to fit, and although give quite accurate predictions, do not provide great estimates for their uncertainties. 
 
@@ -581,32 +569,19 @@ This goes to suggest that RFs tend to overfit the space that they try to fit, an
 	\label{fig:RF_Preds}
 \end{figure}
 
-In regards to how metamodeling effects RFs, initial tests showed absolutely no improvement, but also no degredation of prediction quality, as seen in Figure~\ref{subfig:RF_meta_model}.
-This came as a surprise to me, however to those well versed in RFs and ERTs, it may not. 
-The way in which a RF and ERT makes a split of their leafs within each decision tree is based on varying criteron. 
-For the RF, a split is made only when the RMSE of the prediction is to decrease, whereas for the ERT the split is randomly selected from the distribution of parameters within input space.
-Although only up to 500 meta model samples are added, the periodic bouncing between a RMSE of 0.57 and 0.58 repeats for even 2000 entries added!
-Therefore, in order to minimize the MSE of the overall dataset, RFs and ERTs ignore the additional entries.
-This allows for the conclusion that meta-modeling has little to no effect on ERTs and RFs.
+In regards to how metamodeling effects RFs and ERTs, initial tests showed no improvement, but also no degredation of prediction quality, as seen in Figure~\ref{subfig:RF_meta_model}.
+For the RF, splits in the nodes of the decision trees are made only when the RMSE of the prediction decreases, whereas for the ERT the split is randomly selected from the distribution of parameters within input space.
+Although only up to 500 meta model samples are visualised in Figure~\ref{subfig:RF_meta_model}, the sporatic bouncing of the RMSE between 0.57 and 0.58 repeats for when even 2000 synthesized entries are added!
+This suggests that in order to minimize the MSE of predictions across the entire dataset, RFs and ERTs ignore the additional entries and in  conclusion that meta-modeling has little to no effect on ERTs and RFs.
 
 
 \subsection{Artificial Neural Networks}
-To find the optimal architecture and hyperparameters, a combination of grid search and random search was used.
-The ANN analysis in this paper is constrained to the use of shallow networks, i.e., $\leq 5$ hidden layers.
-The reason for this is that ANNs have seldom been used in the prediction of pedestal quantities, and more so on this dataset, and this thesis is concerned with giving proof of concepts, rather than finding the outright best tool.
-Firstly, a simple ANN of 4 hidden layers each with width of 60 nodes was repeatedly fit with varying mini-batchsize and learning rate, until the optimal performance on the training set was achieved.
-From there it was determined that a relatively high mini-batch size (between 350-450) with a learning rate between 0.001-0.01 resulted in best and quickest convergence.
-Using these parameters, a grid search across many different activation functions was done, ultimately determining that the ELU activation function proved best.
-From there, the architecture search space was created, in which width of each layer was the space, and using random search to find an optimal candidate.
-Ultimately, it was determined that for a shallow network, hidden sizes of [69, 37, 31, 18] (in order of 1st hidden layer onward), as well as [84, 66, 54, 41].
+The ANN analysis in this paper is constrained to the use of shallow networks ($\leq 6$ hidden layers) for reasons seen in Figure \ref{fig:ANN_dim}. The optimal mini-batch size and learning rate were found via random search to be 396 and 0.004 respectively. Then, via grid search of many different types of activation functions, networks with the ELU wrapper performed the best. Then, using these hyperparameters, models of varying amounts and sizes of hidden layers were fit, and as seen in Figure \ref{fig:ANN_dim}, the optimal number of hidden layers was determined to be either 3 or 4, with between 1000-2000 nodes split between the number of layers, i.e., between 300-400 nodes per hidden layer. This criteria was used as a space for further architecture search via random search, and the optimal network was found to have 4 layers of, hidden sizes of [69, 37, 31, 18] (in order of 1st hidden layer onward). 
 There could very well be better sizes out there, but the general idea of large first hidden layer followed by steadily decreasing layer sizes performs the best.
-An additional benefit of neural networks is the ability to use categorical data. 
-For example, the wall type can be used as an input parameter by transforming it to a binary input of [0, 1] or [1, 0] for the ILW and Carbon wall respectively. 
-This was seen to increase the performance of the ANN in comparison to using the typical engineering parameters.
 At the end, the best performing ANN was used to make an ensemble of networks, all with different initial weights, and fitted in the same cross-validation format to produce the uncertainty in \ref{subfig:ensemble}.
 Meta modeling as an additional form of UQ did seem to improve predictions for high $n_e^{ped}$, while sacrificing the overall performance.
 This was unique for the ANNs, as all other usages of meta-modeling for other ML tools either did not affect the model or had only adverse effects to performance.
-\textcolor{blue}{\@ Aaro this seems really underselling, I am not sure what else I should write here.}}
+
 \begin{figure}
 	\begin{subfigure}{0.49\linewidth}
 		\centering 
@@ -623,16 +598,14 @@ This was unique for the ANNs, as all other usages of meta-modeling for other ML 
 \end{figure}
 
 \subsection{What didn't work}
+Many different types not listed in the above analyses were initially tested, but due to their underperformance compared to RFs/GPs/ANNs, they were abandoned before devling deeper into the others. For example, Nearest neighbours methods like K-nn and R-nn were tested, but struggled to perform on unseen data. Radius neighbours especially so, which although they could overfit extremely well with sufficiently small radius, they can not generalize for data entries that which they are fitted with (often providing no prediction). Support vector machines (SVMs) were tested, but due to the difficulties of deriving the prediction uncertainty and general underperformace, they were dropped. Additionally, SVMs work well when there is a clear seperation between regression points, and as we have seen, for $n_e^{ped} \geq 9$ there is no clear cut discrepncies, so SVMs offer little to no additional utility. Other ensemble methods like AdaBoost showed to perform equally or slightly worse than RFs and ERTs, but some scope was needed in this thesis, so they were ultimately dropped from analysis. The combination of multiple model types into an ensemble proved only slightly beneificial, and thus may be looked at in future research. 
 \section{Conclusion and Outlook}
 It is clear that through the use of non-linear machine learning models, there can be major improvements towards accurately predicting the pedestal density height while only using main engineering parameters.
 
-The models analysed could be ranked via their respective performance on unseen data through the use of cross validation.
-The ultimate winner of the models was the Gaussian Process with a MLP/Rational Quadratic kernel with the $n_e^{ped}$ uncertainties propagated through it during the fitting cycles.
-Although the primary analysis was on model generalization and not to make production ready tools, one could readily adapt these models to be used in production like scenarios, for example making predictions to connect core with SOL in EPED like was done by Andreas et. all.
+The models analysed could be ranked via their respective performance on unseen data through the use of cross validation, which is given in Table \ref{tab:performance_models}.
+It is hard to point to a clear winner among the non-parameteric/linear models, as they all score relatively close to eachother, however it is easy to see that these types of ML tools outpreform scaling laws. 
 This analysis covered only the use of main engineering parameters, but some study was done on the effects of using $Z_{eff}$ and $\beta_N^{ped}$ as input parameters.
 They did certainly improve predictions, further suggesting the potential for use cases in tools like EPED, but the degree in which they helped predictions was not so much to say that they are necessary (on average the RMSE would lower by $\leq$ 0.1).
-Although the performance of the ANNs was disappointing, the model space has been layed for future work.
-\textcolor{blue}{\@ Aaro I am also not sure how much more I should write about here, or how to relate it to the beginning more than the first sentence says.}
 
 \begin{comment}
 

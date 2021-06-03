@@ -12,7 +12,7 @@
 \contentsline {section}{\numberline {3}Results}{13}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Linear Regression}{13}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}Gaussian Process}{14}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Random Forests and Ensemble Methods}{17}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.3}Random Forests}{16}{subsection.3.3}%
 \contentsline {subsection}{\numberline {3.4}Artificial Neural Networks}{18}{subsection.3.4}%
 \contentsline {subsection}{\numberline {3.5}What didn't work}{19}{subsection.3.5}%
-\contentsline {section}{\numberline {4}Conclusion and Outlook}{19}{section.4}%
+\contentsline {section}{\numberline {4}Conclusion and Outlook}{20}{section.4}%
