@@ -232,7 +232,7 @@ After filtering out the RMPs, Kicks, Pellets, non-validated HRTS, and shots that
 \end{center}
 
 \begin{equation} \label{eq:mtanh}
-happy mtanh here
+mtanh(r) = \frac{h_1 - h_0}{2} \left( \frac{(1 + sx) e^x - e^{-x}}{e^x + e^{-x}} + 1\right) + h_0 , x=\frac{p-r}{w/2}
 \end{equation}
 \subsubsection{Empirical Analysis}
 \begin{figure}
@@ -249,7 +249,7 @@ happy mtanh here
                 \caption{}
                 \label{subfig:corr_shit}
         \end{subfigure}
-	\caption{(a) the 'ice cream corerlation' between the major radius $R$, divertor configuration, and $n_e^{ped}$,  (b) the correlation matrix of the main engineering parameters to be used as inputs. A grey coloring represents no correlation, whereas blue and yellow are negative and positive correlation respectively.  }
+	\caption{Emperical data plots of the JET pedestal database. \textbf{Left:} the 'ice cream corerlation' between the major radius $R$, divertor configuration, and $n_e^{ped}$,  \textbf{Right:}  correlation matrix of the main engineering parameters. A grey coloring represents no correlation, whereas blue and yellow are negative and positive correlation respectively.}
 	\label{fig:emperical}
 \end{figure}
 Empirical analysis of the JET pedestal database has been done [\textcolor{blue}{SOURCE LORENZO DB SHIT}], and has yielded the following log-linear scaling law for the pedestal density height $n_e^{ped}$.
@@ -283,7 +283,8 @@ To make a prediction, the model must first be \textit{fitted}, which means to le
 In the case of linear regression, the learning algorithm is the ordinary least squares method (OLS) [SOURCE] which minimizes the mean squared error in order to find the optimal linear coefficients $\theta(w_i)$.
 Not all supervised learning regression algorithms minimize the RMSE or MAE to fit model parameters.
 The RMSE and MAE as stated above are merely a quantization of the performance of a particular model.
-Additionally, the scoring of the performance of the model shall be made using data that the model had previously not seen.
+
+The scoring of the performance of a fitted model shall be made using data that the model had previously not seen.
 If this were not the case, the model would simply repeat what it had been fitted with, and would fail to predict useful information on yet unseen data.
 This is called \textit{overfitting}; to avoid overfitting a common practice in supervised machine learning is to hold out part of the available data as a test set.
 This can be done by randomly splitting the available data into training and test subsets, and to evaluate the model on the test set.
@@ -576,12 +577,35 @@ This suggests that in order to minimize the MSE of predictions across the entire
 
 
 \subsection{Artificial Neural Networks}
-The ANN analysis in this paper is constrained to the use of shallow networks ($\leq 6$ hidden layers) for reasons seen in Figure \ref{fig:ANN_dim}. The optimal mini-batch size and learning rate were found via random search to be 396 and 0.004 respectively. Then, via grid search of many different types of activation functions, networks with the ELU wrapper performed the best. Then, using these hyperparameters, models of varying amounts and sizes of hidden layers were fit, and as seen in Figure \ref{fig:ANN_dim}, the optimal number of hidden layers was determined to be either 3 or 4, with between 1000-2000 nodes split between the number of layers, i.e., between 300-400 nodes per hidden layer. This criteria was used as a space for further architecture search via random search, and the optimal network was found to have 4 layers of, hidden sizes of [69, 37, 31, 18] (in order of 1st hidden layer onward). 
+
+The ANN analysis in this paper is constrained to the use of shallow networks ($\leq 6$ hidden layers) for reasons seen in Figure \ref{fig:ANN_dim}. 
+Throughout the hyperparameter optimization process, each model was trained and tested using the same repeated cross-fold validation methods, with 5 folds and 5 repeats. Typically, the first hyperparameters to be optimized are the learning rate (LR) and mini-batch size (MBS), and the optimal values are those that minimize the MSE on the training set. Through random search, the optimal MBS and LR were found to be 396 and 0.004 respectively. Considering the dataset is around 2000 entries, the mini-batch size is relatively large, and the learning rate could be considered very small for such a large mini-batch size. However, since each training epoch, the data is randomly shuffled, it is possible that the training samples in each batch 'compete' with eachothers gradient. For example, the training samples of $n_e^{ped} \geq 9.5$ may want to pull the model weights in an opposite direction than that $n_e^{ped} \leq 9.5$. The gradient updates applied for this mini-batch size seemed to balance the effect of the training samples, thus resulting in the best training/testing performance. 
+
+Then, via grid search (across all available activation layers offered by Pytorch), the optimal activation function was deterimend to be ELU \textcolor{green}{(alpha?)}. 
+
+Using these hyperparameters, models of varying sizes of hidden layers were fit, and as seen in Figure \ref{fig:ANN_dim}, the initial ansatz of hidden layers was determined to be either 3 or 4, with between 1000-2000 nodes (split between the each of the hidden layers). This criteria was used as a space for further architecture search via random search, and the optimal network was found to have 4 layers of, hidden sizes of [69, 37, 31, 18] (in order of 1st hidden layer onward). 
 There could very well be better sizes out there, but the general idea of large first hidden layer followed by steadily decreasing layer sizes performs the best.
+
 At the end, the best performing ANN was used to make an ensemble of networks, all with different initial weights, and fitted in the same cross-validation format to produce the uncertainty in \ref{subfig:ensemble}.
 Meta modeling as an additional form of UQ did seem to improve predictions for high $n_e^{ped}$, while sacrificing the overall performance.
 This was unique for the ANNs, as all other usages of meta-modeling for other ML tools either did not affect the model or had only adverse effects to performance.
-
+\begin{figure}
+	\centering
+	\begin{subfigure}{0.495\linewidth}
+		\centering
+		\includegraphics[scale=0.4]{example-image-a}
+		\caption{}
+		\label{subfig:ANN_dim_sim}
+	\end{subfigure}
+	\begin{subfigure}{0.495\linewidth}
+		\centering
+		\includegraphics[scale=0.4]{example-image-b}
+		\caption{}
+		\label{subfig:ANN_dim_ens}
+	\end{subfigure}\hfill
+	\caption{(a) Performance vs Size of ANN (b) Performance vs Size of ANN Ensembles}
+	\label{fig:ANN_dim}
+\end{figure}
 \begin{figure}
 	\begin{subfigure}{0.49\linewidth}
 		\centering 

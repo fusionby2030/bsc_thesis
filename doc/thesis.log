@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.5)  3 JUN 2021 14:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.5)  4 JUN 2021 16:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -647,13 +647,13 @@ Overfull \hbox (3.76123pt too wide) in paragraph at lines 248--249
 File: ./src/Baysian_regression_predictions.png Graphic file (type png)
 <use ./src/Baysian_regression_predictions.png>
 Package pdftex.def Info: ./src/Baysian_regression_predictions.png  used on inpu
-t line 437.
+t line 438.
 (pdftex.def)             Requested size: 226.24864pt x 226.95126pt.
 <./src/Baysian_regression_uncert.png, id=196, 456.70625pt x 460.72125pt>
 File: ./src/Baysian_regression_uncert.png Graphic file (type png)
 <use ./src/Baysian_regression_uncert.png>
 Package pdftex.def Info: ./src/Baysian_regression_uncert.png  used on input lin
-e 443.
+e 444.
 (pdftex.def)             Requested size: 228.35255pt x 230.36006pt.
  [13
 
@@ -663,19 +663,19 @@ t>
 File: ./src/GP_sensitivity_analysis_final_v1.png Graphic file (type png)
 <use ./src/GP_sensitivity_analysis_final_v1.png>
 Package pdftex.def Info: ./src/GP_sensitivity_analysis_final_v1.png  used on in
-put line 491.
+put line 492.
 (pdftex.def)             Requested size: 221.02184pt x 221.02184pt.
 <./src/final_GP_dim_v2.png, id=207, 1105.12875pt x 1105.12875pt>
 File: ./src/final_GP_dim_v2.png Graphic file (type png)
 <use ./src/final_GP_dim_v2.png>
-Package pdftex.def Info: ./src/final_GP_dim_v2.png  used on input line 497.
+Package pdftex.def Info: ./src/final_GP_dim_v2.png  used on input line 498.
 (pdftex.def)             Requested size: 221.02184pt x 221.02184pt.
  [14 <./src/Baysian_regression_predictions.png> <./src/Baysian_regression_uncer
 t.png>]
 <./src/MLP_uq_compare.png, id=218, 1751.54375pt x 1041.8925pt>
 File: ./src/MLP_uq_compare.png Graphic file (type png)
 <use ./src/MLP_uq_compare.png>
-Package pdftex.def Info: ./src/MLP_uq_compare.png  used on input line 512.
+Package pdftex.def Info: ./src/MLP_uq_compare.png  used on input line 513.
 (pdftex.def)             Requested size: 437.88487pt x 260.47249pt.
 
 Underfull \vbox (badness 3930) has occurred while \output is active []
@@ -684,22 +684,22 @@ Underfull \vbox (badness 3930) has occurred while \output is active []
 <./src/RQ_uq_compare.png, id=226, 1751.54375pt x 1041.8925pt>
 File: ./src/RQ_uq_compare.png Graphic file (type png)
 <use ./src/RQ_uq_compare.png>
-Package pdftex.def Info: ./src/RQ_uq_compare.png  used on input line 516.
+Package pdftex.def Info: ./src/RQ_uq_compare.png  used on input line 517.
 (pdftex.def)             Requested size: 490.42891pt x 291.7279pt.
 
-Overfull \hbox (6.73207pt too wide) in paragraph at lines 516--517
+Overfull \hbox (6.73207pt too wide) in paragraph at lines 517--518
  [][] 
  []
 
 <./src/RF_oob_error.png, id=230, 1027.84pt x 947.54pt>
 File: ./src/RF_oob_error.png Graphic file (type png)
 <use ./src/RF_oob_error.png>
-Package pdftex.def Info: ./src/RF_oob_error.png  used on input line 532.
+Package pdftex.def Info: ./src/RF_oob_error.png  used on input line 533.
 (pdftex.def)             Requested size: 205.56436pt x 189.50464pt.
 <./src/ERT_oob_error.png, id=231, 1027.84pt x 947.54pt>
 File: ./src/ERT_oob_error.png Graphic file (type png)
 <use ./src/ERT_oob_error.png>
-Package pdftex.def Info: ./src/ERT_oob_error.png  used on input line 538.
+Package pdftex.def Info: ./src/ERT_oob_error.png  used on input line 539.
 (pdftex.def)             Requested size: 205.56436pt x 189.50464pt.
 [16 <./src/MLP_uq_compare.png>] [17 <./src/RQ_uq_compare.png> <./src/RF_oob_err
 or.png> <./src/ERT_oob_error.png>]
@@ -707,75 +707,71 @@ or.png> <./src/ERT_oob_error.png>]
 File: ./src/RF_predictions_and_uncert.png Graphic file (type png)
 <use ./src/RF_predictions_and_uncert.png>
 Package pdftex.def Info: ./src/RF_predictions_and_uncert.png  used on input lin
-e 553.
+e 554.
 (pdftex.def)             Requested size: 144.53743pt x 144.53743pt.
 <./src/RF_UQ.png, id=250, 433.62pt x 433.62pt>
 File: ./src/RF_UQ.png Graphic file (type png)
 <use ./src/RF_UQ.png>
-Package pdftex.def Info: ./src/RF_UQ.png  used on input line 559.
+Package pdftex.def Info: ./src/RF_UQ.png  used on input line 560.
 (pdftex.def)             Requested size: 130.087pt x 130.087pt.
 <./src/ERT_vs_RF_meta_modeling.png, id=251, 425.59pt x 286.06876pt>
 File: ./src/ERT_vs_RF_meta_modeling.png Graphic file (type png)
 <use ./src/ERT_vs_RF_meta_modeling.png>
 Package pdftex.def Info: ./src/ERT_vs_RF_meta_modeling.png  used on input line 
-564.
+565.
 (pdftex.def)             Requested size: 148.95872pt x 100.12556pt.
 
-Overfull \hbox (3.8482pt too wide) in paragraph at lines 564--565
+Overfull \hbox (3.8482pt too wide) in paragraph at lines 565--566
 [][] 
  []
 
-
-LaTeX Warning: Reference `fig:ANN_dim' on page 18 undefined on input line 579.
-
-
-LaTeX Warning: Reference `fig:ANN_dim' on page 18 undefined on input line 579.
-
-<./src/ANN_1.png, id=255, 722.7pt x 578.16pt>
+[18 <./src/RF_predictions_and_uncert.png> <./src/RF_UQ.png> <./src/ERT_vs_RF_me
+ta_modeling.png>]
+File: example-image-a.pdf Graphic file (type pdf)
+<use example-image-a.pdf>
+Package pdftex.def Info: example-image-a.pdf  used on input line 596.
+(pdftex.def)             Requested size: 128.47772pt x 96.35828pt.
+File: example-image-b.pdf Graphic file (type pdf)
+<use example-image-b.pdf>
+Package pdftex.def Info: example-image-b.pdf  used on input line 602.
+(pdftex.def)             Requested size: 128.47772pt x 96.35828pt.
+<./src/ANN_1.png, id=265, 722.7pt x 578.16pt>
 File: ./src/ANN_1.png Graphic file (type png)
 <use ./src/ANN_1.png>
-Package pdftex.def Info: ./src/ANN_1.png  used on input line 588.
+Package pdftex.def Info: ./src/ANN_1.png  used on input line 612.
 (pdftex.def)             Requested size: 216.81166pt x 173.44933pt.
-<./src/ENSEMBLE_5.png, id=256, 722.7pt x 578.16pt>
+<./src/ENSEMBLE_5.png, id=266, 722.7pt x 578.16pt>
 File: ./src/ENSEMBLE_5.png Graphic file (type png)
 <use ./src/ENSEMBLE_5.png>
-Package pdftex.def Info: ./src/ENSEMBLE_5.png  used on input line 594.
+Package pdftex.def Info: ./src/ENSEMBLE_5.png  used on input line 618.
 (pdftex.def)             Requested size: 216.81166pt x 173.44933pt.
-
-Underfull \vbox (badness 7649) has occurred while \output is active []
-
- [18 <./src/RF_predictions_and_uncert.png> <./src/RF_UQ.png> <./src/ERT_vs_RF_m
-eta_modeling.png>] [19 <./src/ANN_1.png> <./src/ENSEMBLE_5.png>]
+ [19 <./src/ANN_1.png> <./src/ENSEMBLE_5.png>]
 Excluding 'comment' comment. Excluding 'comment' comment.
 No file thesis.bbl.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 806.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 830.
 [20
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 806.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 830.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 806.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 806.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 830.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 830.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: E8D16029C282BA82C4D9C9DBB298B826;1184.
-
-
-LaTeX Warning: There were undefined references.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 806.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 830.
  )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 368 ({)
+### simple group (level 1) entered at line 369 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 10513 strings out of 481239
- 159950 string characters out of 5920377
- 443086 words of memory out of 5000000
- 25527 multiletter control sequences out of 15000+600000
+ 10518 strings out of 481239
+ 160055 string characters out of 5920377
+ 443362 words of memory out of 5000000
+ 25531 multiletter control sequences out of 15000+600000
  542730 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,10n,79p,1598b,684s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,10n,79p,1598b,687s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/tex
@@ -791,10 +787,10 @@ r8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/
 texmf/fonts/type1/public/lm/lmss17.pfb></usr/share/texmf/fonts/type1/public/cm-
 super/sfrm1200.pfb>
-Output written on thesis.pdf (20 pages, 1236606 bytes).
+Output written on thesis.pdf (20 pages, 1239188 bytes).
 PDF statistics:
- 339 PDF objects out of 1000 (max. 8388607)
- 266 compressed objects within 3 object streams
- 54 named destinations out of 1000 (max. 500000)
+ 343 PDF objects out of 1000 (max. 8388607)
+ 270 compressed objects within 3 object streams
+ 55 named destinations out of 1000 (max. 500000)
  230 words of extra memory for PDF output out of 10000 (max. 10000000)
 
