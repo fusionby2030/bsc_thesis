@@ -194,11 +194,18 @@
 	\item<3-> UQ 
 	\item<4-> Impurity seeding 
 \end{itemize}
+\onslide<1>
+{%
+\begin{align*}
+	\frac{d(p(y_* | \mathbf{x^{i}, y}) || p(y_* | \mathbf{x^{i} + \Delta_j, y}))}{\Delta}
+\end{align*}
+}%
+\hfill
 \column{0.72\textwidth}
-\includegraphics[scale=0.2]{../src/GP_sensitivity_analysis_final_V1}<1>
+\includegraphics[scale=0.2]{../src/GP_sensitivity_analysis_final_V1_weq}<1>
 \includegraphics[scale=0.2]{../src/final_GP_dim_v2}<2>
-\includegraphics[scale=0.135]{../src/MLP_UQ_compare}<3>
-\includegraphics[scale=0.2]{../src/GP_preds_impurity}<4>
+\includegraphics[scale=0.125]{../src/MLP_UQ_compare}<3>
+\includegraphics[scale=0.19]{../src/GP_preds_impurity}<4>
 \end{columns}
 \end{frame}
 
@@ -207,7 +214,7 @@
 \begin{columns}
 \column{0.28\textwidth}
 \begin{itemize}
-	\item<1-> Crawling
+	\item<1-> Crawling Search Space
 	\item<2-> Ensembling  
 \end{itemize}
 \column{0.72\textwidth}
