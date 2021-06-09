@@ -1,0 +1,239 @@
+\documentclass{beamer}
+
+\title{Machine Learning Analysis on the JET Pedestal Database}
+
+\subtitle{or how I learned to worry about high  $n_e^{ped}$}
+
+\date{9 June, 2021}
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\usepackage{ulem}
+\usepackage{xcolor}
+
+\begin{document}
+
+\frame{\titlepage}
+
+
+\begin{frame}
+	\frametitle{Overview}
+	\tableofcontents
+\end{frame}
+
+\section{JET Pedestal Database}
+\begin{frame}{fragile}
+\frametitle{JET Pedestal Database}
+\begin{columns}
+
+\column{0.33\textwidth}
+\includegraphics[scale=0.2]{../src/MTANH_fit}\hfill
+\column{0.2\textwidth}
+\column{0.33\textwidth}
+\begin{itemize}
+	\item H-Mode 
+	\item 75-95\% ELM Cycle
+	\item Focus on $n_e^{ped}$ height
+\end{itemize}
+\end{columns}
+
+\end{frame}
+\begin{frame}
+\frametitle{Input Parameters and Filtering}
+\begin{columns}
+
+\column{0.2\textwidth}
+
+\begin{center}
+\begin{tabular}{| c | c | }
+	\hline
+	Eng. Param & Domain \\
+	\hline
+	$I_P$ [MA] & $[0.81, 4.48]$ \\
+	$B_T$ [MW] & $[0.97, 3.68]$ \\
+	$a$ [m] & $[0.83, 0.97]$ \\
+	$R$ [m] & $[2.8, 2.975]$ \\ 
+	$\delta$ [-] & $[0.16, 0.48]$ \\
+	$M_{eff}$ [-] & $[1.0, 2.18]$ \\
+	$P_{NBI}$ [MW] & $[10^{-3}, 32.34]$ \\
+	$P_{ICRH}$ [MW] & $[0, 7.96]$ \\
+	$P_{TOT}$ [MW] & $[3.4, 38.22]$ \\
+	$V_P$ [m$^3$] &  $[58.3, 82.19]$ \\
+	$q_{95}$ [-] & $[2.42, 6.04]$ \\
+	$\Gamma$ [$10^{22}$ e/s] & $[0, 15.5]$ \\
+	$H$ [-] & $[0, 0.18]$ \\
+	$\Gamma_{SD}$ [$10^{22}$ e/s] & $[0, 1000]$ \\
+	$DC$ [-] & $[VV \cdots]$ \\
+	\hline
+\end{tabular}
+	\end{center}
+	\column{0.2\textwidth}\hfill
+\column{0.6\textwidth}
+\begin{center}
+\includegraphics[scale=0.48]{../src/R_vs_NEPED_DC}<1>
+\end{center}
+
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\begin{columns}
+\column{0.5\textwidth}
+\begin{itemize}
+	\item Shafranov Shift$\rightarrow$ remove $R$
+	\item $\Gamma_{SD}$ varies too much. 
+	\item Only numerical 
+	\item Only Deuterium 
+	\item No RMPs, Kicks, or Pellets
+	\item HRTS Validated 
+\end{itemize}
+
+\column{0.50\textwidth}
+\begin{tabular}{| c | c | }
+	\hline
+	Eng. Param & Domain \\
+	\hline
+	$I_P$ [MA] & $[0.81, 4.48]$ \\
+	$B_T$ [MW] & $[0.97, 3.68]$ \\
+	$a$ [m] & $[0.83, 0.97]$ \\
+	\sout{$\color{red}R \; \text{[m]}$ } & \sout{$ \color{red}[2.8, 2.975]$} \\ 
+	$\delta$ [-] & $[0.16, 0.48]$ \\
+	$M_{eff}$ [-] & $[1.0, 2.18]$ \\
+	$P_{NBI}$ [MW] & $[10^{-3}, 32.34]$ \\
+	$P_{ICRH}$ [MW] & $[0, 7.96]$ \\
+	$P_{TOT}$ [MW] & $[3.4, 38.22]$ \\
+	$V_P$ [m$^3$] &  $[58.3, 82.19]$ \\
+	$q_{95}$ [-] & $[2.42, 6.04]$ \\
+	$\Gamma$ [$10^{22}$ e/s] & $[0, 15.5]$ \\
+	$H$ [-] & $[0, 0.18]$ \\
+	\sout{$\color{red} \Gamma_{SD} \; [10^{22} \text{e/s}]$} & \sout{$\color{red} [0, 1000]$} \\
+	\sout{$\color{red}DC \; [-]$ } & \sout{$\color{red}[VV \cdots]$} \\
+	\hline
+\end{tabular}
+
+\end{columns}
+\end{frame}
+\section{Machine Learning}
+\begin{frame}
+	\frametitle{Linear Regression}
+\begin{block}{}
+\begin{columns}
+
+\column{0.45\textwidth}
+\includegraphics[scale=0.25]{../src/Baysian_regression_predictions}
+
+\column{0.02\textwidth}
+\column{0.53\textwidth}
+\includegraphics[scale=0.14]{../src/linear_comp}
+\end{columns}
+\end{block}
+\begin{equation}
+	n_e^{ped} = (9.9 \pm 0.3) I_p^{1.24 \pm 0.19} P_{TOT}^{-0.34 \pm 0.11} \delta^{0.62 \pm 0.14} \Gamma^{ 0.08 \pm 0.04} M_{eff}^{0.2 \pm 0.2}
+\end{equation}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Linear Regression}
+\begin{columns}
+\column{0.5\textwidth}
+\begin{itemize}
+	\item Achieve better RMSE \\ using all inputs
+	\item But lose interpretability $\rightarrow$ 
+	\item Prediction uncertainty \\ normally distributed between 1.6 - 1.8
+\end{itemize}
+\column{0.5\textwidth}
+\begin{tabular}{ | c | c | c |}
+			\hline
+			Feature & $\mu$ & $\sigma^2$ \\
+			\hline
+			$I_p$ & 0.15 & 0.06 \\
+			$B_T$ & 0.956 & 0.072 \\
+			$a$ & 2.966 & 0.479 \\
+			$\delta$ & 12.95 & 0.154 \\
+			$V_P$ & -0.05 & 0.007 \\
+			$q_{95}$ & -1.064 & 0.0542 \\
+			$P_{NBI}$ & $-1.911$ & 0.0546 \\
+			$P_{ICRH}$ & -1.976 & 0.0561 \\
+			$P_{TOT}$ & 1.926 & 0.0557 \\
+			$\Gamma$ & 0.125 & 0.007 \\
+			$H$ & -4.016 & 0.374  \\
+			$M_{eff}$ & 1.369 & 0.053 \\
+			\hline
+\end{tabular}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Random Forests \& Extreme Randomized Trees}
+
+\begin{columns}
+\column{0.29\textwidth}
+\begin{itemize}
+	\item<1-> Uncert. covers residual
+	\item<2-> \small{Meta-modeling $\rightarrow$ no effect} 
+\end{itemize}
+\column{0.71\textwidth}
+% \includegraphics[scale=0.23]{../src/RF_OOB_error}<1>
+\includegraphics[scale=0.135]{../src/Tree_UQ}<1>
+\includegraphics[scale=0.53]{../src/ERT_vs_RF_meta_modeling}<2>
+\end{columns}
+\end{frame}
+\begin{frame}
+\frametitle{Gaussian Processes}
+\begin{columns}
+\column{0.28\textwidth}
+\begin{itemize}
+	\item<1-> Sensitivity Analysis
+	\item<3-> UQ 
+	\item<4-> Impurity seeding 
+\end{itemize}
+\column{0.72\textwidth}
+\includegraphics[scale=0.2]{../src/GP_sensitivity_analysis_final_V1}<1>
+\includegraphics[scale=0.2]{../src/final_GP_dim_v2}<2>
+\includegraphics[scale=0.135]{../src/MLP_UQ_compare}<3>
+\includegraphics[scale=0.2]{../src/GP_preds_impurity}<4>
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{ANNs}
+\begin{columns}
+\column{0.28\textwidth}
+\begin{itemize}
+	\item<1-> Crawling
+	\item<2-> Ensembling  
+\end{itemize}
+\column{0.72\textwidth}
+\includegraphics[scale=0.2]{../src/ANN_performace_size}<1>
+\includegraphics[scale=0.135]{../src/ANN_ensemble_comp}<2>
+
+\end{columns}
+
+\end{frame}
+\section{Conclusion}
+\begin{frame}
+\begin{block}{Conclusion}
+	\begin{itemize}
+		\item Non-linear models outpreform linear models 
+		\item RFs and ERTs work well as black box models
+		\item Heteroscedastic GPs can map latent uncertainty
+		\item Shallow ANNs perform best
+	\end{itemize}
+	\end{block}
+	\begin{block}{Future Work}
+		\begin{itemize}
+			\item Fit models on varied subsets of database \\  e.g., compare how linear coefficients vary when trained on $q_{95} \leq 3.0$ versus $q_{95} > 3.0$.  
+			\item UQ of main engineering parameters
+			\item Ideas? 
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\end{document}
