@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.5.29)  8 JUN 2021 15:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.5.29)  10 JUN 2021 12:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -553,14 +553,42 @@ Excluding 'comment' comment.
 <example-image-a.pdf, id=114, 321.2pt x 240.9pt>
 File: example-image-a.pdf Graphic file (type pdf)
 <use example-image-a.pdf>
-Package pdftex.def Info: example-image-a.pdf  used on input line 134.
+Package pdftex.def Info: example-image-a.pdf  used on input line 126.
 (pdftex.def)             Requested size: 128.47772pt x 96.35828pt.
 <./src/MTANH_fit.png, id=115, 1113.15875pt x 923.45pt>
 File: ./src/MTANH_fit.png Graphic file (type png)
 <use ./src/MTANH_fit.png>
-Package pdftex.def Info: ./src/MTANH_fit.png  used on input line 138.
+Package pdftex.def Info: ./src/MTANH_fit.png  used on input line 130.
 (pdftex.def)             Requested size: 222.6278pt x 184.68672pt.
  [4]
+
+Package wrapfig Warning: Stationary wraptable forced to float on input line 174
+.
+
+
+Package wrapfig Warning: Stationary wraptable forced to float on input line 175
+.
+
+
+Package wrapfig Warning: Stationary wraptable forced to float on input line 176
+.
+
+
+Package wrapfig Warning: Stationary wraptable forced to float on input line 177
+.
+
+
+Package wrapfig Warning: Stationary wraptable forced to float on input line 178
+.
+
+
+Package wrapfig Warning: Stationary wraptable forced to float on input line 179
+.
+
+
+Package wrapfig Warning: Stationary wraptable forced to float on input line 180
+.
+
 
 Package wrapfig Warning: Stationary wraptable forced to float on input line 181
 .
@@ -589,48 +617,20 @@ Package wrapfig Warning: Stationary wraptable forced to float on input line 186
 Package wrapfig Warning: Stationary wraptable forced to float on input line 187
 .
 
+[5 </usr/share/texlive/texmf-dist/tex/latex/mwe/example-image-a.pdf> <./src/MTA
+NH_fit.png>]
 
 Package wrapfig Warning: Stationary wraptable forced to float on input line 188
 .
 
-
-Package wrapfig Warning: Stationary wraptable forced to float on input line 189
-.
-
-
-Package wrapfig Warning: Stationary wraptable forced to float on input line 190
-.
-
-
-Package wrapfig Warning: Stationary wraptable forced to float on input line 191
-.
-
-
-Package wrapfig Warning: Stationary wraptable forced to float on input line 192
-.
-
-[5 </usr/share/texlive/texmf-dist/tex/latex/mwe/example-image-a.pdf> <./src/MTA
-NH_fit.png>]
-
-Package wrapfig Warning: Stationary wraptable forced to float on input line 193
-.
-
-
-Package wrapfig Warning: Stationary wraptable forced to float on input line 194
-.
-
-
-Package wrapfig Warning: Stationary wraptable forced to float on input line 195
-.
-
 [6]
-<./src/R_vs_NEPED_matplotlib.png, id=148, 1176.395pt x 910.40125pt>
+<./src/R_vs_NEPED_matplotlib.png, id=146, 1176.395pt x 910.40125pt>
 File: ./src/R_vs_NEPED_matplotlib.png Graphic file (type png)
 <use ./src/R_vs_NEPED_matplotlib.png>
 Package pdftex.def Info: ./src/R_vs_NEPED_matplotlib.png  used on input line 24
 0.
 (pdftex.def)             Requested size: 235.27483pt x 182.07701pt.
-<./src/input_correlations.png, id=149, 1107.13625pt x 897.3525pt>
+<./src/input_correlations.png, id=147, 1107.13625pt x 897.3525pt>
 File: ./src/input_correlations.png Graphic file (type png)
 <use ./src/input_correlations.png>
 Package pdftex.def Info: ./src/input_correlations.png  used on input line 246.
@@ -641,121 +641,121 @@ Overfull \hbox (3.76123pt too wide) in paragraph at lines 246--247
  []
 
 [7 <./src/R_vs_NEPED_matplotlib.png> <./src/input_correlations.png>] [8]
-[9
+Excluding 'comment' comment. [9
 
 ] [10] [11] [12]
-Underfull \hbox (badness 1400) in paragraph at lines 384--384
+Underfull \hbox (badness 1400) in paragraph at lines 386--386
 \OT1/cmr/m/n/12 by Bayesian Lin-ear Re-gres-sion.
  []
 
-<./src/Baysian_regression_predictions.png, id=193, 646.415pt x 648.4225pt>
+<./src/Baysian_regression_predictions.png, id=192, 646.415pt x 648.4225pt>
 File: ./src/Baysian_regression_predictions.png Graphic file (type png)
 <use ./src/Baysian_regression_predictions.png>
 Package pdftex.def Info: ./src/Baysian_regression_predictions.png  used on inpu
-t line 416.
+t line 418.
 (pdftex.def)             Requested size: 226.24864pt x 226.95126pt.
-<./src/linear_comp.png, id=194, 1249.66875pt x 1256.695pt>
+<./src/linear_comp.png, id=193, 1249.66875pt x 1256.695pt>
 File: ./src/linear_comp.png Graphic file (type png)
 <use ./src/linear_comp.png>
-Package pdftex.def Info: ./src/linear_comp.png  used on input line 420.
+Package pdftex.def Info: ./src/linear_comp.png  used on input line 422.
 (pdftex.def)             Requested size: 224.93066pt x 226.19534pt.
 Excluding 'comment' comment. Excluding 'comment' comment. [13
 
 ]
-<./src/GP_sensitivity_analysis_final_v1.png, id=206, 1105.12875pt x 1105.12875p
+<./src/GP_sensitivity_analysis_final_v1.png, id=205, 1105.12875pt x 1105.12875p
 t>
 File: ./src/GP_sensitivity_analysis_final_v1.png Graphic file (type png)
 <use ./src/GP_sensitivity_analysis_final_v1.png>
 Package pdftex.def Info: ./src/GP_sensitivity_analysis_final_v1.png  used on in
-put line 471.
+put line 473.
 (pdftex.def)             Requested size: 221.02184pt x 221.02184pt.
-<./src/final_GP_dim_v2.png, id=207, 1105.12875pt x 1105.12875pt>
+<./src/final_GP_dim_v2.png, id=206, 1105.12875pt x 1105.12875pt>
 File: ./src/final_GP_dim_v2.png Graphic file (type png)
 <use ./src/final_GP_dim_v2.png>
-Package pdftex.def Info: ./src/final_GP_dim_v2.png  used on input line 475.
+Package pdftex.def Info: ./src/final_GP_dim_v2.png  used on input line 477.
 (pdftex.def)             Requested size: 221.02184pt x 221.02184pt.
  [14 <./src/Baysian_regression_predictions.png> <./src/linear_comp.png>]
-<./src/MLP_uq_compare.png, id=218, 1751.54375pt x 1041.8925pt>
+<./src/MLP_uq_compare.png, id=217, 1751.54375pt x 1041.8925pt>
 File: ./src/MLP_uq_compare.png Graphic file (type png)
 <use ./src/MLP_uq_compare.png>
-Package pdftex.def Info: ./src/MLP_uq_compare.png  used on input line 488.
+Package pdftex.def Info: ./src/MLP_uq_compare.png  used on input line 490.
 (pdftex.def)             Requested size: 437.88487pt x 260.47249pt.
 
 Excluding 'comment' comment.
-<./src/GP_preds_impurity.png, id=219, 1118.1775pt x 1103.12125pt>
+<./src/GP_preds_impurity.png, id=218, 1118.1775pt x 1103.12125pt>
 File: ./src/GP_preds_impurity.png Graphic file (type png)
 <use ./src/GP_preds_impurity.png>
-Package pdftex.def Info: ./src/GP_preds_impurity.png  used on input line 504.
+Package pdftex.def Info: ./src/GP_preds_impurity.png  used on input line 506.
 (pdftex.def)             Requested size: 223.63153pt x 220.62033pt.
 
-Overfull \hbox (5.96944pt too wide) in paragraph at lines 504--507
+Overfull \hbox (5.96944pt too wide) in paragraph at lines 506--509
  [][] 
  []
 
 [15 <./src/GP_sensitivity_analysis_final_V1.png> <./src/final_GP_dim_v2.png> <.
 /src/GP_preds_impurity.png>]
-<./src/RF_oob_error.png, id=230, 1027.84pt x 947.54pt>
+<./src/RF_oob_error.png, id=229, 1027.84pt x 947.54pt>
 File: ./src/RF_oob_error.png Graphic file (type png)
 <use ./src/RF_oob_error.png>
-Package pdftex.def Info: ./src/RF_oob_error.png  used on input line 517.
+Package pdftex.def Info: ./src/RF_oob_error.png  used on input line 519.
 (pdftex.def)             Requested size: 205.56436pt x 189.50464pt.
-<./src/ERT_oob_error.png, id=231, 1027.84pt x 947.54pt>
+<./src/ERT_oob_error.png, id=230, 1027.84pt x 947.54pt>
 File: ./src/ERT_oob_error.png Graphic file (type png)
 <use ./src/ERT_oob_error.png>
-Package pdftex.def Info: ./src/ERT_oob_error.png  used on input line 521.
+Package pdftex.def Info: ./src/ERT_oob_error.png  used on input line 523.
 (pdftex.def)             Requested size: 205.56436pt x 189.50464pt.
-<./src/ERT_vs_RF_meta_modeling.png, id=233, 425.59pt x 286.06876pt>
+<./src/ERT_vs_RF_meta_modeling.png, id=232, 425.59pt x 286.06876pt>
 File: ./src/ERT_vs_RF_meta_modeling.png Graphic file (type png)
 <use ./src/ERT_vs_RF_meta_modeling.png>
 Package pdftex.def Info: ./src/ERT_vs_RF_meta_modeling.png  used on input line 
-534.
+536.
 (pdftex.def)             Requested size: 241.84842pt x 145.4513pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [16 <./src/MLP_uq_compare.png>]
-<./src/Tree_UQ.png, id=244, 1755.55875pt x 1043.9pt>
+<./src/Tree_UQ.png, id=243, 1755.55875pt x 1043.9pt>
 File: ./src/Tree_UQ.png Graphic file (type png)
 <use ./src/Tree_UQ.png>
-Package pdftex.def Info: ./src/Tree_UQ.png  used on input line 546.
+Package pdftex.def Info: ./src/Tree_UQ.png  used on input line 548.
 (pdftex.def)             Requested size: 438.88861pt x 260.97435pt.
-<./src/ANN_performace_size.png, id=245, 1117.17375pt x 921.4425pt>
+<./src/ANN_performace_size.png, id=244, 1117.17375pt x 921.4425pt>
 File: ./src/ANN_performace_size.png Graphic file (type png)
 <use ./src/ANN_performace_size.png>
-Package pdftex.def Info: ./src/ANN_performace_size.png  used on input line 555.
+Package pdftex.def Info: ./src/ANN_performace_size.png  used on input line 557.
 
 (pdftex.def)             Requested size: 223.43079pt x 184.28523pt.
  [17 <./src/ERT_vs_RF_meta_modeling.png> <./src/RF_oob_error.png> <./src/ERT_oo
 b_error.png> <./src/ANN_performace_size.png>] [18 <./src/Tree_UQ.png>]
-<./src/ANN_ensemble_comp.png, id=265, 1755.55875pt x 1043.9pt>
+<./src/ANN_ensemble_comp.png, id=264, 1755.55875pt x 1043.9pt>
 File: ./src/ANN_ensemble_comp.png Graphic file (type png)
 <use ./src/ANN_ensemble_comp.png>
-Package pdftex.def Info: ./src/ANN_ensemble_comp.png  used on input line 581.
+Package pdftex.def Info: ./src/ANN_ensemble_comp.png  used on input line 583.
 (pdftex.def)             Requested size: 438.88861pt x 260.97435pt.
  Excluding 'comment' comment. [19 <./src/ANN_ensemble_comp.png>]
 [20] Excluding 'comment' comment. Excluding 'comment' comment.
 No file thesis.bbl.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 830.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 832.
 [21
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 830.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 832.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 830.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 830.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 832.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 832.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: E8D16029C282BA82C4D9C9DBB298B826;1184.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 830.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 832.
  )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 369 ({)
+### simple group (level 1) entered at line 371 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 10488 strings out of 483140
- 159343 string characters out of 5965151
- 437084 words of memory out of 5000000
- 25255 multiletter control sequences out of 15000+600000
+ 10490 strings out of 483140
+ 159374 string characters out of 5965151
+ 437170 words of memory out of 5000000
+ 25256 multiletter control sequences out of 15000+600000
  542730 words of font info for 64 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  41i,10n,79p,1598b,620s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -773,10 +773,10 @@ blic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti
 12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss17.pfb>
-Output written on thesis.pdf (21 pages, 1189011 bytes).
+Output written on thesis.pdf (21 pages, 1186234 bytes).
 PDF statistics:
- 345 PDF objects out of 1000 (max. 8388607)
- 270 compressed objects within 3 object streams
- 57 named destinations out of 1000 (max. 500000)
+ 344 PDF objects out of 1000 (max. 8388607)
+ 269 compressed objects within 3 object streams
+ 58 named destinations out of 1000 (max. 500000)
  231 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -51,14 +51,6 @@ These reactor-scale devices encompass a significant risk of very costly componen
 In order to bridge the gap between computational and experimental efforts and to be able to rapidly design reactors, there exists a need for data driven approaches to produce simplified models through the use of machine learning (ML).
 The topic of this thesis is to analyse and compare predictive ML tools in estimating plasma parameters, specifically the density of plasma in the edge region of tokamaks.
 
-\textcolor{red}{Potentially delete structure outline \# mathias}
-
-The structure of the thesis is as follows.
-In the remaining part of this section, I discuss the relevant tokamak physics followed by a description of the EUROfusion JET pedestal database and the to date empirical analysis derived from it.
-In Section 2, I outline how certain ML tools interact with data, how to use them in regards to the database outline in section 1.
-In Section 3, I present the results of the experiments described in Section 2. 
-In Section 4, I discuss the results shown Section in 3 and provide next steps for future work.
-
 \subsection{Why Pedestal Physics?}\label{subsec:purpose}
 In tokamaks, the fusion plasma is confined in a toroidal vacuum chamber using magnetic fields.
 The magnetic field has components around the torus, called the toroidal component, and around the cross-section of the vacuum chamber, called the poloidal component.
@@ -82,8 +74,8 @@ A MCF device then aims to confine a plasma which has pressure on the order of at
 The energy confinement time is limited by turbulence of the plasma, which leads to radial transport across the flux surfaces significantly faster than would be expected based on classical or neo-classical transport [\textcolor{blue}{Chapter 2 of Progress in the ITER physics basis NF 2007}].
 Typically, the turbulence modes show critical gradient behaviour [\textcolor{blue}{same as above}].
 As a result, the radial gradients are limited near their critical value and the effective transport increases with more heating power.
-This results in a reduction of $\tau_E$ with heating power[\textcolor{blue}{same as above}], meaning that reaching $nT\tau_E$ is quite challenging considering the solution of throwing power at the problem has the opposite desired effect.
-In the 1980s, a sudden transition into an enhanced confinement regime, called the high confinement mode (H-mode), was discovered in plasmas operating win the divertor configurations with neutral beam heating [\textcolor{blue}{Wagner PRL 1982}]
+This results in a reduction of $\tau_E$ with heating power[\textcolor{blue}{same as above}], meaning that reaching $nT\tau_E$ is quite challenging considering the solution of throwing power at the problem has the opposite than desired effect.
+In the 1980s, a sudden transition into an enhanced confinement regime, called the high confinement mode (H-mode), was discovered in plasmas operating with the divertor configurations with neutral beam heating [\textcolor{blue}{Wagner PRL 1982}]
 The H-mode confinement can break away from the stiff gradients at the edge, as self-organized shear flows at the plasma edge reduce turbulent radial fluxes, leading to the formation of a 'pedestal'.
 To achieve H-mode confinement, there needs a minimum amount of power flow through the edge [\textcolor{blue}{Martin Scaling source}], which ultimately leads to about a factor of two increase of the energy confinement time and thus leading to H-mode being the baseline operational mode for future fusion devices such as ITER and DEMO.
 
@@ -137,19 +129,20 @@ To limit the extent of the thesis, the focus is on the pedestal density, and ML 
 		\centering
 		\includegraphics[scale=0.2]{./src/MTANH_fit}
 	\end{subfigure}\hfill
-	\caption{ \textbf{Left:} A shaping figure showing r,a, triangularity. Resembles a bow \textbf{Right:} HRTS measurement profiles (blue) radially shifted to have $T_e \approx 100$ eV at the seperatrix (LCFS). The profiles are fitted in real space using the mtanh equation \ref{eq:mtanh} then mapped to the normalized poloidal flux coordinate $\Phi_N$ (red).}
+	\caption{ \textbf{Left:} A shaping figure showing r,a, triangularity. Resembles a bow \textbf{Right:} HRTS measurement profiles (blue) radially shifted to have $T_e \approx 100$ eV at the seperatrix (LCFS). The profiles are fitted in real space using the mtanh equation \ref{eq:mtanh} then mapped to the normalized poloidal flux coordinate $\Psi_N$ (red).}
 	\label{fig:pedestal_db_figs}
 \end{figure}
 
 The JET pedestal database is the most comprehensive of all pedestal databases today, containing over 3000 entries [\textcolor{blue}{Frassinetti 2021}].
 Each entry corresponds to time averaged measurements of various plasma parameters over the course of 70-95\% of an ELM cycle [\textcolor{green}{cross check}].
-The measurements are done using high resolution thomson scattering (HRTS)[\textcolor{blue}{Frassinetti}], and are then fitted using the mtanh function (eq \ref{eq:mtanh}). This process is visualized in Figure \ref{fig:pedestal_db_figs}. 
-Since the measurements are taken near the end of the ELM cycle, the pedestal parameters should be saturated near their maximum, right before the ELM.
+The measurements are done using high resolution thomson scattering (HRTS)[\textcolor{blue}{Frassinetti}], and are then fitted using the mtanh function: 
 \begin{equation} \label{eq:mtanh}
-mtanh(r) = \frac{h_1 - h_0}{2} \left( \frac{(1 + sx) e^x - e^{-x}}{e^x + e^{-x}} + 1\right) + h_0 , x=\frac{p-r}{w/2}
+mtanh(r) = \frac{h_1 - h_0}{2} \left( \frac{(1 + sx) e^x - e^{-x}}{e^x + e^{-x}} + 1\right) + h_0 , \quad \quad x=\frac{p-r}{w/2}
 \end{equation}
+where the pedestal height, position, width, and slope are $h_1$, $p$, $w$, and $s$ respectively, and $r$ the normalized radius $\Psi_N$. The fitting process is visualized in Figure \ref{fig:pedestal_db_figs}. 
+Since the measurements are taken near the end of the ELM cycle, the pedestal parameters should be saturated near their maximum, right before the ELM.
 
-The key engineering quantities in the database and their units are listed below, where a dimensionless unit is written as [-]. The domain of each parameter is listed in Table \ref{tab:main_domain}. 
+The key engineering quantities in the database and their units ([-] dimensionless) are listed below,
 
 \begin{wraptable}{r}{0.4\textwidth}
 \vspace{-10pt}
@@ -195,6 +188,7 @@ The key engineering quantities in the database and their units are listed below,
 	\item $\Gamma_{SD}$ [$10^6$ nbar], the subdivertor pressure [SOURCE]
 \end{itemize}
 
+
 For the main engineering parameters, the uncertainties are calculated by taking the standard deviation of the values over the time period in which the measurements were taken. 
 
 The global parameters stored in the database are listed below: 
@@ -220,7 +214,8 @@ RMPs, pellets, and kicks are used to manipulate the pedestal for ELM control, mi
 To keep the dataset simple in this thesis, these entries are excluded.
 After filtering out the RMPs, Kicks, Pellets, non-validated HRTS, and shots that do not use deuterium, the dataset is reduced to 1888 entries. The final pedestal parameter domains are given in the table below.
 \begin{center}
-\begin{tabular}{ | c | c | c | c | c | }
+\begin{table}
+\begin{tabular}{ | c | c | c | c | c | }	
 	\hline 
 	& Height & Width ($\Psi_N$) & Position ($\Psi_N$) & Slope (-) \\ 
 	\hline
@@ -228,7 +223,12 @@ After filtering out the RMPs, Kicks, Pellets, non-validated HRTS, and shots that
 	$T_e^{ped}$ & [0.149, 1.894] (keV)& [0.013, 0.105] & [0.926, 1.002] & [0.026, 0.502] \\
 	$p_e^{ped}$ & [0.808, 17.804] (kPa)& [0.014, 0.099] & [0.931, 1.002]& [0.041, 0.789] \\
 	\hline
+
+	
 \end{tabular}
+\label{tab:ped_quant}
+\caption{Domains of pedestal paramaters for deuterium shots stored in the JET pedestal database after RMPs, Kicks, Pellets are filtered out.}
+\end{table}
 \end{center}
 
 
@@ -250,7 +250,7 @@ After filtering out the RMPs, Kicks, Pellets, non-validated HRTS, and shots that
 	\caption{Emperical data plots of the JET pedestal database. \textbf{Left:} the 'ice cream corerlation' between the major radius $R$, divertor configuration, and $n_e^{ped}$,  \textbf{Right:}  correlation matrix of the main engineering parameters. A grey coloring represents no correlation, whereas blue and yellow are negative and positive correlation respectively.}
 	\label{fig:emperical}
 \end{figure}
-Empirical analysis of the JET pedestal database has been done [\textcolor{blue}{SOURCE LORENZO DB SHIT}], and has yielded the following log-linear scaling law for the pedestal density height $n_e^{ped}$.
+Empirical analysis of the JET pedestal database has been done [\textcolor{blue}{SOURCE LORENZO DB}], and has yielded the following log-linear scaling law for the pedestal density height $n_e^{ped}$:
 \begin{equation} \label{eq:scaling}
 	n_e^{ped} = (9.9 \pm 0.3) I_p^{1.24 \pm 0.19} P_{TOT}^{-0.34 \pm 0.11} \delta^{0.62 \pm 0.14} \Gamma^{ 0.08 \pm 0.04} M_{eff}^{0.2 \pm 0.2}
 \end{equation}
@@ -272,10 +272,12 @@ Because of this volatility, $\Gamma_{SD}$ is ignored, however future research ma
 
 \section{General Machine Learning Analysis}\label{sec:principle-machine-learning-analysis}
 Within the context of this thesis, a model refers to a prediction function $f$ that takes any combination of the main engineering parameters as inputs, $\vec{x} = (x_1, x_2, \cdots, x_p)$,  and provides an estimate of the pedestal density height, $\hat{y}$, as well as the uncertainty of the estimate (when applicable).
-The prediction quality is quantified through both RMSe and MAE, since a robust model minimizes both of these.
+The prediction quality is quantified through both the root mean squared error (RMSE) and mean absolute error (MAE), since a robust model minimizes both of these.
 The RMSE penalizes predictions that are far away from the ground truth, whereas the MAE calculates a uniform distance between the prediction and the ground truth.
+\begin{comment}
 \[RMSE = \sqrt{\frac{\sum_i^N \left( y_i - \hat{y}_i \right)^2}{N}} \quad\quad MAE = \frac{\sum_i^N |y_i -  \hat{y}_i |}{N}  \] 
 where $N$ is the number of points predicted upon, and $y_i$ is the ground truth value of $n_e^{ped}$ for the $i$'th entry in the dataset. 
+\end{comment}
 \subsection{Model Fitting and Validation}
 To make a prediction, the model must first be \textit{fitted}, which means to learn the parameters $\vec{\theta}$ of the prediction function using a model specific learning algorithm such that $f = f(\vec{x}: \vec{\theta})$.
 In the case of linear regression, the learning algorithm is the ordinary least squares method (OLS) [SOURCE] which minimizes the mean squared error in order to find the optimal linear coefficients $\theta(w_i)$.
