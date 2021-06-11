@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.5.29)  11 JUN 2021 13:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.5)  11 JUN 2021 15:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -252,6 +252,9 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip54
 )
+(/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2020/01/22 v1.3d Sub-captions (AR)
+
 (/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2020/01/03 v3.4h Customizing captions (AR)
 
@@ -271,8 +274,6 @@ Package caption Info: Standard document class detected.
 \c@continuedfloat=\count268
 Package caption Info: hyperref package is loaded.
 )
-(/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
-Package: subcaption 2020/01/22 v1.3d Sub-captions (AR)
 \c@subfigure=\count269
 \c@subtable=\count270
 )
@@ -427,22 +428,22 @@ File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
 (./thesis.aux)
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -479,7 +480,7 @@ LaTeX Font Info:    ... okay on input line 44.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \AtBeginShipoutBox=\box55
-Package hyperref Info: Link coloring OFF on input line 44.
+Package hyperref Info: Link coloring OFF on input line 46.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 
@@ -491,9 +492,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count283
 )
-LaTeX Info: Redefining \ref on input line 44.
-LaTeX Info: Redefining \pageref on input line 44.
-LaTeX Info: Redefining \nameref on input line 44.
+LaTeX Info: Redefining \ref on input line 46.
+LaTeX Info: Redefining \pageref on input line 46.
+LaTeX Info: Redefining \nameref on input line 46.
 
 (./thesis.out) (./thesis.out)
 \@outlinefile=\write4
@@ -527,13 +528,13 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Trying to load font information for U+msa on input line 46.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 48.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 46.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 48.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -544,40 +545,19 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@toc=\write5
 \openout5 = `thesis.toc'.
 
- [2
-
-] [3
-
-]
+ [2] [3]
 Excluding 'comment' comment.
 <example-image-a.pdf, id=115, 321.2pt x 240.9pt>
 File: example-image-a.pdf Graphic file (type pdf)
 <use example-image-a.pdf>
-Package pdftex.def Info: example-image-a.pdf  used on input line 126.
+Package pdftex.def Info: example-image-a.pdf  used on input line 127.
 (pdftex.def)             Requested size: 128.47772pt x 96.35828pt.
 <./src/MTANH_fit.png, id=116, 1113.15875pt x 923.45pt>
 File: ./src/MTANH_fit.png Graphic file (type png)
 <use ./src/MTANH_fit.png>
-Package pdftex.def Info: ./src/MTANH_fit.png  used on input line 130.
+Package pdftex.def Info: ./src/MTANH_fit.png  used on input line 133.
 (pdftex.def)             Requested size: 222.6278pt x 184.68672pt.
-
-
-Package wrapfig Warning: Stationary wraptable forced to float on input line 173
-.
-
-[4]
-
-Package wrapfig Warning: Stationary wraptable forced to float on input line 174
-.
-
-
-Package wrapfig Warning: Stationary wraptable forced to float on input line 175
-.
-
-
-Package wrapfig Warning: Stationary wraptable forced to float on input line 176
-.
-
+ [4]
 
 Package wrapfig Warning: Stationary wraptable forced to float on input line 177
 .
@@ -624,154 +604,168 @@ Package wrapfig Warning: Stationary wraptable forced to float on input line 187
 
 [5 </usr/share/texlive/texmf-dist/tex/latex/mwe/example-image-a.pdf> <./src/MTA
 NH_fit.png>]
-<./src/R_vs_NEPED_matplotlib.png, id=142, 1176.395pt x 910.40125pt>
+
+Package wrapfig Warning: Stationary wraptable forced to float on input line 188
+.
+
+
+Package wrapfig Warning: Stationary wraptable forced to float on input line 189
+.
+
+
+Package wrapfig Warning: Stationary wraptable forced to float on input line 190
+.
+
+
+Package wrapfig Warning: Stationary wraptable forced to float on input line 191
+.
+
+Excluding 'comment' comment.
+<./src/R_vs_NEPED_matplotlib.png, id=143, 1176.395pt x 910.40125pt>
 File: ./src/R_vs_NEPED_matplotlib.png Graphic file (type png)
 <use ./src/R_vs_NEPED_matplotlib.png>
 Package pdftex.def Info: ./src/R_vs_NEPED_matplotlib.png  used on input line 24
-1.
+9.
 (pdftex.def)             Requested size: 235.27483pt x 182.07701pt.
-<./src/input_correlations.png, id=143, 1107.13625pt x 897.3525pt>
+<./src/input_correlations.png, id=144, 1107.13625pt x 897.3525pt>
 File: ./src/input_correlations.png Graphic file (type png)
 <use ./src/input_correlations.png>
-Package pdftex.def Info: ./src/input_correlations.png  used on input line 245.
+Package pdftex.def Info: ./src/input_correlations.png  used on input line 253.
 (pdftex.def)             Requested size: 221.42332pt x 179.46732pt.
 
-Overfull \hbox (3.76123pt too wide) in paragraph at lines 245--246
+Overfull \hbox (3.76123pt too wide) in paragraph at lines 253--254
  [][] 
  []
 
 [6] [7 <./src/R_vs_NEPED_matplotlib.png> <./src/input_correlations.png>]
-[8] Excluding 'comment' comment. [9
-
-] Excluding 'comment' comment. [10] [11]
-[12]
-Underfull \hbox (badness 1400) in paragraph at lines 380--380
+Excluding 'comment' comment. [8] Excluding 'comment' comment. [9] [10] [11]
+Underfull \hbox (badness 1400) in paragraph at lines 389--389
 \OT1/cmr/m/n/12 by Bayesian Lin-ear Re-gres-sion.
  []
 
-<./src/Baysian_regression_predictions.png, id=195, 646.415pt x 648.4225pt>
+<./src/Baysian_regression_predictions.png, id=192, 646.415pt x 648.4225pt>
 File: ./src/Baysian_regression_predictions.png Graphic file (type png)
 <use ./src/Baysian_regression_predictions.png>
 Package pdftex.def Info: ./src/Baysian_regression_predictions.png  used on inpu
-t line 412.
+t line 417.
 (pdftex.def)             Requested size: 226.24864pt x 226.95126pt.
-<./src/linear_comp.png, id=196, 1249.66875pt x 1256.695pt>
+<./src/linear_comp.png, id=193, 1249.66875pt x 1256.695pt>
 File: ./src/linear_comp.png Graphic file (type png)
 <use ./src/linear_comp.png>
-Package pdftex.def Info: ./src/linear_comp.png  used on input line 416.
+Package pdftex.def Info: ./src/linear_comp.png  used on input line 421.
 (pdftex.def)             Requested size: 224.93066pt x 226.19534pt.
-[13
-
-] Excluding 'comment' comment. Excluding 'comment' comment.
-<./src/GP_sensitivity_analysis_final_v1.png, id=209, 1105.12875pt x 1105.12875p
+[12] Excluding 'comment' comment. Excluding 'comment' comment.
+<./src/GP_sensitivity_analysis_final_v1.png, id=205, 1105.12875pt x 1105.12875p
 t>
 File: ./src/GP_sensitivity_analysis_final_v1.png Graphic file (type png)
 <use ./src/GP_sensitivity_analysis_final_v1.png>
 Package pdftex.def Info: ./src/GP_sensitivity_analysis_final_v1.png  used on in
-put line 469.
+put line 474.
 (pdftex.def)             Requested size: 221.02184pt x 221.02184pt.
-<./src/final_GP_dim_v2.png, id=210, 1105.12875pt x 1105.12875pt>
+<./src/final_GP_dim_v2.png, id=206, 1105.12875pt x 1105.12875pt>
 File: ./src/final_GP_dim_v2.png Graphic file (type png)
 <use ./src/final_GP_dim_v2.png>
-Package pdftex.def Info: ./src/final_GP_dim_v2.png  used on input line 473.
+Package pdftex.def Info: ./src/final_GP_dim_v2.png  used on input line 478.
 (pdftex.def)             Requested size: 221.02184pt x 221.02184pt.
-<./src/MLP_uq_compare.png, id=212, 1751.54375pt x 1041.8925pt>
+<./src/MLP_uq_compare.png, id=208, 1751.54375pt x 1041.8925pt>
 File: ./src/MLP_uq_compare.png Graphic file (type png)
 <use ./src/MLP_uq_compare.png>
-Package pdftex.def Info: ./src/MLP_uq_compare.png  used on input line 481.
+Package pdftex.def Info: ./src/MLP_uq_compare.png  used on input line 486.
 (pdftex.def)             Requested size: 437.88487pt x 260.47249pt.
- [14 <./src/Baysian_regression_predictions.png> <./src/linear_comp.png>]
+
+Underfull \vbox (badness 2310) has occurred while \output is active []
+
+ [13 <./src/Baysian_regression_predictions.png> <./src/linear_comp.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [15 <./src/GP_sensitivity_analysis_final_V1.png> <./src/final_GP_dim_v2.png> <
+ [14 <./src/GP_sensitivity_analysis_final_V1.png> <./src/final_GP_dim_v2.png> <
 ./src/MLP_uq_compare.png>] Excluding 'comment' comment. Excluding 'comment' com
 ment.
-<./src/RF_oob_error.png, id=230, 1027.84pt x 947.54pt>
+<./src/RF_oob_error.png, id=228, 1027.84pt x 947.54pt>
 File: ./src/RF_oob_error.png Graphic file (type png)
 <use ./src/RF_oob_error.png>
-Package pdftex.def Info: ./src/RF_oob_error.png  used on input line 519.
+Package pdftex.def Info: ./src/RF_oob_error.png  used on input line 521.
 (pdftex.def)             Requested size: 205.56436pt x 189.50464pt.
-<./src/ERT_oob_error.png, id=231, 1027.84pt x 947.54pt>
+<./src/ERT_oob_error.png, id=229, 1027.84pt x 947.54pt>
 File: ./src/ERT_oob_error.png Graphic file (type png)
 <use ./src/ERT_oob_error.png>
-Package pdftex.def Info: ./src/ERT_oob_error.png  used on input line 523.
+Package pdftex.def Info: ./src/ERT_oob_error.png  used on input line 525.
 (pdftex.def)             Requested size: 205.56436pt x 189.50464pt.
 
-[16 <./src/RF_oob_error.png> <./src/ERT_oob_error.png>]
-<./src/ERT_vs_RF_meta_modeling.png, id=241, 425.59pt x 286.06876pt>
+[15 <./src/RF_oob_error.png> <./src/ERT_oob_error.png>]
+<./src/ERT_vs_RF_meta_modeling.png, id=240, 425.59pt x 286.06876pt>
 File: ./src/ERT_vs_RF_meta_modeling.png Graphic file (type png)
 <use ./src/ERT_vs_RF_meta_modeling.png>
 Package pdftex.def Info: ./src/ERT_vs_RF_meta_modeling.png  used on input line 
-538.
+539.
 (pdftex.def)             Requested size: 241.84842pt x 145.4513pt.
-<./src/Tree_UQ.png, id=245, 1755.55875pt x 1043.9pt>
+<./src/Tree_UQ.png, id=244, 1755.55875pt x 1043.9pt>
 File: ./src/Tree_UQ.png Graphic file (type png)
 <use ./src/Tree_UQ.png>
 Package pdftex.def Info: ./src/Tree_UQ.png  used on input line 550.
 (pdftex.def)             Requested size: 438.88861pt x 260.97435pt.
-<./src/ANN_performace_size.png, id=246, 1117.17375pt x 921.4425pt>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [16 <./src/ERT_vs_RF_meta_modeling.png> <./src/Tree_UQ.png>]
+<./src/ANN_performace_size.png, id=254, 1117.17375pt x 921.4425pt>
 File: ./src/ANN_performace_size.png Graphic file (type png)
 <use ./src/ANN_performace_size.png>
 Package pdftex.def Info: ./src/ANN_performace_size.png  used on input line 559.
 
 (pdftex.def)             Requested size: 223.43079pt x 184.28523pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [17 <./src/ERT_vs_RF_meta_modeling.png> <./src/Tree_UQ.png>] [18 <./src/ANN_pe
-rformace_size.png>]
-<./src/ANN_ensemble_comp.png, id=265, 1755.55875pt x 1043.9pt>
+ [17 <./src/ANN_performace_size.png>]
+<./src/ANN_ensemble_comp.png, id=266, 1755.55875pt x 1043.9pt>
 File: ./src/ANN_ensemble_comp.png Graphic file (type png)
 <use ./src/ANN_ensemble_comp.png>
 Package pdftex.def Info: ./src/ANN_ensemble_comp.png  used on input line 584.
 (pdftex.def)             Requested size: 438.88861pt x 260.97435pt.
- Excluding 'comment' comment. [19 <./src/ANN_ensemble_comp.png>]
-[20] Excluding 'comment' comment. Excluding 'comment' comment.
+ Excluding 'comment' comment. [18 <./src/ANN_ensemble_comp.png>]
+Excluding 'comment' comment. Excluding 'comment' comment.
 Excluding 'comment' comment.
 No file thesis.bbl.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 838.
-[21
-
-]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 838.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 839.
+[19] [20]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 839.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 838.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 838.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 839.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 839.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: 6B4DEDD8AC315BFE0ED49AB2A27B3B3B;1185.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 838.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 839.
  )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 364 ({)
+### simple group (level 1) entered at line 370 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 10477 strings out of 483140
- 159062 string characters out of 5965151
- 439156 words of memory out of 5000000
- 25245 multiletter control sequences out of 15000+600000
- 542430 words of font info for 63 fonts, out of 8000000 for 9000
- 36 hyphenation exceptions out of 8191
- 41i,10n,79p,1598b,622s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/adam/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec
-/tcrm1200.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cms
-y8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb
-></usr/share/texmf/fonts/type1/public/lm/lmss17.pfb>
-Output written on thesis.pdf (21 pages, 1153859 bytes).
+ 10485 strings out of 481239
+ 159223 string characters out of 5920377
+ 444300 words of memory out of 5000000
+ 25497 multiletter control sequences out of 15000+600000
+ 542730 words of font info for 64 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 48i,10n,79p,1598b,702s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf/
+fonts/type1/public/lm/lmss17.pfb></usr/share/texmf/fonts/type1/public/cm-super/
+sfrm1200.pfb>
+Output written on thesis.pdf (20 pages, 1158523 bytes).
 PDF statistics:
  348 PDF objects out of 1000 (max. 8388607)
- 274 compressed objects within 3 object streams
- 57 named destinations out of 1000 (max. 500000)
+ 275 compressed objects within 3 object streams
+ 56 named destinations out of 1000 (max. 500000)
  226 words of extra memory for PDF output out of 10000 (max. 10000000)
 

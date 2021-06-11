@@ -2,17 +2,17 @@
 \contentsline {subsection}{\numberline {1.1}Why Pedestal Physics?}{3}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}JET Pedestal Database}{4}{subsection.1.2}%
 \contentsline {subsubsection}{\numberline {1.2.1}Empirical Analysis}{7}{subsubsection.1.2.1}%
-\contentsline {section}{\numberline {2}General Machine Learning Analysis}{9}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Model Fitting and Validation}{9}{subsection.2.1}%
+\contentsline {section}{\numberline {2}General Machine Learning Analysis}{8}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Model Fitting and Validation}{8}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}Linear Regression}{9}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Gaussian Processes}{10}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Random Forests}{11}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}Artificial Neural Networks}{12}{subsection.2.5}%
-\contentsline {subsection}{\numberline {2.6}Meta-Modeling}{12}{subsection.2.6}%
-\contentsline {section}{\numberline {3}Results}{13}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Linear Regression}{13}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Gaussian Process}{14}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Random Forests}{16}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Artificial Neural Networks}{18}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}What did not work}{19}{subsection.3.5}%
-\contentsline {section}{\numberline {4}Conclusion and Outlook}{21}{section.4}%
+\contentsline {subsection}{\numberline {2.3}Gaussian Processes}{9}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Random Forests}{10}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Artificial Neural Networks}{11}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Meta-Modeling}{11}{subsection.2.6}%
+\contentsline {section}{\numberline {3}Results}{12}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Linear Regression}{12}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Gaussian Process}{13}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Random Forests}{15}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Artificial Neural Networks}{17}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}What did not work}{18}{subsection.3.5}%
+\contentsline {section}{\numberline {4}Conclusion and Outlook}{19}{section.4}%
