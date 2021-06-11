@@ -157,7 +157,7 @@ The key engineering quantities in the database and their units ([-] dimensionles
 	$B_T$ [MW] & $[0.97, 3.68]$ \\
 	$a$ [m] & $[0.83, 0.97]$ \\
 	$\delta$ [-] & $[0.16, 0.48]$ \\
-	$M_{eff}$ [-] & $[1.0, 2.18]$ \\
+	$M_{eff}$ [-] & $[1.88, 2.18]$ \\
 	$P_{NBI}$ [MW] & $[10^{-3}, 32.34]$ \\
 	$P_{ICRH}$ [MW] & $[0, 7.96]$ \\
 	$P_{TOT}$ [MW] & $[3.4, 38.22]$ \\
@@ -168,7 +168,6 @@ The key engineering quantities in the database and their units ([-] dimensionles
 	$P_{SD}$ [$10^6$nbar] & $[0,1000]$ \\
 	\hline
 \end{tabular}
-\vspace{-8pt}
 \end{wraptable}
 \begin{itemize}
 	\item $I_P$ [MA], plasma current, current driven through the plasma that generates the poloidal magnetic field
@@ -329,7 +328,7 @@ GPs scale horribly with increasing input space size, therefore the hope of using
 
 There exists no urgent need to try different combinations of kernels since each engineering variable used in the fitting procedure is numerical, i.e., multiplying or adding kernels together is not analyzed in this work.
 
-Three types of sensitivity analysis used:
+Three types of sensitivity analysis are used:
 \begin{itemize}
 	\item Automatic Relevance Determination (ARD): The predictive relevance of each input variable is inferred from the inverse of the length-scale parameter associated with that variable within the kernel. A large length scale (infinite for example) means that no correlation between the latent space and the variable in question, and thus the relevance would be zero \textcolor{blue}{SOURCE paananen}. 
 	\item Kullback-Leibler Divergence (KLD): The KLD is a well known measure of dissimilarity between two probability distributions, and is a function of both the latent mean and uncertainty of each distribution \textcolor{blue}{SOURCE Kullback Leibler 1951}. In this case, the input space is 'shifted' via the perturbation of a single variable's values, and the KLD of the resulting new latent space is measured against the unperturbed case. A large change in the KLD indicates that the single variable that was perturbed has high prediction relevance.  [\textcolor{blue}{SOURCE paananen}]
@@ -373,7 +372,7 @@ The relevant hyperparameters, and how they were determined is discussed in each 
 Table \ref{tab:performance_models} presents the final performance metrics for each optimized model. 
 
 \subsection{Linear Regression}
-A Bayesian ridge linear regression model without an intercept was fit using the 'as is' control parameters as inputs, and we can see in Figure \ref{fig:lin_reg} that the RMSE and MAE improve by including more parameters than the original 5 used in the scaling law.
+A Bayesian Ridge linear regression model without an intercept was fit using the 'as is' control parameters as inputs, and we can see in Figure \ref{fig:lin_reg} that the RMSE and MAE improve by including more parameters than the original 5 used in the scaling law.
 
 \begin{wraptable}{r}{0.36\linewidth}
 \centering
