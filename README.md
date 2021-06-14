@@ -6,33 +6,9 @@ Advisor(s): Frank Cichos & Mathias Groth
 
 
 # TODO:
-- Experiment Scripts
-    - GP
-        - UQ
-    - LinReg
-        - LASSO 
-        - Bayesian 
-    - RF & ERT
-        - OOB Error
-        - UQ 
-    - ANN Ensemble UQ 
-- Plotting 
-    - Everything
+- Clean code and update repo
 - Misc
     - argparse is my friend
     
 ### Outline of Repository 
-
-```
-doc/
-    writeup
-etc/ 
-    whatever is not relevant to other dirs
-src/ 
-    codebase/ 
-        General code to be used in scripts and produce data in out
-    out/ 
-        General data and plotting
-    experiment_a_script.py
-    exp_b_script.py 
-```
+Thesis pdf and presentation docs are found in 'doc/', while the scripts used to create the data are found in 'src/'. 
