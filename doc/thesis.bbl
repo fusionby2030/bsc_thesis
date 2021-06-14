@@ -1,0 +1,324 @@
+\begin{thebibliography}{10}
+
+\bibitem{EUROfusionroadmap}
+A.~J.~H. Donne.
+\newblock The european roadmap towards fusion electricity.
+\newblock {\em Philosophical Transactions of the Royal Society A: Mathematical,
+  Physical, and Engineering Sciences}, 377(2141), February 2019.
+
+\bibitem{Ikeda_2007}
+K.~Ikeda.
+\newblock Progress in the {ITER} physics basis.
+\newblock {\em Nuclear Fusion}, 47(6), jun 2007.
+
+\bibitem{stepladder}
+et.~al H.~Zohm.
+\newblock A stepladder approach to a tokamak fusion power plant.
+\newblock {\em Nuclear Fusion}, 2017.
+
+\bibitem{Snyder_2011}
+P.B. Snyder, R.J. Groebner, J.W. Hughes, T.H. Osborne, M.~Beurskens, A.W.
+  Leonard, H.R. Wilson, and X.Q. Xu.
+\newblock A first-principles predictive model of the pedestal height and width:
+  development, testing and {ITER} optimization with the {EPED} model.
+\newblock {\em Nuclear Fusion}, 51(10):103016, aug 2011.
+
+\bibitem{MOREAU2011535}
+P.~Moreau, S.~Bremond, N.~Ravenel, S.~Mannori, O.~Barana, P.~Pastor,
+  F.~Saint-Laurent, F.~Imbeaux, B.~Guillerminet, and P.~Bayetti.
+\newblock Development of a generic multipurpose tokamak plasma discharge flight
+  simulator.
+\newblock {\em Fusion Engineering and Design}, 86(6):535--538, 2011.
+\newblock Proceedings of the 26th Symposium of Fusion Technology (SOFT-26).
+
+\bibitem{Lawson_1957}
+J~D Lawson.
+\newblock Some criteria for a power producing thermonuclear reactor.
+\newblock {\em Proceedings of the Physical Society. Section B}, 70(1):6--10,
+  jan 1957.
+
+\bibitem{history}
+F.~Wagner.
+\newblock The history of research into improved confinement regimes.
+\newblock {\em The European Physical Journal}, 43:523--549, dec 2018.
+
+\bibitem{zohm_use_2019}
+Hartmut Zohm.
+\newblock On the {Use} of {High} {Magnetic} {Field} in {Reactor} {Grade}
+  {Tokamaks}.
+\newblock {\em Journal of Fusion Energy}, 38(1):3--10, February 2019.
+
+\bibitem{Troyon_1988}
+F~Troyon, A~Roy, W~A Cooper, F~Yasseen, and A~Turnbull.
+\newblock Beta limit in tokamaks. experimental and computational status.
+\newblock {\em Plasma Physics and Controlled Fusion}, 30(11):1597--1609, oct
+  1988.
+
+\bibitem{PhysRevLett}
+F.~et.~al. Wagner.
+\newblock Regime of improved confinement and high beta in neutral-beam-heated
+  divertor discharges of the asdex tokamak.
+\newblock {\em Phys. Rev. Lett.}, 49:1408--1412, Nov 1982.
+
+\bibitem{Martin_2008}
+Y~R Martin, T~Takizuka, and the ITPA CDBM H-mode Threshold Data~Group.
+\newblock Power requirement for accessing the h-mode in {ITER}.
+\newblock {\em Journal of Physics: Conference Series}, 123, jul 2008.
+
+\bibitem{ELM_s}
+H.~Zohm.
+\newblock Edge localized modes (elms).
+\newblock {\em Plasma Physics and Controlled Fusion}, 38(2), 1996.
+
+\bibitem{Viezzer_2018}
+E.~Viezzer, M.~Cavedon, E.~Fable, F.M. Laggner, R.M. McDermott,
+  J.~Galdon-Quiroga, M.G. Dunne, A.~Kappatou, C.~Angioni, P.~Cano-Megias, D.J.
+  Cruz-Zabala, R.~Dux, T.~Pütterich, F.~Ryter, E.~Wolfrum, and and.
+\newblock Ion heat transport dynamics during edge localized mode cycles at
+  {ASDEX} upgrade.
+\newblock {\em Nuclear Fusion}, 58(2):026031, jan 2018.
+
+\bibitem{PHILIPPS20101581}
+V.~Philipps, Ph. Mertens, G.F. Matthews, and H.~Maier.
+\newblock Overview of the jet iter-like wall project.
+\newblock {\em Fusion Engineering and Design}, 85(7):1581--1586, 2010.
+\newblock Proceedings of the Ninth International Symposium on Fusion Nuclear
+  Technology.
+
+\bibitem{Frassinetti_2020}
+L.~Frassinetti, S.~Saarelma, G.~Verdoolaege, M.~Groth, J.C. Hillesheim,
+  P.~Bilkova, P.~Bohm, M.~Dunne, R.~Fridström, E.~Giovannozzi, F.~Imbeaux,
+  B.~Labit, E.~de~la Luna, C.~Maggi, M.~Owsiak, and R.~Scannell.
+\newblock Pedestal structure, stability and scalings in jet-ilw: the eruofusion
+  jet-ilw pedestal database.
+\newblock {\em Nuclear Fusion}, 61(1):016001, nov 2020.
+
+\bibitem{electron_transport}
+Myriam Hamed.
+\newblock {\em Electron heat transport in tokamak H-mode pedestals}.
+\newblock PhD thesis, Aix Marseille Universite, 2019.
+
+\bibitem{Catto_2013}
+Peter~J Catto, Felix~I Parra, Grigory Kagan, Jeffrey~B Parker, Istvan Pusztai,
+  and Matt Landreman.
+\newblock Kinetic effects on a tokamak pedestal ion flow, ion heat transport
+  and bootstrap current.
+\newblock {\em Plasma Physics and Controlled Fusion}, 55(4):045009, mar 2013.
+
+\bibitem{EPED_ELM}
+P.~B. Snyder, T.~H. Osborne, K.~H. Burrell, R.~J. Groebner, A.~W. Leonard,
+  R.~Nazikian, D.~M. Orlov, O.~Schmitz, M.~R. Wade, and H.~R. Wilson.
+\newblock The eped pedestal model and edge localized mode-suppressed regimes:
+  Studies of quiescent h-mode and development of a model for edge localized
+  mode suppression via resonant magnetic perturbations.
+\newblock {\em Physics of Plasmas}, 19(5):056115, 2012.
+
+\bibitem{Saarelma_2017}
+S~Saarelma, C~D Challis, L~Garzotti, L~Frassinetti, C~F Maggi, M~Romanelli, and
+  C~Stokes and.
+\newblock Integrated modelling of h-mode pedestal and confinement in
+  {JET}-{ILW}.
+\newblock {\em Plasma Physics and Controlled Fusion}, 60(1):014042, nov 2017.
+
+\bibitem{pedestal_prediction}
+S.~Saarelma, L.~Frassinetti, P.~Bilkova, C.~D. Challis, A.~Chankin,
+  R.~Fridström, L.~Garzotti, L.~Horvath, and C.~F. Maggi.
+\newblock Self-consistent pedestal prediction for jet-ilw in preparation of the
+  dt campaign.
+\newblock {\em Physics of Plasmas}, 26(7):072501, 2019.
+
+\bibitem{shafranov_equilibrium_1963}
+V.~D. Shafranov.
+\newblock Equilibrium of a toroidal pinch in a magnetic field.
+\newblock {\em Soviet Atomic Energy}, 13(6):1149--1158, November 1963.
+
+\bibitem{freidberg_plasma_2007}
+Jeffrey~P. Freidberg.
+\newblock {\em Plasma {Physics} and {Fusion} {Energy}}.
+\newblock Cambridge University Press, Cambridge, 2007.
+
+\bibitem{OLS}
+Mahaboob B., Venkateswarlu Bhumireddy, C~Narayana, Jyothisankar Sankar, and
+  P~Balasiddamuni.
+\newblock A treatise on ordinary least squares estimation of parameters of
+  linear model.
+\newblock {\em International Journal of Engineering and Technology(UAE)}, 7, 10
+  2018.
+
+\bibitem{Selection_Bias}
+David~M. Allen.
+\newblock The relationship between variable selection and data agumentation and
+  a method for prediction.
+\newblock {\em Technometrics}, 16(1):125--127, 1974.
+
+\bibitem{hastie01statisticallearning}
+Trevor Hastie, Robert Tibshirani, and Jerome Friedman.
+\newblock {\em The Elements of Statistical Learning}.
+\newblock Springer Series in Statistics. Springer New York Inc., New York, NY,
+  USA, 2001.
+
+\bibitem{Bisong2019}
+Ekaba Bisong.
+\newblock {\em Regularization for Linear Models}, pages 251--254.
+\newblock Apress, Berkeley, CA, 2019.
+
+\bibitem{LASSO_OG}
+Fadil Santosa and William~W. Symes.
+\newblock Linear inversion of band-limited reflection seismograms.
+\newblock {\em SIAM Journal on Scientific and Statistical Computing},
+  7(4):1307--1330, 1986.
+
+\bibitem{LASSO_COIN}
+Robert Tibshirani.
+\newblock Regression shrinkage and selection via the lasso.
+\newblock {\em Journal of the Royal Statistical Society. Series B
+  (Methodological)}, 58(1):267--288, 1996.
+
+\bibitem{bayes_regr}
+{\em Nature of Bayesian Inference}, chapter~1, pages 1--75.
+\newblock John Wiley and Sons, Ltd, 1992.
+
+\bibitem{scikit-learn}
+F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel,
+  M.~Blondel, P.~Prettenhofer, R.~Weiss, V.~Dubourg, J.~Vanderplas, A.~Passos,
+  D.~Cournapeau, M.~Brucher, M.~Perrot, and E.~Duchesnay.
+\newblock Scikit-learn: Machine learning in {P}ython.
+\newblock {\em Journal of Machine Learning Research}, 12:2825--2830, 2011.
+
+\bibitem{Salvatier2016}
+John Salvatier, Thomas~V. Wiecki, and Christopher Fonnesbeck.
+\newblock Probabilistic programming in python using {PyMC}3.
+\newblock {\em {PeerJ} Computer Science}, 2:e55, apr 2016.
+
+\bibitem{gortler2019a}
+Jochen Görtler, Rebecca Kehlbeck, and Oliver Deussen.
+\newblock A visual exploration of gaussian processes.
+\newblock {\em Distill}, 2019.
+\newblock https://distill.pub/2019/visual-exploration-gaussian-processes.
+
+\bibitem{Rasmussen2004}
+Carl~Edward Rasmussen.
+\newblock {\em Gaussian Processes in Machine Learning}, pages 63--71.
+\newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 2004.
+
+\bibitem{vapnik95}
+Vladimir~N. Vapnik.
+\newblock {\em The nature of statistical learning theory}.
+\newblock Springer-Verlag New York, Inc., 1995.
+
+\bibitem{cov-matrix-maths}
+{European Mathematical Society}.
+\newblock {Covariance Matrix}.
+\newblock In {\em {Encyclopedia of Mathematics}}. EMS Press, February 2021.
+
+\bibitem{paananen2019variable}
+Topi Paananen, Juho Piironen, Michael~Riis Andersen, and Aki Vehtari.
+\newblock Variable selection for gaussian processes via sensitivity analysis of
+  the posterior predictive distribution, 2019.
+
+\bibitem{heteroscedastic}
+Quoc~V. Le, Alex~J. Smola, and St\'{e}phane Canu.
+\newblock Heteroscedastic gaussian process regression.
+\newblock In {\em Proceedings of the 22nd International Conference on Machine
+  Learning}, ICML '05, page 489–496, New York, NY, USA, 2005. Association for
+  Computing Machinery.
+
+\bibitem{KLD}
+S.~Kullback and R.~A. Leibler.
+\newblock {On Information and Sufficiency}.
+\newblock {\em The Annals of Mathematical Statistics}, 22(1):79 -- 86, 1951.
+
+\bibitem{gpy2014}
+{GPy}.
+\newblock {GPy}: A gaussian process framework in python.
+\newblock \url{http://github.com/SheffieldML/GPy}, since 2012.
+
+\bibitem{DT_OG}
+Wray~L. Buntine.
+\newblock Decision tree induction systems: {A} bayesian analysis.
+\newblock {\em CoRR}, abs/1304.2732, 2013.
+
+\bibitem{RF_OG}
+Leo Breiman.
+\newblock Random {Forests}.
+\newblock {\em Machine Learning}, 45(1):5--32, October 2001.
+
+\bibitem{RandomForests}
+Leo Breiman.
+\newblock Random forests.
+\newblock {\em Machine Learnig}, 45:5--32, 2001.
+
+\bibitem{598994}
+Tin~Kam Ho.
+\newblock Random decision forests.
+\newblock In {\em Proceedings of 3rd International Conference on Document
+  Analysis and Recognition}, volume~1, pages 278--282 vol.1, 1995.
+
+\bibitem{geurts_extremely_2006}
+Pierre Geurts, Damien Ernst, and Louis Wehenkel.
+\newblock Extremely randomized trees.
+\newblock {\em Machine Learning}, 63(1):3--42, April 2006.
+
+\bibitem{silver_mastering_2016}
+David Silver, Aja Huang, Chris~J. Maddison, Arthur Guez, Laurent Sifre, George
+  van~den Driessche, Julian Schrittwieser, Ioannis Antonoglou, Veda
+  Panneershelvam, Marc Lanctot, Sander Dieleman, Dominik Grewe, John Nham, Nal
+  Kalchbrenner, Ilya Sutskever, Timothy Lillicrap, Madeleine Leach, Koray
+  Kavukcuoglu, Thore Graepel, and Demis Hassabis.
+\newblock Mastering the game of {Go} with deep neural networks and tree search.
+\newblock {\em Nature}, 529(7587):484--489, January 2016.
+
+\bibitem{7333916}
+Durjoy~Sen Maitra, Ujjwal Bhattacharya, and Swapan~K. Parui.
+\newblock Cnn based common approach to handwritten character recognition of
+  multiple scripts.
+\newblock In {\em 2015 13th International Conference on Document Analysis and
+  Recognition (ICDAR)}, pages 1021--1025, 2015.
+
+\bibitem{CALTECH}
+Zongyi Li, Nikola~B. Kovachki, Kamyar Azizzadenesheli, Burigede Liu, Kaushik
+  Bhattacharya, Andrew~M. Stuart, and Anima Anandkumar.
+\newblock Fourier neural operator for parametric partial differential
+  equations.
+\newblock {\em CoRR}, abs/2010.08895, 2020.
+
+\bibitem{Goodfellow-et-al-2016}
+Ian Goodfellow, Yoshua Bengio, and Aaron Courville.
+\newblock {\em Deep Learning}.
+\newblock MIT Press, 2016.
+\newblock \url{http://www.deeplearningbook.org}.
+
+\bibitem{SCHMIDHUBER201585}
+Jürgen Schmidhuber.
+\newblock Deep learning in neural networks: An overview.
+\newblock {\em Neural Networks}, 61:85--117, 2015.
+
+\bibitem{NEURIPS2019_9015}
+Adam Paszke, Sam Gross, Francisco Massa, Adam Lerer, James Bradbury, Gregory
+  Chanan, Trevor Killeen, Zeming Lin, Natalia Gimelshein, Luca Antiga, Alban
+  Desmaison, Andreas Kopf, Edward Yang, Zachary DeVito, Martin Raison, Alykhan
+  Tejani, Sasank Chilamkurthy, Benoit Steiner, Lu~Fang, Junjie Bai, and Soumith
+  Chintala.
+\newblock Pytorch: An imperative style, high-performance deep learning library.
+\newblock In H.~Wallach, H.~Larochelle, A.~Beygelzimer, F.~d\textquotesingle
+  Alch\'{e}-Buc, E.~Fox, and R.~Garnett, editors, {\em Advances in Neural
+  Information Processing Systems 32}, pages 8024--8035. Curran Associates,
+  Inc., 2019.
+
+\bibitem{Mucherino2009}
+Antonio Mucherino, Petraq~J. Papajorgji, and Panos~M. Pardalos.
+\newblock {\em k-Nearest Neighbor Classification}, pages 83--106.
+\newblock Springer New York, New York, NY, 2009.
+
+\bibitem{schapire2013explaining}
+Robert~E Schapire.
+\newblock Explaining adaboost.
+\newblock In {\em Empirical inference}, pages 37--52. Springer, 2013.
+
+\bibitem{WU2018417}
+Xu~Wu, Tomasz Kozlowski, Hadi Meidani, and Koroush Shirvan.
+\newblock Inverse uncertainty quantification using the modular bayesian
+  approach based on gaussian process, part 2: Application to trace.
+\newblock {\em Nuclear Engineering and Design}, 335:417--431, 2018.
+
+\end{thebibliography}
