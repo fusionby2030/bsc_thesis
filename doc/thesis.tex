@@ -33,7 +33,7 @@
 
 
 \title{
-	{Machine Learning Analysis on the JET-Pedestal Database } \\ 
+	{Machine Learning Analysis on the JET Pedestal Database } \\ 
 	{\large or how I started worrying about high $n_e^{ped}$}\\
 	{\large Univerisitat Leipzig} \\ 
 	}
@@ -49,9 +49,9 @@
 \section{Introduction}\label{sec:introduction}
 Harnessing controlled thermonuclear fusion on Earth is a complex multi-faceted problem; a potential solution is that of controlled magnetic confinement fusion (MCF), such as stellarators or tokamaks \cite{EUROfusionroadmap}. 
 The field of MCF research is entering the era of superconducting, reactor-scale, long pulse devices, such as ITER and DEMO \cite{Ikeda_2007, stepladder}.
-These reactor-scale devices encompass a significant risk of very costly component damages in off-normal events, and, hence, the emphasis on reactor and plasma scenario design is shifting from experimental approaches to theory based predict-first and plasma flight simulator methods \cite{Snyder_2011, MOREAU2011535}.
+These reactor-scale devices encompass a significant risk of very costly component damages in off-normal events, and, hence, the emphasis on reactor and plasma scenario design is shifting from experimental approaches to theory based predict-first and plasma flight simulator methods \cite{Meneghini_2017, MOREAU2011535}.
 To bridge the gap between computational and experimental efforts and to rapidly design reactors, there exists a need for data-driven approaches to produce models through the use of machine learning (ML).
-The topic of this thesis is to analyze and compare predictive ML tools in estimating plasma parameters based on experimental data. The focus is on the plasma density in the edge of tokamaks, otherwise known as the pedestal. 
+The topic of this thesis is to analyze and compare predictive ML tools in estimating plasma parameters based on experimental data. The focus is on the plasma density in the edge of tokamaks, where high performance scenarios typically establish an edge transport barrier and plasma pedestal. 
 
 \subsection{Why Pedestal Physics?}\label{subsec:purpose}
 In tokamaks, the fusion plasma is confined in a toroidal vacuum chamber using magnetic fields.
@@ -62,27 +62,27 @@ The helical field lines form nested closed flux surfaces.
 At the edge of the plasma, structures of the reactor wall intersect these flux surfaces, such that they become open.
 The region of the open field lines, within which the plasma is in contact with the reactor components, is called the scrape-off layer (SOL).
 The last flux surface that is closed is aptly named the last closed flux surface (LCFS), and the field line that separates LCFS from SOL is called the seperatrix.
-In typical present day plasma scenarios, the edge plasma is magnetically diverted to a separate divertor area, such that the LCFS is not in direct contact with the wall.
+In typical present-day plasma scenarios, the edge plasma is magnetically diverted to a separate divertor area, such that the LCFS is not in direct contact with the wall.
 
 Nuclear fusion with net energy gain requires sufficiently high fuel pressure and confinement time, i.e., the triple product of the density, temperature and confinement time, $nT\tau_E$,  must be high enough \cite{Lawson_1957}. A deuterium-tritium plasma is considered ignited when the heating provided by the resulting 3.5 MeV alpha particles is sufficient to overcome the energy losses. 
-The highest achieved triple product in MCF devices is $1.53\times 10^{21}\text{ keVm/s}^3$ in the JT60U tokamak operating with deuterium plasmas \cite{history}. ITER and DEMO plan to achieve triple product values on the order of $10^{22}\text{ keVm/s}^3$ operating with deuterium-tritium plasmas \cite{EUROfusionroadmap}.
+The highest achieved triple product in MCF devices is $1.53\times 10^{21}\text{ keVs/m}^3$ in the JT60U tokamak operating with deuterium plasmas \cite{history}. ITER and DEMO plan to achieve triple product values on the order of $10^{22}\text{ keVs/m}^3$ operating with deuterium-tritium plasmas \cite{EUROfusionroadmap}.
 
 The maximum pressures achievable in MCF devices are limited by magnetic field strength and magnetohydrodynamic (MHD) instabilities.
-The field strength is limited by the capabilities of the available superconductor technology such that, in conventional tokamak reactor designs, the fields in the center of the plasma are around 5-6 T \cite{zohm_use_2019}. A useful figure of merit for an MCF device is the ratio of the confined fuel pressure to that of the magnetic field pressure, $\beta = p / (B/2mu_0)$, which in tokamaks is always significantly less than 1 for stable plasmas. Higher $\beta$ plasmas are desired for high fusion performance and power density, but the maximum $\beta$ is limited by MHD stability. Often $\beta$ is further normalized with the Troyon factor $(I_P / B_T)$, originating from the Troyon $\beta$ limit \cite{Troyon_1988}. This is called $\beta_N$. Typically in tokamaks the end result is that the fuel pressure is on the order of atmospheric pressure and the confinement time is on the order of seconds. 
+The field strength is limited by the capabilities of the available superconductor technology such that, in conventional tokamak reactor designs, the fields in the center of the plasma are around 5-6 T \cite{zohm_use_2019}. A useful figure of merit for an MCF device is the ratio of the confined fuel pressure to that of the magnetic field pressure, $\beta = p / (B/2\mu_0)$, which in tokamaks is always significantly less than 1 for stable plasmas. Higher $\beta$ plasmas are desired for high fusion performance and power density, but the maximum $\beta$ is limited by MHD stability. Often $\beta$ is further normalized with the Troyon factor $(I_P / B_T)$, originating from the Troyon $\beta$ limit \cite{Troyon_1988}. This is called $\beta_N$. Typically in tokamaks the end result is that the fuel pressure is on the order of atmospheric pressure and the confinement time is on the order of seconds. 
 
 
-The energy confinement time is limited by the turbulence of the plasma, which leads to radial transport across the flux surfaces significantly faster than would be expected based on classical or neo-classical transport \cite{Ikeda_2007}.
-Typically, the turbulence modes show critical gradient behavior \cite{Ikeda_2007}, such that the radial gradients are limited near their critical value and the effective transport increases with more heating power.
-This results in a reduction of $\tau_E$ with heating power, as can be seen in common confinement time scalings, for L- and H-mode \cite{Ikeda_2007}. As a result, reaching $nT\tau_E$ is quite challenging considering the solution of throwing power at the problem has the opposite than desired effect.
+The energy confinement time is limited by plasma turbulence, which leads to radial transport across the flux surfaces significantly faster than would be expected based on classical or neo-classical transport \cite{Ikeda_2007}.
+Typically, the turbulence modes show critical gradient behavior \cite{Ikeda_2007}, such that the radial gradients are limited near their critical value, and the effective transport increases with more heating power.
+This results in reduction of $\tau_E$ with heating power, as can be seen in common confinement time scalings, for L- and H-mode \cite{Ikeda_2007}. As a result, reaching $nT\tau_E$ is quite challenging considering the solution of throwing power at the problem has the opposite than desired effect.
 
 In the 1980s, a sudden transition into an enhanced confinement regime, called the high confinement mode (H-mode), was discovered in plasmas operating with the divertor configurations and neutral beam heating \cite{PhysRevLett}.
 The H-mode confinement can break away from the stiff gradients at the edge, as self-organized shear flows at the plasma edge reduce turbulent radial fluxes, leading to the formation of a 'pedestal'.
-To achieve H-mode confinement, a minimum amount of power flow through the edge is required \cite{Martin_2008}. H-mode ultimately provides about a factor of two increase of the energy confinement time. Therefore, H-mode is the baseline operational mode expected in future reactor-scale devices such as ITER and DEMO.
+To achieve H-mode confinement, a minimum amount of power flow through the edge is required \cite{Martin_2008}. H-mode ultimately provides about a factor of two increase of the energy confinement time. Therefore, H-mode is the standard operational mode expected in future reactor-scale devices such as ITER and DEMO.
 
 The suppressed turbulence in the pedestal region allows the radial pressure  and current gradients to grow until they trigger MHD instabilities, called edge localized modes (ELMs) \cite{ELM_s, Viezzer_2018}.
 The current understanding is that high performance pedestal plasmas are limited by ideal MHD peeling-ballooning instabilities that trigger type-I ELMs \cite{ELM_s}.
 Pedestal plasmas are not always limited by ideal MHD peeling-ballooning instabilities.
-For example, a large fraction of JET H-mode plasmas operating with the ITER-like wall, including beryllium main chamber and tungsten divertor targets~\cite{PHILIPPS20101581}, do not reach the ideal MHD peeling-ballooning stability threshold \cite{Frassinetti_2020}.  Therefore determining which transport or instability phenomena limit the pedestal is a very active topic of research~\cite{electron_transport, Catto_2013}.
+For example, a large fraction of JET H-mode plasmas operating with the ITER-like wall, including beryllium main chamber and tungsten divertor targets~\cite{PHILIPPS20101581}, do not reach the ideal MHD peeling-ballooning stability threshold \cite{Frassinetti_2020}.  Therefore, determining which transport or instability phenomena limit the pedestal is a very active topic of research~\cite{electron_transport, Catto_2013, Kotschenreuther_2019}.
 
 Since edge transport barriers are key ingredients of future ITER and DEMO scenarios, predictive capability is necessary for the pedestal region to confidently design the future reactors and scenarios.
 Due to complexity of the pedestal plasmas and the non-linear interaction of the pedestal with the core and SOL plasmas, the simulation codes for the pedestal make simplifying assumptions. The most widely used model for pedestal pressure predictions is EPED \cite{EPED_ELM, Snyder_2011}. 
@@ -95,7 +95,7 @@ In this study, the focus is predicting the pedestal density, and ML tools analyz
 	\centering
 	\begin{subfigure}{0.35\linewidth}
 		\centering
-		\includegraphics[scale=0.32]{./src/traingularity_crop}
+		\includegraphics[scale=0.34]{./src/traingularity_crop_2}
 		\caption{}
 		\label{subfig:triangularity}
 	\end{subfigure}\hfill
@@ -109,13 +109,12 @@ In this study, the focus is predicting the pedestal density, and ML tools analyz
 	\label{fig:pedestal_db_figs}
 \end{figure}
 
-The JET pedestal database is the most comprehensive of all pedestal databases today, containing over 3000 entries \cite{Frassinetti_2020}.
-Each entry corresponds to time averaged measurements of various plasma parameters over the course of 70-95\% of an ELM cycle.
-The measurements are done using high resolution Thomson scattering (HRTS)\cite{Frassinetti_2020}, and are then fitted using the mtanh function: 
+The JET pedestal database contains over 3000 entries, with each entry corresponding to time averaged measurements of various plasma parameters over the course of 70-95\% of an ELM cycle.
+The measurements are done using high resolution Thomson scattering (HRTS)\cite{Pasqualotto_2004}, and are then fitted using the modified tangent hyperbolic function (mtanh): 
 \begin{equation} \label{eq:mtanh}
 \text{mtanh}(r) = \frac{h_1 - h_0}{2} \left( \frac{(1 + sx) e^x - e^{-x}}{e^x + e^{-x}} + 1\right) + h_0 , \quad \quad x=\frac{p-r}{w/2}
 \end{equation}
-where the pedestal height, position, width, and slope are $h_1$, $p$, $w$, and $s$ respectively, and $r$ the normalized radius $\Psi_N$ (Fig \ref{subfig:mtanhfit}). 
+where the pedestal height, position, width, and slope inside the pedestal otp are $h_1$, $p$, $w$, and $s$ respectively, and $r$ the normalized radius $\Psi_N$ (Fig \ref{subfig:mtanhfit}). 
 Since the measurements are taken near the end of the ELM cycle, the pedestal parameters should be saturated near their maximum, right before the ELM.
 
 The key engineering quantities in the database and their units ([-] dimensionless) are listed below:
@@ -194,9 +193,9 @@ Only entries that have been validated are used in this thesis.
 Shots with impurity seeding are used, as they make up about 600 entries.
 To keep the dataset simple, entries with RMPs, pellets, and kicks are excluded, as these are used to manipulate the pedestal for ELM control, mitigation, or suppression \cite{Viezzer_2018}.
 
-After filtering out the shots with RMPs, kicks, pellets, non-validated HRTS, and shots that do not use deuterium, the dataset is reduced to 1888 entries. The final pedestal parameter domains are given in the table below.
+After filtering out the shots with RMPs, kicks, pellets, non-validated HRTS, and shots that do not use deuterium, the dataset is reduced to 1888 entries. The final main engineering and pedestal parameter domains are given in Tables \ref{tab:main_domain} and \ref{tab:ped_quant} respectively.
 \begin{center}
-\begin{table}[H]
+\begin{table}[h]
 \begin{tabular}{ | c | c | c | c | c | }
 	\hline 
 	& Height & Width $[\Psi_N]$ & Position $[\Psi_N]$ & Slope [-] \\ 
@@ -206,14 +205,22 @@ After filtering out the shots with RMPs, kicks, pellets, non-validated HRTS, and
 	$p_e^{ped}$ & [0.808, 17.804] (kPa)& [0.014, 0.099] & [0.931, 1.002]& [0.041, 0.789] \\
 	\hline
 \end{tabular}
-\label{tab:ped_quant}
 \caption{Domains of pedestal parameters for deuterium shots stored in the JET pedestal database after RMPs, kicks, pellets, and non-validated HRTS are filtered out.}
+\label{tab:ped_quant}
 \end{table}
 \end{center}
 
 
 \subsubsection{Empirical Analysis}
-\begin{figure}
+
+Empirical analysis of the JET pedestal database has been done \cite{Frassinetti_2020}, and has yielded the following log-linear scaling law for the pedestal density height $n_e^{ped}$:
+\begin{equation} \label{eq:scaling}
+	n_e^{ped} = (9.9 \pm 0.3) I_p^{1.24 \pm 0.19} P_{TOT}^{-0.34 \pm 0.11} \delta^{0.62 \pm 0.14} \Gamma^{ 0.08 \pm 0.04} M_{eff}^{0.2 \pm 0.2}
+\end{equation}
+In this thesis, we will focus on the pedestal prediction with ML approaches relative to the performance of the empirical scaling law.
+The choice of parameters in the log-linear regression by Lorenzo et. al. \cite{Frassinetti_2020}, was backed by physical intuition about what drives the pedestal density height. Since log-linear regression was used, the scaling law above avoided using cross-correlated variables, which can verified in Figure \ref{fig:emperical}. 
+
+\begin{figure}[h]
         \centering
         \begin{subfigure}{0.5\linewidth}
                 \centering
@@ -230,18 +237,12 @@ After filtering out the shots with RMPs, kicks, pellets, non-validated HRTS, and
 	\caption{Empirical data plots of the JET pedestal database. \textbf{a} the correlation without causation between the major radius $R$ and $n_e^{ped}$,  \textbf{b}  Correlation matrix of the main engineering parameters. A grey coloring represents no correlation, whereas blue and yellow are negative and positive correlation respectively.}
 	\label{fig:emperical}
 \end{figure}
-Empirical analysis of the JET pedestal database has been done \cite{Frassinetti_2020}, and has yielded the following log-linear scaling law for the pedestal density height $n_e^{ped}$:
-\begin{equation} \label{eq:scaling}
-	n_e^{ped} = (9.9 \pm 0.3) I_p^{1.24 \pm 0.19} P_{TOT}^{-0.34 \pm 0.11} \delta^{0.62 \pm 0.14} \Gamma^{ 0.08 \pm 0.04} M_{eff}^{0.2 \pm 0.2}
-\end{equation}
-In this thesis, we will focus on the pedestal prediction with ML approaches relative to the performance of the empirical scaling law.
-The choice of parameters in the log-linear regression by Lorenzo et. al. \cite{Frassinetti_2020}, was backed by physical intuition about what drives the pedestal density height. Since log-linear regression was used, it is also assumed that the scaling law above avoided using cross-correlated variables, which can verified in Figure \ref{fig:emperical}. 
 
 To improve prediction quality, it may prove useful to include additional inputs from the list of main engineering quantities that were not used in the log-linear scaling.
 However, by plotting joint histograms between the control parameters and $n_e^{ped}$, serious questions can be raised regarding which parameters can and should be given to a machine learning model.
 For example, looking at the dependence of the major radius $R$, one could jump to early conclusions and say that with higher values of $R$, a higher pedestal height is achieved (Fig. \ref{fig:emperical})!
 However, this is a case of causation without correlation, or ice-cream correlation\footnote{ice cream correlation refers to the correlation of increasing ice cream sales and increasing number of drownings in Finland during the summer. Although the variables are indeed correlated, higher ice cream sales are not in fact the cause of higher drowning rates, nor vice-versa.}, and the real culprit of the causation is the Shafranov shift; the outward radial displacement of the magnetic axis from the geometric axis that is prominently found in MCF devices~\cite{shafranov_equilibrium_1963, freidberg_plasma_2007}. The shift increases with normalized pressure, which increases $R$. As normalized pressure increases with pedestal pressure, there is a cross-correlation between pedestal pressure and $R$. For this reason, $R$ is excluded from the list of inputs to the ML models in this thesis, and only when multi-machine databases with significantly larger variation of $R$ are available should it be included.
-The divertor configuration on the other hand, does have a real correlation, and can have a large impact on the pedestal. However, the analysis in this thesis only makes use of the numerical parameters available, and thus it will not be used as an input parameter, as it is categorical.  
+The divertor configuration on the other hand, does have a real correlation, and can have a large impact on the pedestal. However, the analysis in this thesis only makes use of the numerical parameters available, and thus divertor configuration will not be used as an input parameter, as it is categorical.  
 
 Another engineering parameter that is ignored in the analysis is the sub-divertor pressure $P_{SD}$, which is correlated with the gas fueling rate, but also depends on other main engineering parameters, such as divertor configuration, input power, and wall conditions.
 From the filtered dataset, the values of $P_{SD}$ vary widely, with 130 entries having an error and value of 1000 [$10^6$ nbar], while having close to 500 entries that vary between [0, 0.5].
@@ -302,17 +303,17 @@ The details pertinent to the analysis in this thesis are as follows:
 \begin{itemize}
 	\item Choice of kernel (covariance function) is normally based on the 'wigglieness' of the functions one is trying to parameterize \cite{cov-matrix-maths}, but with higher dimensional space, this means nothing. Therefore, the kernels desired are those that best predict the pedestal density when optimized.
 	\item Prediction uncertainty is built into GPs as the joint-Gaussian group of functions determined through optimization of the kernel will give predictions of the pedestal density that are averaged for the point prediction, and the standard deviation is the uncertainty \cite{Rasmussen2004}. 
-	\item Sensitivity analysis is used to determine the relevant engineering parameters for GPs, from which the dimensionality of the input space can be reduced if parameters are deemed irrelevant. Three different forms of sensitivity analysis are used and are described below \cite{paananen2019variable}. 
-	\item There are two approaches to utilize the measurement uncertainties given in the database: (a) a fixed noise kernel is added on to the base kernel such that the measurement uncertainties are additive to the input space. (b) Transforming the GP model from homoscedastic to heteroscedastic, where the homoscedastic model assumes constant Gaussian noise and the heteroscedastic takes noise values that vary for each input entry. Furthermore, the heteroscedastic model attempts to learn the uncertainty space given the input's uncertainty, i.e., both the mean and \textit{local} variance of $n_e^{ped}$ are estimated~\cite{heteroscedastic}.   
+	\item Sensitivity analysis is used to determine the relevant engineering parameters for GPs, from which the dimensionality of the input space can be reduced if parameters are deemed irrelevant. Three different forms of sensitivity analysis are used and are described below \cite{pmlr-v89-paananen19a}. 
+	\item There are two approaches to utilize the measurement uncertainties given in the database: (a) a fixed noise kernel is added on to the base kernel such that the measurement uncertainties are additive to the input space, (b) transforming the GP model from homoscedastic to heteroscedastic, where the homoscedastic model assumes constant Gaussian noise and the heteroscedastic takes noise values that vary for each input entry. Furthermore, the heteroscedastic model attempts to learn the uncertainty space given uncertainty of the input, i.e., both the mean and \textit{local} variance of $n_e^{ped}$ are estimated~\cite{heteroscedastic}.   
 \end{itemize}
 
-GPs scale horribly with increasing input space size, therefore the hope of using sensitivity analysis is to remove any engineering inputs if they do not improve the prediction capability of the GP model.
+GPs scale unfavorably with increasing input space size, therefore the hope of using sensitivity analysis is to remove any engineering inputs if they do not improve the prediction capability of the GP model.
 
 Three types of sensitivity analysis are used:
 \begin{itemize}
-	\item Automatic Relevance Determination (ARD): The predictive relevance of each input variable is inferred from the inverse of the length-scale parameter associated with that variable within the kernel. A large length scale (infinite, for example) means that no correlation between the latent space and the variable in question, and thus the relevance would be zero \cite{paananen2019variable}. 
-	\item Kullback-Leibler Divergence (KLD): The KLD is a well known measure of dissimilarity between two probability distributions, and is a function of both the latent mean and uncertainty of each distribution \cite{KLD}. In this case, the input space is 'shifted' via the perturbation of a single variable's values, and the KLD of the resulting new latent space is measured against the unperturbed case. A large change in the KLD indicates that the single variable that was perturbed has high prediction relevance \cite{paananen2019variable}. 
-	\item Variance of the Posterior (VAR): The same method of perturbation applies, but instead of calculating the KLD, variability in  only the latent mean of the fitted GP is calculated \cite{paananen2019variable}.
+	\item Automatic Relevance Determination (ARD): The predictive relevance of each input variable is inferred from the inverse of the length-scale parameter associated with that variable within the kernel. A large length scale (infinite, for example) means that there is no correlation between the latent space and the variable in question, and thus the relevance would be zero \cite{pmlr-v89-paananen19a}. 
+	\item Kullback-Leibler Divergence (KLD): The KLD is a well known measure of dissimilarity between two probability distributions, and is a function of both the latent mean and uncertainty of each distribution \cite{KLD}. In this case, the input space is 'shifted' via perturbing values of individual variables, and the KLD of the resulting new latent space is measured against the unperturbed case. A large change in the KLD indicates that the single variable that was perturbed has high prediction relevance \cite{pmlr-v89-paananen19a}. 
+	\item Variance of the Posterior (VAR): The same method of perturbation applies, but instead of calculating the KLD, variability in  only the latent mean of the fitted GP is calculated \cite{pmlr-v89-paananen19a}.
 \end{itemize}
 
 The Gaussian Process models used in this analysis are adapted from the GPy library \cite{gpy2014}. 
@@ -352,29 +353,49 @@ Through the use of cross-validation, the hyperparameters of each model are tuned
 The relevant hyperparameters, and how they were determined, is discussed in each individual model subsection, as well as the effect of meta-modeling when applicable.
 Table \ref{tab:performance_models} presents the final performance metrics for each optimized model. 
 
+\begin{table}[h]
+	\begin{center}
+		\begin{tabular}{>{\rowmac}c|>{\rowmac}c|>{\rowmac}c<{\clearrow}}
+		\hline
+		Model & RMSE & MAE \\
+		\hline
+		Scaling Law & $0.9203 \pm 0.63$ & $0.7189 \pm 0.63$ \\
+		\hline
+		Linear & $0.8166 \pm 0.0605 $ & $0.5956 \pm 0.0379$ \\
+		\setrow{\bfseries}GP & 0.4566 $\mathbf{\pm}$  0.0217 &  0.3395 $\mathbf{\pm}$ 0.01383\\
+		RF & $0.5938 \pm 0.0352$ & $0.4225 \pm 0.0191$ \\
+		ERT &$0.5623 \pm 0.0368 $ & $0.3927 \pm 0.0199$ \\
+		ANN & $0.6126 \pm 0.0694$ & $0.4418 \pm 0.0421$ \\
+		\hline
+		\end{tabular}
+		\caption{The best RMSE and MAE of the predictions from each optimal model are calculated by averaging the results across each fold and repeat of the repeated cross-validation method. Uncertainty in the calculated RMSE and MAE is derived from the  standard deviation of the RMSE across each fold.}
+		\label{tab:performance_models}
+	\end{center}
+	\vspace{-38pt}
+\end{table}
+
 \subsection{Linear Regression}
 
 Using a Bayesian Ridge linear regression model without an intercept using the control parameters as inputs, the RMSE and MAE improve by including more parameters than in the reference scaling law, eq. (\ref{eq:scaling}) (Fig. \ref{fig:lin_reg}).
-
-\begin{figure}[h]
+\begin{figure}[hb!]
 	\centering
 	\begin{subfigure}{0.495\linewidth}
 		\centering
-		\includegraphics[scale=0.35]{./src/Baysian_regression_predictions}
+		\includegraphics[scale=0.28]{./src/Baysian_regression_predictions}
 		\caption{}
 		\label{subfig:bayes_pred}
 	\end{subfigure}
 	\begin{subfigure}{0.495\linewidth}
 		\centering
-		\includegraphics[scale=0.18]{./src/linear_comp}
+		\includegraphics[scale=0.13]{./src/linear_comp}
 				\caption{}
 		\label{subfig:bayes_resid}
 	\end{subfigure}\hfill
-	\caption{Comparison of a Bayesian Ridge regressor fit using all available engineering parameters against the log-linear scaling law eq.\;( \ref{eq:scaling}). \textbf{Left:} The predictions of a Bayesian regressor (green) vs the scaling law (orange) with the ground truth being the black dotted line. \textbf{Right:} The Residual comparison of the Bayesian regressor (green) and the scaling law (orange) }
+	\caption{Comparison of a Bayesian Ridge regressor fit using all available engineering parameters against the log-linear scaling law eq.\;( \ref{eq:scaling}). \textbf{(a)} The predictions of a Bayesian regressor (green) vs the scaling law (orange) with the ground truth being the black dotted line. \textbf{(b)} The Residual comparison of the Bayesian regressor (green) and the scaling law (orange) }
 	\label{fig:lin_reg}
 \end{figure}
 
-Due to cross-correlated variables, we observed that LASSO did not perform well in reducing the dimensionality of the input space. The LASSO method deemed the following features as 'unimportant' (their coefficients dropped to 0 or near 0): $H, M_{eff}, B_T, V_P$. A new model with reduced dimensionality was fit by removing the unimportant features from the input space and the prediction quality decreased dramatically with any reduction of dimensionality; in removing H or $M_{eff}$ from the input space, the RMSE and MAE increased much above that of the scaling law, while when removing $V_P$ or $B_T$, there was an increase of 1.5 in the RMSE and MAE. 
+Due to cross-correlated variables, we observed that LASSO did not perform well in reducing the dimensionality of the input space. The LASSO method deemed the following features as 'unimportant' (their coefficients dropped to 0 or near 0): $H, M_{eff}, B_T, V_P$. A new model with reduced dimensionality was fit by removing the unimportant features from the input space and the prediction quality decreased dramatically with any reduction of dimensionality; in removing H or $M_{eff}$ from the input space, the RMSE and MAE increased by 0.3, while when removing $V_P$ or $B_T$, there was an increase of 1.5 in the RMSE and MAE. 
 The results of LASSO can be slightly misleading, as linear regressors and their regularized extensions are prone to problems when working with many correlated variables and many of the variables in the input space are correlated (e.g., $P_{TOT}, P_{NBI}, P_{ICRH}$), which may be why the best RMSE and MAE are achieved when all variables are included.
 
 
@@ -414,7 +435,7 @@ Sensitivity analysis of GPs yielded the following variable importance ranking (F
 \begin{itemize}
 	\item  $\delta, a, I_p, V_P, P_{NBI},\Gamma, P_{TOT},  q_{95},  P_{ICRH}, B_T, H, M_{eff}$. 
 \end{itemize}
-To determine these results, a GP model with a radial basis function (RBF) kernel with added constant bias term was fit using all main engineering parameters, and the relevance of each variable is calculated using ARD, KLD, and VAR. This process is repeated 5 times and the results over all 5 are averaged. Each method gives relatively similar results and suggest that H and $M_{eff}$ do not aid in predicting the pedestal density (Fig. \ref{fig:GP_dim}). This may be due to the filtered dataset, used for fitting, was exclusive in its values for $H$ and $M_{eff}$ (only deuterium experiments were considered). This is expected to change if a wider range of fueling elements was included in the dataset, and in future work we do not expect $M_{eff}$ to rank as low as it does. Each sensitivity analysis also ranks $B_T$ low, which is most likely due to the inherent correlation between $B_T, \; q_{95}, \text{and} I_P$, as most of the information of $B_T$ is contained within $q_{95} \text{ and } I_P$. 
+To determine these results, a GP model with a radial basis function (RBF) kernel~\cite{kernel_cookbook} with added constant bias term was fit using all main engineering parameters, and the relevance of each variable is calculated using ARD, KLD, and VAR. This process is repeated 5 times and the results over all 5 are averaged. Each method gives relatively similar results and suggest that H and $M_{eff}$ do not aid in predicting the pedestal density (Fig. \ref{fig:GP_dim}). This may be due to the filtered dataset, which was exclusive in its values for $H$ and $M_{eff}$ (only deuterium experiments were considered). This is expected to change if a wider range of fueling elements was included in the dataset, and in future work we do not expect $M_{eff}$ to rank as low as it does. Each sensitivity analysis also ranks $B_T$ low, which is most likely due to the inherent correlation between $B_T, \; q_{95}, \text{ and } I_P$, as most of the information of $B_T$ is contained within $q_{95} \text{ and } I_P$. 
 \begin{comment}
 \begin{itemize}
 	\item \textbf{ARD}: $\delta, a, V_P,  I_p, P_{ICRH}, \Gamma, P_{NBI},  B_T, P_{TOT}, q_{95}, H, M_{eff}$
@@ -439,7 +460,7 @@ To determine these results, a GP model with a radial basis function (RBF) kernel
 	\caption{Steps towards dimensionality reduction through the use of Gaussian Processes. \textbf{(a)} The result of sensitivity analysis as well as the average of the three types used plotted in the dashed black line. \textbf{(b)} The dimensionality order of input variables comes from their ranking via the average of the three sensitivity analyses (dashed black line in diagram to the left). For each kernel, a GP model is fit using cross-validation (5 folds, 5 repeats) for each additional dimension of data, starting with 1d input of $\delta$, followed by 2D input of $\delta, a$ and so on. Then the RMSE is calculated on folds left out and averaged across all folds. } \label{fig:GP_dim}
 \end{figure}
 
-Using the results from the sensitivity analysis, it was found that $H$ and $M_{eff}$ do not aid in improving predictive quality of GPs and that the MLP and Rational Quadratic (RQ) kernels perform the best.  We observe that the MLP and RQ do not improve \textit{after} $B_T$ is added to the input space, thus confirming the results of the sensitivity analysis (Fig. \ref{fig:GP_dim}b). This means that regarding the current dataset, it is unnecessary to supply $H \text{ and } M_{eff}$ to a GP, which will reduce the computation time when fitting. However, this reduction may be subject to change, since, as stated above, the dataset used was exclusive in its choice of $H$ and $M_{eff}$; thus for databases with multiple hydrogen isotopes included, the importance of these two variables may be more than what was found here. Nevertheless, the remainder of the GP models that are analyzed in this section do not use $H$ or $M_{eff}$ during the fitting procedure. 
+Using the results from the sensitivity analysis, it was found that $H$ and $M_{eff}$ do not aid in improving predictive quality of GPs and that the Multi-layer perceptron kernel (MLP)~\cite{gpy_MLP} and Rational Quadratic (RQ)~\cite{kernel_cookbook} kernels perform the best.  We observe that the MLP and RQ do not improve after $B_T$ is added to the input space, thus confirming the results of the sensitivity analysis (Fig. \ref{fig:GP_dim}b). This means that regarding the current dataset, it is unnecessary to supply $H \text{ and } M_{eff}$ to a GP, which will reduce the computation time when fitting. However, this reduction may be subject to change, since, as stated above, the dataset used was exclusive in its choice of $H$ and $M_{eff}$; thus for databases with multiple hydrogen isotopes included, the importance of these two variables may be more than what was found here. Nevertheless, the remainder of the GP models that are analyzed in this section do not use $H$ or $M_{eff}$ during the fitting procedure. 
 
  
 
@@ -470,6 +491,14 @@ We also compare how the GPs predict on each type of impurity as seen in Figure \
 
 The optimal number of decision trees and features to sample to utilize in RFs and ERTs was determined using the out-of-bag error (Fig. \ref{fig:RF_exp}). We see that after 254 decision trees in the RF, the OOB error does not improve, i.e., the forest reaches its maximum generalization capability at 254 decision trees. Furthermore, the optimal number of features to sample is 5. This is completely different from what occurs with the ERTs, where the optimal number of features to sample is 12 (all), and the number of trees is 142. The larger number of features sampled by the ERT compared to the RF is most likely due to the random splitting of nodes that ERTs make use of in creating their trees, such that they need to make use of all the features in order to generalize better, whereas the RF aims to minimize the MSE with their splits, thus not requiring all the inputs for an optimal split. For both models, overfitting begins to occur as more trees are added past the minimum OOB, and although the RMSE may improve, the generalizability does not.
 
+
+It is clear that the individual predictors in the random forest do not vary as much as that of the homoscedastic/fixed Gaussian Process models (Figs. \ref{fig:RF_exp} and \ref{fig:RF_Preds}).
+Additionally, the uncertainties are generally around equal to that of the residual for the corresponding bin. This is good, as the model is able to more or less provide an uncertainty that covers its residual. This does not hold for $n_e^{ped} \geq 10.0$, but it is certainly within the ballpark. 
+
+\begin{comment}
+Similar to GPs, the RFs and ERTs rank $H \text{ and } M_{eff}$ as unimportant, however reducing dimensionality did not improve prediction quality. Tree methods favor features with high cardinality, therefore $H$ and $M_{eff}$ are not as favourable since the fitting dataset contains only deuterium shots. In contrast to GPs, RFs and ERTs do not favor the power variables, $P_{NBI}, P_{TOT}, P_{ICRH}$, since they are cross-correlated. 
+\end{comment}
+
 \begin{wrapfigure}{r}{0.5\textwidth}
 		\centering
 		\vspace{-18pt}
@@ -478,14 +507,6 @@ The optimal number of decision trees and features to sample to utilize in RFs an
 		\vspace{-22pt}
 		\label{fig:RF_meta_model}
 \end{wrapfigure}
-It is clear that the individual predictors in the random forest do not vary as much as that of the homoscedastic/fixed Gaussian Process models (Figs. \ref{fig:RF_exp} and \ref{fig:RF_Preds}).
-Additionally, the uncertainties are generally around equal to that of the residual for the corresponding bin. This is good, as the model is able to more or less provide an uncertainty that covers its residual. This does not hold for $n_e^{ped} \geq 10.0$, but it is certainly within the ballpark. 
-
-\begin{comment}
-Similar to GPs, the RFs and ERTs rank $H \text{ and } M_{eff}$ as unimportant, however reducing dimensionality did not improve prediction quality. Tree methods favor features with high cardinality, therefore $H$ and $M_{eff}$ are not as favourable since the fitting dataset contains only deuterium shots. In contrast to GPs, RFs and ERTs do not favor the power variables, $P_{NBI}, P_{TOT}, P_{ICRH}$, since they are cross-correlated. 
-\end{comment}
-
-
 Meta-modeling had generally no effect on RFs and ERTs (Fig.~\ref{fig:RF_meta_model}).
 Although only up to 500 meta-model samples are visualized in Figure~\ref{fig:RF_meta_model}, the sporadic bouncing of the RMSE between 0.57 and 0.58 repeats for when even 2000 synthesized entries are added!
 This suggests that in order to minimize the prediction MSE of predictions across the entire dataset, RFs and ERTs ignore the additional entries and we conclude that meta-modeling has little to no effect on ERTs and RFs.
@@ -513,7 +534,7 @@ This suggests that in order to minimize the prediction MSE of predictions across
 		\caption{Comparison of predictions and uncertainties between Random Forests (green) and Extreme Random Trees (blue). \textbf{Left:} The residual between predictions and the true values,\textbf{Right:} The prediction uncertainties on the same bins of the residuals. }
 	\label{fig:RF_Preds}
 \end{figure}
-\pagebreak
+
 
 \subsection{Artificial Neural Networks}
 
@@ -525,7 +546,7 @@ This suggests that in order to minimize the prediction MSE of predictions across
 \end{wrapfigure}
 Shallow ANNs ($3-5$ hidden layers) outperform larger ANNs (Fig. \ref{fig:ANN_dim}). Therefore, the hyperparameter optimization process is focused on these networks. Since the main engineering parameters vary in magnitude (scalar value of $P_{TOT}$ is much greater than that of $q_{95}$), each parameter is scaled such that it has a mean of 0 and standard deviation of 1. Throughout the hyperparameter optimization process, each model was trained and tested using the repeated cross-fold validation method, with 5 folds and 5 repeats, and the average RMSE of predictions on the left out sets is the overall performance of the ANN. The first hyperparameters to be optimized are the learning rate (LR) and mini-batch size (MBS), and using random search, the optimal MBS and LR were found to be 396 and 0.004 respectively. Considering the dataset is around 2000 entries, the MBS is relatively large, while the LR could be considered very small for such a large MBS. However, since each training epoch, the data is randomly shuffled, it is possible that the training samples in each batch 'compete' with each other's gradient. For example, the training samples of $n_e^{ped} \geq 9.5$ pull the model weights in an opposite direction than that $n_e^{ped} \leq 9.5$. The gradient updates applied by the learning rate for this mini-batch size seemed to balance the effect of the training samples, thus resulting in the best training/testing performance. 
 
-Then, via a grid search (across all available activation layers offered by PyTorch), the optimal activation function was determined to be ELU (Exponential Linear Unit), a close cousin to the well known ReLU (Rectified Linear Unit) [\textcolor{blue}{SOURCE}]. Both are ridge functions that act on a linear combination of the input variables, but since they are applied element-wise (for each node in each layer), they are non-linear. Since the above tools like GPs and RFs are non-linear models, it makes sense that a non-linear activation function performs the best. 
+Then, via a grid search (across all available activation layers offered by PyTorch), the optimal activation function was determined to be ELU (Exponential Linear Unit), a close cousin to the well known ReLU (Rectified Linear Unit)~\cite{pytorch_act}. Both are ridge functions that act on a linear combination of the input variables, but since they are applied element-wise (for each node in each layer), they are non-linear. Since the above tools like GPs and RFs are non-linear models, it makes sense that a non-linear activation function performs the best. 
 
 The initial ansatz of optimal hidden layers was determined to be either 3, 4 or 5, with between 1000-2000 total nodes (split between each of the hidden layers) (Fig. \ref{fig:ANN_dim}). This criteria was used as a space for further architecture search via random search, while using the optimal MBS, LR and activation function during the search. 
 The optimal sizes of each layer for 3, 4, and 5 hidden layer networks is listed below: 
@@ -567,29 +588,9 @@ This was unique for the ANNs, as all other usages of meta-modeling for other ML 
 \subsection{What did not work}
 Many different machine learning models not listed in the above analyses were initially tested, but due to their under-performance compared to RFs/GPs/ANNs, they were abandoned before delving deeper them. For example, Nearest neighbors methods like K-nn and R-nn~\cite{Mucherino2009} were tested and abandoned. R-nn especially so, which although they could overfit extremely well with sufficiently small radius, they can not generalize for data entries which they are not fitted with, most often providing no prediction. Support vector machines (SVMs) \cite{hastie01statisticallearning} were tested, but due to the difficulties of deriving the prediction uncertainty and general under-performance, they were dropped. Additionally, SVMs work well when there is a clear separation between regression points, but as we have seen, for $n_e^{ped} \geq 9$ there is no clear cut discrepancies, so SVMs offer little to no utility. Additionally, it is difficult to obtain uncertainties in predictions when using neighborhood methods and SVMs, and one of the goals of this thesis was to analyze models that could provide uncertainties. Other ensemble methods like AdaBoost~\cite{schapire2013explaining} showed to perform equally or slightly worse than RFs and ERTs, but some scope was needed in this thesis, so they were ultimately dropped from analysis. The combination of multiple model types into an ensemble (e.g. voting ensemble of ERT, RF and GPs) proved only slightly beneficial, and may be looked into further in future research. 
 \section{Conclusion and Outlook}
-The pedestal is key to high performance H-mode operation. Machine learning is needed for fast predictions for plasma scenarios. In this work, application of ML tools for $n_e^{ped}$ predictions using the JET pedestal database was done. Future work should expand these studies to other pedestal parameters, such as $T_e^{ped} \text{ or } p_e^{ped}$ as well as the other features of the pedestal profile (slope, position, width). Future work could also consider combining numerical and experimental data through Bayesian methods such as described in \cite{WU2018417}. 
+The pedestal is key to high performance H-mode operation. Machine learning is needed for fast predictions for plasma scenarios. In this work, application of ML tools for $n_e^{ped}$ predictions using the JET pedestal database was done. Future work should expand these studies to other pedestal parameters, such as $T_e^{ped} \text{ or } p_e^{ped}$ as well as the other features of the pedestal profile (slope at pedesetal top, position, width). Future work could also consider combining numerical and experimental data through Bayesian methods such as described in \cite{WU2018417}. 
 
 It is clear that major improvements towards predicting the pedestal density height is achieved through the use of non-linear machine learning models while only using main engineering parameters.
-
-\begin{table}[h]
-	\begin{center}
-		\begin{tabular}{>{\rowmac}c|>{\rowmac}c|>{\rowmac}c<{\clearrow}}
-		\hline
-		Model & RMSE & MAE \\
-		\hline
-		Scaling Law & $0.9203 \pm 0.63$ & $0.7189 \pm 0.63$ \\
-		\hline
-		Linear & $0.8166 \pm 0.0605 $ & $0.5956 \pm 0.0379$ \\
-		\setrow{\bfseries}GP & 0.4566 $\mathbf{\pm}$  0.0217 &  0.3395 $\mathbf{\pm}$ 0.01383\\
-		RF & $0.5938 \pm 0.0352$ & $0.4225 \pm 0.0191$ \\
-		ERT &$0.5623 \pm 0.0368 $ & $0.3927 \pm 0.0199$ \\
-		ANN & $0.6126 \pm 0.0694$ & $0.4418 \pm 0.0421$ \\
-		\hline
-		\end{tabular}
-		\caption{The optimal relevant hyperparameters are chosen for each model type, and the best RMSE and MAE are calculated by averaging the results across each fold and repeat of the repeated cross-validation method. Uncertainty in the calculated RMSE and MAE is derived from the  standard deviation of the RMSE across each fold.}
-		\label{tab:performance_models}
-	\end{center}
-\end{table}
 
 The models analyzed are ranked via their respective performance on unseen data through the use of cross validation (Table \ref{tab:performance_models}).
 It is hard to point to a clear winner among the non-parametric/linear models, as they all score relatively close to each other, but it is easy to see that all ML tools analyzed outperform the scaling law. Strictly speaking, the homoscedastic Gaussian Process model with an MLP kernel achieved the lowest RMSE and MAE. All models could predict well on pedestal densities less than 9.5, however they also all struggled on densities higher than that.

@@ -29,23 +29,22 @@
 
 \section{JET Pedestal Database}
 \begin{frame}{fragile}
-\frametitle{JET Pedestal Database}
+\frametitle{JET pedestal database contains 3000+ entries of H-mode, pre-ELM plasmas}
 \begin{columns}
 
 \column{0.33\textwidth}
-\includegraphics[scale=0.2]{../src/MTANH_fit}\hfill
+\includegraphics[scale=0.2]{./src/MTANH_fit_21}\hfill
 \column{0.2\textwidth}
 \column{0.33\textwidth}
 \begin{itemize}
-	\item H-Mode 
-	\item 75-95\% ELM Cycle
+	\item Pedestal parameters determined from mtanh fit
 	\item Focus on $n_e^{ped}$ height
 \end{itemize}
 \end{columns}
 
 \end{frame}
 \begin{frame}
-\frametitle{Input Parameters and Filtering}
+\frametitle{Use only main engineering parameters to predict $n_e^{ped}$}
 \begin{columns}
 
 \column{0.2\textwidth}
@@ -68,7 +67,7 @@
 	$q_{95}$ [-] & $[2.42, 6.04]$ \\
 	$\Gamma$ [$10^{22}$ e/s] & $[0, 15.5]$ \\
 	$H$ [-] & $[0, 0.18]$ \\
-	$\Gamma_{SD}$ [$10^{22}$ e/s] & $[0, 1000]$ \\
+	$P_{SD}$ [$10^{22}$ e/s] & $[0, 1000]$ \\
 	$DC$ [-] & $[VV \cdots]$ \\
 	\hline
 \end{tabular}
@@ -76,21 +75,20 @@
 	\column{0.2\textwidth}\hfill
 \column{0.6\textwidth}
 \begin{center}
-\includegraphics[scale=0.48]{../src/R_vs_NEPED_DC}<1>
+\includegraphics[scale=0.48]{./src/R_vs_NEPED_DC}<1>
 \end{center}
 
 \end{columns}
 \end{frame}
 
 \begin{frame}
+\frametitle{Take only deuterium shots, no RMPs, kicks, or pellets, and remove $R, P_{SD}, DC$ from input space}
 \begin{columns}
 \column{0.5\textwidth}
 \begin{itemize}
 	\item Shafranov Shift$\rightarrow$ remove $R$
-	\item $\Gamma_{SD}$ varies too much. 
-	\item Only numerical 
-	\item Only Deuterium 
-	\item No RMPs, Kicks, or Pellets
+	\item $P_{SD}$ varies too much. 
+	\item Only numerical columns used as input
 	\item HRTS Validated 
 \end{itemize}
 
@@ -112,7 +110,7 @@
 	$q_{95}$ [-] & $[2.42, 6.04]$ \\
 	$\Gamma$ [$10^{22}$ e/s] & $[0, 15.5]$ \\
 	$H$ [-] & $[0, 0.18]$ \\
-	\sout{$\color{red} \Gamma_{SD} \; [10^{22} \text{e/s}]$} & \sout{$\color{red} [0, 1000]$} \\
+	\sout{$\color{red} P_{SD} \; [10^{22} \text{e/s}]$} & \sout{$\color{red} [0, 1000]$} \\
 	\sout{$\color{red}DC \; [-]$ } & \sout{$\color{red}[VV \cdots]$} \\
 	\hline
 \end{tabular}
@@ -121,16 +119,16 @@
 \end{frame}
 \section{Machine Learning}
 \begin{frame}
-	\frametitle{Linear Regression}
+\frametitle{Utilizing more input parameters yeilds higher prediction quality than existing scaling law}
 \begin{block}{}
 \begin{columns}
 
 \column{0.45\textwidth}
-\includegraphics[scale=0.25]{../src/Baysian_regression_predictions}
+\includegraphics[scale=0.25]{./src/Baysian_regression_predictions}
 
 \column{0.02\textwidth}
 \column{0.53\textwidth}
-\includegraphics[scale=0.14]{../src/linear_comp}
+\includegraphics[scale=0.14]{./src/linear_comp}
 \end{columns}
 \end{block}
 \begin{equation}
@@ -140,12 +138,10 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Linear Regression}
+\frametitle{Including more input params reduces interpretability}
 \begin{columns}
 \column{0.5\textwidth}
 \begin{itemize}
-	\item Achieve better RMSE \\ using all inputs
-	\item But lose interpretability $\rightarrow$ 
 	\item Prediction uncertainty \\ normally distributed between 1.6 - 1.8
 \end{itemize}
 \column{0.5\textwidth}
@@ -171,72 +167,64 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Random Forests \& Extreme Randomized Trees}
+\frametitle{Non-linear models like Random Forests and Extreme Randomized Trees outperform linear models }
 
 \begin{columns}
 \column{0.29\textwidth}
 \begin{itemize}
-	\item<1-> Uncert. covers residual
-	\item<2-> \small{Meta-modeling $\rightarrow$ no effect} 
+	\item Prediction uncertainty determined from std of each decision tree
 \end{itemize}
 \column{0.71\textwidth}
 % \includegraphics[scale=0.23]{../src/RF_OOB_error}<1>
-\includegraphics[scale=0.135]{../src/Tree_UQ}<1>
-\includegraphics[scale=0.53]{../src/ERT_vs_RF_meta_modeling}<2>
-\end{columns}
-\end{frame}
-\begin{frame}
-\frametitle{Gaussian Processes}
-\begin{columns}
-\column{0.28\textwidth}
-\begin{itemize}
-	\item<1-> Sensitivity Analysis
-	\item<3-> UQ 
-	\item<4-> Impurity seeding 
-\end{itemize}
-\onslide<1>
-{%
-\begin{align*}
-	\frac{d(p(y_* | \mathbf{x^{i}, y}) || p(y_* | \mathbf{x^{i} + \Delta_j, y}))}{\Delta}
-\end{align*}
-}%
-\hfill
-\column{0.72\textwidth}
-\includegraphics[scale=0.2]{../src/GP_sensitivity_analysis_final_V1_weq}<1>
-\includegraphics[scale=0.2]{../src/final_GP_dim_v2}<2>
-\includegraphics[scale=0.125]{../src/MLP_UQ_compare}<3>
-\includegraphics[scale=0.19]{../src/GP_preds_impurity}<4>
+\includegraphics[scale=0.135]{./src/Tree_UQ}
 \end{columns}
 \end{frame}
 
 \begin{frame}
-\frametitle{ANNs}
-\begin{columns}
-\column{0.28\textwidth}
-\begin{itemize}
-	\item<1-> Crawling Search Space
-	\item<2-> Ensembling  
-\end{itemize}
-\column{0.72\textwidth}
-\includegraphics[scale=0.2]{../src/ANN_performace_size}<1>
-\includegraphics[scale=0.135]{../src/ANN_ensemble_comp}<2>
+\frametitle{Meta-modeling has no effect on RFs and ERTs}
 
-\end{columns}
-
+\includegraphics[scale=0.53]{./src/ERT_vs_RF_meta_modeling}
 \end{frame}
+\begin{frame}
+\frametitle{Can reduce dimensionality for Gaussian Processes using sensitivity analysis $\rightarrow$ remove $H, M_{eff}$ from input space}
+\begin{columns}
+\column{0.5\linewidth}
+\includegraphics[scale=0.15]{./src/GP_sensitivity_analysis_final_V1_weq}
+\column{0.5\linewidth}
+\includegraphics[scale=0.15]{./src/final_GP_dim_v2}
+\end{columns}
+\end{frame}
+\begin{frame}
+\frametitle{GPs outpreform RFs and ERTs, and heteroscedastic models can capture local uncertainty}
+\begin{figure}
+\centering
+\includegraphics[scale=0.19]{./src/MLP_UQ_compare}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Shallow Artifical Neural Networks outperform larger nets}
+\includegraphics[scale=0.27]{./src/ANN_performace_size}
+\end{frame}
+
+\begin{frame}
+\frametitle{Ensembling for prediction uncertainty $\rightarrow$ increases with size of ensemble}
+\includegraphics[scale=0.18]{./src/ANN_ensemble_comp}
+\end{frame}
+
 \section{Conclusion}
 \begin{frame}
 \begin{block}{Conclusion}
 	\begin{itemize}
 		\item Non-linear models outpreform linear models 
 		\item RFs and ERTs work well as black box models
-		\item Heteroscedastic GPs can map latent uncertainty
-		\item Shallow ANNs perform best
+		\item Heteroscedastic GPs can map local uncertainty
+		\item $n_e^{ped} \geq 9$ is elusive to non-linear models
 	\end{itemize}
 	\end{block}
 	\begin{block}{Future Work}
 		\begin{itemize}
-			\item Fit models on varied subsets of database \\  e.g., compare how linear coefficients vary when trained on $q_{95} \leq 3.0$ versus $q_{95} > 3.0$.  
+			\item Fit models on varied subsets of database
 			\item UQ of main engineering parameters
 			\item Ideas? 
 		\end{itemize}

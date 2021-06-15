@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.5)  9 JUN 2021 12:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.5)  15 JUN 2021 11:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -887,178 +887,158 @@ thkerncmss.
 (./pres.toc) [3
 
 ]
-<../src/MTANH_fit.png, id=116, 1113.15875pt x 923.45pt>
-File: ../src/MTANH_fit.png Graphic file (type png)
-<use ../src/MTANH_fit.png>
-Package pdftex.def Info: ../src/MTANH_fit.png  used on input line 46.
+<./src/MTANH_fit_21.png, id=116, 1113.15875pt x 923.45pt>
+File: ./src/MTANH_fit_21.png Graphic file (type png)
+<use ./src/MTANH_fit_21.png>
+Package pdftex.def Info: ./src/MTANH_fit_21.png  used on input line 45.
 (pdftex.def)             Requested size: 222.6278pt x 184.68672pt.
 
-Overfull \hbox (121.22159pt too wide) in paragraph at lines 46--46
+Overfull \hbox (121.22159pt too wide) in paragraph at lines 45--45
 [][]  
  []
 
 [4
 
- <../src/MTANH_fit.png>]
-Overfull \hbox (86.98824pt too wide) in paragraph at lines 83--83
+ <./src/MTANH_fit_21.png>]
+Overfull \hbox (88.05283pt too wide) in paragraph at lines 82--82
  [] 
  []
 
-<../src/R_vs_NEPED_DC.png, id=146, 433.62pt x 433.62pt>
-File: ../src/R_vs_NEPED_DC.png Graphic file (type png)
-<use ../src/R_vs_NEPED_DC.png>
-Package pdftex.def Info: ../src/R_vs_NEPED_DC.png  used on input line 83.
+<./src/R_vs_NEPED_DC.png, id=146, 433.62pt x 433.62pt>
+File: ./src/R_vs_NEPED_DC.png Graphic file (type png)
+<use ./src/R_vs_NEPED_DC.png>
+Package pdftex.def Info: ./src/R_vs_NEPED_DC.png  used on input line 82.
 (pdftex.def)             Requested size: 208.13524pt x 208.13524pt.
 
-Overfull \hbox (23.75945pt too wide) in paragraph at lines 83--83
+Overfull \hbox (23.75945pt too wide) in paragraph at lines 82--82
  [] 
  []
 
 [5
 
- <../src/R_vs_NEPED_DC.png>] [6
+ <./src/R_vs_NEPED_DC.png>] [6
 
 ] (./pres.toc) [7
 
 ]
-<../src/Baysian_regression_predictions.png, id=230, 646.415pt x 648.4225pt>
-File: ../src/Baysian_regression_predictions.png Graphic file (type png)
-<use ../src/Baysian_regression_predictions.png>
-Package pdftex.def Info: ../src/Baysian_regression_predictions.png  used on inp
-ut line 140.
+<./src/Baysian_regression_predictions.png, id=232, 646.415pt x 648.4225pt>
+File: ./src/Baysian_regression_predictions.png Graphic file (type png)
+<use ./src/Baysian_regression_predictions.png>
+Package pdftex.def Info: ./src/Baysian_regression_predictions.png  used on inpu
+t line 138.
 (pdftex.def)             Requested size: 161.60335pt x 162.10522pt.
 
-Overfull \hbox (23.32385pt too wide) in paragraph at lines 140--140
+Overfull \hbox (23.32385pt too wide) in paragraph at lines 138--138
 [][]  
  []
 
-<../src/linear_comp.png, id=231, 1249.66875pt x 1256.695pt>
-File: ../src/linear_comp.png Graphic file (type png)
-<use ../src/linear_comp.png>
-Package pdftex.def Info: ../src/linear_comp.png  used on input line 140.
+<./src/linear_comp.png, id=233, 1249.66875pt x 1256.695pt>
+File: ./src/linear_comp.png Graphic file (type png)
+<use ./src/linear_comp.png>
+Package pdftex.def Info: ./src/linear_comp.png  used on input line 138.
 (pdftex.def)             Requested size: 174.95242pt x 175.9361pt.
 
-Overfull \hbox (12.08917pt too wide) in paragraph at lines 140--140
+Overfull \hbox (12.08917pt too wide) in paragraph at lines 138--138
 [][]  
+ []
+
+
+Overfull \vbox (1.38376pt too high) detected at line 138
  []
 
 [8
 
- <../src/Baysian_regression_predictions.png> <../src/linear_comp.png>]
-[9
+ <./src/Baysian_regression_predictions.png> <./src/linear_comp.png>] [9
 
 ]
-<../src/Tree_UQ.png, id=286, 1755.55875pt x 1043.9pt>
-File: ../src/Tree_UQ.png Graphic file (type png)
-<use ../src/Tree_UQ.png>
-Package pdftex.def Info: ../src/Tree_UQ.png  used on input line 187.
+<./src/Tree_UQ.png, id=288, 1755.55875pt x 1043.9pt>
+File: ./src/Tree_UQ.png Graphic file (type png)
+<use ./src/Tree_UQ.png>
+Package pdftex.def Info: ./src/Tree_UQ.png  used on input line 181.
 (pdftex.def)             Requested size: 236.9902pt x 140.92041pt.
 
-Overfull \hbox (18.81235pt too wide) in paragraph at lines 187--187
-[][] 
+Overfull \hbox (18.81235pt too wide) in paragraph at lines 181--181
+[][]  
  []
 
 [10
 
- <../src/Tree_UQ.png>]
-<../src/ERT_vs_RF_meta_modeling.png, id=314, 425.59pt x 286.06876pt>
-File: ../src/ERT_vs_RF_meta_modeling.png Graphic file (type png)
-<use ../src/ERT_vs_RF_meta_modeling.png>
-Package pdftex.def Info: ../src/ERT_vs_RF_meta_modeling.png  used on input line
- 187.
+ <./src/Tree_UQ.png>]
+<./src/ERT_vs_RF_meta_modeling.png, id=315, 425.59pt x 286.06876pt>
+File: ./src/ERT_vs_RF_meta_modeling.png Graphic file (type png)
+<use ./src/ERT_vs_RF_meta_modeling.png>
+Package pdftex.def Info: ./src/ERT_vs_RF_meta_modeling.png  used on input line 
+187.
 (pdftex.def)             Requested size: 225.56161pt x 151.6157pt.
+ [11
 
-Overfull \hbox (7.38376pt too wide) in paragraph at lines 187--187
-[]  
+ <./src/ERT_vs_RF_meta_modeling.png>]
+<./src/GP_sensitivity_analysis_final_V1_weq.png, id=342, 1068.99374pt x 1068.99
+374pt>
+File: ./src/GP_sensitivity_analysis_final_V1_weq.png Graphic file (type png)
+<use ./src/GP_sensitivity_analysis_final_V1_weq.png>
+Package pdftex.def Info: ./src/GP_sensitivity_analysis_final_V1_weq.png  used o
+n input line 196.
+(pdftex.def)             Requested size: 160.34213pt x 160.34213pt.
+
+Overfull \hbox (6.6972pt too wide) in paragraph at lines 196--196
+[][]  
  []
 
-[11
+<./src/final_GP_dim_v2.png, id=343, 1105.12875pt x 1105.12875pt>
+File: ./src/final_GP_dim_v2.png Graphic file (type png)
+<use ./src/final_GP_dim_v2.png>
+Package pdftex.def Info: ./src/final_GP_dim_v2.png  used on input line 196.
+(pdftex.def)             Requested size: 165.76216pt x 165.76216pt.
 
- <../src/ERT_vs_RF_meta_modeling.png>]
-
-LaTeX Font Warning: Font shape `OT1/cmss/b/n' undefined
-(Font)              using `OT1/cmss/m/n' instead on input line 210.
-
-
-Overfull \hbox (53.0992pt too wide) detected at line 210
-[]
+Overfull \hbox (12.11723pt too wide) in paragraph at lines 196--196
+[][]  
  []
 
-<../src/GP_sensitivity_analysis_final_V1_weq.png, id=340, 1068.99374pt x 1068.9
-9374pt>
-File: ../src/GP_sensitivity_analysis_final_V1_weq.png Graphic file (type png)
-<use ../src/GP_sensitivity_analysis_final_V1_weq.png>
-Package pdftex.def Info: ../src/GP_sensitivity_analysis_final_V1_weq.png  used 
-on input line 210.
-(pdftex.def)             Requested size: 213.79495pt x 213.79495pt.
 [12
 
- <../src/GP_sensitivity_analysis_final_V1_weq.png>]
-Overfull \hbox (53.0992pt too wide) detected at line 210
-[]
+ <./src/GP_sensitivity_analysis_final_V1_weq.png> <./src/final_GP_dim_v2.png>]
+<./src/MLP_UQ_compare.png, id=372, 1751.54375pt x 1041.8925pt>
+File: ./src/MLP_UQ_compare.png Graphic file (type png)
+<use ./src/MLP_UQ_compare.png>
+Package pdftex.def Info: ./src/MLP_UQ_compare.png  used on input line 203.
+(pdftex.def)             Requested size: 332.79677pt x 197.96162pt.
+
+Overfull \hbox (25.5069pt too wide) in paragraph at lines 203--203
+ [] 
  []
 
-<../src/final_GP_dim_v2.png, id=370, 1105.12875pt x 1105.12875pt>
-File: ../src/final_GP_dim_v2.png Graphic file (type png)
-<use ../src/final_GP_dim_v2.png>
-Package pdftex.def Info: ../src/final_GP_dim_v2.png  used on input line 210.
-(pdftex.def)             Requested size: 221.02184pt x 221.02184pt.
 [13
 
- <../src/final_GP_dim_v2.png>]
-Overfull \hbox (53.0992pt too wide) detected at line 210
-[]
+ <./src/MLP_uq_compare.png>]
+<./src/ANN_performace_size.png, id=400, 1117.17375pt x 921.4425pt>
+File: ./src/ANN_performace_size.png Graphic file (type png)
+<use ./src/ANN_performace_size.png>
+Package pdftex.def Info: ./src/ANN_performace_size.png  used on input line 208.
+
+(pdftex.def)             Requested size: 301.64095pt x 248.7928pt.
+
+Overfull \vbox (3.51968pt too high) detected at line 208
  []
 
-<../src/MLP_UQ_compare.png, id=398, 1751.54375pt x 1041.8925pt>
-File: ../src/MLP_UQ_compare.png Graphic file (type png)
-<use ../src/MLP_UQ_compare.png>
-Package pdftex.def Info: ../src/MLP_UQ_compare.png  used on input line 210.
-(pdftex.def)             Requested size: 218.94243pt x 130.23624pt.
 [14
 
- <../src/MLP_uq_compare.png>]
-Overfull \hbox (53.0992pt too wide) detected at line 210
-[]
+ <./src/ANN_performace_size.png>]
+<./src/ANN_ensemble_comp.png, id=426, 1755.55875pt x 1043.9pt>
+File: ./src/ANN_ensemble_comp.png Graphic file (type png)
+<use ./src/ANN_ensemble_comp.png>
+Package pdftex.def Info: ./src/ANN_ensemble_comp.png  used on input line 213.
+(pdftex.def)             Requested size: 315.98694pt x 187.89389pt.
+
+Overfull \hbox (8.69707pt too wide) in paragraph at lines 213--213
+[][]  
  []
 
-<../src/GP_preds_impurity.png, id=424, 1118.1775pt x 1103.12125pt>
-File: ../src/GP_preds_impurity.png Graphic file (type png)
-<use ../src/GP_preds_impurity.png>
-Package pdftex.def Info: ../src/GP_preds_impurity.png  used on input line 210.
-(pdftex.def)             Requested size: 212.45593pt x 209.59521pt.
 [15
 
- <../src/GP_preds_impurity.png>]
-<../src/ANN_performace_size.png, id=450, 1117.17375pt x 921.4425pt>
-File: ../src/ANN_performace_size.png Graphic file (type png)
-<use ../src/ANN_performace_size.png>
-Package pdftex.def Info: ../src/ANN_performace_size.png  used on input line 226
-.
-(pdftex.def)             Requested size: 223.43079pt x 184.28523pt.
+ <./src/ANN_ensemble_comp.png>] (./pres.toc) [16
 
-Overfull \hbox (2.18172pt too wide) in paragraph at lines 226--226
-[][] 
- []
-
-[16
-
- <../src/ANN_performace_size.png>]
-<../src/ANN_ensemble_comp.png, id=477, 1755.55875pt x 1043.9pt>
-File: ../src/ANN_ensemble_comp.png Graphic file (type png)
-<use ../src/ANN_ensemble_comp.png>
-Package pdftex.def Info: ../src/ANN_ensemble_comp.png  used on input line 226.
-(pdftex.def)             Requested size: 236.9902pt x 140.92041pt.
-
-Overfull \hbox (15.74113pt too wide) in paragraph at lines 226--226
-[]  
- []
-
-[17
-
- <../src/ANN_ensemble_comp.png>] (./pres.toc) [18
-
-] [19
+] [17
 
 ]
 \tf@nav=\write6
@@ -1070,40 +1050,38 @@ Overfull \hbox (15.74113pt too wide) in paragraph at lines 226--226
 \tf@snm=\write8
 \openout8 = `pres.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 246.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 246.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 234.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 234.
  (./pres.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 246.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 246.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 234.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 234.
 Package rerunfilecheck Info: File `pres.out' has not changed.
 (rerunfilecheck)             Checksum: 22208EC0CA7C2BA549F38970C6B91BF6;152.
-
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
  ) 
 Here is how much of TeX's memory you used:
- 18055 strings out of 481239
- 344257 string characters out of 5920377
+ 18046 strings out of 481239
+ 343963 string characters out of 5920377
  596232 words of memory out of 5000000
- 32824 multiletter control sequences out of 15000+600000
- 543295 words of font info for 64 fonts, out of 8000000 for 9000
+ 32820 multiletter control sequences out of 15000+600000
+ 543605 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,16n,67p,771b,646s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/symbols/msam10.pfb>
-Output written on pres.pdf (19 pages, 920627 bytes).
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmssi10.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmssi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbol
+s/msam10.pfb>
+Output written on pres.pdf (17 pages, 891367 bytes).
 PDF statistics:
- 601 PDF objects out of 1000 (max. 8388607)
- 534 compressed objects within 6 object streams
- 42 named destinations out of 1000 (max. 500000)
- 127 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 555 PDF objects out of 1000 (max. 8388607)
+ 491 compressed objects within 5 object streams
+ 38 named destinations out of 1000 (max. 500000)
+ 122 words of extra memory for PDF output out of 10000 (max. 10000000)
 

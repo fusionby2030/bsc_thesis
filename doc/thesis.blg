@@ -5,45 +5,45 @@ The style file: unsrt.bst
 Database file #1: biblioski.bib
 Warning--empty author and editor in bayes_regr
 Warning--can't use both author and editor fields in Rasmussen2004
-You've used 52 entries,
+You've used 58 entries,
             1791 wiz_defined-function locations,
-            799 strings with 11971 characters,
-and the built_in function-call counts, 11862 in all, are:
-= -- 1107
-> -- 410
-< -- 11
-+ -- 160
-- -- 108
-* -- 762
-:= -- 1821
-add.period$ -- 163
-call.type$ -- 52
-change.case$ -- 43
+            837 strings with 12841 characters,
+and the built_in function-call counts, 13154 in all, are:
+= -- 1238
+> -- 443
+< -- 13
++ -- 173
+- -- 115
+* -- 791
+:= -- 2018
+add.period$ -- 183
+call.type$ -- 58
+change.case$ -- 48
 chr.to.int$ -- 0
-cite$ -- 54
-duplicate$ -- 569
-empty$ -- 1211
-format.name$ -- 108
-if$ -- 2716
+cite$ -- 60
+duplicate$ -- 632
+empty$ -- 1355
+format.name$ -- 115
+if$ -- 3028
 int.to.chr$ -- 0
-int.to.str$ -- 52
-missing$ -- 56
-newline$ -- 265
-num.names$ -- 53
-pop$ -- 132
+int.to.str$ -- 58
+missing$ -- 60
+newline$ -- 296
+num.names$ -- 61
+pop$ -- 150
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 290
+skip$ -- 329
 stack$ -- 0
-substring$ -- 816
-swap$ -- 142
-text.length$ -- 11
+substring$ -- 919
+swap$ -- 162
+text.length$ -- 13
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 2
-while$ -- 111
-width$ -- 54
-write$ -- 582
+while$ -- 124
+width$ -- 60
+write$ -- 649
 (There were 2 warnings)

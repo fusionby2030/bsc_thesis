@@ -4,23 +4,23 @@
 A.~J.~H. Donne.
 \newblock The european roadmap towards fusion electricity.
 \newblock {\em Philosophical Transactions of the Royal Society A: Mathematical,
-  Physical, and Engineering Sciences}, 377(2141), February 2019.
+  Physical, and Engineering Sciences}, 377(2141), 2019.
 
 \bibitem{Ikeda_2007}
 K.~Ikeda.
 \newblock Progress in the {ITER} physics basis.
-\newblock {\em Nuclear Fusion}, 47(6), jun 2007.
+\newblock {\em Nuclear Fusion}, 47(6), 2007.
 
 \bibitem{stepladder}
 H.~Zohm et~al.
 \newblock A stepladder approach to a tokamak fusion power plant.
 \newblock {\em Nuclear Fusion}, 2017.
 
-\bibitem{Snyder_2011}
-P.B. Snyder et~al.
-\newblock A first-principles predictive model of the pedestal height and width:
-  development, testing and {ITER} optimization with the {EPED} model.
-\newblock {\em Nuclear Fusion}, 51(10):103016, aug 2011.
+\bibitem{Meneghini_2017}
+Meneghini O. et~al.
+\newblock Self-consistent core-pedestal transport simulations with neural
+  network accelerated models.
+\newblock {\em Nuclear Fusion}, 57(8):086034, 2017.
 
 \bibitem{MOREAU2011535}
 P.~Moreau et~al.
@@ -33,35 +33,34 @@ P.~Moreau et~al.
 J~D Lawson.
 \newblock Some criteria for a power producing thermonuclear reactor.
 \newblock {\em Proceedings of the Physical Society. Section B}, 70(1):6--10,
-  jan 1957.
+  1957.
 
 \bibitem{history}
 F.~Wagner et~al.
 \newblock The history of research into improved confinement regimes.
-\newblock {\em The European Physical Journal}, 43:523--549, dec 2018.
+\newblock {\em The European Physical Journal}, 43:523--549, 2018.
 
 \bibitem{zohm_use_2019}
 H.~Zohm et~al.
 \newblock On the {Use} of {High} {Magnetic} {Field} in {Reactor} {Grade}
   {Tokamaks}.
-\newblock {\em Journal of Fusion Energy}, 38(1):3--10, February 2019.
+\newblock {\em Journal of Fusion Energy}, 38(1):3--10, 2019.
 
 \bibitem{Troyon_1988}
 F~Troyon, A~Roy, W~A Cooper, F~Yasseen, and A~Turnbull.
 \newblock Beta limit in tokamaks. experimental and computational status.
-\newblock {\em Plasma Physics and Controlled Fusion}, 30(11):1597--1609, oct
-  1988.
+\newblock {\em Plasma Physics and Controlled Fusion}, 30(11):1597--1609, 1988.
 
 \bibitem{PhysRevLett}
 F.~et.~al. Wagner.
 \newblock Regime of improved confinement and high beta in neutral-beam-heated
   divertor discharges of the asdex tokamak.
-\newblock {\em Phys. Rev. Lett.}, 49:1408--1412, Nov 1982.
+\newblock {\em Phys. Rev. Lett.}, 49:1408--1412, 1982.
 
 \bibitem{Martin_2008}
-Y~R Martin, T~Takizuka, and the ITPA CDBM H-mode Threshold Data~Group.
+Martin~Y. R. et~al.
 \newblock Power requirement for accessing the h-mode in {ITER}.
-\newblock {\em Journal of Physics: Conference Series}, 123, jul 2008.
+\newblock {\em Journal of Physics: Conference Series}, 123, 2008.
 
 \bibitem{ELM_s}
 H.~Zohm et~al.
@@ -72,7 +71,7 @@ H.~Zohm et~al.
 E.~Viezzer et~al.
 \newblock Ion heat transport dynamics during edge localized mode cycles at
   {ASDEX} upgrade.
-\newblock {\em Nuclear Fusion}, 58(2):026031, jan 2018.
+\newblock {\em Nuclear Fusion}, 58(2):026031, 2018.
 
 \bibitem{PHILIPPS20101581}
 V.~Philipps, Ph. Mertens, G.F. Matthews, and H.~Maier.
@@ -85,7 +84,7 @@ V.~Philipps, Ph. Mertens, G.F. Matthews, and H.~Maier.
 L.~Frassinetti et~al.
 \newblock Pedestal structure, stability and scalings in jet-ilw: the eruofusion
   jet-ilw pedestal database.
-\newblock {\em Nuclear Fusion}, 61(1):016001, nov 2020.
+\newblock {\em Nuclear Fusion}, 61(1):016001, 2020.
 
 \bibitem{electron_transport}
 Myriam Hamed.
@@ -96,7 +95,13 @@ Myriam Hamed.
 P.~J. Catto et~al.
 \newblock Kinetic effects on a tokamak pedestal ion flow, ion heat transport
   and bootstrap current.
-\newblock {\em Plasma Physics and Controlled Fusion}, 55(4):045009, mar 2013.
+\newblock {\em Plasma Physics and Controlled Fusion}, 55(4):045009, 2013.
+
+\bibitem{Kotschenreuther_2019}
+M.~Kotschenreuther et~al.
+\newblock Gyrokinetic analysis and simulation of pedestals to identify the
+  culprits for energy losses using `fingerprints'.
+\newblock {\em Nuclear Fusion}, 59(9):096001, 2019.
 
 \bibitem{EPED_ELM}
 P.~B. Snyder et~al.
@@ -105,11 +110,17 @@ P.~B. Snyder et~al.
   mode suppression via resonant magnetic perturbations.
 \newblock {\em Physics of Plasmas}, 19(5):056115, 2012.
 
+\bibitem{Snyder_2011}
+P.B. Snyder et~al.
+\newblock A first-principles predictive model of the pedestal height and width:
+  development, testing and {ITER} optimization with the {EPED} model.
+\newblock {\em Nuclear Fusion}, 51(10):103016, 2011.
+
 \bibitem{Saarelma_2017}
 S.~Saarelma et~al.
 \newblock Integrated modelling of h-mode pedestal and confinement in
   {JET}-{ILW}.
-\newblock {\em Plasma Physics and Controlled Fusion}, 60(1):014042, nov 2017.
+\newblock {\em Plasma Physics and Controlled Fusion}, 60(1):014042, 2017.
 
 \bibitem{pedestal_prediction}
 S.~Saarelma, L.~Frassinetti, et~al.
@@ -117,10 +128,15 @@ S.~Saarelma, L.~Frassinetti, et~al.
   dt campaign.
 \newblock {\em Physics of Plasmas}, 26(7):072501, 2019.
 
+\bibitem{Pasqualotto_2004}
+R.~Pasqualotto et~al.
+\newblock High resolution thomson scattering for joint european torus (jet).
+\newblock {\em Review of Scientific Instruments}, 75(10):3891--3893, 2004.
+
 \bibitem{shafranov_equilibrium_1963}
 V.~D. Shafranov.
 \newblock Equilibrium of a toroidal pinch in a magnetic field.
-\newblock {\em Soviet Atomic Energy}, 13(6):1149--1158, November 1963.
+\newblock {\em Soviet Atomic Energy}, 13(6):1149--1158, 1963.
 
 \bibitem{freidberg_plasma_2007}
 Jeffrey~P. Freidberg.
@@ -128,11 +144,10 @@ Jeffrey~P. Freidberg.
 \newblock Cambridge University Press, Cambridge, 2007.
 
 \bibitem{OLS}
-Mahaboob B., Venkateswarlu Bhumireddy, C~Narayana, Jyothisankar Sankar, and
-  P~Balasiddamuni.
+Mahaboob B. et~al.
 \newblock A treatise on ordinary least squares estimation of parameters of
   linear model.
-\newblock {\em International Journal of Engineering and Technology(UAE)}, 7, 10
+\newblock {\em International Journal of Engineering and Technology(UAE)}, 7,
   2018.
 
 \bibitem{Selection_Bias}
@@ -176,7 +191,7 @@ F.~Pedregosa et~al.
 \bibitem{Salvatier2016}
 John Salvatier, Thomas~V. Wiecki, and Christopher Fonnesbeck.
 \newblock Probabilistic programming in python using {PyMC}3.
-\newblock {\em {PeerJ} Computer Science}, 2:e55, apr 2016.
+\newblock {\em {PeerJ} Computer Science}, 2:e55, 2016.
 
 \bibitem{gortler2019a}
 Jochen Görtler, Rebecca Kehlbeck, and Oliver Deussen.
@@ -197,12 +212,16 @@ Vladimir~N. Vapnik.
 \bibitem{cov-matrix-maths}
 {European Mathematical Society}.
 \newblock {Covariance Matrix}.
-\newblock In {\em {Encyclopedia of Mathematics}}. EMS Press, February 2021.
+\newblock In {\em {Encyclopedia of Mathematics}}. EMS Press, 2021.
 
-\bibitem{paananen2019variable}
+\bibitem{pmlr-v89-paananen19a}
 Topi Paananen, Juho Piironen, Michael~Riis Andersen, and Aki Vehtari.
 \newblock Variable selection for gaussian processes via sensitivity analysis of
-  the posterior predictive distribution, 2019.
+  the posterior predictive distribution.
+\newblock In Kamalika Chaudhuri and Masashi Sugiyama, editors, {\em Proceedings
+  of the Twenty-Second International Conference on Artificial Intelligence and
+  Statistics}, volume~89 of {\em Proceedings of Machine Learning Research},
+  pages 1743--1752. PMLR, 2019.
 
 \bibitem{heteroscedastic}
 Quoc~V. Le, Alex~J. Smola, and St\'{e}phane Canu.
@@ -229,7 +248,7 @@ Wray~L. Buntine.
 \bibitem{RF_OG}
 Leo Breiman.
 \newblock Random {Forests}.
-\newblock {\em Machine Learning}, 45(1):5--32, October 2001.
+\newblock {\em Machine Learning}, 45(1):5--32, 2001.
 
 \bibitem{598994}
 Tin~Kam Ho.
@@ -240,12 +259,12 @@ Tin~Kam Ho.
 \bibitem{geurts_extremely_2006}
 Pierre Geurts, Damien Ernst, and Louis Wehenkel.
 \newblock Extremely randomized trees.
-\newblock {\em Machine Learning}, 63(1):3--42, April 2006.
+\newblock {\em Machine Learning}, 63(1):3--42, 2006.
 
 \bibitem{silver_mastering_2016}
 D.~Silver et~al.
 \newblock Mastering the game of {Go} with deep neural networks and tree search.
-\newblock {\em Nature}, 529(7587):484--489, January 2016.
+\newblock {\em Nature}, 529(7587):484--489, 2016.
 
 \bibitem{7333916}
 D.~Maitra et~al.
@@ -279,8 +298,25 @@ A.~Paszke et~al.
   Information Processing Systems 32}, pages 8024--8035. Curran Associates,
   Inc., 2019.
 
+\bibitem{kernel_cookbook}
+D.~Duvenaud.
+\newblock {\em Automatic Model Construction with Gaussian Processes}.
+\newblock PhD thesis, University of Cambridge, 2014.
+
+\bibitem{gpy_MLP}
+{GPy}.
+\newblock Gpy docs.
+\newblock
+  \url{https://gpy.readthedocs.io/en/deploy/_modules/GPy/kern/src/mlp.html#MLP}.
+
+\bibitem{pytorch_act}
+A.~Paszke et~al.
+\newblock Pytorch activation functions.
+\newblock
+  \url{https://pytorch.org/docs/stable/nn.html#non-linear-activations-weighted-sum-nonlinearity}.
+
 \bibitem{Mucherino2009}
-Antonio Mucherino, Petraq~J. Papajorgji, and Panos~M. Pardalos.
+A.~Mucherino et~al.
 \newblock {\em k-Nearest Neighbor Classification}, pages 83--106.
 \newblock Springer New York, New York, NY, 2009.
 
