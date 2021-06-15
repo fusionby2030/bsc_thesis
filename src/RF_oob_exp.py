@@ -69,11 +69,9 @@ if __name__ == '__main__':
     ]
 
     np.random.seed(42)
-    args = {'max_estimators': 350, 'min_estimators': 15}
+    args = {'max_estimators': 350, 'min_estimators': 15, 'estimator': 'ERT'}
     OOB_results = main(ensemble_list=ensemble_clfs_ET, **args)
 
     with open('./out/RF_ERT/oob_exp_ERT.pickle', 'wb') as file:
         pickle.dump(args, file)
-        for label, oob_error in OOB_results.items():
-            pickle.dump(oob_error, file)
-            print(oob_error)
+        pickle.dump(OOB_results, file)

@@ -80,13 +80,12 @@ if __name__ == '__main__':
     ]
 
     np.random.seed(42)
-    args = {'max_estimators': 350, 'min_estimators': 15, 'type': 'Random Forrest'}
-    results, features = main(ensemble_list=ensemble_clfs, **args)
+    args = {'max_estimators': 350, 'min_estimators': 15, 'type': 'ERT'}
+    results, features = main(ensemble_list=ensemble_clfs_ET, **args)
     args['features'] = features
-    with open('./out/RF_ERT/RF_dimensionality.pickle', 'wb') as file:
+    with open('./out/RF_ERT/ERT_dimensionality.pickle', 'wb') as file:
         pickle.dump(args, file)
         pickle.dump(results, file)
-        print(results)
 
 
     """

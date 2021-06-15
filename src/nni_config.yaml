@@ -1,0 +1,16 @@
+authorName: greedy-pillows
+experimentName: 5_Hidden_Layers
+trialConcurrency: 1
+maxExecDuration: 5h
+maxTrialNum: 500
+trainingServicePlatform: local
+searchSpacePath: search_space.json
+useAnnotation: false
+tuner:
+  builtinTunerName: Anneal
+  classArgs:
+    optimize_mode: maximize
+trial:
+  command: python3 general_ANN.py
+  codeDir: .
+  gpuNum: 0

@@ -1,0 +1,7 @@
+{
+  "hl_s1": {"_type":  "randint", "_value":  [300, 700]},
+  "hl_s2": {"_type":  "randint", "_value":  [150, 600]},
+  "hl_s3": {"_type":  "randint", "_value":  [150, 700]},
+  "hl_s4": {"_type":  "randint", "_value":  [150, 700]},
+  "hl_s5": {"_type":  "randint", "_value":  [150, 400]}
+}

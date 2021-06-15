@@ -25,13 +25,13 @@ Testing
     - Same model should return same RMSE
 """
 from codebase.data import utils
-from codebase.ANN.peanuts.models.utils import set_module_torch
-
+from codebase.ANN.peanuts.models.utils import set_module_torch, save_load_torch
+from codebase.ANN.peanuts.models.torch_ensembles import AverageTorchRegressor
 
 import numpy as np
 import torch.nn as nn 
 import torch
-
+from tqdm import tqdm 
 
 class PedFFNN(nn.Module):
     def __init__(self, **kwargs):
@@ -101,12 +101,22 @@ def cross_validate_torch(control_tensor, target_tensor, **kwargs):
         train_loader = torch.utils.data.DataLoader(train_dataset, kwargs['batch_size'], shuffle=True)
         test_loader = torch.utils.data.DataLoader(test_dataset, kwargs['batch_size'], shuffle=True)
 
-        model = PedFFNN(hidden_layer_sizes=kwargs['hidden_layer_sizes'])
-        
-        optimizer = set_module_torch.set_optimizer(model, 'Adam', lr=kwargs['lr'])
+        # model = PedFFNN(hidden_layer_sizes=kwargs['hidden_layer_sizes'])
+        base_model = PedFFNN
+        model = AverageTorchRegressor(estimator=base_model, n_estimators=kwargs['n_estimators'], estimator_args={'hidden_layer_sizes': kwargs['hidden_layer_sizes']})
+        # optimizer = set_module_torch.set_optimizer(model, 'Adam', lr=kwargs['lr'])
+        model.set_optimizer('Adam', lr=kwargs['lr'])
         criterion = nn.MSELoss()
         
-        best_MSE =  np.inf
+        # best_MSE =  np.inf
+        
+        model.fit(train_loader=train_loader, test_loader=test_loader, epochs=200)
+
+        model = AverageTorchRegressor(estimator=base_model, n_estimators=kwargs['n_estimators'], estimator_args={'hidden_layer_sizes': kwargs['hidden_layer_sizes']})
+        model._decide_n_outputs(test_loader)
+
+        save_load_torch.load(model)
+        """
         for _ in range(200):
             model.train()
             for batch_idx, (control, target) in enumerate(train_loader):
@@ -115,7 +125,7 @@ def cross_validate_torch(control_tensor, target_tensor, **kwargs):
                 loss = criterion(output, target)
 
                 loss.backward()
-                optimizer.step()
+                model.optimizer.step()
             
             model.eval()
             mse = 0.0
@@ -134,11 +144,11 @@ def cross_validate_torch(control_tensor, target_tensor, **kwargs):
         best_model = PedFFNN(hidden_layer_sizes=kwargs['hidden_layer_sizes'])
         best_model.load_state_dict(torch.load('temporary_model.pth'))
         best_model.eval()
-        with torch.no_grad():
-            predictions = best_model.predict(control_tensor[test])
-            RMSE_list.append(mean_squared_error(target_tensor[test], predictions, squared=False))
-            MAE_list.append(mean_absolute_error(target_tensor[test], predictions))
-
+        with torch.no_grad():"""
+        predictions = model.predict(control_tensor[test])
+        RMSE_list.append(mean_squared_error(target_tensor[test], predictions, squared=False))
+        MAE_list.append(mean_absolute_error(target_tensor[test], predictions))
+        # print(cv_id) 
     avg_RMSE, avg_MAE = np.mean(RMSE_list), np.mean(MAE_list)
     std_RMSE, std_MAE = np.std(RMSE_list), np.std(MAE_list)
     
@@ -154,19 +164,26 @@ def main(control_tensor, target_tensor, **kwargs):
                            [25, 25, 25],
                            [25, 25, 25, 25]]
 
-    exp_long = [[25], [100], [200], [300], [400],
-                           [25, 25], [100, 100], [200, 200], [300, 300], [400, 400],
-                           [25, 25, 25], [100, 100, 100], [200, 200, 200], [300, 300, 300], [400, 400, 400],
-                           [25, 25, 25, 25], [100, 100, 100, 100], [200, 200, 200, 200], [300, 300, 300, 300], [400, 400, 400, 400]]
+    exp_long = [[i, i] for i in range(1200, 3000, 150)]
+    """
+    exp_long.extend([[i, i] for i in range(10, 1011, 100)])
+    exp_long.extend([[i, i, i] for i in range(10, 1011, 100)])
+    exp_long.extend([[i, i, i, i] for i in range(10, 1011, 100)])
+    exp_long.extend([[i, i, i, i, i] for i in range(10, 1011, 100)])
+    exp_long.extend([[i, i, i, i, i, i] for i in range(10, 1011, 100)])
+    exp_long.extend([[i, i, i, i, i, i] for i in range(10, 1011, 100)])"""
     RMSE_dict = {}
     MAE_dict = {}
-    for exp in exp_list_smoke_test:
-        print('Hidden Sizes: ', exp)
+    iterator = tqdm(exp_long, position=0, leave=False)
+    for exp in iterator:
+        # print('Hidden Sizes: ', exp)
+        iterator.set_description(str(exp))
         RMSE_info, MAE_info = cross_validate_torch(control_tensor, target_tensor, torch_model=PedFFNN, **kwargs, hidden_layer_sizes=exp)
         RMSE_dict[str(exp)] = RMSE_info
         MAE_dict[str(exp)] = MAE_info
-        print('RMSE {:.4}, +- {:.4}'.format(RMSE_info[0], RMSE_info[1]))
-        print('\n')
+        # print('RMSE {:.4}, +- {:.4}'.format(RMSE_info[0], RMSE_info[1]))
+        # print('\n')
+        iterator.set_postfix(RMSE=RMSE_info[0])
     return RMSE_dict, MAE_dict
 
 
@@ -179,11 +196,11 @@ if __name__ == '__main__':
     # pass to main
     # relevant ANN kwargs get passed as kwargs
     # TODO: argparse - need for batch size, learning rate,
+    args = {'batch_size': 396, 'lr': 0.004, 'n_splits': 5, 'n_repeats': 2, 'n_estimators': 1}
+    RMSE_dict, MAE_dict = main(control_tensors, target_tensors, **args)
 
-    RMSE_dict, MAE_dict = main(control_tensors, target_tensors, batch_size=396, lr=0.004, n_splits=5, n_repeats=2)
-    args = {'batch_size': 396, 'lr':0.004, 'n_splits':5, 'n_repeats':2}
-
-    with open('./out/ANN/performance_vs_size_exp.pickle', 'wb') as file:
+    print(RMSE_dict)
+    with open('./out/ANN/largertwolayer_performance_vs_size_exp.pickle', 'wb') as file:
         pickle.dump(args, file)
         pickle.dump(RMSE_dict, file)
         pickle.dump(MAE_dict, file)

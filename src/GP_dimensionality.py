@@ -84,6 +84,9 @@ def listener(q):
             file.write(str(m) + '\n')
             file.flush()
 
+results = {}
+def collect_results(result):
+    results[result[0]] = result[1]
 
 def main():
     KL_cols = ['Meff', 'H(HD)', 'B(T)', 'P_ICRH(MW)', 'q95', 'P_TOTPNBIPohmPICRHPshi(MW)',

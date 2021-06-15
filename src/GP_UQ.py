@@ -22,17 +22,17 @@ def map_kernel(kernel_name='MLP'):
     if kernel_name == 'MLP':
         kernel = GPy.kern.MLP(input_dim=10, ARD=True)
     else:
-        kernel = GPy.kern.MLP(input_dim=10, ARD=True)
+        kernel = GPy.kern.RatQuad(input_dim=10, ARD=True)
     return kernel
 
 
 def map_optim_kernel(model, kernel_name='MLP'):
     if kernel_name == 'MLP':
         optim_kern = model.kern.mlp.copy()
-    if kernel_name == 'None':
+    elif kernel_name == 'no_fixed':
         optim_kern = model.kern.copy()
     else:
-        optim_kern = model.kern.rq.copy()
+        optim_kern = model.kern.RatQuad.copy()
     return optim_kern
 
 
@@ -63,7 +63,7 @@ def main(kernel_name='MLP'):
         X_train, X_test = x[train], x[test]
         y_train, y_test = y[train], y[test]
 
-        fixed_kern = map_fixed_kernel(x_err[train], fix_type='none')
+        fixed_kern = map_fixed_kernel(y_err[train], fix_type='None')
 
         base_kern = map_kernel(kernel_name)
         if fixed_kern is not None:
@@ -73,7 +73,7 @@ def main(kernel_name='MLP'):
         model = GPy.models.GPRegression(X_train, y_train, kernel)
         model.optimize(messages=True)
         print(model)
-        optim_kern = map_optim_kernel(model, kernel_name='None')
+        optim_kern = map_optim_kernel(model, kernel_name='no_fixed')
 
         predictive_model = GPy.models.GPRegression(X_test, y_test, optim_kern)
         mean_preds, std_preds = predictive_model.predict(X_test)
@@ -98,14 +98,15 @@ def main(kernel_name='MLP'):
         list_preds.append(np.mean(ordered_preds[index]))
 
     scores = {'RMSE': (np.mean(error_dict['RMSE']),np.std(error_dict['RMSE'])), 'MAE': (np.mean(error_dict['MAE']),np.std(error_dict['MAE']))}
-    results = {'y_vals': list_yvals, 'preds': list_preds, 'uncert': list_uncert, 'score': scores, 'MLL': log_likelihood}
+    results = {'y_vals': np.array(list_yvals), 'preds': np.array(list_preds), 'uncert': np.array(list_uncert), 'score': scores, 'MLL': log_likelihood}
     return results
 
 
 import pickle
 
 if __name__ == '__main__':
-    results = main()
+    results = main(kernel_name='RatQuad')
     print(results)
-    with open('./out/GP/UQ_MLP_hetero.pickle', 'wb') as file:
+    with open('./out/GP/RQ_homo_t2.pickle', 'wb') as file:
         pickle.dump(results, file)
+

@@ -10,6 +10,17 @@ import logging
 
 logger = logging.getLogger()
 
+class ANNtorchdataset(torch.utils.data.Dataset):
+    def __init__(self, controls, targets):
+        self.inputs = controls
+        self.outputs = targets
+
+    def __len__(self):
+        return len(self.outputs)
+
+    def __getitem__(self, item):
+        return self.inputs[item], self.outputs[item]
+
 class PEDset(torch.utils.data.Dataset):
     def __init__(self, control_df, target_df, scalers, to_numpy=False):
         """
