@@ -33,8 +33,7 @@
 \title{
 	{Machine Learning Analysis on the JET-Pedestal Database } \\ 
 	{\large or how I started worrying about high $n_e^{ped}$}\\
-	{\large Univerisitat Leipzig} \\
-	{ UNI LOGO } \\ 
+	{\large Univerisitat Leipzig} \\ 
 	}
 
 \author{Adam Kit}
@@ -53,7 +52,7 @@ The topic of this thesis is to analyze and compare predictive ML tools in estima
 
 \subsection{Why Pedestal Physics?}\label{subsec:purpose}
 In tokamaks, the fusion plasma is confined in a toroidal vacuum chamber using magnetic fields.
-The magnetic field has components around the torus, called the toroidal component, and around the cross-section of the vacuum chamber, called the poloidal component.
+The magnetic field has components around the torus, called the toroidal component, and around the cross-section of the vacuum chamber (Fig. \ref{subfig:triangularity}), called the poloidal component.
 These are generated with magnetic coils and plasma currents.
 The toroidal and poloidal magnetic fields generate helical field lines that are necessary to confine the plasma.
 The helical field lines form nested closed flux surfaces.
@@ -91,19 +90,19 @@ In this study, the focus is predicting the pedestal density, and ML tools analyz
 \subsection{JET Pedestal Database}
 \begin{figure}
 	\centering
-	\begin{subfigure}{0.495\linewidth}
+	\begin{subfigure}{0.35\linewidth}
 		\centering
-		\includegraphics[scale=0.4]{example-image-a}
+		\includegraphics[scale=0.32]{./src/traingularity_crop}
 		\caption{}
 		\label{subfig:triangularity}
-	\end{subfigure}
-	\begin{subfigure}{0.495\linewidth}
+	\end{subfigure}\hfill
+	\begin{subfigure}{0.60\linewidth}
 		\centering
-		\includegraphics[scale=0.2]{./src/MTANH_fit}
+		\includegraphics[scale=0.22]{./src/MTANH_fit_21}
 		\caption{}
 		\label{subfig:mtanhfit}
 	\end{subfigure}\hfill
-	\caption{ \textbf{(a)} A shaping figure showing r,a, triangularity. Resembles a bow \textbf{(b)} HRTS measurement profiles (blue) radially shifted to have $T_e \approx 100$ eV at the seperatrix (LCFS). The profiles are fitted in real space using the mtanh equation (eq. \ref{eq:mtanh}) then mapped to the normalized poloidal flux coordinate $\Psi_N$ (red).}
+	\caption{ \textbf{(a)} Plasma shape parameters from the cross-section of a tokamak. \textbf{(b)} HRTS measurement profiles (blue) radially shifted to have $T_e \approx 100$ eV at the seperatrix (LCFS). The profiles are fitted in real space using the mtanh equation (eq. \ref{eq:mtanh}) then mapped to the normalized poloidal flux coordinate $\Psi_N$ (red).}
 	\label{fig:pedestal_db_figs}
 \end{figure}
 
@@ -143,11 +142,11 @@ The key engineering quantities in the database and their units ([-] dimensionles
 \end{tabular}
 \end{wraptable}
 \begin{itemize}
-	\item $I_P$ [MA], plasma current, current driven through the plasma that generates the poloidal magnetic field,
+	\item $I_P$ [MA], plasma current, current driven through the plasma that generates the poloidal magnetic field, (Fig. \ref{subfig:triangularity})
 	\item $B_T$ [T], toroidal magnetic field,
-	\item $R$ [m], major radius of the plasma,
-	\item $a$ [m], minor radius of plasma,
-	\item $\delta$ [-], triangularity, normalized horizontal displacement of the top/bottom of the plasma from the main axis,
+	\item $R$ [m], major radius of the plasma, (Fig. \ref{subfig:triangularity})
+	\item $a$ [m], minor radius of plasma, (Fig. \ref{subfig:triangularity})
+	\item $\delta$ [-], triangularity, normalized horizontal displacement of the top/bottom of the plasma from the main axis, (Fig. \ref{subfig:triangularity})
 	\item $V_P$ [m$^3$], the plasma volume,
 	\item $H$, isotope ratio of fuel,
 	\item $q_{95}$ [-], safety factor at the 95\% flux surface. Safety factor is the 'windiness' of the magnetic fields in a reactor, i.e., the  number of toroidal circles the helical field line completes within one poloidal revolution. $q$ is called the safety factor as low $q$ plasmas are susceptible to MHD instabilities. Typically, the baseline scenarios operate  $q_{95}$ around 3-4,
@@ -316,7 +315,7 @@ Three types of sensitivity analysis are used:
 The Gaussian Process models used in this analysis are adapted from the GPy library \cite{gpy2014}. 
 
 \subsection{Random Forests}
-Another popular non-linear model is the ensemble of decision trees \cite{DT_OG} that is the Random Forest(RF). More can be read about Random Forests here \cite{RF_OG, RandomForests, 598994}, but the details pertinent to the thesis are stated below:
+Another popular non-linear model is the ensemble of decision trees \cite{DT_OG} that is the Random Forest(RF). More can be read about Random Forests here \cite{RF_OG, 598994}, but the details pertinent to the thesis are stated below:
 \begin{itemize}
 	\item RFs are fitted using bootstrap aggregation (bagging). Each decision tree within the forest is fit from a 'bag' of random samples drawn from available training entries, meaning not every tree will see every available training sample, allowing for the calculation of the average error for each sample using the predictions of trees that do not contain the sample in their bag. This allows us to approximate how many decision trees to use in the forest, as the OOB error will eventually stabilize. The bag consists of a predetermined number of features which are also randomly sampled, which allows for the determination of the optimal number of inputs to sample, as well as which inputs are optimal ~\cite{hastie01statisticallearning}.
 	\item UQ in prediction can be determined by taking the standard deviation of predictions from all of the decision trees that make up the forest. 
@@ -334,11 +333,12 @@ In this thesis, the prediction uncertainty of ANNs is determined through groupin
 
 The ANNs used in this analysis are built using PyTorch~\cite{NEURIPS2019_9015}. 
 
+
 \subsection{Meta-Modeling}
 Another use of the uncertainties stored within the database is for a given entry to generate normal distributions with the mean of a parameter value and spread of the uncertainty. By sampling from the generated distribution, it is possible to create new 'synthesized' entries.
 As seen in the next section, many models can predict well for $n_e^{ped} \leq 10$, but struggle for densities higher than that.
 By including synthesized values in the fitting procedure, the hope is that models would be able to better predict higher $n_e^{ped}$ values.
-
+\pagebreak
 \section{Results}{\label{sec:results_1}
 Each model analyzed is fit using the following list of main engineering parameters as inputs:
 \begin{itemize}
@@ -371,6 +371,10 @@ Using a Bayesian Ridge linear regression model without an intercept using the co
 	\label{fig:lin_reg}
 \end{figure}
 
+Due to cross-correlated variables, we observed that LASSO did not perform well in reducing the dimensionality of the input space. The LASSO method deemed the following features as 'unimportant' (their coefficients dropped to 0 or near 0): $H, M_{eff}, B_T, V_P$. A new model with reduced dimensionality was fit by removing the unimportant features from the input space and the prediction quality decreased dramatically with any reduction of dimensionality; in removing H or $M_{eff}$ from the input space, the RMSE and MAE increased much above that of the scaling law, while when removing $V_P$ or $B_T$, there was an increase of 1.5 in the RMSE and MAE. 
+The results of LASSO can be slightly misleading, as linear regressors and their regularized extensions are prone to problems when working with many correlated variables and many of the variables in the input space are correlated (e.g., $P_{TOT}, P_{NBI}, P_{ICRH}$), which may be why the best RMSE and MAE are achieved when all variables are included.
+
+
 %------------------------------------------
 \begin{wraptable}{r}{0.36\linewidth}
 \centering
@@ -395,9 +399,6 @@ Using a Bayesian Ridge linear regression model without an intercept using the co
 \end{tabular}
 \end{wraptable}
 %------------------------------------------
-Due to cross-correlated variables, we observed that LASSO did not perform well in reducing the dimensionality of the input space. The LASSO method deemed the following features as 'unimportant' (their coefficients dropped to 0 or near 0): $H, M_{eff}, B_T, V_P$. A new model with reduced dimensionality was fit by removing the unimportant features from the input space and the prediction quality decreased dramatically with any reduction of dimensionality; in removing H or $M_{eff}$ from the input space, the RMSE and MAE increased much above that of the scaling law, while when removing $V_P$ or $B_T$, there was an increase of 1.5 in the RMSE and MAE. 
-The results of LASSO can be slightly misleading, as linear regressors and their regularized extensions are prone to problems when working with many correlated variables and many of the variables in the input space are correlated (e.g., $P_{TOT}, P_{NBI}, P_{ICRH}$), which may be why the best RMSE and MAE are achieved when all variables are included.
-
 Fitting a Bayesian Ridge regressor using all of the available engineering parameters yielded new coefficients (as well as the uncertainties) (Table \ref{tab:new_coef}). It is observed that the coefficients for $P_{TOT}$ compete with $P_{NBI} \text{ and }  P_{ICRH}$. From Table \ref{tab:main_domain} we know that there are plasmas with $P_{NBI}$ 100\% of $P_{TOT}$, so the regressor balances the two out by choosing $P_{TOT}$ and $P_{NBI}$ to have opposite signs.     
 From the coefficients and their uncertainties, the general uncertainty in the point prediction of $n_e^{ped}$ can be ascertained. The uncertainties were normally distributed and range from 1.64 to 1.8 ($10^{19}\text{m}^{-3}$). Having high uncertainty is good when the prediction is far from the ground truth (high residual), but for predictions on $n_e^{ped} \geq 8.5$ the uncertainty no longer covers the residual. 
 Just like the scaling law, the predictions from the Bayesian linear model taper off at around $n_e^{ped} \geq 8.5$, which suggests that parametric models like linear regressors are generally unable to capture the non-linear complexity of higher pedestal density heights from the given set of input parameters.
@@ -418,7 +419,7 @@ To determine these results, a GP model with a radial basis function (RBF) kernel
 \end{itemize}
 \end{comment}
 
-\begin{figure}[H]
+\begin{figure}
 	\begin{subfigure}{0.48\linewidth}
 		\centering
 		\includegraphics[scale=0.2]{ ./src/GP_sensitivity_analysis_final_v1}
@@ -438,7 +439,7 @@ Using the results from the sensitivity analysis, it was found that $H$ and $M_{e
 
  
 
-\begin{figure}[h]\centering
+\begin{figure}\centering
 		\includegraphics[scale=0.25]{./src/MLP_uq_compare}
 		\caption{Three different methods of uncertainty quantification are compared for a GP with an MLP kernel. \textbf{Left:} The true values of $n_e^{ped}$ are grouped into 11 equal-sized bins and the distance between the predictions of those values and the true values are calculated. The residuals are averaged across each bin and compared between the methods. \textbf{Right:} The same binning procedure, but with averaging the prediction uncertainties of the same three methods are compared.}
 	\label{fig:MLP_UQ}
@@ -465,30 +466,27 @@ We also compare how the GPs predict on each type of impurity as seen in Figure \
 
 The optimal number of decision trees and features to sample to utilize in RFs and ERTs was determined using the out-of-bag error (Fig. \ref{fig:RF_exp}). We see that after 254 decision trees in the RF, the OOB error does not improve, i.e., the forest reaches its maximum generalization capability at 254 decision trees. Furthermore, the optimal number of features to sample is 5. This is completely different from what occurs with the ERTs, where the optimal number of features to sample is 12 (all), and the number of trees is 142. The larger number of features sampled by the ERT compared to the RF is most likely due to the random splitting of nodes that ERTs make use of in creating their trees, such that they need to make use of all the features in order to generalize better, whereas the RF aims to minimize the MSE with their splits, thus not requiring all the inputs for an optimal split. For both models, overfitting begins to occur as more trees are added past the minimum OOB, and although the RMSE may improve, the generalizability does not.
 
-
-It is clear that the individual predictors in the random forest do not vary as much as that of the homoscedastic/fixed Gaussian Process models (Figs. \ref{fig:RF_exp} and \ref{fig:RF_Preds}).
-Additionally, the uncertainties are generally around equal to that of the residual for the corresponding bin. This is good, as the model is able to more or less provide an uncertainty that covers its residual. This does not hold for $n_e^{ped} \geq 10.0$, but it is certainly within the ballpark. 
-
-The optimal features of the RF and ERT are listed below: 
-\begin{itemize}
-	\item $I_p, \delta, \Gamma, q_{95}, a, B_T,  V_P, P_{NBI},  P_{TOT},  P_{ICRH}, H, M_{eff}$
-\end{itemize}
-Similar to GPs, the RFs and ERTs rank $H \text{ and } M_{eff}$ as unimportant. Since they favor features with high cardinality, $H$ and $M_{eff}$ most likely rank low since the dataset is filtered to include only deuterium shots. In contrast to GPs, RFs and ERTs favor $B_T$ over the power variables $P_{NBI}, P_{TOT}, P_{ICRH}$. Since the power variables contain similar information, the RFs rank them lower than variables that are not cross-correlated. In contrast to the GPs, reducing the input space did not improve predictions, most likely due to how RFs and ERTs perform automatic feature selection through their sampling procedures.  
-
 \begin{wrapfigure}{r}{0.5\textwidth}
 		\centering
 		\vspace{-18pt}
-		\caption{Effect of Meta Modeling in RF and ERTs. The \# of synthesized samples added into dataset is plotted against the resulting RMSE of an RF/ERT that is fit with the additional number of synthesized samples added into its training dataset.}
+		\caption{Effect of meat-modeling in RF and ERTs. The \# of synthesized samples added into dataset is plotted against the resulting RMSE of a model fitted using the synthesized samples.}
 		\includegraphics[width=\linewidth, keepaspectratio=true, trim=0 0 0 30, clip]{./src/ERT_vs_RF_meta_modeling}
 		\vspace{-22pt}
 		\label{fig:RF_meta_model}
 \end{wrapfigure}
-Meta-modeling had generally no effect on RFs and ERTs (Fig.~\ref{fig:RF_meta_model}).
-For the RF, splits in the nodes of the decision trees are made only when the RMSE of the prediction decreases, whereas for the ERT the split is randomly selected from the distribution of parameters within the input space.
-Although only up to 500 meta-model samples are visualized in Figure~\ref{fig:RF_meta_model}, the sporadic bouncing of the RMSE between 0.57 and 0.58 repeats for when even 2000 synthesized entries are added!
-This suggests that in order to minimize the MSE of predictions across the entire dataset, RFs and ERTs ignore the additional entries and we conclude that meta-modeling has little to no effect on ERTs and RFs.
+It is clear that the individual predictors in the random forest do not vary as much as that of the homoscedastic/fixed Gaussian Process models (Figs. \ref{fig:RF_exp} and \ref{fig:RF_Preds}).
+Additionally, the uncertainties are generally around equal to that of the residual for the corresponding bin. This is good, as the model is able to more or less provide an uncertainty that covers its residual. This does not hold for $n_e^{ped} \geq 10.0$, but it is certainly within the ballpark. 
 
-\begin{figure}[H]
+\begin{comment}
+Similar to GPs, the RFs and ERTs rank $H \text{ and } M_{eff}$ as unimportant, however reducing dimensionality did not improve prediction quality. Tree methods favor features with high cardinality, therefore $H$ and $M_{eff}$ are not as favourable since the fitting dataset contains only deuterium shots. In contrast to GPs, RFs and ERTs do not favor the power variables, $P_{NBI}, P_{TOT}, P_{ICRH}$, since they are cross-correlated. 
+\end{comment}
+
+
+Meta-modeling had generally no effect on RFs and ERTs (Fig.~\ref{fig:RF_meta_model}).
+Although only up to 500 meta-model samples are visualized in Figure~\ref{fig:RF_meta_model}, the sporadic bouncing of the RMSE between 0.57 and 0.58 repeats for when even 2000 synthesized entries are added!
+This suggests that in order to minimize the prediction MSE of predictions across the entire dataset, RFs and ERTs ignore the additional entries and we conclude that meta-modeling has little to no effect on ERTs and RFs.
+
+\begin{figure}
 	\begin{subfigure}{0.48\linewidth}
 		\centering
 		\includegraphics[scale=0.2]{./src/RF_oob_error}
@@ -505,7 +503,7 @@ This suggests that in order to minimize the MSE of predictions across the entire
 	\label{fig:RF_exp}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}
 		\centering
 		\includegraphics[scale=0.25]{./src/Tree_UQ}
 		\caption{Comparison of predictions and uncertainties between Random Forests (green) and Extreme Random Trees (blue). \textbf{Left:} The residual between predictions and the true values,\textbf{Right:} The prediction uncertainties on the same bins of the residuals. }
