@@ -23,8 +23,10 @@
 \usepackage{float}
 \floatstyle{plaintop}
 \restylefloat{table}
-
+\usepackage{tabularx}
 \newfloatcommand{capbtabbox}{table}[][\FBwidth]
+\newcommand\setrow[1]{\gdef\rowmac{#1}#1\ignorespaces}
+\newcommand\clearrow{\global\let\rowmac\relax}
 % Page Setups
 
 % Document
@@ -38,6 +40,7 @@
 
 \author{Adam Kit}
 \date{15 05 2021}
+\clearrow
 \begin{document}
     \maketitle
     \newpage
@@ -338,7 +341,7 @@ The ANNs used in this analysis are built using PyTorch~\cite{NEURIPS2019_9015}.
 Another use of the uncertainties stored within the database is for a given entry to generate normal distributions with the mean of a parameter value and spread of the uncertainty. By sampling from the generated distribution, it is possible to create new 'synthesized' entries.
 As seen in the next section, many models can predict well for $n_e^{ped} \leq 10$, but struggle for densities higher than that.
 By including synthesized values in the fitting procedure, the hope is that models would be able to better predict higher $n_e^{ped}$ values.
-\pagebreak
+\vspace{2cm}
 \section{Results}{\label{sec:results_1}
 Each model analyzed is fit using the following list of main engineering parameters as inputs:
 \begin{itemize}
@@ -399,7 +402,8 @@ The results of LASSO can be slightly misleading, as linear regressors and their 
 \end{tabular}
 \end{wraptable}
 %------------------------------------------
-Fitting a Bayesian Ridge regressor using all of the available engineering parameters yielded new coefficients (as well as the uncertainties) (Table \ref{tab:new_coef}). It is observed that the coefficients for $P_{TOT}$ compete with $P_{NBI} \text{ and }  P_{ICRH}$. From Table \ref{tab:main_domain} we know that there are plasmas with $P_{NBI}$ 100\% of $P_{TOT}$, so the regressor balances the two out by choosing $P_{TOT}$ and $P_{NBI}$ to have opposite signs.     
+Fitting a Bayesian Ridge regressor using all of the available engineering parameters yielded new coefficients (as well as the uncertainties) (Table \ref{tab:new_coef}). It is observed that the coefficients for $P_{TOT}$ compete with $P_{NBI} \text{ and }  P_{ICRH}$. 
+From Table \ref{tab:main_domain} we know that there are plasmas with $P_{NBI}$ 100\% of $P_{TOT}$, so the regressor balances the two out by choosing $P_{TOT}$ and $P_{NBI}$ to have opposite signs.     
 From the coefficients and their uncertainties, the general uncertainty in the point prediction of $n_e^{ped}$ can be ascertained. The uncertainties were normally distributed and range from 1.64 to 1.8 ($10^{19}\text{m}^{-3}$). Having high uncertainty is good when the prediction is far from the ground truth (high residual), but for predictions on $n_e^{ped} \geq 8.5$ the uncertainty no longer covers the residual. 
 Just like the scaling law, the predictions from the Bayesian linear model taper off at around $n_e^{ped} \geq 8.5$, which suggests that parametric models like linear regressors are generally unable to capture the non-linear complexity of higher pedestal density heights from the given set of input parameters.
 
@@ -569,17 +573,17 @@ It is clear that major improvements towards predicting the pedestal density heig
 
 \begin{table}[h]
 	\begin{center}
-		\begin{tabular}{| c | c | c |}
+		\begin{tabular}{>{\rowmac}c|>{\rowmac}c|>{\rowmac}c<{\clearrow}}
 		\hline
 		Model & RMSE & MAE \\
 		\hline
-		Scaling Law & $0.9203 \pm 0.63$ & TBD \\
+		Scaling Law & $0.9203 \pm 0.63$ & $0.7189 \pm 0.63$ \\
 		\hline
 		Linear & $0.8166 \pm 0.0605 $ & $0.5956 \pm 0.0379$ \\
-		GP & $0.4566 \pm  0.0217$ &  $0.3395 \pm 0.01383$\\
+		\setrow{\bfseries}GP & 0.4566 $\mathbf{\pm}$  0.0217 &  0.3395 $\mathbf{\pm}$ 0.01383\\
 		RF & $0.5938 \pm 0.0352$ & $0.4225 \pm 0.0191$ \\
 		ERT &$0.5623 \pm 0.0368 $ & $0.3927 \pm 0.0199$ \\
-		ANN & $0.6126 \pm 0.0694$ & TBD \\
+		ANN & $0.6126 \pm 0.0694$ & $0.4418 \pm 0.0421$ \\
 		\hline
 		\end{tabular}
 		\caption{The optimal relevant hyperparameters are chosen for each model type, and the best RMSE and MAE are calculated by averaging the results across each fold and repeat of the repeated cross-validation method. Uncertainty in the calculated RMSE and MAE is derived from the  standard deviation of the RMSE across each fold.}
