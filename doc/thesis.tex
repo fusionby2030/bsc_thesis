@@ -444,7 +444,7 @@ To determine these results, a GP model with a radial basis function (RBF) kernel
 \end{itemize}
 \end{comment}
 
-\begin{figure}
+\begin{figure}[!h]
 	\begin{subfigure}{0.48\linewidth}
 		\centering
 		\includegraphics[scale=0.2]{ ./src/GP_sensitivity_analysis_final_v1}
@@ -460,15 +460,17 @@ To determine these results, a GP model with a radial basis function (RBF) kernel
 	\caption{Steps towards dimensionality reduction through the use of Gaussian Processes. \textbf{(a)} The result of sensitivity analysis as well as the average of the three types used plotted in the dashed black line. \textbf{(b)} The dimensionality order of input variables comes from their ranking via the average of the three sensitivity analyses (dashed black line in diagram to the left). For each kernel, a GP model is fit using cross-validation (5 folds, 5 repeats) for each additional dimension of data, starting with 1d input of $\delta$, followed by 2D input of $\delta, a$ and so on. Then the RMSE is calculated on folds left out and averaged across all folds. } \label{fig:GP_dim}
 \end{figure}
 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.25]{./src/MLP_uq_compare}
+	\caption{Three different methods of uncertainty quantification are compared for a GP with an MLP kernel. \textbf{Left:} The true values of $n_e^{ped}$ are grouped into 11 equal-sized bins and the distance between the predictions of those values and the true values are calculated. The residuals are averaged across each bin and compared between the methods. \textbf{Right:} The same binning procedure, but with averaging the prediction uncertainties of the same three methods are compared.}
+	\label{fig:MLP_UQ}
+\end{figure}
+
+
 Using the results from the sensitivity analysis, it was found that $H$ and $M_{eff}$ do not aid in improving predictive quality of GPs and that the Multi-layer perceptron kernel (MLP)~\cite{gpy_MLP} and Rational Quadratic (RQ)~\cite{kernel_cookbook} kernels perform the best.  We observe that the MLP and RQ do not improve after $B_T$ is added to the input space, thus confirming the results of the sensitivity analysis (Fig. \ref{fig:GP_dim}b). This means that regarding the current dataset, it is unnecessary to supply $H \text{ and } M_{eff}$ to a GP, which will reduce the computation time when fitting. However, this reduction may be subject to change, since, as stated above, the dataset used was exclusive in its choice of $H$ and $M_{eff}$; thus for databases with multiple hydrogen isotopes included, the importance of these two variables may be more than what was found here. Nevertheless, the remainder of the GP models that are analyzed in this section do not use $H$ or $M_{eff}$ during the fitting procedure. 
 
  
-
-\begin{figure}\centering
-		\includegraphics[scale=0.25]{./src/MLP_uq_compare}
-		\caption{Three different methods of uncertainty quantification are compared for a GP with an MLP kernel. \textbf{Left:} The true values of $n_e^{ped}$ are grouped into 11 equal-sized bins and the distance between the predictions of those values and the true values are calculated. The residuals are averaged across each bin and compared between the methods. \textbf{Right:} The same binning procedure, but with averaging the prediction uncertainties of the same three methods are compared.}
-	\label{fig:MLP_UQ}
-\end{figure}
 
 Through uncertainty propagation it was observed that a heteroscedastic model was able to map the relative measurement uncertainties into its latent posterior at the cost of decreased prediction quality (Fig.  \ref{fig:MLP_UQ}). 
 To determine the effect of uncertainty propagation, the two approaches described in Section 2 are applied; (a) a fixed kernel with $n_e^{ped}$ measurement uncertainties along the diagonal is added to a base kernel, (b) a heteroscedastic model fixes the built in noise variance component of GPs for each input entry to be the entries respective measurement uncertainty of $n_e^{ped}$ such to learn the latent space of the used uncertainty. This process is done for both the RQ and MLP kernel and compared to the homoscedastic models.
