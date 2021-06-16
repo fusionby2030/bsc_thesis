@@ -23,10 +23,11 @@
 \citation{Meneghini_2017}
 \citation{MOREAU2011535}
 \citation{Lawson_1957}
-\citation{history}
+\citation{JT60_triple}
 \citation{EUROfusionroadmap}
 \citation{zohm_use_2019}
 \citation{Troyon_1988}
+\citation{FEDERICI2014882}
 \citation{Ikeda_2007}
 \citation{Ikeda_2007}
 \citation{Ikeda_2007}
@@ -78,8 +79,8 @@
 \newlabel{sub@subfig:icecream}{{a}{7}{\relax }{figure.caption.4}{}}
 \newlabel{subfig:corr}{{2b}{7}{\relax }{figure.caption.4}{}}
 \newlabel{sub@subfig:corr}{{b}{7}{\relax }{figure.caption.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Empirical data plots of the JET pedestal database. \textbf  {a} the correlation without causation between the major radius $R$ and $n_e^{ped}$, \textbf  {b} Correlation matrix of the main engineering parameters. A grey coloring represents no correlation, whereas blue and yellow are negative and positive correlation respectively.\relax }}{7}{figure.caption.4}\protected@file@percent }
-\newlabel{fig:emperical}{{2}{7}{Empirical data plots of the JET pedestal database. \textbf {a} the correlation without causation between the major radius $R$ and $n_e^{ped}$, \textbf {b} Correlation matrix of the main engineering parameters. A grey coloring represents no correlation, whereas blue and yellow are negative and positive correlation respectively.\relax }{figure.caption.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Empirical data plots of the JET pedestal database: \textbf  {(a)} correlation without causation between the major radius $R$ and $n_e^{ped}$, \textbf  {(b)} Correlation matrix of the main engineering parameters. A grey coloring represents no correlation, whereas blue and yellow are negative and positive correlation respectively.\relax }}{7}{figure.caption.4}\protected@file@percent }
+\newlabel{fig:emperical}{{2}{7}{Empirical data plots of the JET pedestal database: \textbf {(a)} correlation without causation between the major radius $R$ and $n_e^{ped}$, \textbf {(b)} Correlation matrix of the main engineering parameters. A grey coloring represents no correlation, whereas blue and yellow are negative and positive correlation respectively.\relax }{figure.caption.4}{}}
 \citation{OLS}
 \citation{Selection_Bias}
 \@writefile{toc}{\contentsline {section}{\numberline {2}General Machine Learning Analysis}{8}{section.2}\protected@file@percent }
@@ -119,6 +120,7 @@
 \citation{CALTECH}
 \citation{Goodfellow-et-al-2016}
 \citation{SCHMIDHUBER201585}
+\citation{Andreas}
 \citation{NEURIPS2019_9015}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.5}Artificial Neural Networks}{11}{subsection.2.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.6}Meta-Modeling}{11}{subsection.2.6}\protected@file@percent }
@@ -145,21 +147,29 @@
 \newlabel{sub@subfig:GP_dimens}{{b}{14}{\relax }{figure.caption.8}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Steps towards dimensionality reduction through the use of Gaussian Processes. \textbf  {(a)} The result of sensitivity analysis as well as the average of the three types used plotted in the dashed black line. \textbf  {(b)} The dimensionality order of input variables comes from their ranking via the average of the three sensitivity analyses (dashed black line in diagram to the left). For each kernel, a GP model is fit using cross-validation (5 folds, 5 repeats) for each additional dimension of data, starting with 1d input of $\delta $, followed by 2D input of $\delta , a$ and so on. Then the RMSE is calculated on folds left out and averaged across all folds. \relax }}{14}{figure.caption.8}\protected@file@percent }
 \newlabel{fig:GP_dim}{{4}{14}{Steps towards dimensionality reduction through the use of Gaussian Processes. \textbf {(a)} The result of sensitivity analysis as well as the average of the three types used plotted in the dashed black line. \textbf {(b)} The dimensionality order of input variables comes from their ranking via the average of the three sensitivity analyses (dashed black line in diagram to the left). For each kernel, a GP model is fit using cross-validation (5 folds, 5 repeats) for each additional dimension of data, starting with 1d input of $\delta $, followed by 2D input of $\delta , a$ and so on. Then the RMSE is calculated on folds left out and averaged across all folds. \relax }{figure.caption.8}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Three different methods of uncertainty quantification are compared for a GP with an MLP kernel. \textbf  {Left:} The true values of $n_e^{ped}$ are grouped into 11 equal-sized bins and the distance between the predictions of those values and the true values are calculated. The residuals are averaged across each bin and compared between the methods. \textbf  {Right:} The same binning procedure, but with averaging the prediction uncertainties of the same three methods are compared.\relax }}{15}{figure.caption.9}\protected@file@percent }
-\newlabel{fig:MLP_UQ}{{5}{15}{Three different methods of uncertainty quantification are compared for a GP with an MLP kernel. \textbf {Left:} The true values of $n_e^{ped}$ are grouped into 11 equal-sized bins and the distance between the predictions of those values and the true values are calculated. The residuals are averaged across each bin and compared between the methods. \textbf {Right:} The same binning procedure, but with averaging the prediction uncertainties of the same three methods are compared.\relax }{figure.caption.9}{}}
+\newlabel{subfig:MLPW_RES}{{5a}{14}{\relax }{figure.caption.9}{}}
+\newlabel{sub@subfig:MLPW_RES}{{a}{14}{\relax }{figure.caption.9}{}}
+\newlabel{subfig:MLP_UQ}{{5b}{14}{\relax }{figure.caption.9}{}}
+\newlabel{sub@subfig:MLP_UQ}{{b}{14}{\relax }{figure.caption.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Three different methods of uncertainty quantification are compared for a GP with an MLP kernel. \textbf  {(a)} The true values of $n_e^{ped}$ are grouped into 11 equal-sized bins and the distance between the predictions of those values and the true values are calculated. The residuals are averaged across each bin and compared between the methods. \textbf  {(b)} The same binning procedure, but with averaging the prediction uncertainties of the same three methods are compared.\relax }}{14}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:MLP_UQ}{{5}{14}{Three different methods of uncertainty quantification are compared for a GP with an MLP kernel. \textbf {(a)} The true values of $n_e^{ped}$ are grouped into 11 equal-sized bins and the distance between the predictions of those values and the true values are calculated. The residuals are averaged across each bin and compared between the methods. \textbf {(b)} The same binning procedure, but with averaging the prediction uncertainties of the same three methods are compared.\relax }{figure.caption.9}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Random Forests}{15}{subsection.3.3}\protected@file@percent }
-\newlabel{subfig:RF_oob}{{7a}{16}{\relax }{figure.caption.11}{}}
-\newlabel{sub@subfig:RF_oob}{{a}{16}{\relax }{figure.caption.11}{}}
-\newlabel{subfig:ERT_oob}{{7b}{16}{\relax }{figure.caption.11}{}}
-\newlabel{sub@subfig:ERT_oob}{{b}{16}{\relax }{figure.caption.11}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces OOB error vs number of decision trees of \textbf  {(a)} Random Forests \textbf  {(b)} Extreme Random Trees. No cross validation is necessary for this procedure, since the process of bagging inherently prevents all trees from seeing the same data. The colored lines correspond to different RFs and ERTs which vary by the amount of features to sample when splitting a node.\relax }}{16}{figure.caption.11}\protected@file@percent }
-\newlabel{fig:RF_exp}{{7}{16}{OOB error vs number of decision trees of \textbf {(a)} Random Forests \textbf {(b)} Extreme Random Trees. No cross validation is necessary for this procedure, since the process of bagging inherently prevents all trees from seeing the same data. The colored lines correspond to different RFs and ERTs which vary by the amount of features to sample when splitting a node.\relax }{figure.caption.11}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Effect of meat-modeling in RF and ERTs. The \# of synthesized samples added into dataset is plotted against the resulting RMSE of a model fitted using the synthesized samples.\relax }}{16}{figure.caption.10}\protected@file@percent }
-\newlabel{fig:RF_meta_model}{{6}{16}{Effect of meat-modeling in RF and ERTs. The \# of synthesized samples added into dataset is plotted against the resulting RMSE of a model fitted using the synthesized samples.\relax }{figure.caption.10}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Artificial Neural Networks}{16}{subsection.3.4}\protected@file@percent }
+\newlabel{subfig:RF_oob}{{6a}{15}{\relax }{figure.caption.10}{}}
+\newlabel{sub@subfig:RF_oob}{{a}{15}{\relax }{figure.caption.10}{}}
+\newlabel{subfig:ERT_oob}{{6b}{15}{\relax }{figure.caption.10}{}}
+\newlabel{sub@subfig:ERT_oob}{{b}{15}{\relax }{figure.caption.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces OOB error vs number of decision trees of \textbf  {(a)} Random Forests \textbf  {(b)} Extreme Random Trees. No cross validation is necessary for this procedure, since the process of bagging inherently prevents all trees from seeing the same data. The colored lines correspond to different RFs and ERTs which vary by the amount of features to sample when splitting a node.\relax }}{15}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:RF_exp}{{6}{15}{OOB error vs number of decision trees of \textbf {(a)} Random Forests \textbf {(b)} Extreme Random Trees. No cross validation is necessary for this procedure, since the process of bagging inherently prevents all trees from seeing the same data. The colored lines correspond to different RFs and ERTs which vary by the amount of features to sample when splitting a node.\relax }{figure.caption.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Effect of meat-modeling in RF and ERTs. The \# of synthesized samples added into dataset is plotted against the resulting RMSE of a model fitted using the synthesized samples.\relax }}{16}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:RF_meta_model}{{7}{16}{Effect of meat-modeling in RF and ERTs. The \# of synthesized samples added into dataset is plotted against the resulting RMSE of a model fitted using the synthesized samples.\relax }{figure.caption.11}{}}
+\newlabel{subfig:RF_RES}{{8a}{16}{\relax }{figure.caption.12}{}}
+\newlabel{sub@subfig:RF_RES}{{a}{16}{\relax }{figure.caption.12}{}}
+\newlabel{subfig:RF_UQ}{{8b}{16}{\relax }{figure.caption.12}{}}
+\newlabel{sub@subfig:RF_UQ}{{b}{16}{\relax }{figure.caption.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Comparison of predictions and uncertainties between Random Forests (green) and Extreme Random Trees (blue). \textbf  {(a)} The residual between predictions and the true values,\textbf  {(b)} The prediction uncertainties on the same bins of the residuals. \relax }}{16}{figure.caption.12}\protected@file@percent }
+\newlabel{fig:RF_Preds}{{8}{16}{Comparison of predictions and uncertainties between Random Forests (green) and Extreme Random Trees (blue). \textbf {(a)} The residual between predictions and the true values,\textbf {(b)} The prediction uncertainties on the same bins of the residuals. \relax }{figure.caption.12}{}}
 \citation{pytorch_act}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Comparison of predictions and uncertainties between Random Forests (green) and Extreme Random Trees (blue). \textbf  {Left:} The residual between predictions and the true values,\textbf  {Right:} The prediction uncertainties on the same bins of the residuals. \relax }}{17}{figure.caption.12}\protected@file@percent }
-\newlabel{fig:RF_Preds}{{8}{17}{Comparison of predictions and uncertainties between Random Forests (green) and Extreme Random Trees (blue). \textbf {Left:} The residual between predictions and the true values,\textbf {Right:} The prediction uncertainties on the same bins of the residuals. \relax }{figure.caption.12}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Artificial Neural Networks}{17}{subsection.3.4}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Comparison of the size of an ANN and its predictive capability. Each point represents an ANN which hidden layers are equal in size.\relax }}{17}{figure.caption.13}\protected@file@percent }
 \newlabel{fig:ANN_dim}{{9}{17}{Comparison of the size of an ANN and its predictive capability. Each point represents an ANN which hidden layers are equal in size.\relax }{figure.caption.13}{}}
 \citation{Mucherino2009}
@@ -176,57 +186,59 @@
 \bibcite{stepladder}{3}
 \bibcite{Meneghini_2017}{4}
 \bibcite{MOREAU2011535}{5}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Conclusion and Outlook}{19}{section.4}\protected@file@percent }
 \bibcite{Lawson_1957}{6}
-\bibcite{history}{7}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Conclusion and Outlook}{19}{section.4}\protected@file@percent }
+\bibcite{JT60_triple}{7}
 \bibcite{zohm_use_2019}{8}
 \bibcite{Troyon_1988}{9}
-\bibcite{PhysRevLett}{10}
-\bibcite{Martin_2008}{11}
-\bibcite{ELM_s}{12}
-\bibcite{Viezzer_2018}{13}
-\bibcite{PHILIPPS20101581}{14}
-\bibcite{Frassinetti_2020}{15}
-\bibcite{electron_transport}{16}
-\bibcite{Catto_2013}{17}
-\bibcite{Kotschenreuther_2019}{18}
-\bibcite{EPED_ELM}{19}
-\bibcite{Snyder_2011}{20}
-\bibcite{Saarelma_2017}{21}
-\bibcite{pedestal_prediction}{22}
-\bibcite{Pasqualotto_2004}{23}
-\bibcite{shafranov_equilibrium_1963}{24}
-\bibcite{freidberg_plasma_2007}{25}
-\bibcite{OLS}{26}
-\bibcite{Selection_Bias}{27}
-\bibcite{hastie01statisticallearning}{28}
-\bibcite{Bisong2019}{29}
-\bibcite{LASSO_OG}{30}
-\bibcite{LASSO_COIN}{31}
-\bibcite{bayes_regr}{32}
-\bibcite{scikit-learn}{33}
-\bibcite{Salvatier2016}{34}
-\bibcite{gortler2019a}{35}
-\bibcite{Rasmussen2004}{36}
-\bibcite{vapnik95}{37}
-\bibcite{cov-matrix-maths}{38}
-\bibcite{pmlr-v89-paananen19a}{39}
-\bibcite{heteroscedastic}{40}
-\bibcite{KLD}{41}
-\bibcite{gpy2014}{42}
-\bibcite{DT_OG}{43}
-\bibcite{RF_OG}{44}
-\bibcite{598994}{45}
-\bibcite{geurts_extremely_2006}{46}
-\bibcite{silver_mastering_2016}{47}
-\bibcite{7333916}{48}
-\bibcite{CALTECH}{49}
-\bibcite{Goodfellow-et-al-2016}{50}
-\bibcite{SCHMIDHUBER201585}{51}
-\bibcite{NEURIPS2019_9015}{52}
-\bibcite{kernel_cookbook}{53}
-\bibcite{gpy_MLP}{54}
-\bibcite{pytorch_act}{55}
-\bibcite{Mucherino2009}{56}
-\bibcite{schapire2013explaining}{57}
-\bibcite{WU2018417}{58}
+\bibcite{FEDERICI2014882}{10}
+\bibcite{PhysRevLett}{11}
+\bibcite{Martin_2008}{12}
+\bibcite{ELM_s}{13}
+\bibcite{Viezzer_2018}{14}
+\bibcite{PHILIPPS20101581}{15}
+\bibcite{Frassinetti_2020}{16}
+\bibcite{electron_transport}{17}
+\bibcite{Catto_2013}{18}
+\bibcite{Kotschenreuther_2019}{19}
+\bibcite{EPED_ELM}{20}
+\bibcite{Snyder_2011}{21}
+\bibcite{Saarelma_2017}{22}
+\bibcite{pedestal_prediction}{23}
+\bibcite{Pasqualotto_2004}{24}
+\bibcite{shafranov_equilibrium_1963}{25}
+\bibcite{freidberg_plasma_2007}{26}
+\bibcite{OLS}{27}
+\bibcite{Selection_Bias}{28}
+\bibcite{hastie01statisticallearning}{29}
+\bibcite{Bisong2019}{30}
+\bibcite{LASSO_OG}{31}
+\bibcite{LASSO_COIN}{32}
+\bibcite{bayes_regr}{33}
+\bibcite{scikit-learn}{34}
+\bibcite{Salvatier2016}{35}
+\bibcite{gortler2019a}{36}
+\bibcite{Rasmussen2004}{37}
+\bibcite{vapnik95}{38}
+\bibcite{cov-matrix-maths}{39}
+\bibcite{pmlr-v89-paananen19a}{40}
+\bibcite{heteroscedastic}{41}
+\bibcite{KLD}{42}
+\bibcite{gpy2014}{43}
+\bibcite{DT_OG}{44}
+\bibcite{RF_OG}{45}
+\bibcite{598994}{46}
+\bibcite{geurts_extremely_2006}{47}
+\bibcite{silver_mastering_2016}{48}
+\bibcite{7333916}{49}
+\bibcite{CALTECH}{50}
+\bibcite{Goodfellow-et-al-2016}{51}
+\bibcite{SCHMIDHUBER201585}{52}
+\bibcite{Andreas}{53}
+\bibcite{NEURIPS2019_9015}{54}
+\bibcite{kernel_cookbook}{55}
+\bibcite{gpy_MLP}{56}
+\bibcite{pytorch_act}{57}
+\bibcite{Mucherino2009}{58}
+\bibcite{schapire2013explaining}{59}
+\bibcite{WU2018417}{60}
