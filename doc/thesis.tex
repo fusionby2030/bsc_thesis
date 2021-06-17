@@ -33,16 +33,47 @@
 
 
 \title{
-	{Machine Learning Analysis on the JET Pedestal Database } \\ 
+	{Machine Learning Analysis on the JET Pedestal Database } \vspace{0.5cm}
 	{\large or how I started worrying about high $n_e^{ped}$}\\
 	{\large Univerisitat Leipzig} \\ 
 	}
 
-\author{Adam Kit}
-\date{15 05 2021}
+\author{Adam Kit \\{\small Advisors: Cichos, F. and Groth. M and Järvinen A.}}
+\date{15 06 2021}
 \clearrow
 \begin{document}
-    \maketitle
+\begin{titlepage}
+   \begin{center}
+       \vspace*{1cm}
+
+       \textbf{Machine Learning Analysis on the JET Pedestal Database }
+
+       \vspace{0.5cm}
+        or how I started worrying about high $n_e^{ped}$
+            
+       \vspace{1.5cm}
+
+       \textbf{Adam Kit}
+       
+       \vspace{0.5cm}
+       \textbf{Advisors:} Cichos, F. and Groth, M and Järvinen, A.
+
+       \vfill
+            
+       A thesis presented for the degree of\\
+       B.Sc. Physics
+            
+       \vspace{0.8cm}
+     
+%       \includegraphics[width=0.4\textwidth]{university}
+            
+       Universität Leipzig\\
+       Germany\\
+       17.06.21
+            
+   \end{center}
+\end{titlepage}
+  %\maketitle
     \newpage
     \tableofcontents
     \newpage
@@ -50,7 +81,7 @@
 Harnessing controlled thermonuclear fusion on Earth is a complex multi-faceted problem; a potential solution is that of controlled magnetic confinement fusion (MCF), such as stellarators or tokamaks \cite{EUROfusionroadmap}. 
 The field of MCF research is entering the era of superconducting, reactor-scale, long pulse devices, such as ITER and DEMO \cite{Ikeda_2007, stepladder}.
 These reactor-scale devices encompass a significant risk of very costly component damages in off-normal events, and, hence, the emphasis on reactor and plasma scenario design is shifting from experimental approaches to theory based predict-first and plasma flight simulator methods \cite{Meneghini_2017, MOREAU2011535}.
-To bridge the gap between computational and experimental efforts and to rapidly design reactors, there exists a need for data-driven approaches to produce models through the use of machine learning (ML).
+To allow fast throughput for filght simulation and on the fly scenario modelling, there exists a need for data-driven approaches to produce models through the use of machine learning (ML).
 The topic of this thesis is to analyze and compare predictive ML tools in estimating plasma parameters based on experimental data. The focus is on the plasma density in the edge of tokamaks, where high performance scenarios typically establish an edge transport barrier and plasma pedestal. 
 
 \subsection{Why Pedestal Physics?}\label{subsec:purpose}
@@ -68,7 +99,7 @@ Nuclear fusion with net energy gain requires sufficiently high fuel pressure and
 The highest achieved triple product in MCF devices is $1.53\times 10^{21}\text{ keVs/m}^3$ in the JT60U tokamak operating with deuterium plasmas \cite{JT60_triple}. ITER and DEMO plan to achieve triple product values on the order of $10^{22}\text{ keVs/m}^3$ operating with deuterium-tritium plasmas \cite{EUROfusionroadmap}.
 
 The maximum pressures achievable in MCF devices are limited by magnetic field strength and magnetohydrodynamic (MHD) instabilities.
-The field strength is limited by the capabilities of the available superconductor technology such that, in conventional tokamak reactor designs, the fields in the center of the plasmas are around 5-6 T \cite{zohm_use_2019}. A useful figure of merit for an MCF device is the ratio of the confined fuel pressure to that of the magnetic field pressure, $\beta = p / (B/2\mu_0)$, which in tokamaks is always significantly less than 1 for stable plasmas. Higher $\beta$ plasmas are desired for high fusion performance and power density, but the maximum $\beta$ is limited by MHD stability. Often $\beta$ is further normalized with the Troyon factor $(I_P / B_T)$, originating from the Troyon $\beta$ limit \cite{Troyon_1988}. This is called $\beta_N$. Typically in tokamaks the confined fuel pressure is a few times the atmospheric pressure, and the energy confinement time is around seconds~\cite{FEDERICI2014882}.
+The field strength is limited by the capabilities of the available superconductor technology such that, in conventional tokamak reactor designs, the fields in the center of the plasmas are around 5-6 T \cite{zohm_use_2019}. A useful figure of merit for an MCF device is the ratio of the confined fuel pressure to that of the magnetic field pressure, $\beta = p / (B/2\mu_0)$, which in tokamaks is always significantly less than 1 for stable plasmas. Higher $\beta$ plasmas are desired for high fusion performance and power density, but the maximum $\beta$ is limited by MHD stability. Often $\beta$ is further normalized with the Troyon factor $(B_T \, a/ I_P)$, originating from the Troyon $\beta$ limit \cite{Troyon_1988}. This is called $\beta_N$. Typically in tokamaks the confined fuel pressure is a few times the atmospheric pressure, and the energy confinement time is around seconds~\cite{FEDERICI2014882}.
 
 
 The energy confinement time is limited by plasma turbulence, which leads to radial transport across the flux surfaces significantly faster than would be expected based on classical or neo-classical transport \cite{Ikeda_2007}.
@@ -240,7 +271,7 @@ The choice of parameters in the log-linear regression by Lorenzo et. al. \cite{F
 
 To improve prediction quality, it may prove useful to include additional inputs from the list of main engineering quantities that were not used in the log-linear scaling.
 However, by plotting joint histograms between the control parameters and $n_e^{ped}$, serious questions can be raised regarding which parameters can and should be given to a machine learning model.
-For example, looking at the dependence of the major radius $R$, one could jump to an early conclusion and say that with higher values of $R$, a higher pedestal height is achieved (Fig. \ref{fig:emperical})!
+For example, looking at the dependence of the major radius $R$, one could jump to an early conclusion and say that with higher values of $R$, a higher pedestal height is achieved (Fig. \ref{fig:emperical}a)!
 However, this is a case of causation without correlation, or ice-cream correlation\footnote{ice-cream correlation refers to the correlation of increasing ice cream sales and increasing number of drownings in Finland during the summer. Although the variables are indeed correlated, higher ice cream sales are not in fact the cause of higher drowning rates, nor vice-versa.}, and the real culprit of the causation is the Shafranov shift; the outward radial displacement of the magnetic axis from the geometric axis that is prominently found in MCF devices~\cite{shafranov_equilibrium_1963, freidberg_plasma_2007}. The shift increases with normalized pressure, which increases $R$. As normalized pressure increases with pedestal pressure, there is a cross-correlation between pedestal pressure and $R$. For this reason, $R$ is excluded from the list of inputs to the ML models in this thesis, and only when multi-machine databases with significantly larger variation of $R$ are available should it be included.
 The divertor configuration on the other hand, does have a real correlation, and can have a large impact on the pedestal. However, the analysis in this thesis only makes use of the numerical parameters available, and thus divertor configuration will not be used as an input parameter, as it is categorical.  
 
@@ -377,18 +408,18 @@ Table \ref{tab:performance_models} presents the final performance metrics for ea
 
 \subsection{Linear Regression}
 
-Using a Bayesian Ridge linear regression model without an intercept using the control parameters as inputs, the RMSE and MAE improve by including more parameters than in the reference scaling law, eq. (\ref{eq:scaling}) (Fig. \ref{fig:lin_reg}).
+Using a Bayesian linear regression model without an intercept using the control parameters as inputs, the RMSE and MAE improve by including more parameters than in the reference scaling law, eq. (\ref{eq:scaling}) (Fig. \ref{fig:lin_reg}).
 \begin{figure}[hb!]
 	\centering
-	\begin{subfigure}{0.495\linewidth}
+	\begin{subfigure}{0.49\linewidth}
 		\centering
-		\includegraphics[scale=0.28]{./src/Baysian_regression_predictions}
+		\includegraphics[width=6.5cm]{./src/Bay}
 		\caption{}
 		\label{subfig:bayes_pred}
 	\end{subfigure}
-	\begin{subfigure}{0.495\linewidth}
+	\begin{subfigure}{0.49\linewidth}
 		\centering
-		\includegraphics[scale=0.142]{./src/linear_comp}
+		\includegraphics[width=6.5cm]{./src/linear_comp_v3}
 				\caption{}
 		\label{subfig:bayes_resid}
 	\end{subfigure}
@@ -448,13 +479,13 @@ To determine these results, a GP model with a radial basis function (RBF) kernel
 \begin{figure}
 	\begin{subfigure}{0.48\linewidth}
 		\centering
-		\includegraphics[scale=0.2]{ ./src/GP_sensitivity_analysis_final_v1}
+		\includegraphics[width=8.5cm]{ ./src/GP_sensitivity_analysis_final_v1_scaled}
 				\caption{}
 		\label{subfig:GP_sens}
 	\end{subfigure}\hfill
 	\begin{subfigure}{0.48\linewidth}
 		\centering
-		\includegraphics[scale=0.2]{ ./src/final_GP_dim_v2}
+		\includegraphics[width=8.5cm]{ ./src/final_GP_dim_v1_scaled_words}
 				\caption{}
 		\label{subfig:GP_dimens}
 	\end{subfigure}
@@ -593,8 +624,19 @@ Meta-modeling as an additional form of UQ did seem to improve predictions for hi
 This was unique for the ANNs, as all other usages of meta-modeling for other ML tools either did not affect the model or had only adverse effects to performance.
 \begin{figure}
 	\centering
-	\includegraphics[scale=0.25]{./src/ANN_ensemble_comp}
-	\caption{A three layer feed forward fully connected ANN with layer sizes 483, 415, 254 was transformed into ensembles of sizes 5 (blue), 10 (orange, 15 (green). }
+	\begin{subfigure}{0.48\linewidth}
+		\centering
+		\includegraphics[width=7cm]{./src/ANN_residual}
+				\caption{}
+		\label{subfig:ANN_res}
+	\end{subfigure}
+	\begin{subfigure}{0.5\linewidth}
+		\centering
+		\includegraphics[width=7cm]{./src/ANN_uncert}
+				\caption{}
+		\label{subfig:ANN_uncert}
+	\end{subfigure}
+	\caption{A three layer feed forward fully connected ANN with layer sizes 483, 415, 254 was transformed into ensembles of sizes 5 (blue), 10 (orange, 15 (green) and compared: \textbf{(a)} The residual between predictions and the true values, \textbf{(b)} The prediction uncertainties on the same bins of the residuals. }
 	\label{fig:ANN_UQ}
 \end{figure}
 \begin{comment}
