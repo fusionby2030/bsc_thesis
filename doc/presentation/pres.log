@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.5)  15 JUN 2021 11:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.5.29)  16 JUN 2021 14:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -479,12 +479,6 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-))
-(/usr/share/texlive/texmf-dist/tex/latex/sansmathaccent/sansmathaccent.sty
-Package: sansmathaccent 2020/01/31
-
-(/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrlfile.sty
-Package: scrlfile 2020/01/24 v3.29 KOMA-Script package (loading files)
 )))
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasetranslator.sty
 (/usr/share/texlive/texmf-dist/tex/latex/translator/translator.sty
@@ -825,16 +819,6 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 20.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 20.
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 20.
-LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
-(Font)                  OT1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 2
-0.
-LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/cmss/b/it --> OT1/mathkerncmss/m/sl on input line 2
-0.
-LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on inp
-ut line 20.
 
 (/usr/share/texlive/texmf-dist/tex/latex/translator/translator-basic-dictionary
 -English.dict
@@ -871,20 +855,11 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 22.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on inp
-ut line 22.
-
-(/usr/share/texlive/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
-File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/ma
-thkerncmss.
-)
-[1
+) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./pres.toc) [2
 
-]
-(./pres.toc) [3
+] (./pres.toc) [3
 
 ]
 <./src/MTANH_fit_21.png, id=116, 1113.15875pt x 923.45pt>
@@ -954,12 +929,8 @@ Overfull \vbox (1.38376pt too high) detected at line 138
 <./src/Tree_UQ.png, id=288, 1755.55875pt x 1043.9pt>
 File: ./src/Tree_UQ.png Graphic file (type png)
 <use ./src/Tree_UQ.png>
-Package pdftex.def Info: ./src/Tree_UQ.png  used on input line 181.
-(pdftex.def)             Requested size: 236.9902pt x 140.92041pt.
-
-Overfull \hbox (18.81235pt too wide) in paragraph at lines 181--181
-[][]  
- []
+Package pdftex.def Info: ./src/Tree_UQ.png  used on input line 176.
+(pdftex.def)             Requested size: 263.32245pt x 156.57823pt.
 
 [10
 
@@ -968,8 +939,8 @@ Overfull \hbox (18.81235pt too wide) in paragraph at lines 181--181
 File: ./src/ERT_vs_RF_meta_modeling.png Graphic file (type png)
 <use ./src/ERT_vs_RF_meta_modeling.png>
 Package pdftex.def Info: ./src/ERT_vs_RF_meta_modeling.png  used on input line 
-187.
-(pdftex.def)             Requested size: 225.56161pt x 151.6157pt.
+184.
+(pdftex.def)             Requested size: 255.35596pt x 171.64258pt.
  [11
 
  <./src/ERT_vs_RF_meta_modeling.png>]
@@ -978,20 +949,20 @@ Package pdftex.def Info: ./src/ERT_vs_RF_meta_modeling.png  used on input line
 File: ./src/GP_sensitivity_analysis_final_V1_weq.png Graphic file (type png)
 <use ./src/GP_sensitivity_analysis_final_V1_weq.png>
 Package pdftex.def Info: ./src/GP_sensitivity_analysis_final_V1_weq.png  used o
-n input line 196.
+n input line 193.
 (pdftex.def)             Requested size: 160.34213pt x 160.34213pt.
 
-Overfull \hbox (6.6972pt too wide) in paragraph at lines 196--196
+Overfull \hbox (6.6972pt too wide) in paragraph at lines 193--193
 [][]  
  []
 
 <./src/final_GP_dim_v2.png, id=343, 1105.12875pt x 1105.12875pt>
 File: ./src/final_GP_dim_v2.png Graphic file (type png)
 <use ./src/final_GP_dim_v2.png>
-Package pdftex.def Info: ./src/final_GP_dim_v2.png  used on input line 196.
+Package pdftex.def Info: ./src/final_GP_dim_v2.png  used on input line 193.
 (pdftex.def)             Requested size: 165.76216pt x 165.76216pt.
 
-Overfull \hbox (12.11723pt too wide) in paragraph at lines 196--196
+Overfull \hbox (12.11723pt too wide) in paragraph at lines 193--193
 [][]  
  []
 
@@ -1001,10 +972,10 @@ Overfull \hbox (12.11723pt too wide) in paragraph at lines 196--196
 <./src/MLP_UQ_compare.png, id=372, 1751.54375pt x 1041.8925pt>
 File: ./src/MLP_UQ_compare.png Graphic file (type png)
 <use ./src/MLP_UQ_compare.png>
-Package pdftex.def Info: ./src/MLP_UQ_compare.png  used on input line 203.
+Package pdftex.def Info: ./src/MLP_UQ_compare.png  used on input line 200.
 (pdftex.def)             Requested size: 332.79677pt x 197.96162pt.
 
-Overfull \hbox (25.5069pt too wide) in paragraph at lines 203--203
+Overfull \hbox (25.5069pt too wide) in paragraph at lines 200--200
  [] 
  []
 
@@ -1014,11 +985,11 @@ Overfull \hbox (25.5069pt too wide) in paragraph at lines 203--203
 <./src/ANN_performace_size.png, id=400, 1117.17375pt x 921.4425pt>
 File: ./src/ANN_performace_size.png Graphic file (type png)
 <use ./src/ANN_performace_size.png>
-Package pdftex.def Info: ./src/ANN_performace_size.png  used on input line 208.
+Package pdftex.def Info: ./src/ANN_performace_size.png  used on input line 205.
 
 (pdftex.def)             Requested size: 301.64095pt x 248.7928pt.
 
-Overfull \vbox (3.51968pt too high) detected at line 208
+Overfull \vbox (3.51968pt too high) detected at line 205
  []
 
 [14
@@ -1027,10 +998,10 @@ Overfull \vbox (3.51968pt too high) detected at line 208
 <./src/ANN_ensemble_comp.png, id=426, 1755.55875pt x 1043.9pt>
 File: ./src/ANN_ensemble_comp.png Graphic file (type png)
 <use ./src/ANN_ensemble_comp.png>
-Package pdftex.def Info: ./src/ANN_ensemble_comp.png  used on input line 213.
+Package pdftex.def Info: ./src/ANN_ensemble_comp.png  used on input line 210.
 (pdftex.def)             Requested size: 315.98694pt x 187.89389pt.
 
-Overfull \hbox (8.69707pt too wide) in paragraph at lines 213--213
+Overfull \hbox (8.69707pt too wide) in paragraph at lines 210--210
 [][]  
  []
 
@@ -1050,22 +1021,22 @@ Overfull \hbox (8.69707pt too wide) in paragraph at lines 213--213
 \tf@snm=\write8
 \openout8 = `pres.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 234.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 234.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 231.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 231.
  (./pres.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 234.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 234.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 231.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 231.
 Package rerunfilecheck Info: File `pres.out' has not changed.
 (rerunfilecheck)             Checksum: 22208EC0CA7C2BA549F38970C6B91BF6;152.
  ) 
 Here is how much of TeX's memory you used:
- 18046 strings out of 481239
- 343963 string characters out of 5920377
- 596232 words of memory out of 5000000
- 32820 multiletter control sequences out of 15000+600000
- 543605 words of font info for 65 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 58i,16n,67p,771b,646s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 17790 strings out of 483140
+ 337148 string characters out of 5965151
+ 587937 words of memory out of 5000000
+ 32330 multiletter control sequences out of 15000+600000
+ 543341 words of font info for 65 fonts, out of 8000000 for 9000
+ 36 hyphenation exceptions out of 8191
+ 54i,16n,57p,771b,646s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texli
@@ -1078,7 +1049,7 @@ lic/amsfonts/cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbol
 s/msam10.pfb>
-Output written on pres.pdf (17 pages, 891367 bytes).
+Output written on pres.pdf (17 pages, 891433 bytes).
 PDF statistics:
  555 PDF objects out of 1000 (max. 8388607)
  491 compressed objects within 5 object streams

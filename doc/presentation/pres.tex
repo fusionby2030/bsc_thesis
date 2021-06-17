@@ -168,22 +168,19 @@
 
 \begin{frame}
 \frametitle{Non-linear models like Random Forests and Extreme Randomized Trees outperform linear models }
+\begin{center}
+\includegraphics[scale=0.15]{./src/Tree_UQ}
+\end{center}
 
-\begin{columns}
-\column{0.29\textwidth}
-\begin{itemize}
-	\item Prediction uncertainty determined from std of each decision tree
-\end{itemize}
-\column{0.71\textwidth}
-% \includegraphics[scale=0.23]{../src/RF_OOB_error}<1>
-\includegraphics[scale=0.135]{./src/Tree_UQ}
-\end{columns}
+Uncertainty determined from std of each decision tree pred.
 \end{frame}
 
 \begin{frame}
 \frametitle{Meta-modeling has no effect on RFs and ERTs}
-
-\includegraphics[scale=0.53]{./src/ERT_vs_RF_meta_modeling}
+\begin{center}
+\includegraphics[scale=0.6]{./src/ERT_vs_RF_meta_modeling}
+\end{center}
+Goes on to 2000+ entries
 \end{frame}
 \begin{frame}
 \frametitle{Can reduce dimensionality for Gaussian Processes using sensitivity analysis $\rightarrow$ remove $H, M_{eff}$ from input space}
