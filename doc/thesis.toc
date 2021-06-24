@@ -1,5 +1,5 @@
 \contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Why Pedestal Physics?}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.1}Pedestal Physics}{3}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}JET Pedestal Database}{4}{subsection.1.2}%
 \contentsline {subsubsection}{\numberline {1.2.1}Empirical Analysis}{7}{subsubsection.1.2.1}%
 \contentsline {section}{\numberline {2}General Machine Learning Analysis}{8}{section.2}%
@@ -14,5 +14,5 @@
 \contentsline {subsection}{\numberline {3.2}Gaussian Process}{13}{subsection.3.2}%
 \contentsline {subsection}{\numberline {3.3}Random Forests}{15}{subsection.3.3}%
 \contentsline {subsection}{\numberline {3.4}Artificial Neural Networks}{17}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}What did not work}{18}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.5}Under-performing ML Methods}{18}{subsection.3.5}%
 \contentsline {section}{\numberline {4}Conclusion and Outlook}{19}{section.4}%

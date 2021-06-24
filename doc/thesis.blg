@@ -7,15 +7,15 @@ Warning--empty author and editor in bayes_regr
 Warning--can't use both author and editor fields in Rasmussen2004
 You've used 60 entries,
             1791 wiz_defined-function locations,
-            845 strings with 12973 characters,
-and the built_in function-call counts, 13310 in all, are:
+            845 strings with 12781 characters,
+and the built_in function-call counts, 13253 in all, are:
 = -- 1255
-> -- 423
+> -- 411
 < -- 13
-+ -- 168
-- -- 108
-* -- 769
-:= -- 2028
++ -- 164
+- -- 104
+* -- 752
+:= -- 2016
 add.period$ -- 189
 call.type$ -- 60
 change.case$ -- 50
@@ -23,8 +23,8 @@ chr.to.int$ -- 0
 cite$ -- 62
 duplicate$ -- 649
 empty$ -- 1400
-format.name$ -- 108
-if$ -- 3077
+format.name$ -- 104
+if$ -- 3069
 int.to.chr$ -- 0
 int.to.str$ -- 60
 missing$ -- 61
@@ -34,7 +34,7 @@ pop$ -- 164
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 341
+skip$ -- 345
 stack$ -- 0
 substring$ -- 919
 swap$ -- 166

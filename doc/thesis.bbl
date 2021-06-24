@@ -2,7 +2,7 @@
 
 \bibitem{EUROfusionroadmap}
 A.~J.~H. Donne.
-\newblock The european roadmap towards fusion electricity.
+\newblock The {E}uropean roadmap towards fusion electricity.
 \newblock {\em Philosophical Transactions of the Royal Society A: Mathematical,
   Physical, and Engineering Sciences}, 377(2141), 2019.
 
@@ -17,7 +17,7 @@ H.~Zohm et~al.
 \newblock {\em Nuclear Fusion}, 2017.
 
 \bibitem{Meneghini_2017}
-Meneghini O. et~al.
+O.~Meneghini et~al.
 \newblock Self-consistent core-pedestal transport simulations with neural
   network accelerated models.
 \newblock {\em Nuclear Fusion}, 57(8):086034, 2017.
@@ -30,7 +30,7 @@ P.~Moreau et~al.
 \newblock Proceedings of the 26th Symposium of Fusion Technology (SOFT-26).
 
 \bibitem{Lawson_1957}
-J~D Lawson.
+J.~D. Lawson.
 \newblock Some criteria for a power producing thermonuclear reactor.
 \newblock {\em Proceedings of the Physical Society. Section B}, 70(1):6--10,
   1957.
@@ -66,19 +66,19 @@ F.~et.~al. Wagner.
 \newblock {\em Phys. Rev. Lett.}, 49:1408--1412, 1982.
 
 \bibitem{Martin_2008}
-Martin~Y. R. et~al.
+Y.~R. Martin et~al.
 \newblock Power requirement for accessing the h-mode in {ITER}.
 \newblock {\em Journal of Physics: Conference Series}, 123, 2008.
 
 \bibitem{ELM_s}
 H.~Zohm et~al.
-\newblock Edge localized modes (elms).
+\newblock Edge localized modes {(ELMs)}.
 \newblock {\em Plasma Physics and Controlled Fusion}, 38(2), 1996.
 
 \bibitem{Viezzer_2018}
 E.~Viezzer et~al.
 \newblock Ion heat transport dynamics during edge localized mode cycles at
-  {ASDEX} upgrade.
+  {ASDEX Upgrade}.
 \newblock {\em Nuclear Fusion}, 58(2):026031, 2018.
 
 \bibitem{PHILIPPS20101581}
@@ -90,12 +90,12 @@ V.~Philipps et~al.
 
 \bibitem{Frassinetti_2020}
 L.~Frassinetti et~al.
-\newblock Pedestal structure, stability and scalings in jet-ilw: the eruofusion
-  jet-ilw pedestal database.
+\newblock Pedestal structure, stability and scalings in {JET-ILW}: the
+  {EUROfusion JET-ILW} pedestal database.
 \newblock {\em Nuclear Fusion}, 61(1):016001, 2020.
 
 \bibitem{electron_transport}
-Myriam Hamed.
+M.~Hamed.
 \newblock {\em Electron heat transport in tokamak H-mode pedestals}.
 \newblock PhD thesis, Aix Marseille Universite, 2019.
 
@@ -132,8 +132,8 @@ S.~Saarelma et~al.
 
 \bibitem{pedestal_prediction}
 S.~Saarelma, L.~Frassinetti, et~al.
-\newblock Self-consistent pedestal prediction for jet-ilw in preparation of the
-  dt campaign.
+\newblock Self-consistent pedestal prediction for {JET-ILW} in preparation of
+  the {DT} campaign.
 \newblock {\em Physics of Plasmas}, 26(7):072501, 2019.
 
 \bibitem{Pasqualotto_2004}
@@ -147,42 +147,42 @@ V.~D. Shafranov.
 \newblock {\em Soviet Atomic Energy}, 13(6):1149--1158, 1963.
 
 \bibitem{freidberg_plasma_2007}
-Jeffrey~P. Freidberg.
+J.~P. Freidberg.
 \newblock {\em Plasma {Physics} and {Fusion} {Energy}}.
 \newblock Cambridge University Press, Cambridge, 2007.
 
 \bibitem{OLS}
-Mahaboob B. et~al.
+B.~Mahaboob et~al.
 \newblock A treatise on ordinary least squares estimation of parameters of
   linear model.
 \newblock {\em International Journal of Engineering and Technology(UAE)}, 7,
   2018.
 
 \bibitem{Selection_Bias}
-David~M. Allen.
+D.~Allen.
 \newblock The relationship between variable selection and data agumentation and
   a method for prediction.
 \newblock {\em Technometrics}, 16(1):125--127, 1974.
 
 \bibitem{hastie01statisticallearning}
-Trevor Hastie, Robert Tibshirani, and Jerome Friedman.
+T.~Hastie, R.~Tibshirani, and J.~Friedman.
 \newblock {\em The Elements of Statistical Learning}.
 \newblock Springer Series in Statistics. Springer New York Inc., New York, NY,
   USA, 2001.
 
 \bibitem{Bisong2019}
-Ekaba Bisong.
+E.~Bisong.
 \newblock {\em Regularization for Linear Models}, pages 251--254.
 \newblock Apress, Berkeley, CA, 2019.
 
 \bibitem{LASSO_OG}
-Fadil Santosa and William~W. Symes.
+F.~Santosa et~al.
 \newblock Linear inversion of band-limited reflection seismograms.
 \newblock {\em SIAM Journal on Scientific and Statistical Computing},
   7(4):1307--1330, 1986.
 
 \bibitem{LASSO_COIN}
-Robert Tibshirani.
+R.~Tibshirani.
 \newblock Regression shrinkage and selection via the lasso.
 \newblock {\em Journal of the Royal Statistical Society. Series B
   (Methodological)}, 58(1):267--288, 1996.
@@ -197,23 +197,23 @@ F.~Pedregosa et~al.
 \newblock {\em Journal of Machine Learning Research}, 12:2825--2830, 2011.
 
 \bibitem{Salvatier2016}
-John Salvatier, Thomas~V. Wiecki, and Christopher Fonnesbeck.
+J.~Salvatier et~al.
 \newblock Probabilistic programming in python using {PyMC}3.
 \newblock {\em {PeerJ} Computer Science}, 2:e55, 2016.
 
 \bibitem{gortler2019a}
-Jochen Görtler, Rebecca Kehlbeck, and Oliver Deussen.
+J.~Görtler et~al.
 \newblock A visual exploration of gaussian processes.
 \newblock {\em Distill}, 2019.
 \newblock https://distill.pub/2019/visual-exploration-gaussian-processes.
 
 \bibitem{Rasmussen2004}
-Carl~Edward Rasmussen.
+C.~Rasmussen.
 \newblock {\em Gaussian Processes in Machine Learning}, pages 63--71.
 \newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 2004.
 
 \bibitem{vapnik95}
-Vladimir~N. Vapnik.
+V.~N. Vapnik.
 \newblock {\em The nature of statistical learning theory}.
 \newblock Springer-Verlag New York, Inc., 1995.
 
@@ -231,7 +231,7 @@ T.~Paananen et~al.
   Machine Learning Research}, pages 1743--1752. PMLR, 2019.
 
 \bibitem{heteroscedastic}
-Quoc~V. Le et~al.
+Q.~V. Le et~al.
 \newblock Heteroscedastic gaussian process regression.
 \newblock In {\em Proceedings of the 22nd International Conference on Machine
   Learning}, ICML '05, page 489–496, 2005.
@@ -247,23 +247,23 @@ S.~Kullback and R.~A. Leibler.
 \newblock \url{http://github.com/SheffieldML/GPy}, since 2012.
 
 \bibitem{DT_OG}
-Wray~L. Buntine.
+W.~L. Buntine.
 \newblock Decision tree induction systems: {A} bayesian analysis.
 \newblock {\em CoRR}, abs/1304.2732, 2013.
 
 \bibitem{RF_OG}
-Leo Breiman.
+L.~Breiman.
 \newblock Random {Forests}.
 \newblock {\em Machine Learning}, 45(1):5--32, 2001.
 
 \bibitem{598994}
-Tin~Kam Ho.
+T.~Ho.
 \newblock Random decision forests.
 \newblock In {\em Proceedings of 3rd International Conference on Document
   Analysis and Recognition}, volume~1, pages 278--282 vol.1, 1995.
 
 \bibitem{geurts_extremely_2006}
-Pierre Geurts, Damien Ernst, and Louis Wehenkel.
+P.~Geurts et~al.
 \newblock Extremely randomized trees.
 \newblock {\em Machine Learning}, 63(1):3--42, 2006.
 
@@ -286,13 +286,13 @@ L.~Zongyi et~al.
 \newblock {\em CoRR}, abs/2010.08895, 2020.
 
 \bibitem{Goodfellow-et-al-2016}
-Ian Goodfellow, Yoshua Bengio, and Aaron Courville.
+I.~Goodfellow et~al.
 \newblock {\em Deep Learning}.
 \newblock MIT Press, 2016.
 \newblock \url{http://www.deeplearningbook.org}.
 
 \bibitem{SCHMIDHUBER201585}
-Jürgen Schmidhuber.
+J.~Schmidhuber.
 \newblock Deep learning in neural networks: An overview.
 \newblock {\em Neural Networks}, 61:85--117, 2015.
 
@@ -332,7 +332,7 @@ A.~Mucherino et~al.
 \newblock Springer New York, New York, NY, 2009.
 
 \bibitem{schapire2013explaining}
-Robert~E Schapire.
+R.~Schapire.
 \newblock Explaining adaboost.
 \newblock In {\em Empirical inference}, pages 37--52. Springer, 2013.
 
