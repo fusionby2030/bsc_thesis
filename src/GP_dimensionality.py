@@ -1,18 +1,23 @@
 """
+Performance vs input dimensionality
+
 This is some multiprocessing shenanigans!
 
-at the end there should be 4 objects in a file stored in dictionary format idk why
+Very shitty way to do this but I wanted to try out multiprocessing
+
 """
 import numpy as np
+from codebase.data import utils
 
 import GPy
 from sklearn.model_selection import RepeatedKFold
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 from sklearn.preprocessing import StandardScaler
+
+
 import multiprocessing as mp
 import pickle
 
-from codebase.data import utils
 
 # bad idea but fuck it
 import warnings

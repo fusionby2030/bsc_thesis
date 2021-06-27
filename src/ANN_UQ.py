@@ -1,28 +1,29 @@
 """
-This runs the experiment for comparing size & depth vs performance of ANNs.
+This runs the experiment for testing out a ANN and recieving the predictions and uncert. in preds from said ANN.
 
-The architectures tested are found in main(), whereas the arguments are found in the if __name__ == '__main__':
+All arguments in the args below are variable, i.e., you can change them by passing in arguemtns via CLI
+Accesible via:
+    $ python3 ANN_UQ.py -lr 0.001 -batch_size 350
+
+to run the smoke test:
+    $ python3 ANN_UQ --smoke_test
+
 If you run this, below are two files that will be created (this will also overwrite the existing experiment)
 
-- a pickle file will be saved in the src/out/ANN directory, with args, and RMSE + MAE for each size of model tested
-    - stored in dicts of format {'[10]': (RMSE_val, RMSE_std), '[10, 10]': (RMSE_val, RMSE_std)}}
-        - [10] -> one hidden layer of 10 neuron width, [10, 10] -> 2 hidden layers, 10 neurons each
+- pickle file with the following dictionaries:
+    - args = {'batch_size': 396, 'lr': 0.004, 'n_splits': 5, 'n_repeats': 5, 'n_estimators': 15,
+            'scalex':StandardScaler, 'scaley':None , 'scale_args':(None, None),
+            'hidden_layer_sizes': [483, 415, 254]}
+    - results = {'y_vals': np.array(list_yvals), 'preds': np.array(list_preds), 'uncert': np.array(list_uncert),
+               'score': scores}
+
 - a temporary model state dict will be saved wherever you run this program from!
 
-I recommend running it from the src/ directory, i.e., cd into src/ and run the program from there
-To read the pickle file back and use it in some plotting see below:
+Results file is stored in same directory
+To read the pickle file:
     with open(filename, 'rb') as file:
         args = pickle.load(file)
-        RMSE_dict = pickle.load(file)
-        MAE_dict = pickle.load(file)
-
-
-TODO:
-argparse integration
-some bash stuff to offload to triton
-
-Testing
-    - Same model should return same RMSE
+        results = pickle.load(file)
 """
 from codebase.data import utils
 from codebase.ANN.peanuts.models.utils import save_load_torch
@@ -31,6 +32,12 @@ from codebase.ANN.peanuts.models.torch_ensembles import AverageTorchRegressor
 import numpy as np
 import torch.nn as nn
 import torch
+
+from sklearn.preprocessing import StandardScaler
+
+import pickle
+import argparse
+
 
 
 class ANNtorchdataset(torch.utils.data.Dataset):
@@ -214,9 +221,18 @@ def generate_default_params():
     return args
 
 
-import pickle
-from sklearn.preprocessing import PowerTransformer, StandardScaler, QuantileTransformer
+
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-batch_size", help='batch size during training/validation', type=int, default=396)
+    parser.add_argument('-lr', help='learning rate', type=float, default=0.004)
+    parser.add_argument('-n_splits', help='number of folds in CV', type=int, default=5)
+    parser.add_argument('-n_repeats', help='number of repeats of CV', type=int, default=5)
+    parser.add_argument('-n_estimators', help='Number of ANNs in ensemble, 1 is default ANN',type=int, default=15)
+    parser.add_argument('-hidden_layer_sizes', help='Sizes of hidden layers in ANN', type=list, default=[483, 415, 254])
+    parser.add_argument('--smoke_test', help='Smoke Test, quickly check if it works', action="count", default=0)
+    args_namespace = parser.parse_args()
+    args = vars(args_namespace)
     # make data and tensors
 
     torch.manual_seed(42)
@@ -225,26 +241,18 @@ if __name__ == '__main__':
     control_tensors, target_tensors = utils.setup_tensors(control_space, target_space)
     # TODO: argparse - need for batch size, learning rate,
     try:
-        params = generate_default_params()
-        results = main(control_tensors, target_tensors, **params)
-        print(results)
-        with open('./out/ANN/3_layer_UQ_15_est.pickle', 'wb') as file:
-            pickle.dump(params, file)
-            pickle.dump(results, file)
+        if args['smoke_test'] >= 1:
+            smoke_args = {'n_estimators': 2, 'hidden_layer_sizes': [10, 10], 'n_splits': 2, 'n_repeats': 2}
+            params = generate_default_params()
+            params.update(smoke_args)
+            results = main(control_tensors, target_tensors, **params)
+            print('PASSED SMOKE TEST')
+        else:
+            params = generate_default_params()
+            params.update(args)
+            results = main(control_tensors, target_tensors, **params)
+            with open('{}_layer_UQ_{}_est.pickle'.format(len(params['hidden_layer_sizes']), params['n_estimators']), 'wb') as file:
+                pickle.dump(params, file)
+                pickle.dump(results, file)
     except Exception as exc:
         raise exc
-
-    # print(results)
-    """
-    with open('./out/ANN/trial_performance_vs_size_exp.pickle', 'wb') as file:
-        pickle.dump(args, file)
-        pickle.dump(RMSE_dict, file)
-        pickle.dump(MAE_dict, file)
-    """
-    """
-    To read the pickle back: 
-    with open(filename, 'rb') as file:
-        args = pickle.load(file)
-        RMSE_dict = pickle.load(file)
-        MAE_dict = pickle.load(file)
-    """

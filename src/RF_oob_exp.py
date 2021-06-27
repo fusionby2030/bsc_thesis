@@ -1,3 +1,18 @@
+"""
+EXP for RFS and ERTs to see how they perform with different number of feature sampling
+
+pickle file contains
+    - args : - min ests, max_ests, ERT vs RF
+    - results: OOB list for each number estimators in range (min_est, max_est) for each feature sampled (1-> 12)
+
+To do some plotting
+for label, clf_err in results.items():
+    xs, ys = zip(*clf_err)
+
+you may get some warnings from sklearn. Sorry
+"""
+
+
 from codebase.data import utils
 import numpy as np
 from sklearn.model_selection import cross_validate
@@ -6,6 +21,7 @@ from sklearn.ensemble import RandomForestRegressor, ExtraTreesRegressor
 from collections import OrderedDict
 from tqdm import tqdm
 import pickle
+import argparse
 
 
 def main(ensemble_list, **kwargs):
@@ -29,49 +45,32 @@ def main(ensemble_list, **kwargs):
     return OOB_rate
 
 if __name__ == '__main__':
-    ensemble_clfs = [
-        ("max_features=2", RandomForestRegressor(warm_start=True, oob_score=True, max_features=2, random_state=42)),
-        ("max_features=3", RandomForestRegressor(warm_start=True, oob_score=True, max_features=3, random_state=42)),
-        ("max_features=4", RandomForestRegressor(warm_start=True, oob_score=True, max_features=4, random_state=42)),
-        ("max_features=5", RandomForestRegressor(warm_start=True, oob_score=True, max_features=5, random_state=42)),
-        ("max_features=6", RandomForestRegressor(warm_start=True, oob_score=True, max_features=6, random_state=42)),
-        ("max_features=7", RandomForestRegressor(warm_start=True, oob_score=True, max_features=7, random_state=42)),
-        ("max_features=8", RandomForestRegressor(warm_start=True, oob_score=True, max_features=8, random_state=42)),
-        ("max_features=9", RandomForestRegressor(warm_start=True, oob_score=True, max_features=9, random_state=42)),
-        ("max_features=10", RandomForestRegressor(warm_start=True, oob_score=True, max_features=10, random_state=42)),
-        ("max_features=11", RandomForestRegressor(warm_start=True, oob_score=True, max_features=11, random_state=42)),
-        (
-        "max_features=all", RandomForestRegressor(warm_start=True, oob_score=True, max_features=None, random_state=42))]
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-type", help='RF for RFs and ERT for ERTs', type=str, choices=['ERT', 'RF'], default='RF')
+    parser.add_argument('-max_estimators', help='max number of decision trees in ensemble to test, i.e., end size', type=int, default=394)
+    parser.add_argument('-min_estimators', help='min number of decision trees in ensemble to test, i.e., start size', type=int, default=20)
+    parser.add_argument('--smoke_test', help='Smoke Test, quickly check if it works', action="count", default=0)
+    args_namespace = parser.parse_args()
+    args = vars(args_namespace)
 
-    ensemble_clfs_ET = [
-        ("max_features=2",
-         ExtraTreesRegressor(warm_start=True, bootstrap=True, oob_score=True, max_features=2, random_state=42)),
-        ("max_features=3",
-         ExtraTreesRegressor(warm_start=True, bootstrap=True, oob_score=True, max_features=3, random_state=42)),
-        ("max_features=4",
-         ExtraTreesRegressor(warm_start=True, bootstrap=True, oob_score=True, max_features=4, random_state=42)),
-        ("max_features=5",
-         ExtraTreesRegressor(warm_start=True, bootstrap=True, oob_score=True, max_features=5, random_state=42)),
-        ("max_features=6",
-         ExtraTreesRegressor(warm_start=True, bootstrap=True, oob_score=True, max_features=6, random_state=42)),
-        ("max_features=7",
-         ExtraTreesRegressor(warm_start=True, bootstrap=True, oob_score=True, max_features=7, random_state=42)),
-        ("max_features=8",
-         ExtraTreesRegressor(warm_start=True, bootstrap=True, oob_score=True, max_features=8, random_state=42)),
-        ("max_features=9",
-         ExtraTreesRegressor(warm_start=True, bootstrap=True, oob_score=True, max_features=9, random_state=42)),
-        ("max_features=10",
-         ExtraTreesRegressor(warm_start=True, bootstrap=True, oob_score=True, max_features=10, random_state=42)),
-        ("max_features=11",
-         ExtraTreesRegressor(warm_start=True, bootstrap=True, oob_score=True, max_features=11, random_state=42)),
-        ("max_features=all",
-         ExtraTreesRegressor(warm_start=True, bootstrap=True, oob_score=True, max_features=None, random_state=42))
-    ]
-
+    ensemble_clfs = [("max_features={}".format(i), RandomForestRegressor(warm_start=True, oob_score=True, max_features=i, random_state=42)) for i in range(2, 13)]
+    ensemble_clfs_ET = [("max_features={}".format(i), ExtraTreesRegressor(warm_start=True, bootstrap=True, oob_score=True, max_features=i, random_state=42)) for i in range(2, 13)]
+    
+    if args['type'] == 'ERT':
+        ensemble_regs = ensemble_clfs_ET
+    else:
+        ensemble_regs = ensemble_clfs
     np.random.seed(42)
-    args = {'max_estimators': 350, 'min_estimators': 15, 'estimator': 'ERT'}
-    OOB_results = main(ensemble_list=ensemble_clfs_ET, **args)
+    # args = {'max_estimators': 350, 'min_estimators': 15, 'estimator': 'ERT'}
 
-    with open('./out/RF_ERT/oob_exp_ERT.pickle', 'wb') as file:
-        pickle.dump(args, file)
-        pickle.dump(OOB_results, file)
+    if args['smoke_test']:
+        args['min_estimators'] = 15
+        args['max_estimators'] = 25
+        args['type'] = 'RF'
+        OOB_results = main(ensemble_list=ensemble_regs, **args)
+        print('SMOKE TEST PASSED')
+    else:
+        OOB_results = main(ensemble_list=ensemble_regs, **args)
+        with open('./out/RF_ERT/oob_exp_{}.pickle'.format(args['type']), 'wb') as file:
+            pickle.dump(args, file)
+            pickle.dump(OOB_results, file)

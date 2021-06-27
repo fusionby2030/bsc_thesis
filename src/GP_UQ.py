@@ -1,12 +1,24 @@
+"""
+Experiment for getting the predictions and uncert. in predictions from Gaussian Process Model
+
+File outputs is a pickle that contains the singluar results:
+results = {'y_vals': np.array(list_yvals), 'preds': np.array(list_preds), 'uncert': np.array(list_uncert), 'score': scores, 'MLL': log_likelihood}
+
+
+"""
+
 from codebase.data import utils
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import RepeatedKFold
-from tqdm import tqdm
+from sklearn.metrics import mean_squared_error, mean_absolute_error
+
 from collections import OrderedDict
 import GPy
-from sklearn.metrics import mean_squared_error, mean_absolute_error
-import numpy as np
 
+import numpy as np
+from tqdm import tqdm
+import argparse
+import pickle
 
 def map_fixed_kernel(vals, fix_type='1d'):
     if fix_type == '1d':
@@ -36,7 +48,7 @@ def map_optim_kernel(model, kernel_name='MLP'):
     return optim_kern
 
 
-def main(kernel_name='MLP'):
+def main(kernel_name='MLP', fix_type=None):
     KL_cols = ['B(T)', 'P_ICRH(MW)', 'q95', 'P_TOTPNBIPohmPICRHPshi(MW)',
                'gasflowrateofmainspecies1022(es)', 'P_NBI(MW)', 'plasmavolume(m3)',
                'Ip(MA)', 'a(m)', 'averagetriangularity']
@@ -63,7 +75,7 @@ def main(kernel_name='MLP'):
         X_train, X_test = x[train], x[test]
         y_train, y_test = y[train], y[test]
 
-        fixed_kern = map_fixed_kernel(y_err[train], fix_type='None')
+        fixed_kern = map_fixed_kernel(y_err[train], fix_type=fix_type)
 
         base_kern = map_kernel(kernel_name)
         if fixed_kern is not None:
@@ -102,11 +114,15 @@ def main(kernel_name='MLP'):
     return results
 
 
-import pickle
+
 
 if __name__ == '__main__':
-    results = main(kernel_name='RatQuad')
-    print(results)
-    with open('./out/GP/RQ_homo_t2.pickle', 'wb') as file:
-        pickle.dump(results, file)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-kernel", help='name of kernel, currently only MLP or None', type=string, default='MLP')
 
+    args_namespace = parser.parse_args()
+    args = vars(args_namespace)
+
+    results = main(kernel_name=args['kernel'])
+    with open('./out/GP/{}_homo_t2.pickle'.format(args['kernel']), 'wb') as file:
+        pickle.dump(results, file)

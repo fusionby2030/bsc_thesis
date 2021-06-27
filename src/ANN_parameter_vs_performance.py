@@ -1,6 +1,10 @@
 """
 This runs the experiment for comparing size & depth vs performance of ANNs.
 
+All arguments in the args below are variable, i.e., you can change them by passing in arguemtns via CLI
+Accesible via:
+    $ python3 ANN_UQ.py -lr 0.001 -batch_size 350
+
 The architectures tested are found in main(), whereas the arguments are found in the if __name__ == '__main__':
 If you run this, below are two files that will be created (this will also overwrite the existing experiment)
 
@@ -9,29 +13,25 @@ If you run this, below are two files that will be created (this will also overwr
         - [10] -> one hidden layer of 10 neuron width, [10, 10] -> 2 hidden layers, 10 neurons each
 - a temporary model state dict will be saved wherever you run this program from!
 
-I recommend running it from the src/ directory, i.e., cd into src/ and run the program from there
+
 To read the pickle file back and use it in some plotting see below:
     with open(filename, 'rb') as file:
         args = pickle.load(file)
         RMSE_dict = pickle.load(file)
         MAE_dict = pickle.load(file)
 
-
-TODO:
-argparse integration
-some bash stuff to offload to triton
-
-Testing
-    - Same model should return same RMSE
 """
 from codebase.data import utils
 from codebase.ANN.peanuts.models.utils import set_module_torch, save_load_torch
 from codebase.ANN.peanuts.models.torch_ensembles import AverageTorchRegressor
 
 import numpy as np
-import torch.nn as nn 
+import torch.nn as nn
 import torch
-from tqdm import tqdm 
+from tqdm import tqdm
+
+import argparse
+from itertools import chain
 
 class PedFFNN(nn.Module):
     def __init__(self, **kwargs):
@@ -44,7 +44,7 @@ class PedFFNN(nn.Module):
         last_size = input_size
 
         self.hidden_layers = torch.nn.ModuleList()
-        hidden_layer_sizes = kwargs['hidden_layer_sizes'] 
+        hidden_layer_sizes = kwargs['hidden_layer_sizes']
 
         for size in hidden_layer_sizes:
             self.hidden_layers.append(self._fc_block(last_size, size, act_func))
@@ -93,11 +93,11 @@ def cross_validate_torch(control_tensor, target_tensor, **kwargs):
     RMSE_list = []
     MAE_list = []
     cv = RepeatedKFold(n_splits=kwargs['n_splits'], n_repeats=kwargs['n_repeats'])
-    
+
     for cv_id, (train, test) in enumerate(cv.split(control_tensor)):
         train_dataset = utils.ANNtorchdataset(control_tensor[train], target_tensor[train])
         test_dataset = utils.ANNtorchdataset(control_tensor[test], target_tensor[test])
-        
+
         train_loader = torch.utils.data.DataLoader(train_dataset, kwargs['batch_size'], shuffle=True)
         test_loader = torch.utils.data.DataLoader(test_dataset, kwargs['batch_size'], shuffle=True)
 
@@ -107,71 +107,44 @@ def cross_validate_torch(control_tensor, target_tensor, **kwargs):
         # optimizer = set_module_torch.set_optimizer(model, 'Adam', lr=kwargs['lr'])
         model.set_optimizer('Adam', lr=kwargs['lr'])
         criterion = nn.MSELoss()
-        
+
         # best_MSE =  np.inf
-        
+
         model.fit(train_loader=train_loader, test_loader=test_loader, epochs=200)
 
         model = AverageTorchRegressor(estimator=base_model, n_estimators=kwargs['n_estimators'], estimator_args={'hidden_layer_sizes': kwargs['hidden_layer_sizes']})
         model._decide_n_outputs(test_loader)
 
         save_load_torch.load(model)
-        """
-        for _ in range(200):
-            model.train()
-            for batch_idx, (control, target) in enumerate(train_loader):
-                optimizer.zero_grad()
-                output = model.forward(control)
-                loss = criterion(output, target)
-
-                loss.backward()
-                model.optimizer.step()
-            
-            model.eval()
-            mse = 0.0
-            for test_batch_idx, (control, target) in enumerate(test_loader):
-                output = model.forward(control)
-                mse += criterion(output, target).detach().numpy()
-
-            mse /= len(test_loader)
-            
-            # Very modest early stopping method, i.e., save when the best validation MSE occurs 
-            if mse < best_MSE:
-                best_MSE = mse 
-                # save a general state dict of the model 
-                torch.save(model.state_dict(), 'temporary_model.pth')
-        # Make predictions from best point of model (early stopped)
-        best_model = PedFFNN(hidden_layer_sizes=kwargs['hidden_layer_sizes'])
-        best_model.load_state_dict(torch.load('temporary_model.pth'))
-        best_model.eval()
-        with torch.no_grad():"""
         predictions = model.predict(control_tensor[test])
         RMSE_list.append(mean_squared_error(target_tensor[test], predictions, squared=False))
         MAE_list.append(mean_absolute_error(target_tensor[test], predictions))
-        # print(cv_id) 
+        # print(cv_id)
     avg_RMSE, avg_MAE = np.mean(RMSE_list), np.mean(MAE_list)
     std_RMSE, std_MAE = np.std(RMSE_list), np.std(MAE_list)
-    
+
     return (avg_RMSE, std_RMSE), (avg_MAE, std_MAE)
 
 
 def main(control_tensor, target_tensor, **kwargs):
 
-    # make a list hidden layer sizes lists to be tested 
-    # run them through CV 
+    # make a list hidden layer sizes lists to be tested
+    # run them through CV
     exp_list_smoke_test = [[25],
                            [25, 25],
                            [25, 25, 25],
                            [25, 25, 25, 25]]
 
-    exp_long = [[i, i] for i in range(1200, 3000, 150)]
-    """
-    exp_long.extend([[i, i] for i in range(10, 1011, 100)])
-    exp_long.extend([[i, i, i] for i in range(10, 1011, 100)])
-    exp_long.extend([[i, i, i, i] for i in range(10, 1011, 100)])
-    exp_long.extend([[i, i, i, i, i] for i in range(10, 1011, 100)])
-    exp_long.extend([[i, i, i, i, i, i] for i in range(10, 1011, 100)])
-    exp_long.extend([[i, i, i, i, i, i] for i in range(10, 1011, 100)])"""
+    exp_long = [
+        [[i] for i in range(10, 500, 25)],
+        [[i, i] for i in range(25, 1000, 50)],
+        [[i, i, i] for i in range(25, 1000, 50)],
+        [[i, i, i, i] for i in range(25, 1000, 50)],
+        [[i, i, i, i, i] for i in range(25, 1000, 50)],
+        [[i, i, i, i, i, i] for i in range(25, 1000, 50)]]
+
+    exp_long = list(chain.from_iterable(exp_long))
+
     RMSE_dict = {}
     MAE_dict = {}
     iterator = tqdm(exp_long, position=0, leave=False)
@@ -189,6 +162,15 @@ def main(control_tensor, target_tensor, **kwargs):
 
 import pickle
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-batch_size", help='batch size during training/validation', type=int, default=396)
+    parser.add_argument('-lr', help='learning rate', type=float, default=0.004)
+    parser.add_argument('-n_splits', help='number of folds in CV', type=int, default=5)
+    parser.add_argument('-n_repeats', help='number of repeats of CV', type=int, default=2)
+    parser.add_argument('-n_estimators', help='Number of ANNs in ensemble, 1 is default ANN',type=int, default=1)
+
+    args_namespace = parser.parse_args()
+    args = vars(args_namespace)
     # make data and tensors
     control_space, target_space, _, _ = utils.process_data()
     control_tensors, target_tensors = utils.setup_tensors(control_space, target_space)
@@ -196,18 +178,10 @@ if __name__ == '__main__':
     # pass to main
     # relevant ANN kwargs get passed as kwargs
     # TODO: argparse - need for batch size, learning rate,
-    args = {'batch_size': 396, 'lr': 0.004, 'n_splits': 5, 'n_repeats': 2, 'n_estimators': 1}
+    # args = {'batch_size': 396, 'lr': 0.004, 'n_splits': 5, 'n_repeats': 2, 'n_estimators': 1}
     RMSE_dict, MAE_dict = main(control_tensors, target_tensors, **args)
 
-    print(RMSE_dict)
-    with open('./out/ANN/largertwolayer_performance_vs_size_exp.pickle', 'wb') as file:
+    with open('ANN_performance_vs_size_exp.pickle', 'wb') as file:
         pickle.dump(args, file)
         pickle.dump(RMSE_dict, file)
         pickle.dump(MAE_dict, file)
-    """
-    To read the pickle back: 
-    with open(filename, 'rb') as file:
-        args = pickle.load(file)
-        RMSE_dict = pickle.load(file)
-        MAE_dict = pickle.load(file)
-    """
