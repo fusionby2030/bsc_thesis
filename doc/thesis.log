@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.5)  24 JUN 2021 12:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.5)  7 JUL 2021 15:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -740,33 +740,33 @@ Package pdftex.def Info: ./src/ANN_comp.png  used on input line 660.
 (pdftex.def)             Requested size: 447.86533pt x 216.60541pt.
  Excluding 'comment' comment.
 Excluding 'comment' comment. [18 <./src/ANN_comp.png>]
-Excluding 'comment' comment. (./thesis.bbl [19] [20]
+Excluding 'comment' comment. [19] (./thesis.bbl [20]
 Underfull \hbox (badness 2285) in paragraph at lines 205--209
 []\OT1/cmr/m/n/12 J. G^^?ortler et al.  A vi-sual ex-plo-ration of gaus-sian pr
 o-cesses.  \OT1/cmr/m/it/12 Dis-till\OT1/cmr/m/n/12 , 2019.
  []
 
-[21])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 720.
- [22]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 720.
+[21] [22])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 721.
+ [23]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 721.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 720.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 720.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 721.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 721.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: 74377BC407F38709CD13535794A86BAF;1190.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 720.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 721.
  )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 382 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 10700 strings out of 481239
- 161978 string characters out of 5920377
+ 10710 strings out of 481239
+ 162076 string characters out of 5920377
  447627 words of memory out of 5000000
- 25640 multiletter control sequences out of 15000+600000
- 541974 words of font info for 61 fonts, out of 8000000 for 9000
+ 25644 multiletter control sequences out of 15000+600000
+ 543069 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  48i,11n,79p,1593b,614s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</u
@@ -781,12 +781,13 @@ s/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1
 s/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cms
 y10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share
-/texmf/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on thesis.pdf (22 pages, 3200903 bytes).
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texmf
+/fonts/type1/public/cm-super/sfrm1200.pfb>
+Output written on thesis.pdf (23 pages, 3214881 bytes).
 PDF statistics:
- 515 PDF objects out of 1000 (max. 8388607)
- 443 compressed objects within 5 object streams
- 118 named destinations out of 1000 (max. 500000)
+ 526 PDF objects out of 1000 (max. 8388607)
+ 452 compressed objects within 5 object streams
+ 120 named destinations out of 1000 (max. 500000)
  216 words of extra memory for PDF output out of 10000 (max. 10000000)
 
