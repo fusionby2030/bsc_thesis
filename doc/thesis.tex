@@ -187,7 +187,7 @@ The key engineering quantities in the database and their units ([-] dimensionles
 	\item $a$ [m], minor radius of plasma, (Fig. \ref{subfig:triangularity})
 	\item $\delta$ [-], triangularity, normalized horizontal displacement of the top/bottom of the plasma from the main axis, (Fig. \ref{subfig:triangularity})
 	\item $V_P$ [m$^3$], the plasma volume,
-	\item $H$, isotope ratio of fuel, hydrogen / deuterium, with 
+	\item $H$, isotope ratio of fuel, hydrogen / deuterium, 
 	\item $M_{eff}$, effective mass of the fueling isotope,
 	\item $q_{95}$ [-], safety factor at the 95\% flux surface. Safety factor is the 'windiness' of the magnetic fields in a reactor, i.e., the  number of toroidal circles the helical field line completes within one poloidal revolution. $q$ is called the safety factor as low $q$ plasmas are susceptible to MHD instabilities. Typically, the baseline scenarios operate  $q_{95}$ around 3-4,
 	\item $P_{NBI}$ [MW], neutral beam injection heating power,
@@ -283,7 +283,7 @@ However, this is a case of causation without correlation, or ice-cream correlati
 The divertor configuration on the other hand, does have a real correlation, and can have a large impact on the pedestal. However, the analysis in this thesis only makes use of the numerical parameters available, and thus divertor configuration will not be used as an input parameter, as it is categorical.  
 
 Another engineering parameter that is ignored in the analysis is the sub-divertor pressure $P_{SD}$, which is correlated with the gas fueling rate, but also depends on other main engineering parameters, such as divertor configuration, input power, and wall conditions.
-From the filtered dataset, the values of $P_{SD}$ vary widely, with 130 entries having an error and value of 1000 [$10^6$ nbar], while having close to 500 entries that vary between [0, 0.5].
+From the filtered dataset, the values of $P_{SD}$ vary widely, with over 200 entries without a measured value of $P_{SD}$.
 Because of this volatility, $P_{SD}$ is ignored, however future work may choose to filter the dataset such that inclusion of $P_{SD}$ is possible.
 
 
@@ -467,7 +467,7 @@ The results of LASSO are slightly misleading, as linear regressors and their reg
 \end{tabular}
 \end{wraptable}
 %------------------------------------------
-Fitting a Bayesian Ridge regressor using all of the available engineering parameters yielded new coefficients (as well as the uncertainties) (Table \ref{tab:new_coef}). It is observed that the coefficients for $P_{TOT}$ compete with $P_{NBI} \text{ and }  P_{ICRH}$. 
+Fitting a Bayesian Ridge regressor using all of the available engineering parameters yielded new coefficients and uncertainties therewith (Table \ref{tab:new_coef}). It is observed that the coefficients for $P_{TOT}$ compete with $P_{NBI} \text{ and }  P_{ICRH}$. 
 From Table \ref{tab:main_domain} we know that there are plasmas with $P_{NBI}$ 100\% of $P_{TOT}$, so the regressor balances the two out by choosing $P_{TOT}$ and $P_{NBI}$ to have opposite signs.     
 From the coefficients and their uncertainties, the general uncertainty in the point prediction of $n_e^{ped}$ can be ascertained. The uncertainties were normally distributed and range from 1.64 to 1.8 $ \times 10^{19}\text{m}^{-3}$. Having high uncertainty is good when the prediction is far from the ground truth (high residual), but for predictions on $n_e^{ped} \geq 8.5 \times  10^{19}\text{m}^{-3}$ the uncertainty no longer covers the residual. 
 Just like the scaling law, the predictions from the Bayesian linear model taper off at around $n_e^{ped} \geq 8.5 \times 10^{19}\text{m}^{-3}$, which suggests that parametric models like linear regressors are generally unable to capture the non-linear complexity of higher pedestal density heights from the given set of input parameters.
@@ -540,7 +540,7 @@ To determine these results, a GP model with a radial basis function (RBF) kernel
 \end{figure}
 
 
-Using the results from the sensitivity analysis, it was found that $H$ and $M_{eff}$ do not aid in improving predictive quality of GPs and that the Multi-Layer Perceptron (MLP)~\cite{gpy_MLP} and Rational Quadratic (RQ)~\cite{kernel_cookbook} kernels perform the best (Fig. \ref{fig:GP_dim}b).  We observe that the MLP and RQ do not improve after $B_T$ is added to the input space, thus confirming the results of the sensitivity analysis (Fig. \ref{fig:GP_dim}b). This means that regarding the current dataset, it is unnecessary to supply $H \text{ and } M_{eff}$ to a GP, which will reduce the computation time when fitting. However, this reduction may be subject to change, since, as stated above, the dataset used was exclusive in its choice of $H$ and $M_{eff}$; thus for databases with multiple hydrogen isotopes included, the importance of these two variables may be more than what was found here. For example, if shots with hydrogen fueling was used, the domains of $M_{eff}$ and $H$ would expand to $[1.0, 2.0]$ and  $[0.0, 1.0]$, respectively, which could potentially change the results of the sensitivity analysis.  Nevertheless, the remainder of the GP models that are analyzed in this section do not use $H$ or $M_{eff}$ during the fitting procedure. 
+Using the results from the sensitivity analysis, it was found that $H$ and $M_{eff}$ do not aid in improving predictive quality of GPs and that the Multi-Layer Perceptron (MLP)~\cite{gpy_MLP} and Rational Quadratic (RQ)~\cite{kernel_cookbook} kernels perform the best (Fig. \ref{fig:GP_dim}b).  We observe that the MLP and RQ do not improve after $B_T$ is added to the input space, thus confirming the results of the sensitivity analysis (Fig. \ref{fig:GP_dim}b). This means that regarding the current dataset, it is unnecessary to supply $H \text{ and } M_{eff}$ to a GP, which will reduce the computation time when fitting. However, this reduction may be subject to change, since, as stated above, the dataset used was exclusive in its choice of $H$ and $M_{eff}$; thus for databases with multiple hydrogen isotopes included, the importance of these two variables may be more than what was found here. For example, if shots with hydrogen fueling were used, the domains of $M_{eff}$ and $H$ would expand to $[1.0, 2.0]$ and  $[0.0, 1.0]$, respectively, which could potentially change the results of the sensitivity analysis.  Nevertheless, the remainder of the GP models that are analyzed in this section do not use $H$ or $M_{eff}$ during the fitting procedure. 
 
  
 
