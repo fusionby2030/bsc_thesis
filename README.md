@@ -2,7 +2,7 @@
 
 Topic: Analysis of machine learning towards predicting plasma density using the JET pedestal database.
 
-Advisor(s): Frank Cichos & Mathias Groth
+Advisor(s): Frank Cichos & Mathias Groth & Aaro Järvinen
 
 ### Outline of repository 
 
